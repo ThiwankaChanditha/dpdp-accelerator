@@ -82,7 +82,8 @@ public final class DpdpAnonymizationProcessor {
                     Collections.singleton(request.getPseudonym()));
             long replacementMatches = countMatches(connection, dialect, request.getTenantDomain(), replacementEvidence);
 
-            result.setDiscoveredAliasCount(evidence.getTrustedUsernames().size());
+            result.setDiscoveredAliasCount(discoveredAliasCount(request, evidence));
+            result.setTrustedUsernames(evidence.getTrustedUsernames());
             if (sourceMatches == 0 && replacementMatches > 0) {
                 connection.rollback();
                 result.setStatus(AnonymizationStatus.TARGET_PRESENT_SOURCE_ABSENT);
@@ -125,6 +126,12 @@ public final class DpdpAnonymizationProcessor {
         } finally {
             close(connection);
         }
+    }
+
+    private int discoveredAliasCount(AnonymizationRequest request, IdentityEvidence evidence) {
+        int explicitCount = new IdentityEvidence(request.getSourceUserId(), request.getExplicitUsernames())
+                .getTrustedUsernames().size();
+        return Math.max(0, evidence.getTrustedUsernames().size() - explicitCount);
     }
 
     private boolean hasTenantData(Connection connection, String tenant) throws SQLException {

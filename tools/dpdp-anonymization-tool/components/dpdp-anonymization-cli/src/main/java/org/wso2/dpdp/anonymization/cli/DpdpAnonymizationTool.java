@@ -41,6 +41,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 public final class DpdpAnonymizationTool {
@@ -84,8 +85,7 @@ public final class DpdpAnonymizationTool {
             AnonymizationResult result = processor.process(request);
             File reportDirectory = resolveReportDirectory(configFile, config.getReportDirectory());
             File report = new ReportWriter().write(reportDirectory, request, result);
-            out.println("Result: " + result.getStatus());
-            out.println("Discovered aliases: " + result.getDiscoveredAliasCount());
+            printSummary(out, request, result);
             out.println("Report: " + report.getAbsolutePath());
             if (!command.hasOption("execute")) {
                 out.println("No database changes were committed. Re-run with --execute to apply them.");
@@ -102,6 +102,31 @@ public final class DpdpAnonymizationTool {
         } catch (IOException e) {
             err.println("Could not write the anonymization report: " + e.getMessage());
             return ExitCode.EXECUTION_ERROR;
+        }
+    }
+
+    private static void printSummary(PrintStream out, AnonymizationRequest request, AnonymizationResult result) {
+        out.println("Result: " + result.getStatus());
+        out.println("Tenant: " + request.getTenantDomain());
+        out.println("Source user ID: " + request.getSourceUserId());
+        if (request.getExplicitUsernames().isEmpty()) {
+            out.println("Supplied aliases: none");
+        } else {
+            out.println("Supplied aliases: " + String.join(", ", request.getExplicitUsernames()));
+        }
+        if (result.getTrustedUsernames().isEmpty()) {
+            out.println("Trusted aliases considered: none");
+        } else {
+            out.println("Trusted aliases considered: " + String.join(", ", result.getTrustedUsernames()));
+        }
+        out.println("Discovered aliases: " + result.getDiscoveredAliasCount());
+        if (result.getCounts().isEmpty()) {
+            out.println("Matches: none");
+        } else {
+            out.println("Matches:");
+            for (Map.Entry<String, Long> entry : result.getCounts().entrySet()) {
+                out.println("  " + entry.getKey() + ": " + entry.getValue());
+            }
         }
     }
 

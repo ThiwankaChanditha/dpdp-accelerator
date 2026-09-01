@@ -20,12 +20,15 @@ package org.wso2.dpdp.anonymization.model;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 public final class AnonymizationResult {
 
     private AnonymizationStatus status;
     private final Map<String, Long> counts = new LinkedHashMap<>();
+    private final Set<String> trustedUsernames = new LinkedHashSet<>();
     private int discoveredAliasCount;
 
     public AnonymizationStatus getStatus() {
@@ -55,5 +58,16 @@ public final class AnonymizationResult {
 
     public void setDiscoveredAliasCount(int discoveredAliasCount) {
         this.discoveredAliasCount = discoveredAliasCount;
+    }
+
+    public Set<String> getTrustedUsernames() {
+        return Collections.unmodifiableSet(trustedUsernames);
+    }
+
+    public void setTrustedUsernames(Set<String> usernames) {
+        trustedUsernames.clear();
+        if (usernames != null) {
+            trustedUsernames.addAll(usernames);
+        }
     }
 }
