@@ -53,8 +53,10 @@ npx playwright install chromium
 
 The script prints the usernames it provisioned (`dpdp-ci-user`, `dpdp-ci-user-2`,
 `dpdp-ci-admin`); put those and `TEST_PASSWORD` into `.env`. It reads `IS_BASE_URL`,
-`IS_ADMIN_USERNAME` and `IS_ADMIN_PASSWORD` from the environment, defaulting to
-`https://localhost:9443` and `admin`/`admin`.
+`IS_ADMIN_USERNAME` and `IS_ADMIN_PASSWORD` from the environment - set them to whatever
+`repository/conf/configure.properties` was set to for this install, since the script's own
+built-in fallback (`https://localhost:9443`, the stock product admin/admin) only matches an
+unconfigured Identity Server.
 
 ## Continuous integration
 

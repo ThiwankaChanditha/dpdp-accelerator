@@ -39,9 +39,9 @@
     "dataProcessorTopics": "विषय",
     "dataProcessorSubscriptions": "सबस्क्रिप्शन",
     "dataProcessorEvents": "घडणुको",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "घडणुको",
+    "topics": "विशय",
+    "subscriptions": "सबस्क्रिप्शन"
   },
   "layout": {
     "home": "मुखेल पान",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "राज्य फिल्टर वापरपा खातीर संमती आयडी फिल्टर काडून उडयात.",
       "propertyFilterLabel": "संमती मालमत्ता",
       "removeConsentIdForSubject": "युजर आयडी फिल्टर वापरपा खातीर संमती आयडी फिल्टर काडून उडयात.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "संबंध",
+      "relationHelperText": "वापरप्याक संबंधा प्रमाण फिल्टर करपाक सेट करात",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "खंयचोय",
+        "subject": "विशेय",
+        "authorizer": "अधिकृत करपी"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "स्थिती",
         "updated": "अद्ययावत केलां",
         "resources": "संसाधनां",
-        "eventType": "घडणुकेचो प्रकार",
         "date": "तारीख",
         "time": "वेळ",
         "state": "राज्य"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "सगळे फिल्टर पुसून उडयात",
       "serviceSearchPlaceholder": "सेवे प्रमाण सोदचें",
       "state": "राज्य",
-      "relation": "Relation",
+      "relation": "संबंध",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "सगळें",
+        "subject": "म्हजें स्वताचें",
+        "authorizer": "म्हाका वेवस्थापीत केल्लें"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "प्रणाली",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "संमती तयार जाली",
+        "updated": "संमती अद्ययावीत जाली",
+        "approved": "मंजूर केल्लो",
+        "rejected": "अस्वीकृत",
+        "authorizeRevoked": "समीक्षकान रद्द केल्लो",
+        "revoked": "रद्द केल्लो",
+        "deleted": "काडून उडयलें",
+        "expired": "समाप्त जाल्लें",
+        "unknown": "अद्ययावीत"
       },
-      "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "description": "{{action}} बाय {{actor}}",
+      "viewFullSnapshot": "पुराय स्नॅपशॉट इतिहास पळयात",
+      "close": "बंद करप",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ह्या अपडेटांत कसलेच बदल नोंद जावंक नात",
+        "needsMoreHistory": "ह्या अद्ययावीत करणांत कितें बदललें तें पळोवपाक चड इतिहास लोड करात.",
+        "initial": "सुरवातीचो स्नॅपशॉट",
+        "added": "जोडिल्लें",
+        "removed": "काडून उडयल्लो",
+        "changed": "बदलिल्लें",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "लागू मेरेन"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ह्या संमती खातीर कसलोच इतिहास नोंद जावंक नात"
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "वर्णन",
         "descriptionPlaceholder": "तुमचे कागाळीचे सविस्तर वर्णन करात",
         "descriptionHelp": "आमकां ही कागाळ बेगीन सोडवपाक मदत जावची म्हणून जावंक शकता तितली सविस्तर म्हायती दियात.",
+        "descriptionPiiWarning": "कृपया तुमची ईमेल, पत्तो वा बँक खात्याची म्हायती सारकी संवेदनशील वैयक्तीक म्हायती घालूं नाकात",
         "attachments": "जोडपत्र (विकल्पीक)",
         "attachmentsHelp": "PDF, DOCX, PNG, वा JPG दर एकाची मर्यादा {{maxSize}}.",
         "uploadButton": "फायली अपलोड करात"
@@ -887,7 +887,7 @@
             "category": "वर्ग",
             "priority": "प्राधान्य",
             "status": "स्थिती",
-            "sla": "SLA",
+            "sla": "एसएलए",
             "updated": "अद्ययावत केल्या"
           }
         }
@@ -1006,276 +1006,276 @@
     "next": "फुडें"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "विशय",
+    "subtitle": "तुमच्या संस्थेंत नोंदणीकृत घडणुकेच्या अधिसूचनेचे विशय पळयात आनी वेवस्थापन करात",
+    "loadFailed": "सध्या विशय लोड करपाक शकना.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "सक्रीय",
+      "deregistered": "काडून उडयलें"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "विशेयाचें नांव, आयडी वा वर्णना प्रमाण सोद करात",
+      "status": "स्थिती",
+      "allStatuses": "सगळ्यो स्थिती",
+      "search": "सोद करात",
+      "clear": "फिल्टर साफ करप"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "विशयाचें वेवस्थापन सारणी",
+      "name": "विशयाचें नांव",
+      "topicId": "विशयाची आयडी",
+      "description": "वर्णन",
+      "status": "स्थिती",
+      "actions": "कृती",
+      "empty": "नोंदणीकृत विशय मेळ्ळे नात"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "विषय नोंद करात",
+      "delete": "विषय काडून उडोवप",
+      "alreadyDeregistered": "हो विशय पयलींच नोंदणी रद्द केलां"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "विषय नोंद करात",
+      "registerSubtitle": "तुमच्या संस्थे खातीर एक नवो इव्हेंट नोटिफिकेशन विशय नोंद करात",
+      "nameLabel": "विशयाचें नांव",
+      "namePlaceholder": "देखीक: संमती. रद्द करात",
+      "nameRequired": "विशयाचें नांव गरजेचें आसा.",
+      "descriptionLabel": "वर्णन",
+      "descriptionPlaceholder": "विशेषाच्या उद्देशाचें पर्यायी वर्णन",
+      "registering": "नोंदणी करतना...",
+      "registerSubmit": "विषय नोंद करात"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "नोंदणी रद्द करपाक खात्री करप",
+      "message": "तुमी \"{{name}}\" विशय काडून उडोवपाक सोदतात हाची खात्री आसा?",
+      "note": "विषय काडून उडोवप ह्या विशयांत नव्या सदस्यकेंत आनी घडणुको उजवाडावपाक आड येता.",
+      "confirm": "विषय काडून उडोवप"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "सबस्क्रिप्शन",
+    "subtitle": "तुमच्या संस्थे खातीर इव्हेंट नोटिफिकेशन सबस्क्रिप्शन वेवस्थापीत करात आनी ताचेर नदर दवरात",
+    "loadFailed": "सध्या सदस्यत्वाचो लोड करपाक शकना.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "सक्रीय",
+      "pending": "प्रलंबित",
+      "stale": "बुरशीक",
+      "deleted": "काडून उडयलें"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "वेबहुक",
+      "poll": "मतदान करात"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "सगळ्यो घडणुको",
+      "allDescription": "ह्या विशयाचेर उजवाडावन आयिल्ल्या सगळ्या घडणुकांक आयकता",
+      "specific": "विशेषां उद्देशां",
+      "all_except": "सगळ्यो उद्देश सोडून"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "सबस्क्रिप्शन आयडी, विशय, गट, उद्देश वा यूआरएल प्रमाण सोद करात",
+      "status": "स्थिती",
+      "allStatuses": "सगळ्यो स्थिती",
+      "deliveryMode": "वितरण पद्दत",
+      "allModes": "सगळ्यो पद्दती",
+      "search": "सोद करात",
+      "clear": "फिल्टर साफ करप"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "सबस्क्रिप्शन वेवस्थापन मेज",
+      "subscriptionId": "सबस्क्रिप्शन आयडी",
+      "topic": "विशय",
+      "groupId": "गट आय.डी.",
+      "filter": "फिल्टर करप",
+      "deliveryMode": "वितरण पद्दत",
+      "status": "स्थिती",
+      "occurredAt": "घडले तेन्ना",
+      "deliveryId": "वितरण आय.डी.",
+      "eventId": "घडणुकेचो आय.डी.",
+      "actions": "कृती",
+      "empty": "सबस्क्रिप्शन मेळ्ळे नात"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "सबस्क्रिप्शन नोंद करात",
+      "view": "तपशील पळयात",
+      "verify": "वेबहुक परतून तपासात",
+      "delete": "सदस्यकेंतली सदस्यता काडून उडोवप",
+      "alreadyDeleted": "हें सदस्यत्व पयलींच नश्ट केलां",
+      "backToList": "सदस्यकेंत परत वचप",
+      "close": "बंद करप"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "सबस्क्रिप्शन नोंद करात",
+      "registerSubtitle": "एक नवी घडणूक अधिसूचना सदस्यता आनी वितरण पद्दत कॉन्फिगर करप",
+      "topicLabel": "विशय",
+      "topicRequired": "विशय गरजेचो आसा.",
+      "filterModeLabel": "उद्देश फिल्टर मोड",
+      "purposesLabel": "उद्देशां (स्वल्पविरामान वेगळीं केल्लीं)",
+      "purposesPlaceholder": "देखीक: मार्केटिंग, ॲनालिटिक्स",
+      "purposesHelper": "फिल्टर करपाक संमतीच्या उद्देशांची स्वल्पविराम-वेगळा केल्ली वळेरी",
+      "purposesRequired": "विशेषां वा सगळ्यांक वगळून फिल्टर करतना उद्देशांची गरज आसता",
+      "deliveryModeLabel": "वितरण पद्दत",
+      "callbackUrlLabel": "वेबहुक परतावप URL",
+      "callbackUrlRequired": "वेबहुक सदस्यकेंत कॉल बॅक यू.आर.एल. गरजेचें आसा.",
+      "callbackUrlInvalid": "कृपया एक वैध निरपेक्ष URL (http:// वा https://) दिवचें",
+      "secretLabel": "सामायिक गुपीत",
+      "secretRequired": "सामायिक गुपीत गरजेचो आसा",
+      "secretHelper": "वेबहुक पेलोड वा पोल विनंती प्रमाणित करपाक वापरतात",
+      "generateSecret": "नवी गुप्त तयार करप",
+      "registering": "नोंदणी करतना...",
+      "registerSubmit": "सबस्क्रिप्शन नोंद करात"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "सदस्यकेंतली सदस्यता काडून उडोवपाक खात्री करप",
+      "message": "तुमी \"{{id}}\" सदस्यता काडून उडोवपाक सोदतात हाची खात्री आसा?",
+      "note": "ही सदस्यता काडून उडोवप ह्या सदस्यकेंत नव्या घडणुको धाडपाक आड येता.",
+      "confirm": "सदस्यकेंत काडून उडोवप"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "सत्यापन पिंग यशस्वीपणान धाडला.",
+      "failed": "वेबहुक प्रमाणीकरण अपेशी थारलें. कृपया एंडपॉइंटाची पोहोच तपासचें.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "सदस्यत्वाचो तपशील लोड करपाक शकना.",
+      "configTitle": "सबस्क्रिप्शन कॉन्फिगरेशन",
+      "configSubtitle": "सामान्य मेटाडेटा, रूटिंग पॅरामीटर्स आनी फिल्टरिंग नेम",
+      "eventsTitle": "वितरण इतिहास आनी कार्यान्वयनाचो लॉग",
+      "eventsSubtitle": "ह्या सबस्क्रायबराक धाडिल्ले हालींचे इव्हेंट डिलिव्हरी आनी परत यत्न करात",
+      "createdAt": "तयार केल्लें",
+      "updatedAt": "निमणो अद्ययावीत केल्लो"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "वितरण घडणुको लॉग टेबल",
+      "empty": "अजून मेरेन कसलेच डिलिव्हरी इव्हेंट नोंद जावंक नात",
+      "auditAction": "प्रयत्न",
+      "viewHistory": "वितरण यत्न पळयात"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "घडणूक वितरण कार्यान्वयनाचें लेखापरीक्षण",
+      "loadFailed": "वितरण इतिहास लोड करपाक शकना.",
+      "completion": "पुराय जावपाचो पुरावो",
+      "attemptsTitle": "वितरण यत्न कालक्रम",
+      "attemptNumber": "प्रयत्न",
+      "attemptStatus": "स्थिती",
+      "httpStatus": "एच.टी.टी.पी. स्थिती",
+      "timestamp": "वेळ",
+      "errorDetails": "चूक तपशील",
+      "noAttempts": "एक्झिक्यूशनचे कसलेच यत्न नोंद जावंक नात"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "घडणुको",
+    "subtitle": "प्रकाशित घडणुको पळयात आनी तुमच्या संस्थेंत घडणुकेच्या अधिसूचनेचेर नदर दवरात",
+    "loadFailed": "घडणुको लोड करपाक शकना.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "डिलिव्हरी आयडी, इव्हेंट आयडी वा विशया प्रमाण सोद करात...",
+      "status": "स्थिती",
+      "allStatuses": "सगळ्यो स्थिती",
+      "topic": "विशय",
+      "allTopics": "सगळ्यो विशय",
+      "groupId": "गट आय.डी.",
+      "groupIdPlaceholder": "गट आय.डी. प्रमाण फिल्टर करप...",
+      "search": "सोद करात",
+      "clear": "साफ करप",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "सगळें",
+      "pending": "प्रलंबित",
+      "delivered": "वितरीत केल्लें",
+      "failed": "अयशस्वी जाल्लें",
+      "completed": "पुराय जाल्लें",
+      "acknowledged": "मान्य केल्लें",
+      "in_flight": "उडनांत",
+      "expired": "समाप्त जाल्लें"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "सगळें"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "उजवाडाक हाडिल्ल्या इव्हेंटांची वळेरी मेज",
+      "deliveryId": "वितरण आय.डी.",
+      "eventId": "घडणुकेचो आय.डी.",
+      "topic": "विशय",
+      "groupId": "गट आय.डी.",
+      "mode": "मोड",
+      "purposes": "उद्देशां",
+      "deliveries": "वितरण",
+      "subscriber": "सबस्क्रायबर",
+      "subscribers": "सबस्क्रायबर",
+      "noSubscribers": "सबस्क्रायबर नात",
+      "status": "स्थिती",
+      "occurredAt": "घडले तेन्ना",
+      "actions": "कृती",
+      "empty": "इव्हेंट मेळ्ळे नात"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "इव्हेंट उजवाडाक हाडात",
+      "view": "तपशील पळयात",
+      "copyPayload": "पेलोड कॉपी करप",
+      "close": "बंद करप"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "इव्हेंट उजवाडाक हाडात",
+      "publishSubtitle": "सबस्क्रायबर फॅन-आऊट ट्रिगर करपाक इव्हेंट नोटिफिकेशन उजवाडाक हाडात",
+      "topicLabel": "विशय",
+      "topicRequired": "विशय गरजेचो आसा.",
+      "groupIdLabel": "गट आय.डी. (पर्यायी)",
+      "groupIdPlaceholder": "देखीक: ग्राहक-गट-01",
+      "groupIdHelper": "लक्षीत डिलिव्हरी खातीर पर्यायी गट वळखपट्टो",
+      "purposesLabel": "उद्देशां (पर्यायी, स्वल्पविरामान वेगळीं केल्लीं)",
+      "purposesPlaceholder": "देखीक: मार्केटिंग, ॲनालिटिक्स",
+      "purposesHelper": "ह्या घडणुके कडेन संबंदीत संमतीच्या उद्देशांची स्वल्पविराम-वेगळा केल्ली वळेरी",
+      "payloadLabel": "पेलोड (JSON)",
+      "payloadHelper": "घडणुकेच्या डेटाचें प्रतिनिधित्व करपी वैध JSON वस्तू",
+      "payloadRequired": "पेलोड गरजेचो आसा",
+      "payloadMustBeObject": "पेलोड एक वैध JSON ऑब्जेक्ट आसूंक जाय",
+      "invalidJson": "कृपया वैध JSON स्वरूप दिवचें",
+      "publishing": "उजवाडाक हाडटा...",
+      "publishSubmit": "इव्हेंट उजवाडाक हाडात",
+      "publishSuccess": "घडणूक यशस्वीपणान उजवाडावन जाली."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "घडणुकेचो तपशील",
+      "backToEvents": "घडणुकांक परत वचप",
+      "loadFailed": "घडणुकेचो तपशील लोड करपाक शकना.",
+      "metadataTitle": "घडणुकेचो मेटाडेटा",
+      "metadataSubtitle": "आयडेंटिफायर्स, विशय आनी धाडपाचो वेळ",
+      "payloadTitle": "घडणुकेचो पेलोड",
+      "historyTitle": "वितरण यत्न इतिहास",
+      "historySubtitle": "कालक्रमान कार्यान्वयनाचे यत्न आनी एच.टी.टी.पी. प्रतिसाद स्थिती",
+      "noHistory": "डिलिव्हरीचे कसलेच यत्न नोंद जावंक नात",
+      "completionTitle": "पुराय जावपाचो पुरावो",
+      "allPurposes": "सगळ्यो उद्देश",
+      "createdAt": "तयार केल्लें",
+      "deliveriesTitle": "सकयल आशिल्ल्यो सदस्यकेंतलीं वितरणां",
+      "deliveriesSubtitle": "ह्या घडणुके खातीर तयार केल्ल्यो सगळ्यो वितरणां आनी पुराय जावपाच्यो स्थिती",
+      "noDeliveries": "डिलिव्हरी तयार जावंक ना",
+      "noDeliveriesMessage": "इव्हेंट घडटना ह्या विशया कडेन जुळपी सक्रिय सबस्क्रिप्शन नात",
+      "copyPayloadSuccess": "पेलोड क्लिपबोर्डाचेर कॉपी केल्लो",
+      "copyPayloadFailed": "पेलोड क्लिपबोर्डाचेर कॉपी करपाक अयशस्वी जाल्लें.",
+      "subscriber": "सबस्क्रायबर",
+      "subscribers": "सबस्क्रायबर"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "म्हजें खातें काडून उडोवप",
+    "deleteError": "तुमचें खातें नश्ट करपाक शकना. परत यत्न करात.",
+    "deletePendingApproval": "तुमची नश्ट करपाची विनंती मान्य करपा खातीर सादर केल्या. प्रशासकान मान्य कर मेरेन तुमचें खातें सक्रिय उरता.",
+    "deleteAlreadyRequested": "तुमच्या खात्यांत पयलींच नश्ट करपाची विनंती मान्य करपाची वाट पळयता.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "खातें",
+      "title": "तुमचें खातें काडून उडोवचें?",
+      "message": "हें तुमचें खातें कायमचें नश्ट करता आनी तुमकां सायन आउट करता.",
+      "note": "ही कृती परत करपाक मेळना. तुमचो ह्या पोर्टलार प्रवेश वगळटलो, आनी तुमचें साइन-इन बेगीन काम करप बंद जातलें.",
+      "confirm": "म्हजें खातें काडून उडोवप"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "तुमचें खातें नश्ट केलां",
+      "body": "तुमचें खातें आनी सायन-इन काडून उडयल्यात. जर ही चूक आशिल्ली, तर तुमच्या प्रशासका कडेन संपर्क करात.",
+      "signInLink": "साइन-इनाचेर वचप"
     }
   }
 }

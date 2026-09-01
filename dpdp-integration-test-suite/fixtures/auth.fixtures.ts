@@ -18,8 +18,10 @@
 
 import { mkdir, open, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { test as base, type Browser, type Page, type Request } from '@playwright/test'
+import { test as base, type APIRequestContext, type Browser, type Page, type Request } from '@playwright/test'
+import { ComplaintApiClient } from '../clients/ComplaintApiClient'
 import { ConsentApiClient } from '../clients/ConsentApiClient'
+import { EventNotificationApiClient } from '../clients/EventNotificationApiClient'
 import { LoginPage } from '../pages/LoginPage'
 import {
   authHeadersFromPersonaState,
@@ -51,6 +53,19 @@ interface Fixtures {
   userConsentApi: ConsentApiClient
   consentAdminConsentApi: ConsentApiClient
   consentCleanupTracker: ConsentCleanupTracker
+  // "Officer" here is any dpdp-consent-admin holder (see tests/07-complaints/README.md's
+  // Personas section) - reuses the same consent-admin persona/login as consentAdminConsentApi,
+  // just wrapped in the complaint client instead of the consent one.
+  userComplaintApi: ComplaintApiClient
+  officerComplaintApi: ComplaintApiClient
+  // dpdp-consent-admin holds every notifications:* scope (see
+  // tests/08-event-notifications/README.md), so this one persona doubles as the admin, the
+  // event publisher, and the webhook-verification actor - same "one role covers every surface"
+  // rationale as officerComplaintApi above.
+  consentAdminEventApi: EventNotificationApiClient
+  // dpdp-consent-user holds NO notifications:* scope - used only to prove every event-notification
+  // endpoint rejects a token that lacks the relevant scope.
+  userEventApi: EventNotificationApiClient
 }
 
 /**
@@ -465,6 +480,26 @@ export const test = base.extend<Fixtures>({
     await use(new ConsentApiClient(request, authHeadersFromPersonaState(personaState)))
   },
 
+  userComplaintApi: async ({ browser, request }, use) => {
+    const personaState = await getPersonaState(browser, 'user', env.user)
+    await use(new ComplaintApiClient(request, authHeadersFromPersonaState(personaState)))
+  },
+
+  officerComplaintApi: async ({ browser, request }, use) => {
+    const personaState = await getPersonaState(browser, 'consent-admin', env.consentAdmin)
+    await use(new ComplaintApiClient(request, authHeadersFromPersonaState(personaState)))
+  },
+
+  consentAdminEventApi: async ({ browser, request }, use) => {
+    const personaState = await getPersonaState(browser, 'consent-admin', env.consentAdmin)
+    await use(new EventNotificationApiClient(request, authHeadersFromPersonaState(personaState)))
+  },
+
+  userEventApi: async ({ browser, request }, use) => {
+    const personaState = await getPersonaState(browser, 'user', env.user)
+    await use(new EventNotificationApiClient(request, authHeadersFromPersonaState(personaState)))
+  },
+
   consentCleanupTracker: async ({ consentAdminConsentApi }, use) => {
     const elementIds: string[] = []
     const purposeIds: string[] = []
@@ -494,4 +529,23 @@ export { expect } from '@playwright/test'
  */
 export function hasSecondUser(): boolean {
   return Boolean(env.secondUser())
+}
+
+/**
+ * Same rationale as hasSecondUser/env.secondUser(): the ownership-isolation tests in
+ * tests/06-complaints-api need a second real user's ComplaintApiClient, and there is no
+ * always-on fixture for it since most runs don't configure TEST_USER_2_USERNAME/PASSWORD.
+ * Returns undefined when it isn't configured; callers check hasSecondUser() first and skip
+ * themselves, same pattern as the consent-side ownership tests.
+ */
+export async function getSecondUserComplaintApi(
+  browser: Browser,
+  request: APIRequestContext,
+): Promise<ComplaintApiClient | undefined> {
+  const secondUser = env.secondUser()
+  if (!secondUser) {
+    return undefined
+  }
+  const personaState = await getPersonaState(browser, 'user-2', secondUser)
+  return new ComplaintApiClient(request, authHeadersFromPersonaState(personaState))
 }

@@ -39,9 +39,9 @@
     "dataProcessorTopics": "ವಿಷಯಗಳು",
     "dataProcessorSubscriptions": "ಚಂದಾದಾರಿಕೆಗಳು",
     "dataProcessorEvents": "ಈವೆಂಟ್‌ಗಳು",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "ಘಟನೆಗಳು",
+    "topics": "ವಿಷಯಗಳು",
+    "subscriptions": "ಚಂದಾದಾರಿಕೆಗಳು"
   },
   "layout": {
     "home": "ಮುಖಪುಟ",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "ರಾಜ್ಯ ಫಿಲ್ಟರ್ ಅನ್ನು ಬಳಸಲು ಸಮ್ಮತಿ ID ಫಿಲ್ಟರ್ ಅನ್ನು ತೆಗೆದುಹಾಕಿ.",
       "propertyFilterLabel": "ಸಮ್ಮತಿ ಆಸ್ತಿ",
       "removeConsentIdForSubject": "ಬಳಕೆದಾರರ ಐಡಿ ಫಿಲ್ಟರ್ ಅನ್ನು ಬಳಸಲು ಸಮ್ಮತಿ ಐಡಿ ಫಿಲ್ಟರ್ ಅನ್ನು ತೆಗೆದುಹಾಕಿ.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "ಸಂಬಂಧ",
+      "relationHelperText": "ಸಂಬಂಧದ ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಲು ಬಳಕೆದಾರರನ್ನು ಹೊಂದಿಸಿ",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ಯಾವುದೇ",
+        "subject": "ವಿಷಯ",
+        "authorizer": "ಅಧಿಕೃತರು"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "ಸ್ಥಿತಿ",
         "updated": "ನವೀಕರಿಸಲಾಗಿದೆ",
         "resources": "ಸಂಪನ್ಮೂಲಗಳು",
-        "eventType": "ಈವೆಂಟ್ ಪ್ರಕಾರ",
         "date": "ದಿನಾಂಕ",
         "time": "ಸಮಯ",
         "state": "ರಾಜ್ಯ"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "ಎಲ್ಲಾ ಫಿಲ್ಟರ್‌ಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ",
       "serviceSearchPlaceholder": "ಸೇವೆಯಿಂದ ಹುಡುಕಿ",
       "state": "ರಾಜ್ಯ",
-      "relation": "Relation",
+      "relation": "ಸಂಬಂಧ",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "ಎಲ್ಲಾ",
+        "subject": "ನನ್ನ ಸ್ವಂತ",
+        "authorizer": "ನನ್ನಿಂದ ನಿರ್ವಹಿಸಲ್ಪಟ್ಟಿದೆ"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "ವ್ಯವಸ್ಥೆ",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "ಸೃಷ್ಟಿಸಿದ ಒಪ್ಪಿಗೆ",
+        "updated": "ನವೀಕರಿಸಿದ ಒಪ್ಪಿಗೆ",
+        "approved": "ಅನುಮೋದಿಸಲಾಗಿದೆ",
+        "rejected": "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ",
+        "authorizeRevoked": "ವಿಮರ್ಶಕರಿಂದ ಹಿಂತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ",
+        "revoked": "ಹಿಂತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆ",
+        "deleted": "ಅಳಿಸಲಾಗಿದೆ",
+        "expired": "ಅವಧಿ ಮೀರಿದೆ",
+        "unknown": "ನವೀಕರಿಸಲಾಗಿದೆ"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "ಸಂಪೂರ್ಣ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಇತಿಹಾಸವನ್ನು ವೀಕ್ಷಿಸಿ",
+      "close": "ಮುಚ್ಚು",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ಈ ನವೀಕರಣದಲ್ಲಿ ಯಾವುದೇ ಬದಲಾವಣೆಗಳನ್ನು ದಾಖಲಿಸಲಾಗಿಲ್ಲ.",
+        "needsMoreHistory": "ಈ ನವೀಕರಣದಲ್ಲಿ ಏನಾಯಿತು ಎಂಬುದನ್ನು ನೋಡಲು ಹೆಚ್ಚಿನ ಇತಿಹಾಸವನ್ನು ಲೋಡ್ ಮಾಡಿ.",
+        "initial": "ಆರಂಭಿಕ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್",
+        "added": "ಸೇರಿಸಲಾಗಿದೆ",
+        "removed": "ತೆಗೆದುಹಾಕಲಾಗಿದೆ",
+        "changed": "ಬದಲಾಯಿಸಲಾಗಿದೆ",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "ಇದುವರೆಗೆ ಮಾನ್ಯ"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ಈ ಒಪ್ಪಿಗೆಗೆ ಯಾವುದೇ ಇತಿಹಾಸವನ್ನು ದಾಖಲಿಸಲಾಗಿಲ್ಲ."
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "ವಿವರಣೆ",
         "descriptionPlaceholder": "ನಿಮ್ಮ ದೂರನ್ನು ವಿವರವಾಗಿ ವಿವರಿಸಿ",
         "descriptionHelp": "ಇದನ್ನು ತ್ವರಿತವಾಗಿ ಪರಿಹರಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡಲು ಸಾಧ್ಯವಾದಷ್ಟು ವಿವರಗಳನ್ನು ಸೇರಿಸಿ.",
+        "descriptionPiiWarning": "ನಿಮ್ಮ ಇಮೇಲ್, ವಿಳಾಸ ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆ ವಿವರಗಳಂತಹ ಸೂಕ್ಷ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಸೇರಿಸಬೇಡಿ.",
         "attachments": "ಲಗತ್ತುಗಳು (ಐಚ್ಛಿಕ)",
         "attachmentsHelp": "PDF, DOCX, PNG, ಅಥವಾ JPG ಪ್ರತಿಯೊಂದೂ {{maxSize}} ವರೆಗೆ.",
         "uploadButton": "ಫೈಲ್‌ಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
@@ -1006,276 +1006,276 @@
     "next": "ಮುಂದೆ"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "ವಿಷಯಗಳು",
+    "subtitle": "ನಿಮ್ಮ ಸಂಸ್ಥೆಯಾದ್ಯಂತ ನೋಂದಾಯಿತ ಘಟನೆ ಅಧಿಸೂಚನೆ ವಿಷಯಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ನಿರ್ವಹಿಸಿ",
+    "loadFailed": "ಈಗ ವಿಷಯಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "ಚಾಲ್ತಿಯಲ್ಲಿದೆ",
+      "deregistered": "ನೋಂದಣಿ ರದ್ದುಗೊಂಡಿದೆ"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "ವಿಷಯದ ಹೆಸರು, ID ಅಥವಾ ವಿವರಣೆಯ ಮೂಲಕ ಹುಡುಕಿ",
+      "status": "ಸ್ಥಿತಿ",
+      "allStatuses": "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು",
+      "search": "ಹುಡುಕಿ",
+      "clear": "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "ವಿಷಯಗಳ ನಿರ್ವಹಣೆ ಕೋಷ್ಟകം",
+      "name": "ವಿಷಯದ ಹೆಸರು",
+      "topicId": "ವಿಷಯ ID",
+      "description": "ವಿವರಣೆ",
+      "status": "ಸ್ಥಿತಿ",
+      "actions": "ಕ್ರಿಯೆಗಳು",
+      "empty": "ನೋಂದಾಯಿತ ವಿಷಯಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "ವಿಷಯವನ್ನು ನೋಂದಾಯಿಸಿ",
+      "delete": "ವಿಷಯವನ್ನು ನೋಂದಣಿ ರದ್ದುಗೊಳಿಸಿ",
+      "alreadyDeregistered": "ಈ ವಿಷಯವು ಈಗಾಗಲೇ ನೋಂದಣಿ ರದ್ದಾಗಿದೆ"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "ವಿಷಯವನ್ನು ನೋಂದಾಯಿಸಿ",
+      "registerSubtitle": "ನಿಮ್ಮ ಸಂಸ್ಥೆಗಾಗಿ ಹೊಸ ಈವೆಂಟ್ ಅಧಿಸೂಚನೆ ವಿಷಯವನ್ನು ನೋಂದಾಯಿಸಿ",
+      "nameLabel": "ವಿಷಯದ ಹೆಸರು",
+      "namePlaceholder": "ಉದಾಹರಣೆಗೆ consent.revoke",
+      "nameRequired": "ವಿಷಯದ ಹೆಸರು ಅಗತ್ಯವಿದೆ.",
+      "descriptionLabel": "ವಿವರಣೆ",
+      "descriptionPlaceholder": "ವಿಷಯದ ಉದ್ದೇಶದ ಐಚ್ಛಿಕ ವಿವರಣೆ",
+      "registering": "ನೋಂದಾಯಿಸಲಾಗುತ್ತಿದೆ...",
+      "registerSubmit": "ವಿಷಯವನ್ನು ನೋಂದಾಯಿಸಿ"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ನೋಂದಣಿ ರದ್ದುಗೊಳಿಸುವಿಕೆಯನ್ನು ಖಚಿತಪಡಿಸಿ",
+      "message": "ನೀವು \"{{name}}\" ವಿಷಯವನ್ನು ನೋಂದಣಿ ರದ್ದುಗೊಳಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?",
+      "note": "ವಿಷಯವನ್ನು ನೋಂದಣಿ ರದ್ದುಗೊಳಿಸುವುದರಿಂದ ಹೊಸ ಚಂದಾದಾರಿಕೆಗಳು ಮತ್ತು ಈ ವಿಷಯಕ್ಕೆ ಘಟನೆಗಳ ಪ್ರಕಟಣೆಯನ್ನು ತಡೆಯುತ್ತದೆ.",
+      "confirm": "ವಿಷಯವನ್ನು ನೋಂದಣಿ ರದ್ದುಗೊಳಿಸಿ"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "ಚಂದಾದಾರಿಕೆಗಳು",
+    "subtitle": "ನಿಮ್ಮ ಸಂಸ್ಥೆಗಾಗಿ ಈವೆಂಟ್ ಅಧಿಸೂಚನೆ ಚಂದಾದಾರಿಕೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ",
+    "loadFailed": "ಈಗ ಚಂದಾದಾರಿಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "ಚಾಲ್ತಿಯಲ್ಲಿದೆ",
+      "pending": "ನೆನೆಗುದಿಗೆ",
+      "stale": "ಹಳತಾಗಿರುವ",
+      "deleted": "ಅಳಿಸಲಾಗಿದೆ"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "ವೆಬ್‌ಹುಕ್",
+      "poll": "ಸಮೀಕ್ಷೆ"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "ಎಲ್ಲಾ ಘಟನೆಗಳು",
+      "allDescription": "ಈ ವಿಷಯಕ್ಕೆ ಪ್ರಕಟಿಸಲಾದ ಎಲ್ಲಾ ಘಟನೆಗಳನ್ನು ಆಲಿಸುತ್ತದೆ",
+      "specific": "ನಿರ್ದಿಷ್ಟ ಉದ್ದೇಶಗಳು",
+      "all_except": "ಉದ್ದೇಶಗಳನ್ನು ಹೊರತುಪಡಿಸಿ ಎಲ್ಲವೂ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "ಚಂದಾದಾರಿಕೆ ID, ವಿಷಯ, ಗುಂಪು, ಉದ್ದೇಶ ಅಥವಾ URL ಮೂಲಕ ಹುಡುಕಿ",
+      "status": "ಸ್ಥಿತಿ",
+      "allStatuses": "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು",
+      "deliveryMode": "ವಿತರಣಾ ವಿಧಾನ",
+      "allModes": "ಎಲ್ಲಾ ವಿಧಾನಗಳು",
+      "search": "ಹುಡುಕಿ",
+      "clear": "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "ಚಂದಾದಾರಿಕೆ ನಿರ್ವಹಣೆ ಕೋಷ್ಟകം",
+      "subscriptionId": "ಚಂದಾದಾರಿಕೆ ID",
+      "topic": "ವಿಷಯ",
+      "groupId": "ಗುಂಪು ID",
+      "filter": "ಫಿಲ್ಟರ್ ಮಾಡಿ",
+      "deliveryMode": "ವಿತರಣಾ ವಿಧಾನ",
+      "status": "ಸ್ಥಿತಿ",
+      "occurredAt": "ಸಂಭವಿಸಿದ ದಿನಾಂಕ",
+      "deliveryId": "ವಿತರಣಾ ID",
+      "eventId": "ಘಟನೆ ID",
+      "actions": "ಕ್ರಿಯೆಗಳು",
+      "empty": "ಚಂದಾದಾರಿಕೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "ಚಂದಾದಾರಿಕೆಯನ್ನು ನೋಂದಾಯಿಸಿ",
+      "view": "ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+      "verify": "ವೆಬ್‌ಹುಕ್ ಅನ್ನು ಮರು-ಪರಿಶೀಲಿಸಿ",
+      "delete": "ಚಂದಾದಾರಿಕೆಯನ್ನು ಅಳಿಸಿ",
+      "alreadyDeleted": "ಈ ಚಂದಾದಾರಿಕೆಯನ್ನು ಈಗಾಗಲೇ ಅಳಿಸಲಾಗಿದೆ",
+      "backToList": "ಚಂದಾದಾರಿಕೆಗಳಿಗೆ ಹಿಂತಿರುಗಿ",
+      "close": "ಮುಚ್ಚು"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "ಚಂದಾದಾರಿಕೆಯನ್ನು ನೋಂದಾಯಿಸಿ",
+      "registerSubtitle": "ಹೊಸ ಘಟನೆ ಅಧಿಸೂಚನೆ ಚಂದಾದಾರಿಕೆ ಮತ್ತು ವಿತರಣಾ ವಿಧಾನವನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಿ",
+      "topicLabel": "ವಿಷಯ",
+      "topicRequired": "ವಿಷಯವು ಅಗತ್ಯವಿದೆ.",
+      "filterModeLabel": "ಉದ್ದೇಶ ಫಿಲ್ಟರ್ ಮೋಡ್",
+      "purposesLabel": "ಉದ್ದೇಶಗಳು (ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಲಾಗಿದೆ)",
+      "purposesPlaceholder": "ಉದಾಹರಣೆಗೆ MARKETING, ANALYTICS",
+      "purposesHelper": "ಫಿಲ್ಟರ್ ಮಾಡಲು ಒಪ್ಪಿಗೆ ಉದ್ದೇಶಗಳ ಕಾಮಾ-ಬೇರ್ಪಡಿಸಿದ ಪಟ್ಟಿ",
+      "purposesRequired": "ನಿರ್ದಿಷ್ಟ ಅಥವಾ ಎಲ್ಲವನ್ನೂ ಹೊರತುಪಡಿಸಿ ಫಿಲ್ಟರ್ ಮಾಡುವಾಗ ಉದ್ದೇಶಗಳು ಅಗತ್ಯವಿದೆ.",
+      "deliveryModeLabel": "ವಿತರಣಾ ವಿಧಾನ",
+      "callbackUrlLabel": "ವೆಬ್‌ಹುಕ್ ಕಾಲ್ಬ್ಯಾಕ್ URL",
+      "callbackUrlRequired": "ವೆಬ್‌ಹುಕ್ ಚಂದಾದಾರಿಕೆಗಳಿಗೆ ಕಾಲ್ಬ್ಯಾಕ್ URL ಅಗತ್ಯವಿದೆ.",
+      "callbackUrlInvalid": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಸಂಪೂರ್ಣ URL ಅನ್ನು ಒದಗಿಸಿ (http:// ಅಥವಾ https://).",
+      "secretLabel": "ಹಂಚಿಕೆಯ ರಹಸ್ಯ",
+      "secretRequired": "ಹಂಚಿಕೆಯ ರಹಸ್ಯವು ಅಗತ್ಯವಿದೆ.",
+      "secretHelper": "ವೆಬ್‌ಹುಕ್ ಪೇಲೋಡ್‌ಗಳನ್ನು ಸೈನ್ ಮಾಡಲು ಅಥವಾ ಮತದಾನ ವಿನಂತಿಗಳನ್ನು ದೃಢೀಕರಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ",
+      "generateSecret": "ಹೊಸ ರಹಸ್ಯವನ್ನು ರಚಿಸಿ",
+      "registering": "ನೋಂದಾಯಿಸಲಾಗುತ್ತಿದೆ...",
+      "registerSubmit": "ಚಂದಾದಾರಿಕೆಯನ್ನು ನೋಂದಾಯಿಸಿ"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "ಚಂದಾದಾರಿಕೆ ಅಳಿಸುವಿಕೆಯನ್ನು ಖಚಿತಪಡಿಸಿ",
+      "message": "ನೀವು \"{{id}}\" ಚಂದಾದಾರಿಕೆಯನ್ನು ಅಳಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?",
+      "note": "ಈ ಚಂದಾದಾರಿಕೆಯನ್ನು ಅಳಿಸುವುದರಿಂದ ಹೊಸ ಘಟನೆಗಳನ್ನು ಈ ಚಂದಾದಾರರ ಎಂಡ್‌ಪಾಯಿಂಟ್‌ಗೆ ಕಳುಹಿಸುವುದನ್ನು ತಡೆಯುತ್ತದೆ.",
+      "confirm": "ಚಂದಾದಾರಿಕೆಯನ್ನು ಅಳಿಸಿ"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "ಪರಿಶೀಲನಾ ಪಿಂಗ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ರವಾನಿಸಲಾಗಿದೆ.",
+      "failed": "ವೆಬ್‌ಹುಕ್ ಪರಿಶೀಲನೆ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ಎಂಡ್‌ಪಾಯಿಂಟ್ ತಲುಪುವಿಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "ಚಂದಾದಾರಿಕೆ ವಿವರಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "configTitle": "ಚಂದಾದಾರಿಕೆ ಸಂರಚನೆ",
+      "configSubtitle": "ಸಾಮಾನ್ಯ ಮೆಟಾಡೇಟಾ, ರೂಟಿಂಗ್ ನಿಯತಾಂಕಗಳು ಮತ್ತು ಫಿಲ್ಟರಿಂಗ್ ನಿಯಮಗಳು",
+      "eventsTitle": "ವಿತರಣಾ ಇತಿಹಾಸ ಮತ್ತು ಕಾರ್ಯಗತಗೊಳಿಸುವ ಲಾಗ್",
+      "eventsSubtitle": "ಇತ್ತೀಚಿನ ಈವೆಂಟ್ ವಿತರಣೆಗಳು ಮತ್ತು ಈ ಚಂದಾದಾರರಿಗೆ ಕಳುಹಿಸಲಾದ ಮರುಪ್ರಯತ್ನದ ಪ್ರಯತ್ನಗಳು",
+      "createdAt": "ಸೃಷ್ಟಿಸಿದ ದಿನಾಂಕ",
+      "updatedAt": "ಕೊನೆಯದಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ವಿತರಣಾ ಘಟನೆಗಳ ಲಾಗ್ ಟೇಬಲ್",
+      "empty": "ಇನ್ನೂ ಯಾವುದೇ ವಿತರಣಾ ಈವೆಂಟ್‌ಗಳು ದಾಖಲಾಗಿಲ್ಲ.",
+      "auditAction": "ಪ್ರಯತ್ನಗಳು",
+      "viewHistory": "ವಿತರಣಾ ಪ್ರಯತ್ನಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "ಘಟನೆ ವಿತರಣಾ ಕಾರ್ಯಗತಗೊಳಿಸುವಿಕೆಯ ಲೆಕ್ಕಪರಿಶೋಧನೆ",
+      "loadFailed": "ವಿತರಣಾ ಇತಿಹಾಸವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "completion": "ಪೂರ್ಣಗೊಂಡ ಪುರಾವೆ",
+      "attemptsTitle": "ವಿತರಣಾ ಪ್ರಯತ್ನಗಳ ಕಾಲಾನುಕ್ರಮಣಿಕೆ",
+      "attemptNumber": "ಪ್ರಯತ್ನ",
+      "attemptStatus": "ಸ್ಥಿತಿ",
+      "httpStatus": "HTTP ಸ್ಥಿತಿ",
+      "timestamp": "ಸಮಯ ಮುದ್ರೆ",
+      "errorDetails": "ದೋಷದ ವಿವರಗಳು",
+      "noAttempts": "ಯಾವುದೇ ಕಾರ್ಯಗತಗೊಳಿಸುವ ಪ್ರಯತ್ನಗಳನ್ನು ದಾಖಲಿಸಲಾಗಿಲ್ಲ."
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ಘಟನೆಗಳು",
+    "subtitle": "ನಿಮ್ಮ ಸಂಸ್ಥೆಯಾದ್ಯಂತ ಪ್ರಕಟಿತ ಘಟನೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ಘಟನೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ",
+    "loadFailed": "ಘಟನೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "ಡೆಲಿವರಿ ID, ಈವೆಂಟ್ ID ಅಥವಾ ವಿಷಯದ ಮೂಲಕ ಹುಡುಕಿ...",
+      "status": "ಸ್ಥಿತಿ",
+      "allStatuses": "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು",
+      "topic": "ವಿಷಯ",
+      "allTopics": "ಎಲ್ಲಾ ವಿಷಯಗಳು",
+      "groupId": "ಗುಂಪು ID",
+      "groupIdPlaceholder": "ಗುಂಪು ID ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಿ...",
+      "search": "ಹುಡುಕಿ",
+      "clear": "ತೆಗೆದುಹಾಕು",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "ಎಲ್ಲಾ",
+      "pending": "ನೆನೆಗುದಿಗೆ",
+      "delivered": "ವಿತರಿಸಲಾಗಿದೆ",
+      "failed": "ವಿಫಲವಾಗಿದೆ",
+      "completed": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+      "acknowledged": "ಸ್ವೀಕರಿಸಲಾಗಿದೆ",
+      "in_flight": "ಹಾರಾಟದಲ್ಲಿ",
+      "expired": "ಅವಧಿ ಮೀರಿದೆ"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "ಎಲ್ಲಾ"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "ಪ್ರಕಟಿತ ಈವೆಂಟ್‌ಗಳ ಪಟ್ಟಿ ಕೋಷ್ಟകം",
+      "deliveryId": "ವಿತರಣಾ ID",
+      "eventId": "ಘಟನೆ ID",
+      "topic": "ವಿಷಯ",
+      "groupId": "ಗುಂಪು ID",
+      "mode": "ಮೋಡ್",
+      "purposes": "ಉದ್ದೇಶಗಳು",
+      "deliveries": "ವಿತರಣೆಗಳು",
+      "subscriber": "ಚಂದಾದಾರ",
+      "subscribers": "ಚಂದಾದಾರರು",
+      "noSubscribers": "ಯಾವುದೇ ಚಂದಾದಾರರಿಲ್ಲ",
+      "status": "ಸ್ಥಿತಿ",
+      "occurredAt": "ಸಂಭವಿಸಿದ ದಿನಾಂಕ",
+      "actions": "ಕ್ರಿಯೆಗಳು",
+      "empty": "ಯಾವುದೇ ಈವೆಂಟ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ಈವೆಂಟ್ ಅನ್ನು ಪ್ರಕಟಿಸಿ",
+      "view": "ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
+      "copyPayload": "ಪೇಲೋಡ್ ಅನ್ನು ನಕಲಿಸಿ",
+      "close": "ಮುಚ್ಚು"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "ಈವೆಂಟ್ ಅನ್ನು ಪ್ರಕಟಿಸಿ",
+      "publishSubtitle": "ಚಂದಾದಾರರ ಫ್ಯಾನ್-ಔಟ್ ಅನ್ನು ಪ್ರಚೋದಿಸಲು ಈವೆಂಟ್ ಅಧಿಸೂಚನೆಯನ್ನು ಪ್ರಕಟಿಸಿ",
+      "topicLabel": "ವಿಷಯ",
+      "topicRequired": "ವಿಷಯವು ಅಗತ್ಯವಿದೆ.",
+      "groupIdLabel": "ಗುಂಪು ID (ಐಚ್ಛಿಕ)",
+      "groupIdPlaceholder": "ಉದಾಹರಣೆಗೆ consumer-group-01",
+      "groupIdHelper": "ಗುರಿಯಾಗಿಸಿದ ವಿತರಣೆಗಾಗಿ ಐಚ್ಛಿಕ ಗುಂಪು ಗುರುತಿಸುವಿಕೆ",
+      "purposesLabel": "ಉದ್ದೇಶಗಳು (ಐಚ್ಛಿಕ, ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಲಾಗಿದೆ)",
+      "purposesPlaceholder": "ಉದಾಹರಣೆಗೆ MARKETING, ANALYTICS",
+      "purposesHelper": "ಈ ಘಟನೆಯೊಂದಿಗೆ ಸಂಬಂಧಿಸಿದ ಒಪ್ಪಿಗೆ ಉದ್ದೇಶಗಳ ಕಾಮಾ-ಬೇರ್ಪಡಿಸಿದ ಪಟ್ಟಿ",
+      "payloadLabel": "ಪೇಲೋಡ್ (JSON)",
+      "payloadHelper": "ಘಟನೆಯ ಡೇಟಾವನ್ನು ಪ್ರತಿನಿಧಿಸುವ ಮಾನ್ಯ JSON ವಸ್ತು",
+      "payloadRequired": "ಪೇಲೋಡ್ ಅಗತ್ಯವಿದೆ.",
+      "payloadMustBeObject": "ಪೇಲೋಡ್ ಮಾನ್ಯವಾದ JSON ವಸ್ತುವಾಗಿರಬೇಕು.",
+      "invalidJson": "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ JSON ಸ್ವರೂಪವನ್ನು ಒದಗಿಸಿ.",
+      "publishing": "ಪ್ರಕಟಿಸಲಾಗುತ್ತಿದೆ...",
+      "publishSubmit": "ಈವೆಂಟ್ ಅನ್ನು ಪ್ರಕಟಿಸಿ",
+      "publishSuccess": "ಘಟನೆ ಯಶಸ್ವಿಯಾಗಿ ಪ್ರಕಟಿಸಲಾಗಿದೆ."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ಘಟನೆಯ ವಿವರಗಳು",
+      "backToEvents": "ಘಟನೆಗಳಿಗೆ ಹಿಂತಿರುಗಿ",
+      "loadFailed": "ಘಟನೆಯ ವಿವರಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "metadataTitle": "ಘಟನೆ ಮೆಟಾಡೇಟಾ",
+      "metadataSubtitle": "ಗುರುತಿಸುವಿಕೆಗಳು, ವಿಷಯಗಳು ಮತ್ತು ರವಾನೆ ಸಮಯ ಮುದ್ರೆಗಳು",
+      "payloadTitle": "ಘಟನೆ ಪೇಲೋಡ್",
+      "historyTitle": "ವಿತರಣಾ ಪ್ರಯತ್ನದ ಇತಿಹಾಸ",
+      "historySubtitle": "ಕಾಲಾನುಕ್ರಮದ ಕಾರ್ಯಗತಗೊಳಿಸುವ ಪ್ರಯತ್ನಗಳು ಮತ್ತು HTTP ಪ್ರತಿಕ್ರಿಯೆ ಸ್ಥಿತಿ",
+      "noHistory": "ಯಾವುದೇ ವಿತರಣಾ ಪ್ರಯತ್ನಗಳನ್ನು ದಾಖಲಿಸಲಾಗಿಲ್ಲ.",
+      "completionTitle": "ಪೂರ್ಣಗೊಂಡ ಪುರಾವೆ",
+      "allPurposes": "ಎಲ್ಲಾ ಉದ್ದೇಶಗಳು",
+      "createdAt": "ಸೃಷ್ಟಿಸಿದ ದಿನಾಂಕ",
+      "deliveriesTitle": "ಡೌನ್‌ಸ್ಟ್ರೀಮ್ ಚಂದಾದಾರರ ವಿತರಣೆಗಳು",
+      "deliveriesSubtitle": "ಈ ಘಟನೆಗೆ ಉತ್ಪತ್ತಿಯಾದ ಎಲ್ಲಾ ವಿತರಣೆಗಳು ಮತ್ತು ಪೂರ್ಣಗೊಂಡ ಸ್ಥಿತಿಗಳು",
+      "noDeliveries": "ಯಾವುದೇ ವಿತರಣೆಗಳು ಉತ್ಪತ್ತಿಯಾಗಿಲ್ಲ",
+      "noDeliveriesMessage": "ಈವೆಂಟ್ ಸಂಭವಿಸಿದಾಗ ಈ ವಿಷಯಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವ ಯಾವುದೇ ಸಕ್ರಿಯ ಚಂದಾದಾರಿಕೆಗಳಿಲ್ಲ.",
+      "copyPayloadSuccess": "ಪೇಲೋಡ್ ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ.",
+      "copyPayloadFailed": "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ಪೇಲೋಡ್ ಅನ್ನು ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ.",
+      "subscriber": "ಚಂದಾದಾರ",
+      "subscribers": "ಚಂದಾದಾರರು"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "ನನ್ನ ಖಾತೆಯನ್ನು ಅಳಿಸಿ",
+    "deleteError": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "deletePendingApproval": "ನಿಮ್ಮ ಅಳಿಸುವಿಕೆಯ ವಿನಂತಿಯನ್ನು ಅನುಮೋದನೆಗಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ. ನಿರ್ವಾಹಕರು ಅನುಮೋದಿಸುವವರೆಗೆ ನಿಮ್ಮ ಖಾತೆಯು ಸಕ್ರಿಯವಾಗಿರುತ್ತದೆ.",
+    "deleteAlreadyRequested": "ನಿಮ್ಮ ಖಾತೆಯು ಈಗಾಗಲೇ ಅನುಮೋದನೆಗಾಗಿ ಕಾಯುತ್ತಿರುವ ಅಳಿಸುವಿಕೆಯ ವಿನಂತಿಯನ್ನು ಹೊಂದಿದೆ.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "ಖಾತೆ",
+      "title": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಬೇಕೆ?",
+      "message": "ಇದು ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಿಹಾಕುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮನ್ನು ಸೈನ್ ಔಟ್ ಮಾಡುತ್ತದೆ.",
+      "note": "ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದುಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ನೀವು ಈ ಪೋರ್ಟಲ್‌ಗೆ ಪ್ರವೇಶವನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತೀರಿ ಮತ್ತು ನಿಮ್ಮ ಸೈನ್-ಇನ್ ತಕ್ಷಣವೇ ಕಾರ್ಯನಿರ್ವಹಿಸುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ.",
+      "confirm": "ನನ್ನ ಖಾತೆಯನ್ನು ಅಳಿಸಿ"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಿದೆ",
+      "body": "ನಿಮ್ಮ ಖಾತೆ ಮತ್ತು ಸೈನ್-ಇನ್ ಅನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ. ಇದು ತಪ್ಪಾಗಿದ್ದರೆ, ನಿಮ್ಮ ನಿರ್ವಾಹಕರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "signInLink": "ಸೈನ್-ಇನ್‌ಗೆ ಹೋಗಿ"
     }
   }
 }

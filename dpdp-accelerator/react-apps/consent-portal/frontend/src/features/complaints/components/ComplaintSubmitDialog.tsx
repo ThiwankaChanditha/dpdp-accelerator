@@ -186,6 +186,9 @@ function ComplaintSubmitDialog({
                 setDescription(event.target.value)
               }}
             />
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+              {t('complaints.submit.fields.descriptionPiiWarning')}
+            </Typography>
           </Box>
 
           <Box>

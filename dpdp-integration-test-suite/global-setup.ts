@@ -16,15 +16,11 @@
  * under the License.
  */
 
+// Importing env.ts sets process.env.NODE_TLS_REJECT_UNAUTHORIZED as a side effect when
+// IGNORE_HTTPS_ERRORS is true (see that file's own comment on why it lives there, not here) -
+// needed before the plain fetch() calls below, since the shipped Identity Server certificate is
+// self-signed.
 import { env } from './utils/env'
-
-// Node's global fetch (unlike Playwright's own browser/request APIs) has no per-call option to
-// ignore an untrusted certificate - it only honors this process-wide env var. The shipped
-// Identity Server certificate is self-signed, so without this every plain fetch() below fails
-// with a generic "fetch failed" before ever reaching the reachability check it's meant to guard.
-if (env.ignoreHttpsErrors) {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-}
 
 /**
  * Runs once before the whole suite, in Playwright's own separate globalSetup process. This only

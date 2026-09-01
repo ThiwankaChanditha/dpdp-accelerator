@@ -39,9 +39,9 @@
     "dataProcessorTopics": "టాపిక్స్",
     "dataProcessorSubscriptions": "సబ్‌స్క్రిప్షన్లు",
     "dataProcessorEvents": "ఈవెంట్‌లు",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "ఈవెంట్‌లు",
+    "topics": "అంశాలు",
+    "subscriptions": "సబ్‌స్క్రిప్షన్‌లు"
   },
   "layout": {
     "home": "హోమ్",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "రాష్ట్ర ఫిల్టర్‌ను ఉపయోగించడానికి సమ్మతి ID ఫిల్టర్‌ను తీసివేయండి.",
       "propertyFilterLabel": "సమ్మతి ఆస్తి",
       "removeConsentIdForSubject": "యూజర్ ఐడి ఫిల్టర్‌ను ఉపయోగించడానికి కన్సెంట్ ఐడి ఫిల్టర్‌ను తీసివేయండి.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "సంబంధం",
+      "relationHelperText": "సంబంధం ద్వారా ఫిల్టర్ చేయడానికి వినియోగదారుని సెట్ చేయు",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ఏదైనా",
+        "subject": "విషయం",
+        "authorizer": "అధికారిక"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "స్థితి",
         "updated": "నవీకరించబడింది",
         "resources": "వనరులు",
-        "eventType": "ఈవెంట్ రకం",
         "date": "తేదీ",
         "time": "సమయం",
         "state": "రాష్ట్రం"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "అన్ని ఫిల్టర్‌లను క్లియర్ చేయి",
       "serviceSearchPlaceholder": "సేవల ద్వారా వెతకండి",
       "state": "రాష్ట్రం",
-      "relation": "Relation",
+      "relation": "సంబంధం",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "అన్నీ",
+        "subject": "నా స్వంతం",
+        "authorizer": "నాచే నిర్వహించబడింది"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "సిస్టమ్",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "సమ్మతి సృష్టించబడింది",
+        "updated": "సమ్మతి నవీకరించబడింది",
+        "approved": "ఆమోదించబడింది",
+        "rejected": "తిరస్కరించబడింది",
+        "authorizeRevoked": "సమీక్షకుడి ద్వారా రద్దు చేయబడింది",
+        "revoked": "రద్దు చేయబడింది",
+        "deleted": "తొలగించబడింది",
+        "expired": "గడువు ముగిసింది",
+        "unknown": "నవీకరించబడింది"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "పూర్తి స్నాప్‌షాట్ చరిత్రను చూడండి",
+      "close": "మూసివేయి",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ఈ నవీకరణలో ఎటువంటి మార్పులు నమోదు కాలేదు.",
+        "needsMoreHistory": "ఈ నవీకరణలో ఏమి మారిందో చూడటానికి మరిన్ని చరిత్రను లోడ్ చేయండి.",
+        "initial": "ప్రారంభ స్నాప్‌షాట్",
+        "added": "చేర్చబడింది",
+        "removed": "తొలగించబడింది",
+        "changed": "మార్పులు చేయబడింది",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "చెల్లుబాటు అయ్యే వరకు"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ఈ సమ్మతికి ఎటువంటి చరిత్ర నమోదు కాలేదు."
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "వివరణ",
         "descriptionPlaceholder": "మీ ఫిర్యాదును వివరంగా తెలపండి",
         "descriptionHelp": "దీన్ని త్వరగా పరిష్కరించడంలో మాకు సహాయపడటానికి సాధ్యమైనంత ఎక్కువ వివరాలను చేర్చండి.",
+        "descriptionPiiWarning": "దయచేసి మీ ఇమెయిల్, చిరునామా లేదా బ్యాంక్ ఖాతా వివరాలు వంటి సున్నితమైన వ్యక్తిగత సమాచారాన్ని చేర్చవద్దు.",
         "attachments": "జోడింపులు (ఐచ్ఛికం)",
         "attachmentsHelp": "PDF, DOCX, PNG, లేదా JPG ఫైల్ ఒక్కొక్కటి {{maxSize}} వరకు అనుమతించబడుతుంది.",
         "uploadButton": "ఫైళ్లను అప్‌లోడ్ చేయండి"
@@ -1006,276 +1006,276 @@
     "next": "తరువాత"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "అంశాలు",
+    "subtitle": "మీ సంస్థ అంతటా నమోదు చేయబడిన ఈవెంట్ నోటిఫికేషన్ అంశాలను చూడండి మరియు నిర్వహించండి",
+    "loadFailed": "ప్రస్తుతం అంశాలను లోడ్ చేయలేము.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "క్రియాశీల",
+      "deregistered": "నమోదు తొలగించబడింది"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "అంశం పేరు, ID లేదా వివరణ ద్వారా వెతకండి",
+      "status": "స్థితి",
+      "allStatuses": "అన్ని స్థితిగతులు",
+      "search": "వెతకండి",
+      "clear": "ఫిల్టర్‌లను తొలగించు"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "అంశాల నిర్వహణ పట్టిక",
+      "name": "అంశం పేరు",
+      "topicId": "అంశం ID",
+      "description": "వివరణ",
+      "status": "స్థితి",
+      "actions": "చర్యలు",
+      "empty": "నమోదిత అంశాలు కనుగొనబడలేదు."
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "అంశాన్ని నమోదు చేయు",
+      "delete": "విషయాన్ని నమోదు తొలగించు",
+      "alreadyDeregistered": "ఈ అంశం ఇప్పటికే డీరిజిస్టర్ చేయబడింది"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "అంశాన్ని నమోదు చేయు",
+      "registerSubtitle": "మీ సంస్థ కోసం కొత్త ఈవెంట్ నోటిఫికేషన్ అంశాన్ని నమోదు చేయు",
+      "nameLabel": "అంశం పేరు",
+      "namePlaceholder": "ఉదాహరణకు, consent. revoke",
+      "nameRequired": "అంశం పేరు అవసరం.",
+      "descriptionLabel": "వివరణ",
+      "descriptionPlaceholder": "అంశం యొక్క ఉద్దేశ్యం యొక్క ఐచ్ఛిక వివరణ",
+      "registering": "నమోదు చేస్తోంది...",
+      "registerSubmit": "అంశాన్ని నమోదు చేయు"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "డీరిజిస్ట్రేషన్‌ను నిర్ధారించు",
+      "message": "మీరు \"{{name}}\" అంశాన్ని నమోదు తొలగించాలనుకుంటున్నారని ఖచ్చితంగా అనుకుంటున్నారా?",
+      "note": "ఒక అంశాన్ని నమోదు తొలగిస్తే కొత్త సభ్యత్వాలు మరియు ఈ అంశానికి ఈవెంట్‌ల ప్రచురణ నిరోధించబడుతుంది.",
+      "confirm": "విషయాన్ని నమోదు తొలగించు"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "సబ్‌స్క్రిప్షన్‌లు",
+    "subtitle": "మీ సంస్థ కోసం ఈవెంట్ నోటిఫికేషన్ సబ్‌స్క్రిప్షన్‌లను నిర్వహించండి మరియు పర్యవేక్షించండి",
+    "loadFailed": "ప్రస్తుతం చందాలను లోడ్ చేయలేము.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "క్రియాశీల",
+      "pending": "పెండింగ్",
+      "stale": "పాతది",
+      "deleted": "తొలగించబడింది"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "వెబ్‌హుక్",
+      "poll": "పోల్"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "అన్ని సంఘటనలు",
+      "allDescription": "ఈ అంశానికి ప్రచురించబడిన అన్ని ఈవెంట్‌లను వింటుంది",
+      "specific": "నిర్దిష్ట ఉద్దేశ్యాలు",
+      "all_except": "ఉద్దేశ్యాలు మినహా అన్నీ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "సబ్‌స్క్రిప్షన్ ID, అంశం, సమూహం, ఉద్దేశ్యం లేదా URL ద్వారా వెతకండి",
+      "status": "స్థితి",
+      "allStatuses": "అన్ని స్థితిగతులు",
+      "deliveryMode": "పంపిణీ విధానం",
+      "allModes": "అన్ని విధానాలు",
+      "search": "వెతకండి",
+      "clear": "ఫిల్టర్‌లను తొలగించు"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "సబ్‌స్క్రిప్షన్‌ల నిర్వహణ పట్టిక",
+      "subscriptionId": "సబ్‌స్క్రిప్షన్ ID",
+      "topic": "అంశం",
+      "groupId": "సమూహ ID",
+      "filter": "ఫిల్టర్ చేయి",
+      "deliveryMode": "పంపిణీ విధానం",
+      "status": "స్థితి",
+      "occurredAt": "జరిగింది",
+      "deliveryId": "పంపిణీ ID",
+      "eventId": "ఈవెంట్ ID",
+      "actions": "చర్యలు",
+      "empty": "సబ్‌స్క్రిప్షన్‌లు కనుగొనబడలేదు."
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "సబ్‌స్క్రిప్షన్‌ను నమోదు చేయు",
+      "view": "వివరాలను చూడండి",
+      "verify": "వెబ్‌హుక్‌ను తిరిగి ధృవీకరించు",
+      "delete": "సభ్యత్వం తొలగించు",
+      "alreadyDeleted": "ఈ చందా ఇప్పటికే తొలగించబడింది",
+      "backToList": "సభ్యత్వాలకు తిరిగి వెళ్ళు",
+      "close": "మూసివేయి"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "సబ్‌స్క్రిప్షన్‌ను నమోదు చేయు",
+      "registerSubtitle": "కొత్త ఈవెంట్ నోటిఫికేషన్ సభ్యత్వం మరియు డెలివరీ మోడ్‌ను కాన్ఫిగర్ చేయండి",
+      "topicLabel": "అంశం",
+      "topicRequired": "అంశం అవసరం.",
+      "filterModeLabel": "ఉద్దేశ్య ఫిల్టర్ మోడ్",
+      "purposesLabel": "ఉద్దేశ్యాలు (కామాతో వేరు చేయబడినవి)",
+      "purposesPlaceholder": "ఉదాహరణకు, MARKETING, ANALYTICS",
+      "purposesHelper": "ఫిల్టర్ చేయడానికి సమ్మతి ప్రయోజనాల యొక్క కామాతో వేరు చేయబడిన జాబితా",
+      "purposesRequired": "నిర్దిష్ట లేదా అన్నింటినీ మినహాయించి ఫిల్టర్ చేసేటప్పుడు ఉద్దేశ్యాలు అవసరం.",
+      "deliveryModeLabel": "పంపిణీ విధానం",
+      "callbackUrlLabel": "వెబ్‌హుక్ కాల్‌బ్యాక్ URL",
+      "callbackUrlRequired": "వెబ్‌హుక్ సభ్యత్వాల కోసం కాల్‌బ్యాక్ URL అవసరం.",
+      "callbackUrlInvalid": "దయచేసి చెల్లుబాటు అయ్యే సంపూర్ణ URLను అందించండి (http:// లేదా https://).",
+      "secretLabel": "భాగస్వామ్య రహస్యం",
+      "secretRequired": "భాగస్వామ్య రహస్యం అవసరం.",
+      "secretHelper": "వెబ్‌హుక్ పేలోడ్‌లను సైన్ చేయడానికి లేదా పోల్ అభ్యర్థనలను ప్రామాణీకరించడానికి ఉపయోగించబడింది",
+      "generateSecret": "కొత్త రహస్యాన్ని ఉత్పత్తి చేయి",
+      "registering": "నమోదు చేస్తోంది...",
+      "registerSubmit": "సబ్‌స్క్రిప్షన్‌ను నమోదు చేయు"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "సభ్యత్వం తొలగింపును నిర్ధారించు",
+      "message": "మీరు \"{{id}}\" చందాను తొలగించాలనుకుంటున్నారని ఖచ్చితంగా అనుకుంటున్నారా?",
+      "note": "ఈ సభ్యత్వాన్ని తొలగిస్తే ఈ చందాదారు ఎండ్ పాయింట్‌కు కొత్త ఈవెంట్‌లు పంపబడవు.",
+      "confirm": "సభ్యత్వాన్ని తొలగించు"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "ధృవీకరణ పింగ్ విజయవంతంగా పంపబడింది.",
+      "failed": "వెబ్‌హుక్ ధృవీకరణ విఫలమైంది. దయచేసి ఎండ్‌పాయింట్ అందుబాటును తనిఖీ చేయండి.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "చందా వివరాలను లోడ్ చేయలేము.",
+      "configTitle": "సబ్‌స్క్రిప్షన్ కాన్ఫిగరేషన్",
+      "configSubtitle": "సాధారణ మెటాడేటా, రూటింగ్ పారామితులు మరియు ఫిల్టరింగ్ నియమాలు",
+      "eventsTitle": "పంపిణీ చరిత్ర & అమలు లాగ్",
+      "eventsSubtitle": "ఈ సబ్‌స్క్రైబర్‌కు పంపబడిన ఇటీవలి ఈవెంట్ డెలివరీలు మరియు ప్రయత్నాలను మళ్లీ ప్రయత్నించు",
+      "createdAt": "సృష్టించిన తేదీ",
+      "updatedAt": "చివరిగా నవీకరించబడింది"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "పంపిణీ ఈవెంట్‌ల లాగ్ టేబుల్",
+      "empty": "డెలివరీ ఈవెంట్‌లు ఇంకా నమోదు కాలేదు.",
+      "auditAction": "ప్రయత్నాలు",
+      "viewHistory": "డెలివరీ ప్రయత్నాలను చూడండి"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "ఈవెంట్ డెలివరీ అమలు ఆడిట్",
+      "loadFailed": "డెలివరీ చరిత్రను లోడ్ చేయలేము.",
+      "completion": "పూర్తి అయినట్లు రుజువు",
+      "attemptsTitle": "పంపిణీ ప్రయత్నాల కాలక్రమం",
+      "attemptNumber": "ప్రయత్నం",
+      "attemptStatus": "స్థితి",
+      "httpStatus": "HTTP స్థితి",
+      "timestamp": "సమయం ముద్ర",
+      "errorDetails": "లోపం వివరాలు",
+      "noAttempts": "ఎటువంటి అమలు ప్రయత్నాలు నమోదు కాలేదు."
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ఈవెంట్‌లు",
+    "subtitle": "ప్రచురించబడిన ఈవెంట్‌లను చూడండి మరియు మీ సంస్థ అంతటా ఈవెంట్ నోటిఫికేషన్‌లను పర్యవేక్షించండి",
+    "loadFailed": "ఈవెంట్‌లను లోడ్ చేయలేము.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "డెలివరీ ID, ఈవెంట్ ID లేదా అంశం ద్వారా వెతకండి...",
+      "status": "స్థితి",
+      "allStatuses": "అన్ని స్థితిగతులు",
+      "topic": "అంశం",
+      "allTopics": "అన్ని విషయాలు",
+      "groupId": "సమూహ ID",
+      "groupIdPlaceholder": "సమూహ ID ద్వారా ఫిల్టర్ చేయి...",
+      "search": "వెతకండి",
+      "clear": "తొలగించు",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "అన్నీ",
+      "pending": "పెండింగ్",
+      "delivered": "పంపిణీ చేయబడింది",
+      "failed": "విఫలమైంది",
+      "completed": "పూర్తయింది",
+      "acknowledged": "అంగీకరించబడింది",
+      "in_flight": "విమానంలో",
+      "expired": "గడువు ముగిసింది"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "అన్నీ"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "ప్రచురించబడిన ఈవెంట్‌ల జాబితా పట్టిక",
+      "deliveryId": "పంపిణీ ID",
+      "eventId": "ఈవెంట్ ID",
+      "topic": "అంశం",
+      "groupId": "సమూహ ID",
+      "mode": "మోడ్",
+      "purposes": "ఉద్దేశ్యాలు",
+      "deliveries": "పంపిణీలు",
+      "subscriber": "సబ్‌స్క్రైబర్",
+      "subscribers": "సబ్‌స్క్రైబర్‌లు",
+      "noSubscribers": "సబ్‌స్క్రైబర్‌లు లేరు",
+      "status": "స్థితి",
+      "occurredAt": "జరిగింది",
+      "actions": "చర్యలు",
+      "empty": "ఈవెంట్‌లు కనుగొనబడలేదు."
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ఈవెంట్‌ను ప్రచురించు",
+      "view": "వివరాలను చూడండి",
+      "copyPayload": "పేలోడ్‌ను కాపీ చేయండి",
+      "close": "మూసివేయి"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "ఈవెంట్‌ను ప్రచురించు",
+      "publishSubtitle": "సబ్‌స్క్రైబర్ ఫ్యాన్-అవుట్‌ను ప్రేరేపించడానికి ఈవెంట్ నోటిఫికేషన్‌ను ప్రచురించు",
+      "topicLabel": "అంశం",
+      "topicRequired": "అంశం అవసరం.",
+      "groupIdLabel": "సమూహ ID (ఐచ్ఛికం)",
+      "groupIdPlaceholder": "ఉదాహరణకు, consumer-group-01",
+      "groupIdHelper": "గురిపెట్టిన డెలివరీ కోసం ఐచ్ఛిక సమూహ గుర్తింపు",
+      "purposesLabel": "ఉద్దేశ్యాలు (ఐచ్ఛికం, కామాతో వేరు చేయబడినవి)",
+      "purposesPlaceholder": "ఉదాహరణకు, MARKETING, ANALYTICS",
+      "purposesHelper": "ఈవెంట్‌తో అనుబంధించబడిన సమ్మతి ప్రయోజనాల యొక్క కామాతో వేరు చేయబడిన జాబితా",
+      "payloadLabel": "పేలోడ్ (JSON)",
+      "payloadHelper": "ఈవెంట్ డేటాను సూచించే చెల్లుబాటు అయ్యే JSON ఆబ్జెక్ట్",
+      "payloadRequired": "పేలోడ్ అవసరం.",
+      "payloadMustBeObject": "పేలోడ్ చెల్లుబాటు అయ్యే JSON ఆబ్జెక్ట్‌గా ఉండాలి.",
+      "invalidJson": "దయచేసి చెల్లుబాటు అయ్యే JSON ఫార్మాట్‌ను అందించండి.",
+      "publishing": "ప్రచురిస్తోంది...",
+      "publishSubmit": "ఈవెంట్‌ను ప్రచురించు",
+      "publishSuccess": "ఈవెంట్ విజయవంతంగా ప్రచురించబడింది."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ఈవెంట్ వివరాలు",
+      "backToEvents": "ఈవెంట్‌లకు తిరిగి వెళ్ళు",
+      "loadFailed": "ఈవెంట్ వివరాలను లోడ్ చేయలేము.",
+      "metadataTitle": "ఈవెంట్ మెటాడేటా",
+      "metadataSubtitle": "గుర్తింపు సంఖ్యలు, అంశాలు మరియు పంపిన టైమ్‌స్టాంప్‌లు",
+      "payloadTitle": "ఈవెంట్ పేలోడ్",
+      "historyTitle": "పంపిణీ ప్రయత్న చరిత్ర",
+      "historySubtitle": "కాలక్రమానుసారంగా అమలు చేయడానికి ప్రయత్నాలు మరియు HTTP ప్రతిస్పందన స్థితి",
+      "noHistory": "డెలివరీ ప్రయత్నాలు నమోదు కాలేదు.",
+      "completionTitle": "పూర్తి అయినట్లు రుజువు",
+      "allPurposes": "అన్ని ఉద్దేశ్యాలు",
+      "createdAt": "సృష్టించిన తేదీ",
+      "deliveriesTitle": "దిగువ చందాదారు పంపిణీలు",
+      "deliveriesSubtitle": "ఈ సంఘటన కోసం ఉత్పత్తి చేయబడిన అన్ని డెలివరీలు మరియు పూర్తి స్థితిగతులు",
+      "noDeliveries": "డెలివరీలు జరగలేదు",
+      "noDeliveriesMessage": "ఈవెంట్ జరిగినప్పుడు ఈ అంశానికి సరిపోయే చురుకైన సబ్‌స్క్రిప్షన్‌లు లేవు.",
+      "copyPayloadSuccess": "పేలోడ్ క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది.",
+      "copyPayloadFailed": "పేలోడ్‌ను క్లిప్‌బోర్డ్‌కు కాపీ చేయడంలో విఫలమైంది.",
+      "subscriber": "సబ్‌స్క్రైబర్",
+      "subscribers": "సబ్‌స్క్రైబర్‌లు"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "నా ఖాతాను తొలగించు",
+    "deleteError": "మీ ఖాతాని తొలగించలేము. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+    "deletePendingApproval": "మీ తొలగింపు అభ్యర్థన ఆమోదం కోసం సమర్పించబడింది. నిర్వాహకుడు ఆమోదించే వరకు మీ ఖాతా సక్రియంగా ఉంటుంది.",
+    "deleteAlreadyRequested": "మీ ఖాతాకు ఇప్పటికే ఆమోదం కోసం ఎదురుచూస్తున్న తొలగింపు అభ్యర్థన ఉంది.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "ఖాతా",
+      "title": "మీ ఖాతాని తొలగించాలా?",
+      "message": "ఇది మీ ఖాతాని శాశ్వతంగా తొలగిస్తుంది మరియు మిమ్మల్ని సైన్ అవుట్ చేస్తుంది.",
+      "note": "ఈ చర్యను రద్దు చేయలేము. మీరు ఈ పోర్టల్‌కు ప్రాప్యతను కోల్పోతారు మరియు మీ సైన్-ఇన్ వెంటనే పని చేయడం ఆగిపోతుంది.",
+      "confirm": "నా ఖాతాను తొలగించు"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "మీ ఖాతా తొలగించబడింది",
+      "body": "మీ ఖాతా మరియు సైన్-ఇన్ తొలగించబడ్డాయి. ఇది పొరపాటు అయితే, మీ నిర్వాహకుడిని సంప్రదించండి.",
+      "signInLink": "సైన్-ఇన్‌కు వెళ్ళు"
     }
   }
 }

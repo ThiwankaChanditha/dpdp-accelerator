@@ -40,6 +40,10 @@ public final class DPDPCommonConstants {
     public static final String CONSENT_PORTAL_AUTO_PROVISIONING_ENABLED = "ConsentPortal.AutoProvisioningEnabled";
     public static final String CONSENT_PORTAL_CLIENT_ID = "ConsentPortal.ClientId";
 
+    public static final String CONSENT_API_INVOKER_AUTO_PROVISIONING_ENABLED =
+            "ConsentApiInvoker.AutoProvisioningEnabled";
+    public static final String CONSENT_API_INVOKER_CLIENT_ID = "ConsentApiInvoker.ClientId";
+
     public static final String COMPLAINTS_STATUTORY_DUE_PERIOD_DAYS = "Complaints.StatutoryDuePeriodDays";
     public static final int DEFAULT_COMPLAINTS_STATUTORY_DUE_PERIOD_DAYS = 90;
 

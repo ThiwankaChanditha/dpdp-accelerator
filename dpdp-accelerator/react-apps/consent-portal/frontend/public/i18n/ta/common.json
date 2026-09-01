@@ -39,9 +39,9 @@
     "dataProcessorTopics": "தலைப்புகள்",
     "dataProcessorSubscriptions": "சந்தாக்கள்",
     "dataProcessorEvents": "நிகழ்வுகள்",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "நிகழ்வுகள்",
+    "topics": "தலைப்புகள்",
+    "subscriptions": "சந்தாக்கள்"
   },
   "layout": {
     "home": "முகப்பு",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "மாநில வடிகட்டியைப் பயன்படுத்த சம்மத அடையாள வடிகட்டியை அகற்றவும்.",
       "propertyFilterLabel": "சம்மத சொத்து",
       "removeConsentIdForSubject": "பயனர் ஐடி வடிகட்டியைப் பயன்படுத்த, சம்மத ஐடி வடிகட்டியை அகற்றவும்.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "உறவு",
+      "relationHelperText": "உறவால் வடிகட்ட ஒரு பயனரை அமைக்கவும்",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ஏதேனும்",
+        "subject": "பொருள்",
+        "authorizer": "அதிகாரமளித்தவர்"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "நிலை",
         "updated": "புதுப்பிக்கப்பட்டது",
         "resources": "வளங்கள்",
-        "eventType": "நிகழ்வு வகை",
         "date": "தேதி",
         "time": "நேரம்",
         "state": "மாநிலம்"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "அனைத்து வடிகட்டிகளையும் துடை",
       "serviceSearchPlaceholder": "சேவை மூலம் தேடுங்கள்",
       "state": "மாநிலம்",
-      "relation": "Relation",
+      "relation": "உறவு",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "அனைத்தும்",
+        "subject": "என்னுடையது",
+        "authorizer": "என்னால் நிர்வகிக்கப்பட்டது"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "கணினி",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "உருவாக்கப்பட்ட ஒப்புதல்",
+        "updated": "புதுப்பிக்கப்பட்ட ஒப்புதல்",
+        "approved": "அங்கீகரிக்கப்பட்டது",
+        "rejected": "நிராகரிக்கப்பட்டது",
+        "authorizeRevoked": "மதிப்பாய்வாளரால் ரத்து செய்யப்பட்டது",
+        "revoked": "ரத்து செய்யப்பட்டது",
+        "deleted": "நீக்கப்பட்டது",
+        "expired": "காலாவதியானது",
+        "unknown": "புதுப்பிக்கப்பட்டது"
       },
-      "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "description": "{{action}} ஐ {{actor}} ஆல்",
+      "viewFullSnapshot": "முழு ஸ்னாப்ஷாட் வரலாற்றைக் காண்க",
+      "close": "மூடு",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "இந்த புதுப்பிப்பில் எந்த மாற்றங்களும் பதிவு செய்யப்படவில்லை.",
+        "needsMoreHistory": "இந்த புதுப்பிப்பில் என்ன மாறியது என்பதைப் பார்க்க மேலும் வரலாற்றைப் பதிவேற்றவும்.",
+        "initial": "ஆரம்ப ஸ்னாப்ஷாட்",
+        "added": "சேர்க்கப்பட்டது",
+        "removed": "நீக்கப்பட்டது",
+        "changed": "மாற்றப்பட்டது",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "எதுவரை செல்லுபடியாகும்"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "இந்த ஒப்புதலுக்கான வரலாறு எதுவும் பதிவு செய்யப்படவில்லை."
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "விளக்கம்",
         "descriptionPlaceholder": "உங்கள் புகாரை விரிவாக விவரிக்கவும்",
         "descriptionHelp": "இதை விரைவாகத் தீர்க்க எங்களுக்கு உதவ முடிந்தவரை கூடுதல் விவரங்களைச் சேர்க்கவும்.",
+        "descriptionPiiWarning": "உங்கள் மின்னஞ்சல், முகவரி அல்லது வங்கி கணக்கு விவரங்கள் போன்ற முக்கியமான தனிப்பட்ட தகவல்களைச் சேர்க்க வேண்டாம்.",
         "attachments": "இணைப்புகள் (விருப்பத்தேர்வு)",
         "attachmentsHelp": "PDF, DOCX, PNG, அல்லது JPG கோப்புகள் ஒவ்வொன்றும் அதிகபட்சம் {{maxSize}} வரை.",
         "uploadButton": "கோப்புகளைப் பதிவேற்று"
@@ -1006,276 +1006,276 @@
     "next": "அடுத்து"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "தலைப்புகள்",
+    "subtitle": "உங்கள் நிறுவனம் முழுவதும் பதிவு செய்யப்பட்ட நிகழ்வு அறிவிப்பு தலைப்புகளைப் பார்த்து நிர்வகிக்கவும்",
+    "loadFailed": "தலைப்புகளை இப்போது ஏற்ற முடியவில்லை.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "செயலில் உள்ளது",
+      "deregistered": "பதிவு நீக்கப்பட்டது"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "தலைப்பு பெயர், ID அல்லது விளக்கம் மூலம் தேடுங்கள்",
+      "status": "நிலை",
+      "allStatuses": "அனைத்து நிலைகள்",
+      "search": "தேடல்",
+      "clear": "வடிகட்டிகளைத் தெளிவுபடுத்து"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "தலைப்புகள் மேலாண்மை அட்டவணை",
+      "name": "தலைப்பின் பெயர்",
+      "topicId": "தலைப்பு ID",
+      "description": "விளக்கம்",
+      "status": "நிலை",
+      "actions": "செயல்கள்",
+      "empty": "பதிவு செய்யப்பட்ட தலைப்புகள் எதுவும் கிடைக்கவில்லை."
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "தலைப்பை பதிவு செய்க",
+      "delete": "தலைப்பை பதிவு நீக்கு",
+      "alreadyDeregistered": "இந்த தலைப்பு ஏற்கனவே பதிவு நீக்கம் செய்யப்பட்டுள்ளது"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "தலைப்பை பதிவு செய்க",
+      "registerSubtitle": "உங்கள் நிறுவனத்திற்கான புதிய நிகழ்வு அறிவிப்பு தலைப்பை பதிவு செய்க",
+      "nameLabel": "தலைப்பின் பெயர்",
+      "namePlaceholder": "எ.கா. consent. revoke",
+      "nameRequired": "தலைப்பின் பெயர் தேவைப்படுகிறது.",
+      "descriptionLabel": "விளக்கம்",
+      "descriptionPlaceholder": "தலைப்பின் நோக்கத்திற்கான விருப்பமான விளக்கம்",
+      "registering": "பதிவு செய்கிறது...",
+      "registerSubmit": "தலைப்பை பதிவு செய்க"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "பதிவு நீக்கத்தை உறுதிப்படுத்தவும்",
+      "message": "தலைப்பு \"{{name}}\" ஐ பதிவு நீக்க நீங்கள் உறுதியாக இருக்கிறீர்களா?",
+      "note": "தலைப்பை பதிவு நீக்குவது புதிய சந்தாக்களையும் இந்த தலைப்புக்கான நிகழ்வுகளின் வெளியீட்டையும் தடுக்கிறது.",
+      "confirm": "தலைப்பை பதிவு நீக்கு"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "சந்தாக்கள்",
+    "subtitle": "உங்கள் நிறுவனத்திற்கான நிகழ்வு அறிவிப்பு சந்தாக்களை நிர்வகிக்கவும் கண்காணிக்கவும்",
+    "loadFailed": "சந்தாக்களை இப்போது ஏற்ற முடியவில்லை.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "செயலில் உள்ளது",
+      "pending": "நிலுவையில் உள்ளது",
+      "stale": "பழையது",
+      "deleted": "நீக்கப்பட்டது"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "வீக்ஹூக்",
+      "poll": "வாக்கெடுப்பு"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "அனைத்து நிகழ்வுகளும்",
+      "allDescription": "இந்த தலைப்பில் வெளியிடப்பட்ட அனைத்து நிகழ்வுகளையும் கேட்கிறது",
+      "specific": "குறிப்பிட்ட நோக்கங்கள்",
+      "all_except": "நோக்கங்களைத் தவிர அனைத்து நிகழ்வுகளும்"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "சந்தா ID, தலைப்பு, குழு, நோக்கம் அல்லது URL மூலம் தேடுங்கள்",
+      "status": "நிலை",
+      "allStatuses": "அனைத்து நிலைகள்",
+      "deliveryMode": "டெலிவரி முறை",
+      "allModes": "அனைத்து முறைகள்",
+      "search": "தேடல்",
+      "clear": "வடிகட்டிகளைத் தெளிவுபடுத்து"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "சந்தாக்கள் மேலாண்மை அட்டவணை",
+      "subscriptionId": "சந்தா ID",
+      "topic": "தலைப்பு",
+      "groupId": "குழு ID",
+      "filter": "வடிகட்டு",
+      "deliveryMode": "டெலிவரி முறை",
+      "status": "நிலை",
+      "occurredAt": "நிகழ்ந்தது",
+      "deliveryId": "டெலிவரி ID",
+      "eventId": "நிகழ்வு ID",
+      "actions": "செயல்கள்",
+      "empty": "சந்தாக்கள் எதுவும் கிடைக்கவில்லை."
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "சந்தாவை பதிவு செய்க",
+      "view": "விவரங்களைக் காண்க",
+      "verify": "வெப்ஹூக்கை மீண்டும் சரிபார்க்கவும்",
+      "delete": "சந்தாவை நீக்கு",
+      "alreadyDeleted": "இந்த சந்தா ஏற்கனவே நீக்கப்பட்டுவிட்டது",
+      "backToList": "சந்தாக்களுக்குத் திரும்பு",
+      "close": "மூடு"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "சந்தாவை பதிவு செய்க",
+      "registerSubtitle": "புதிய நிகழ்வு அறிவிப்பு சந்தா மற்றும் டெலிவரி முறையை உள்ளமைக்கவும்",
+      "topicLabel": "தலைப்பு",
+      "topicRequired": "தலைப்பு தேவைப்படுகிறது.",
+      "filterModeLabel": "நோக்க வடிகட்டி முறை",
+      "purposesLabel": "நோக்கங்கள் (காற்புள்ளியால் பிரிக்கப்பட்டது)",
+      "purposesPlaceholder": "எ.கா. MARKETING, ANALYTICS",
+      "purposesHelper": "வடிகட்டுவதற்கு ஒப்புதல் நோக்கங்களின் காற்புள்ளி பிரிக்கப்பட்ட பட்டியல்",
+      "purposesRequired": "குறிப்பிட்ட அல்லது அனைத்தையும் தவிர்த்து வடிகட்டும் போது நோக்கங்கள் தேவை.",
+      "deliveryModeLabel": "டெலிவரி முறை",
+      "callbackUrlLabel": "வீக்ஹூக் கால்பேக் URL",
+      "callbackUrlRequired": "வலைதூக்கி சந்தாக்களுக்கு அழைப்பு URL தேவைப்படுகிறது.",
+      "callbackUrlInvalid": "சரியான முழுமையான URL ஐ வழங்கவும் (http:// அல்லது https://).",
+      "secretLabel": "பகிரப்பட்ட ரகசியம்",
+      "secretRequired": "பகிரப்பட்ட ரகசியம் தேவைப்படுகிறது.",
+      "secretHelper": "வலைதூக்கி கட்டணங்களை கையொப்பமிட அல்லது கருத்துக்கணிப்பு கோரிக்கைகளை அங்கீகரிக்க பயன்படுத்தப்பட்டது",
+      "generateSecret": "புதிய ரகசியத்தை உருவாக்கு",
+      "registering": "பதிவு செய்கிறது...",
+      "registerSubmit": "சந்தாவை பதிவு செய்க"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "சந்தா நீக்கத்தை உறுதிப்படுத்தவும்",
+      "message": "சந்தா \"{{id}}\" ஐ நீக்க நீங்கள் உறுதியாக இருக்கிறீர்களா?",
+      "note": "இந்த சந்தாவை நீக்குவது புதிய நிகழ்வுகள் இந்த சந்தாதாரர் இறுதிப்புள்ளிக்கு அனுப்பப்படுவதைத் தடுக்கிறது.",
+      "confirm": "சந்தாவை நீக்கு"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "சரிபார்ப்பு பிங் வெற்றிகரமாக அனுப்பப்பட்டது.",
+      "failed": "Webhook சரிபார்ப்பு தோல்வியடைந்தது. இறுதிப்புள்ளி அணுகக்கூடிய தன்மையைச் சரிபார்க்கவும்.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "சந்தா விவரங்களை ஏற்ற முடியவில்லை.",
+      "configTitle": "சந்தா கட்டமைப்பு",
+      "configSubtitle": "பொது மெட்டாடேட்டா, ரூட்டிங் அளவுருக்கள் மற்றும் வடிகட்டு விதிகள்",
+      "eventsTitle": "டெலிவரி வரலாறு & செயலாக்க பதிவு",
+      "eventsSubtitle": "சமீபத்திய நிகழ்வு விநியோகங்கள் மற்றும் இந்த சந்தாதாரருக்கு அனுப்பப்பட்ட மறுமுயற்சி முயற்சிகள்",
+      "createdAt": "உருவாக்கப்பட்டது",
+      "updatedAt": "கடைசியாக புதுப்பிக்கப்பட்டது"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "டெலிவரி நிகழ்வுகள் பதிவு அட்டவணை",
+      "empty": "விநியோக நிகழ்வுகள் எதுவும் இன்னும் பதிவு செய்யப்படவில்லை.",
+      "auditAction": "முயற்சிகள்",
+      "viewHistory": "டெலிவரி முயற்சிகளைக் காண்க"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "நிகழ்வு டெலிவரி செயலாக்க தணிக்கை",
+      "loadFailed": "டெலிவரி வரலாற்றை ஏற்ற முடியவில்லை.",
+      "completion": "நிறைவு சான்று",
+      "attemptsTitle": "டெலிவரி முயற்சிகளின் காலவரிசை",
+      "attemptNumber": "முயற்சி",
+      "attemptStatus": "நிலை",
+      "httpStatus": "HTTP நிலை",
+      "timestamp": "நேர முத்திரை",
+      "errorDetails": "பிழை விவரங்கள்",
+      "noAttempts": "செயல்படுத்தும் முயற்சிகள் எதுவும் பதிவு செய்யப்படவில்லை."
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "நிகழ்வுகள்",
+    "subtitle": "வெளியிடப்பட்ட நிகழ்வுகளைப் பார்த்து உங்கள் நிறுவனம் முழுவதும் நிகழ்வு அறிவிப்புகளைக் கண்காணிக்கவும்",
+    "loadFailed": "நிகழ்வுகளை ஏற்ற முடியவில்லை.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "டெலிவரி ID, நிகழ்வு ID அல்லது தலைப்பு மூலம் தேடுங்கள்...",
+      "status": "நிலை",
+      "allStatuses": "அனைத்து நிலைகள்",
+      "topic": "தலைப்பு",
+      "allTopics": "அனைத்து தலைப்புகள்",
+      "groupId": "குழு ID",
+      "groupIdPlaceholder": "குழு ID மூலம் வடிகட்டு...",
+      "search": "தேடல்",
+      "clear": "தெளிவுபடுத்து",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "அனைத்தும்",
+      "pending": "நிலுவையில் உள்ளது",
+      "delivered": "டெலிவரி செய்யப்பட்டது",
+      "failed": "தோல்வியடைந்தது",
+      "completed": "முடிக்கப்பட்டது",
+      "acknowledged": "ஒப்புக்கொள்ளப்பட்டது",
+      "in_flight": "பறக்கும்போது",
+      "expired": "காலாவதியானது"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "அனைத்தும்"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "வெளியிடப்பட்ட நிகழ்வுகளின் பட்டியல் அட்டவணை",
+      "deliveryId": "டெலிவரி ID",
+      "eventId": "நிகழ்வு ID",
+      "topic": "தலைப்பு",
+      "groupId": "குழு ID",
+      "mode": "முறை",
+      "purposes": "நோக்கங்கள்",
+      "deliveries": "டெலிவரிகள்",
+      "subscriber": "சந்தாதாரர்",
+      "subscribers": "சந்தாதாரர்கள்",
+      "noSubscribers": "சந்தாதாரர்கள் இல்லை",
+      "status": "நிலை",
+      "occurredAt": "நிகழ்ந்தது",
+      "actions": "செயல்கள்",
+      "empty": "நிகழ்வுகள் எதுவும் கிடைக்கவில்லை."
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "நிகழ்வை வெளியிடு",
+      "view": "விவரங்களைக் காண்க",
+      "copyPayload": "சுமைப்பகுதியை நகலெடுக்கவும்",
+      "close": "மூடு"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "நிகழ்வை வெளியிடு",
+      "publishSubtitle": "சந்தாதாரர் விசிறி-வெளியீட்டைத் தூண்டுவதற்கு நிகழ்வு அறிவிப்பை வெளியிடு",
+      "topicLabel": "தலைப்பு",
+      "topicRequired": "தலைப்பு தேவைப்படுகிறது.",
+      "groupIdLabel": "குழு ID (விருப்பம்)",
+      "groupIdPlaceholder": "எ.கா. consumer-group-01",
+      "groupIdHelper": "குறிப்பிட்ட விநியோகத்திற்கான விருப்பமான குழு அடையாளங்காட்டி",
+      "purposesLabel": "நோக்கங்கள் (விருப்பமானது, காற்புள்ளியால் பிரிக்கப்பட்டது)",
+      "purposesPlaceholder": "எ.கா. MARKETING, ANALYTICS",
+      "purposesHelper": "இந்த நிகழ்வுடன் தொடர்புடைய ஒப்புதல் நோக்கங்களின் காற்புள்ளி பிரிக்கப்பட்ட பட்டியல்",
+      "payloadLabel": "சுமைப்பொருள் (JSON)",
+      "payloadHelper": "சரியான JSON பொருள் நிகழ்வுத் தரவைக் குறிக்கிறது",
+      "payloadRequired": "சுமைப்பொருள் தேவைப்படுகிறது.",
+      "payloadMustBeObject": "சுமைப்பொருள் சரியான JSON பொருளாக இருக்க வேண்டும்.",
+      "invalidJson": "சரியான JSON வடிவமைப்பை வழங்கவும்.",
+      "publishing": "வெளியிடுகிறது...",
+      "publishSubmit": "நிகழ்வை வெளியிடு",
+      "publishSuccess": "நிகழ்வு வெற்றிகரமாக வெளியிடப்பட்டது."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "நிகழ்வு விவரங்கள்",
+      "backToEvents": "நிகழ்வுகளுக்குத் திரும்பு",
+      "loadFailed": "நிகழ்வு விவரங்களை ஏற்ற முடியவில்லை.",
+      "metadataTitle": "நிகழ்வு மெட்டாடேட்டா",
+      "metadataSubtitle": "அடையாளங்காட்டிகள், தலைப்புகள் மற்றும் அனுப்புதல் நேர முத்திரைகள்",
+      "payloadTitle": "நிகழ்வு சுமைப்பகுதி",
+      "historyTitle": "டெலிவரி முயற்சி வரலாறு",
+      "historySubtitle": "காலவரிசை செயலாக்க முயற்சிகள் மற்றும் HTTP பதில் நிலை",
+      "noHistory": "எந்த விநியோக முயற்சிகளும் பதிவு செய்யப்படவில்லை.",
+      "completionTitle": "நிறைவு சான்று",
+      "allPurposes": "அனைத்து நோக்கங்கள்",
+      "createdAt": "உருவாக்கப்பட்டது",
+      "deliveriesTitle": "கீழ்நோக்கிய சந்தாதாரர் டெலிவரிகள்",
+      "deliveriesSubtitle": "இந்த நிகழ்வுக்காக உருவாக்கப்பட்ட அனைத்து டெலிவரிகள் மற்றும் நிறைவு நிலைகள்",
+      "noDeliveries": "எந்த விநியோகமும் உருவாக்கப்படவில்லை",
+      "noDeliveriesMessage": "நிகழ்வு நடந்தபோது இந்த தலைப்புடன் பொருந்தக்கூடிய செயலில் உள்ள சந்தாக்கள் இல்லை.",
+      "copyPayloadSuccess": "சுமைப்பொருள் கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது.",
+      "copyPayloadFailed": "சுமைப்பகுதியை கிளிப்போர்டுக்கு நகலெடுக்க முடியவில்லை.",
+      "subscriber": "சந்தாதாரர்",
+      "subscribers": "சந்தாதாரர்கள்"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "எனது கணக்கை நீக்கு",
+    "deleteError": "உங்கள் கணக்கை நீக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "deletePendingApproval": "உங்கள் நீக்குவதற்கான கோரிக்கை ஒப்புதலுக்காகச் சமர்ப்பிக்கப்பட்டுள்ளது. ஒரு நிர்வாகி ஒப்புதல் அளிக்கும் வரை உங்கள் கணக்கு செயலில் இருக்கும்.",
+    "deleteAlreadyRequested": "உங்கள் கணக்கில் ஏற்கனவே நீக்குவதற்கான கோரிக்கை ஒப்புதலுக்காகக் காத்திருக்கிறது.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "கணக்கு",
+      "title": "உங்கள் கணக்கை நீக்கவா?",
+      "message": "இது உங்கள் கணக்கை நிரந்தரமாக நீக்கி உங்களை வெளியேற்றுகிறது.",
+      "note": "இந்த செயலை செயல்தவிர்க்க முடியாது. இந்த போர்ட்டலுக்கான அணுகலை நீங்கள் இழப்பீர்கள், மேலும் உங்கள் உள்நுழைவு உடனடியாக வேலை செய்வதை நிறுத்தும்.",
+      "confirm": "எனது கணக்கை நீக்கு"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "உங்கள் கணக்கு நீக்கப்பட்டுவிட்டது",
+      "body": "உங்கள் கணக்கு மற்றும் உள்நுழைவு நீக்கப்பட்டுவிட்டன. இது தவறுதலாக இருந்தால், உங்கள் நிர்வாகியைத் தொடர்பு கொள்ளவும்.",
+      "signInLink": "உள்நுழையச் செல்"
     }
   }
 }

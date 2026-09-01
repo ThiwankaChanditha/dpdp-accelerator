@@ -20,6 +20,7 @@ import type { APIRequestContext, APIResponse } from '@playwright/test'
 import {
   adminConsentsApiUrl,
   consentElementsApiUrl,
+  consentHistoryApiUrl,
   consentPurposesApiUrl,
   myConsentsApiUrl,
 } from '../utils/env'
@@ -66,6 +67,11 @@ export interface CreateConsentBody {
   expiryTime?: number
   authorizations?: AuthorizationEntry[]
   properties?: Record<string, string>
+}
+
+export interface ConsentHistoryQueryParams {
+  limit?: number
+  offset?: number
 }
 
 export interface AdminConsentListParams {
@@ -238,6 +244,35 @@ export class ConsentApiClient {
     return this.request.post(adminConsentsApiUrl(`/${consentId}/revoke`, this.tenantDomain), {
       headers: this.headers({ 'Content-Type': 'application/json' }),
       data: {},
+    })
+  }
+
+  // --------------------------------------------------------------- consent-history surface (admin)
+
+  /** Status-audit trail only (previousStatus/currentStatus/actionType/actionBy/actionTime). */
+  async getConsentStatusHistory(
+    consentId: string,
+    params: ConsentHistoryQueryParams = {},
+  ): Promise<APIResponse> {
+    return this.request.get(consentHistoryApiUrl(`/consents/${consentId}/status-history`, this.tenantDomain), {
+      headers: this.headers(),
+      params: Object.fromEntries(
+        Object.entries(params)
+          .filter(([, value]) => value !== undefined)
+          .map(([key, value]) => [key, String(value)]),
+      ),
+    })
+  }
+
+  /** Full pre/post-mutation snapshot history, including the EXPIRE entries the reconciler writes. */
+  async getConsentHistory(consentId: string, params: ConsentHistoryQueryParams = {}): Promise<APIResponse> {
+    return this.request.get(consentHistoryApiUrl(`/consents/${consentId}/history`, this.tenantDomain), {
+      headers: this.headers(),
+      params: Object.fromEntries(
+        Object.entries(params)
+          .filter(([, value]) => value !== undefined)
+          .map(([key, value]) => [key, String(value)]),
+      ),
     })
   }
 }

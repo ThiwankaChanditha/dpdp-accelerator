@@ -35,14 +35,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Creates the DPDP Consent Portal admin and user roles at the organization level, making them
- * manageable from the tenant's User Management > Roles screen.
+ * Creates the DPDP Consent Portal admin, user and DPO roles at the organization level, making
+ * them manageable from the tenant's User Management > Roles screen.
  */
 public final class DPDPConsentPortalRoleProvisioningUtil {
 
     private static final Log LOG = LogFactory.getLog(DPDPConsentPortalRoleProvisioningUtil.class);
     public static final String ADMIN_ROLE = "dpdp-consent-admin";
     static final String USER_ROLE = "dpdp-consent-user";
+    public static final String DPO_ROLE = "dpdp-consent-dpo";
     static final String ROLE_AUDIENCE = "organization";
 
     private DPDPConsentPortalRoleProvisioningUtil() {
@@ -50,11 +51,11 @@ public final class DPDPConsentPortalRoleProvisioningUtil {
     }
 
     /**
-     * @return the admin and user roles (in that order) as {@link RoleV2} references
+     * @return the admin, user and DPO roles (in that order) as {@link RoleV2} references for
      * {@code AssociatedRolesConfig}.
      */
     public static List<RoleV2> createRoles(String tenantDomain, List<String> adminScopeNames,
-            List<String> userScopeNames) throws Exception {
+            List<String> userScopeNames, List<String> dpoScopeNames) throws Exception {
 
         RoleManagementService roleManagementService = DPDPIdentityExtensionDataHolder.getInstance()
                 .getRoleManagementService();
@@ -67,7 +68,9 @@ public final class DPDPConsentPortalRoleProvisioningUtil {
                 organizationId, tenantDomain);
         RoleV2 userRole = createRoleIfNotExists(roleManagementService, USER_ROLE, toPermissions(userScopeNames),
                 organizationId, tenantDomain);
-        return Arrays.asList(adminRole, userRole);
+        RoleV2 dpoRole = createRoleIfNotExists(roleManagementService, DPO_ROLE, toPermissions(dpoScopeNames),
+                organizationId, tenantDomain);
+        return Arrays.asList(adminRole, userRole, dpoRole);
     }
 
     private static List<Permission> toPermissions(List<String> scopeNames) {

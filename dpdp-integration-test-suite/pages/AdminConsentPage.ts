@@ -17,6 +17,7 @@
  */
 
 import { type Locator, type Page } from '@playwright/test'
+import { submitFilterValue } from '../utils/filterCommit'
 import { ConsentRegistryTable } from './ConsentRegistryTable'
 
 /** AdminConsentRegistryPage.tsx - the admin view of every subject's consents. */
@@ -36,8 +37,15 @@ export class AdminConsentPage extends ConsentRegistryTable {
   }
 
   async searchByConsentId(consentId: string): Promise<void> {
-    await this.consentIdSearch.fill(consentId)
-    await this.consentIdSearch.press('Enter')
+    await submitFilterValue(
+      this.page,
+      this.consentIdSearch,
+      async () => {
+        await this.consentIdSearch.press('Enter')
+      },
+      'consentId',
+      consentId,
+    )
   }
 
   async openAdvancedFilters(): Promise<void> {
@@ -46,7 +54,9 @@ export class AdminConsentPage extends ConsentRegistryTable {
 
   async filterBySubjectAndService(subjectId: string, serviceId: string): Promise<void> {
     await this.openAdvancedFilters()
-    await this.page.getByLabel('User').fill(subjectId)
+    // exact: true - a new "Relation" filter's helper text ("Set a User to filter by relation")
+    // also carries an aria-label containing "User", so a substring match resolves to two elements.
+    await this.page.getByLabel('User', { exact: true }).fill(subjectId)
     await this.page.getByLabel('Service').fill(serviceId)
     await this.page.getByRole('button', { name: 'Apply' }).click()
   }

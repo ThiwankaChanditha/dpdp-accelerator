@@ -39,9 +39,9 @@
     "dataProcessorTopics": "आयदाफोर",
     "dataProcessorSubscriptions": "सबस्क्रिपसनफोर",
     "dataProcessorEvents": "जाथायफोर",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "जाथायफोर",
+    "topics": "आयदाफोर",
+    "subscriptions": "साब्सक्रिपसनफोर"
   },
   "layout": {
     "home": "न'",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "रायजोनि फिल्टारखौ बाहायनो थाखाय गनायथि आइ.डि. फिल्टारखौ बोखार।",
       "propertyFilterLabel": "गनायथि सम्फथि",
       "removeConsentIdForSubject": "इउजार आइ.डि. फिल्टारखौ बाहायनो थाखाय कन्सेन्ट आइ.डि. फिल्टारखौ बोखार।",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "सोमोन्दो",
+      "relationHelperText": "सासे बाहायगिरिखौ सोमोन्दोजों सोदांनो थाखाय थि खालाम",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "जायखिजाया",
+        "subject": "आयदा",
+        "authorizer": "गनायथि होगिरि"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "थासारि",
         "updated": "अपडेट खालामबाय",
         "resources": "संपदफोर",
-        "eventType": "जाथायनि रोखोम",
         "date": "अक्ट'",
         "time": "सम",
         "state": "रायजो"
@@ -163,7 +162,7 @@
       },
       "resourcesModal": {
         "title": "गोहो होनायनि संपदफोर",
-        "authRef": "Auth",
+        "authRef": "लिरगिरि",
         "close": "बंध खालाम"
       },
       "values": {
@@ -254,11 +253,11 @@
       "clearAriaLabel": "गासै फिल्टरफोरखौ बोखार",
       "serviceSearchPlaceholder": "सिबिथायजों नागिर",
       "state": "रायजो",
-      "relation": "Relation",
+      "relation": "सोमोन्दो",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "गासै",
+        "subject": "आंनि गावबागावनि",
+        "authorizer": "आंनिफ्राय सामलायजानाय"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "सिस्टेम",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "गनायथि सोरजिनाय",
+        "updated": "गनायथिखौ गोदान खालामनाय",
+        "approved": "गनायथि मोननाय",
+        "rejected": "खारगारजाबाय",
+        "authorizeRevoked": "नायबिजिरगिरिजों खारगारबाय",
+        "revoked": "खारगारबाय",
+        "deleted": "फोजोबबाय",
+        "expired": "समाप्ति जाबाय",
+        "unknown": "गोदान खालामनाय जाबाय"
       },
-      "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "description": "{{action}} निफ्राय {{actor}}",
+      "viewFullSnapshot": "आबुं स्न्यापसट जारिमिनखौ नाय",
+      "close": "फोजोब",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "बे आपडेटआव जेबो सोलायनाय रेकर्ड जायाखै।",
+        "needsMoreHistory": "बे गोदान खालामनायाव मा सोलायदों बेखौ नुनो थाखाय आरोबाव जारिमिन ल'ड खालाम।",
+        "initial": "गिबियाव नुथाय",
+        "added": "जोबथानाय",
+        "removed": "हगारबाय",
+        "changed": "सोलायनाय",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "सिम थार।"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "बे गनायथिनि थाखाय जेबो जारिमिन रेकर्ड जायाखै।"
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "बेजाय दिन्थिनाय",
         "descriptionPlaceholder": "नोंथांनि अजतखौ गुवारै फोरमाय",
         "descriptionHelp": "गोख्रै सुस्रांनो हेफाजात होनाय गासै मिथिसारनाय सोदेर।",
+        "descriptionPiiWarning": "अननानै नोंथांनि इ-मेइल, थं, एबा बेंक एकाउन्टनि बिबुंथिफोर बायदि गोनांथार गावआरि खौरांफोरखौ सोफानाङा।",
         "attachments": "जोबथापनाय फिफार",
         "attachmentsHelp": "PDF, DOCX, PNG, एबा JPG मोनफ्रोमआव {{maxSize}} सिम।",
         "uploadButton": "फाइलफोर आपलोड खालाम"
@@ -887,7 +887,7 @@
             "category": "विभाग",
             "priority": "गोनांथारथि",
             "status": "थासारि",
-            "sla": "SLA",
+            "sla": "एस.एल.ए.",
             "updated": "अपडेट खालामबाय"
           }
         }
@@ -1006,276 +1006,276 @@
     "next": "उननि"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "आयदाफोर",
+    "subtitle": "नोंथांनि फसंथाननि गेजेरजों रेजिस्टार खालामजानाय इभेन्टनि फोसावथाइ आयदाफोरखौ नाय आरो सामलाय",
+    "loadFailed": "दासान्दि आयदाफोरखौ ल'ड खालामनो हायाखै।",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "मावफुंथाव",
+      "deregistered": "रेजिस्टारनिफ्राय बोख्लायबाय"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "आयदानि मुं, आइ.डि., एबा बिजिरथाइनि गेजेरजों नायहर",
+      "status": "थासारि",
+      "allStatuses": "गासै थासारिफोर",
+      "search": "नायहर",
+      "clear": "साफा खालामग्राफोरखौ साफा खालाम"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "आयदा सामलायनाय फारिलाइ",
+      "name": "आयदानि मुं",
+      "topicId": "आयदानि आइ.डि.",
+      "description": "बिबुंथि",
+      "status": "थासारि",
+      "actions": "मावफारिफोर",
+      "empty": "जेबो रेजिस्टर्ड आयदा मोनाखै।"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "आयदाखौ रेजिस्टार खालाम",
+      "delete": "आयदाखौ रेजिस्टारनिफ्राय बोख्लाय",
+      "alreadyDeregistered": "बे आयदाखौ सिगाङावनो रेजिस्टारनिफ्राय बोख्लायनाय जाबाय।"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "आयदाखौ रेजिस्टार खालाम",
+      "registerSubtitle": "नोंनि फसंथाननि थाखाय मोनसे गोदान जाथायनि फोसावनाय आयदा रेजिस्टार खालाम",
+      "nameLabel": "आयदानि मुं",
+      "namePlaceholder": "बिदिन्थि: गनायथि। बोखार।",
+      "nameRequired": "आयदानि मुङा गोनांथार।",
+      "descriptionLabel": "बिबुंथि",
+      "descriptionPlaceholder": "आयदानि थांखिनि बासिन्थाव बिबुंथि",
+      "registering": "रेजिस्टार खालामगासिनो दं...",
+      "registerSubmit": "आयदाखौ रेजिस्टार खालाम"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "रेजिस्टारनिफ्राय बोख्लायनायखौ थारथि खालाम",
+      "message": "नोंथाङा \"{{name}}\" आयदाखौ रेजिस्टारनिफ्राय बोख्लायनो थारैनो लुबैयो नामा?",
+      "note": "मोनसे आयदाखौ रेजिस्टारनिफ्राय बोख्लायोब्ला बे आयदायाव गोदान साब्सक्रिपसन आरो जाथायफोर फोसावनायखौ होबथायो।",
+      "confirm": "आयदाखौ रेजिस्टारनिफ्राय बोख्लाय"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "साब्सक्रिपसनफोर",
+    "subtitle": "नोंथांनि फसंथाननि थाखाय हाबाफारि फोसावथाइनि साब्सक्रिपसनफोरखौ सामलाय आरो नायबिजिर",
+    "loadFailed": "दासान्दि साब्सक्रिपसनफोरखौ ल'ड खालामनो हायाखै।",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "मावफुंथाव",
+      "pending": "पेन्डिं",
+      "stale": "गोबाव जाबाय",
+      "deleted": "फोजोबबाय"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "वेभहक",
+      "poll": "प'ल"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "गासै जाथायफोर",
+      "allDescription": "बे आयदायाव फोसावजानाय गासैबो जाथायफोरखौ खोनासंङो",
+      "specific": "थिथावना थांखिफोर",
+      "all_except": "गासै थांखिफोरखौ नागारनानै"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "साब्सक्रिपसन आइ.डि., आयदा, हान्जा, थांखि, एबा इउ.आर.एल.नि गेजेरजों नायहर",
+      "status": "थासारि",
+      "allStatuses": "गासै थासारिफोर",
+      "deliveryMode": "दैथायहरनाय राहा",
+      "allModes": "गासै राहाफोर",
+      "search": "नायहर",
+      "clear": "साफा खालामग्राफोरखौ साफा खालाम"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "साब्सक्रिपसन सामलायनाय फारिलाइ",
+      "subscriptionId": "साब्सक्रिपसन आइ.डि.",
+      "topic": "आयदा",
+      "groupId": "हान्जा आइ.डि.",
+      "filter": "साफा खालाम",
+      "deliveryMode": "दैथायहरनाय राहा",
+      "status": "थासारि",
+      "occurredAt": "जानाय समाव",
+      "deliveryId": "दैथायहरनाय आइ.डि.",
+      "eventId": "जाथाय आइ.डि.",
+      "actions": "मावफारिफोर",
+      "empty": "जेबो साब्सक्रिपसन मोनाखै।"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "साब्सक्रिपसनखौ रेजिस्टार खालाम",
+      "view": "बिबुंसारफोरखौ नाय",
+      "verify": "वेभहुकखौ फिन नायफिन",
+      "delete": "साब्सक्रिपसनखौ फोजोब",
+      "alreadyDeleted": "बे साब्सक्रिपसनखौ सिगाङावनो फोजोबस्रांनाय जाबाय।",
+      "backToList": "साब्सक्रिपसनफोरसिम फिन फैफिन",
+      "close": "फोजोब"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "साब्सक्रिपसनखौ रेजिस्टार खालाम",
+      "registerSubtitle": "मोनसे गोदान जाथायनि सिनायथि होनाय साब्सक्रिपसन आरो दैथायहरनाय राहाखौ थि खालाम",
+      "topicLabel": "आयदा",
+      "topicRequired": "आयदाया गोनांथार।",
+      "filterModeLabel": "थांखि फिल्टर मड",
+      "purposesLabel": "थांखिफोर (खमाजों बोखावजानाय)",
+      "purposesPlaceholder": "बिदिन्थि: मार्केटिं, एनालिटिक्स",
+      "purposesHelper": "साफा खालामनो थाखाय गनायथिनि थांखिफोरनि कमानिजों बोखावजानाय फारिलाइ",
+      "purposesRequired": "थांखिफोरखौ मोनसे थि एबा गासैखौबो नागारनानै सोदांनाय समाव नांगौ जायो।",
+      "deliveryModeLabel": "दैथायहरनाय राहा",
+      "callbackUrlLabel": "वेभहक केलबेक इउ.आर.एल.",
+      "callbackUrlRequired": "वेभहुक साब्सक्रिपसनफोरनि थाखाय कलबेक इउ.आर.एल.नि गोनांथि दं।",
+      "callbackUrlInvalid": "अननानै मोनसे थार एब्सलुट इउ.आर.एल. (http:// एबा https://) हो।",
+      "secretLabel": "रोंगौथि गोनां गुबुंलु",
+      "secretRequired": "रोंगौथि गोनां गुबुंलु नांगौ।",
+      "secretHelper": "वेभहक पेल्डफोरखौ साइन इन खालामनो एबा प'लनि खावलायनायफोरखौ थारथियारि खालामनो बाहायनाय जादोंमोन।",
+      "generateSecret": "गोदान सिरि सोरजि",
+      "registering": "रेजिस्टार खालामगासिनो दं...",
+      "registerSubmit": "साब्सक्रिपसनखौ रेजिस्टार खालाम"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "साब्सक्रिपसन फोजोबनायखौ थारथि खालाम",
+      "message": "नोंथाङा \"{{id}}\" साब्सक्रिपसनखौ फोजोबनो थारैनो लुबैयो नामा?",
+      "note": "बे साब्सक्रिपसनखौ फोजोबोब्ला बे साब्सक्राइबारनि जोबथा बिन्दोआव गोदान जाथायफोर दैथायहरनो हाया।",
+      "confirm": "साब्सक्रिपसनखौ फोजोब"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "थारथियारि पिं थारै दैथायहरजाबाय।",
+      "failed": "वेभहक थारथियारिआ जाफुंसारियाखै। अन्थाइ बिन्दो मोननो हाथावनाखौ नाय।",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "साब्सक्रिपसननि बिबुंसारफोरखौ ल'ड खालामनो हायाखै।",
+      "configTitle": "साब्सक्रिपसननि थि खालामनाय",
+      "configSubtitle": "सरासनस्रा मेटाडाटा, रुटिं पेरामिटारफोर आरो साफा खालामनाय नेमफोर",
+      "eventsTitle": "दैथायहरनाय जारिमिन आरो मावफुंनायनि लग",
+      "eventsSubtitle": "बे साब्सक्राइबारनो दैथायहरजानाय गोदान जाथाय दैथायहरनाय आरो फिन नाजानायफोर",
+      "createdAt": "सोरजिनाय समाव",
+      "updatedAt": "जोबथा गोदान खालामनाय"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "दैथायहरनाय जाथायनि लग टेबोल",
+      "empty": "दासिम जेबो दैथायहरनाय हाबाफारि रेकर्ड जायाखै।",
+      "auditAction": "नाजानायफोर",
+      "viewHistory": "डेलिभारि नाजानायफोरखौ नाय"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "जाथाय दैथायहरनाय मावफुंनायनि नायबिजिरनाय",
+      "loadFailed": "डेलिभारि जारिमिनखौ ल'ड खालामनो हायाखै।",
+      "completion": "मावफुंनायनि फोरमान",
+      "attemptsTitle": "दैथायहरनाय नाजानायनि कालक्रमानि फारिलाइ",
+      "attemptNumber": "नाजानाय",
+      "attemptStatus": "थासारि",
+      "httpStatus": "एच.टि.टि.पि. थासारि",
+      "timestamp": "टाइमस्ट्याम्प",
+      "errorDetails": "गोरोन्थिनि बिबुंथि",
+      "noAttempts": "जेबो मावफुंनो नाजानाय रेकर्ड जायाखै।"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "जाथायफोर",
+    "subtitle": "नोंथांनि फसंथाननि गेजेरजों फोसावजानाय इभेन्टफोरखौ नाय आरो इभेन्टनि फोसावथाइफोरखौ नोजोर हो",
+    "loadFailed": "इभेन्टफोरखौ ल'ड खालामनो हायाखै।",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "दैथायहरनाय आइ.डि., जाथाय आइ.डि., एबा आयदानि गेजेरजों नायहर...",
+      "status": "थासारि",
+      "allStatuses": "गासै थासारिफोर",
+      "topic": "आयदा",
+      "allTopics": "गासै आयदाफोर",
+      "groupId": "हान्जा आइ.डि.",
+      "groupIdPlaceholder": "हान्जा आइ.डि.जों साफा खालाम...",
+      "search": "नायहर",
+      "clear": "साफा खालाम",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "गासै",
+      "pending": "पेन्डिं",
+      "delivered": "दैथायहरनाय",
+      "failed": "जाफुंसारि जायाखै",
+      "completed": "मावफुंनाय",
+      "acknowledged": "गनायथि मोननाय",
+      "in_flight": "उराव बिरनायाव",
+      "expired": "समाप्ति जाबाय"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "गासै"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "फोसावजानाय हाबाफारिफोरनि फारिलाइ टेबुल",
+      "deliveryId": "दैथायहरनाय आइ.डि.",
+      "eventId": "जाथाय आइ.डि.",
+      "topic": "आयदा",
+      "groupId": "हान्जा आइ.डि.",
+      "mode": "मड",
+      "purposes": "थांखिफोर",
+      "deliveries": "दैथायहरनायफोर",
+      "subscriber": "साब्सक्राइबार",
+      "subscribers": "साब्सक्राइबारफोर",
+      "noSubscribers": "साब्सक्राइबार गैया",
+      "status": "थासारि",
+      "occurredAt": "जानाय समाव",
+      "actions": "मावफारिफोर",
+      "empty": "जेबो हाबाफारि मोनाखै।"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "हाबाफारि फोसाव",
+      "view": "बिबुंसारफोरखौ नाय",
+      "copyPayload": "पे'ल'डखौ कपि खालाम",
+      "close": "फोजोब"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "हाबाफारि फोसाव",
+      "publishSubtitle": "साब्सक्राइबारनि फेन-आउटखौ जागायहोनो थाखाय मोनसे हाबाफारि फोसावथाइ फोसाव",
+      "topicLabel": "आयदा",
+      "topicRequired": "आयदाया गोनांथार।",
+      "groupIdLabel": "हान्जा आइ.डि. (बासिन्थारि)",
+      "groupIdPlaceholder": "बिदिन्थि: बाहायग्रा-हान्जा-01",
+      "groupIdHelper": "थांखि खालामनाय दैथायहरनो थाखाय बासिन्थाव हान्जा सिनायथिगिरि",
+      "purposesLabel": "थांखिफोर (बासिथावना, खमाजों बोखावजानाय)",
+      "purposesPlaceholder": "बिदिन्थि: मार्केटिं, एनालिटिक्स",
+      "purposesHelper": "बे जाथायजों सोमोन्दो गोनां गनायथिनि थांखिफोरनि कमानिजों बोखावजानाय फारिलाइ",
+      "payloadLabel": "पे'लार्ड (जे.एस.अन.)",
+      "payloadHelper": "इभेन्टनि डेटाखौ फोरमायग्रा थार JSON अबजेक्ट।",
+      "payloadRequired": "पे'लार्डआ गोनांथार।",
+      "payloadMustBeObject": "पे'लार्डआ मोनसे थार जे.एस.अन. अबजेक्ट जानो नांगोन।",
+      "invalidJson": "अननानै थार जे.एस.अन. फरमेट हो।",
+      "publishing": "फोसावगासिनो दं...",
+      "publishSubmit": "हाबाफारि फोसाव",
+      "publishSuccess": "जाथायखौ मोजाङै फोसावबाय।"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "जाथायनि बिबुंथि",
+      "backToEvents": "जाथायफोरसिम फिन फैफिन",
+      "loadFailed": "इभेन्टनि बिबुंसारफोरखौ ल'ड खालामनो हायाखै।",
+      "metadataTitle": "जाथायनि मेटाडाटा",
+      "metadataSubtitle": "सिनायथिगिरिफोर, आयदाफोर आरो दैथायहरनाय समनि थिखिनि",
+      "payloadTitle": "जाथायनि पे'ल'ड",
+      "historyTitle": "दैथायहरनाय नाजानायनि जारिमिन",
+      "historySubtitle": "कालक्रमानि मावफुंनाय नाजानाय आरो एच.टि.टि.पि. फिन होथायनि थासारि",
+      "noHistory": "जेबो दैथायहरनो नाजानाय रेकर्ड जायाखै।",
+      "completionTitle": "मावफुंनायनि फोरमान",
+      "allPurposes": "गासै थांखिफोर",
+      "createdAt": "सोरजिनाय समाव",
+      "deliveriesTitle": "गाहायनि साब्सक्राइबारनि दैथायहरनायफोर",
+      "deliveriesSubtitle": "बे जाथायनि थाखाय दिहुनजानाय गासै दैथायहरनाय आरो मावफुंनायनि थासारिफोर",
+      "noDeliveries": "जेबो दैथायहरनाय दिहुनजायाखै",
+      "noDeliveriesMessage": "हाबाफारि जानाय समाव बे आयदानि लोगोआव जेबो सोलिबाय थानाय साब्सक्रिपसन गैया।",
+      "copyPayloadSuccess": "पे'लार्डखौ क्लिपबर्डआव कपि खालामनाय जाबाय।",
+      "copyPayloadFailed": "पे'ल'डखौ क्लिपबोर्डआव कपि खालामनो हायाखै।",
+      "subscriber": "साब्सक्राइबार",
+      "subscribers": "साब्सक्राइबारफोर"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "आंनि खाताखौ फोजोब",
+    "deleteError": "नोंथांनि एकाउन्टखौ फोजोबस्रांनो हायाखै। अननानै फिन खेबसे नाजा।",
+    "deletePendingApproval": "नोंथांनि फोजोबस्रांनायनि खावलायनायखौ गनायथि होनायनि थाखाय जमा होनाय जाबाय। नोंथांनि एकाउन्टआ एडमिनिस्ट्रेटरआ गनायथि होजासिम सोलिबाय थागोन।",
+    "deleteAlreadyRequested": "नोंथांनि एकाउन्टआव सिगाङावनो गनायथि होनायनि थाखाय मोनसे फोजोबस्रांनो खावलायनाय दं।",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "खाता",
+      "title": "नोंनि खाताखौ फोजोबगोन नामा?",
+      "message": "बेयो नोंथांनि एकाउन्टखौ थाथायै फोजोबस्राङो आरो नोंथांखौ साइन-आउट खालामो।",
+      "note": "बे खामानिखौ उल्टायफिननो हाया। नोंथाङा बे पर्टेलआव हाबनो मोननायखौ खोमानांगोन, आरो नोंथांनि साइन-इनआ लोगो लोगो खामानि मावनो बन्द' जागोन।",
+      "confirm": "आंनि खाताखौ फोजोब"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "नोंथांनि एकाउन्टखौ फोजोबस्रांनाय जाबाय।",
+      "body": "नोंथांनि एकाउन्ट आरो साइन-इनखौ बोख्लायनाय जाबाय। जुदि बेयो मोनसे गोरोन्थि जादोंमोनब्ला, नोंथांनि एडमिनिस्ट्रेटरजों जोगार खालाम।",
+      "signInLink": "साइन-इनआव थां"
     }
   }
 }

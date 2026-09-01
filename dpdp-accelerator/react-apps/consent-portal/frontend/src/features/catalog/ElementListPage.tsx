@@ -169,7 +169,14 @@ function ElementListPage(): React.JSX.Element {
                         }}
                       >
                         <TableCell>
-                          <Typography component="code" variant="body2" fontWeight={600} noWrap>
+                          <Typography
+                            component="code"
+                            variant="body2"
+                            fontWeight={600}
+                            noWrap
+                            title={element.name}
+                            sx={{ display: 'block' }}
+                          >
                             {element.name}
                           </Typography>
                         </TableCell>

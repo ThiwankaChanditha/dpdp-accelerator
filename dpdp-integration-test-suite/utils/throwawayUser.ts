@@ -54,7 +54,8 @@ export async function createThrowawayUser(
   usernamePrefix: string,
 ): Promise<ThrowawayUser> {
   // Unique per run: a leftover account from an interrupted run must not collide with this one.
-  const username = `${usernamePrefix}-${Date.now().toString(36)}`
+  // Email-shaped because the accelerator enforces it - SCIM2 rejects a bare name with 31301.
+  const username = `${usernamePrefix}-${Date.now().toString(36)}@dpdp.test`
   const password = `Throwaway#${Math.random().toString(36).slice(2, 10)}A1`
 
   const response = await fetch(scim2UsersUrl(''), {
@@ -67,7 +68,8 @@ export async function createThrowawayUser(
       userName: username,
       password,
       name: { givenName: 'Throwaway', familyName: 'Account' },
-      emails: [{ primary: true, value: `${username}@dpdp-e2e.invalid` }],
+      // The username is already an address; appending a domain again is rejected.
+      emails: [{ primary: true, value: username }],
     }),
     signal: AbortSignal.timeout(20_000),
   })

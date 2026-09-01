@@ -39,9 +39,9 @@
     "dataProcessorTopics": "विषयहरू",
     "dataProcessorSubscriptions": "सदस्यताहरू",
     "dataProcessorEvents": "घटनाहरू",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "घटनाहरू",
+    "topics": "विषयहरू",
+    "subscriptions": "सदस्यताहरू"
   },
   "layout": {
     "home": "गृहपृष्ठ",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "राज्य फिल्टर प्रयोग गर्न सहमति आईडी फिल्टर हटाउनुहोस्।",
       "propertyFilterLabel": "सहमति सम्पत्ति",
       "removeConsentIdForSubject": "प्रयोगकर्ता आइडी फिल्टर प्रयोग गर्न सहमति आइडी फिल्टर हटाउनुहोस्।",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "सम्बन्ध",
+      "relationHelperText": "सम्बन्ध द्वारा फिल्टर गर्न प्रयोगकर्ता सेट गर्नुहोस्",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "कुनै पनि",
+        "subject": "विषय",
+        "authorizer": "अधिकारकर्ता"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "स्थिति",
         "updated": "अद्यावधिक गरिएको",
         "resources": "स्रोतहरू",
-        "eventType": "घटना प्रकार",
         "date": "मिति",
         "time": "समय",
         "state": "राज्य"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "सबै फिल्टरहरू हटाउनुहोस्",
       "serviceSearchPlaceholder": "सेवाद्वारा खोज्नुहोस्",
       "state": "राज्य",
-      "relation": "Relation",
+      "relation": "सम्बन्ध",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "सबै",
+        "subject": "मेरो आफ्नै",
+        "authorizer": "म द्वारा व्यवस्थित"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "प्रणाली",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "सहमति सिर्जना भयो",
+        "updated": "सहमति अद्यावधिक गरियो",
+        "approved": "अनुमोदित",
+        "rejected": "अस्वीकृत",
+        "authorizeRevoked": "समीक्षक द्वारा रद्द गरियो",
+        "revoked": "रद्द गरियो",
+        "deleted": "मेटाएको",
+        "expired": "म्याद सकियो",
+        "unknown": "अपडेट गरिएको"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "पूर्ण स्न्यापसट इतिहास हेर्नुहोस्",
+      "close": "बन्द गर्नुहोस्",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "यो अपडेटमा कुनै परिवर्तन रेकर्ड गरिएको छैन",
+        "needsMoreHistory": "यस अपडेटमा के परिवर्तन भयो हेर्नको लागि थप इतिहास लोड गर्नुहोस्।",
+        "initial": "प्रारम्भिक स्न्यापसट",
+        "added": "थपिएको",
+        "removed": "हटाइयो",
+        "changed": "परिवर्तन गरियो",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "मान्य हुने समयसीमा"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "यो सहमति को लागि कुनै इतिहास रेकर्ड गरिएको छैन"
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "विवरण",
         "descriptionPlaceholder": "तपाईंको उजुरी विस्तारमा वर्णन गर्नुहोस्",
         "descriptionHelp": "यसलाई छिटो समाधान गर्न मद्दतको लागि सकेसम्म धेरै विवरण समावेश गर्नुहोस्।",
+        "descriptionPiiWarning": "कृपया तपाईंको इमेल, ठेगाना, वा बैंक खाता विवरण जस्ता संवेदनशील व्यक्तिगत जानकारी समावेश नगर्नुहोस्",
         "attachments": "संलग्नकहरू (ऐच्छिक)",
         "attachmentsHelp": "PDF, DOCX, PNG, वा JPG प्रत्येक {{maxSize}} सम्म।",
         "uploadButton": "फाइलहरू अपलोड गर्नुहोस्"
@@ -1006,276 +1006,276 @@
     "next": "अर्को"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "विषयहरू",
+    "subtitle": "तपाईँको संगठनमा दर्ता भएका घटना सूचना विषयहरू हेर्नुहोस् र व्यवस्थापन गर्नुहोस्",
+    "loadFailed": "अहिले विषयहरू लोड गर्न असमर्थ।",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "सक्रिय",
+      "deregistered": "दर्ता रद्द गरियो"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "विषय नाम, ID, वा विवरण द्वारा खोज्नुहोस्",
+      "status": "स्थिति",
+      "allStatuses": "सबै स्थितिहरू",
+      "search": "खोज",
+      "clear": "फिल्टरहरू सफा गर्नुहोस्"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "विषय व्यवस्थापन तालिका",
+      "name": "विषयको नाम",
+      "topicId": "विषय आईडी",
+      "description": "विवरण",
+      "status": "स्थिति",
+      "actions": "कार्यहरू",
+      "empty": "कुनै दर्ता गरिएको विषय फेला परेन"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "विषय दर्ता गर्नुहोस्",
+      "delete": "विषय दर्ता रद्द गर्नुहोस्",
+      "alreadyDeregistered": "यो विषय पहिले नै दर्ता रद्द गरिएको छ।"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "विषय दर्ता गर्नुहोस्",
+      "registerSubtitle": "तपाईंको संस्थाको लागि नयाँ कार्यक्रम सूचना विषय दर्ता गर्नुहोस्",
+      "nameLabel": "विषयको नाम",
+      "namePlaceholder": "उदाहरणका लागि, consent.revoke",
+      "nameRequired": "विषयको नाम आवश्यक छ।",
+      "descriptionLabel": "विवरण",
+      "descriptionPlaceholder": "विषय उद्देश्यको वैकल्पिक विवरण",
+      "registering": "दर्ता गर्दै...",
+      "registerSubmit": "विषय दर्ता गर्नुहोस्"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "दर्ता रद्द गर्नुहोस्",
+      "message": "के तपाइँ विषय \"{{name}}\" दर्ता रद्द गर्न चाहनुहुन्छ?",
+      "note": "विषय दर्ता रद्द गर्नाले नयाँ सदस्यताहरू र यस विषयमा घटनाहरूको प्रकाशन रोक्छ।",
+      "confirm": "विषय दर्ता रद्द गर्नुहोस्"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "सदस्यताहरू",
+    "subtitle": "तपाईंको संस्थाको लागि कार्यक्रम सूचना सदस्यताहरू व्यवस्थापन र निगरानी गर्नुहोस्",
+    "loadFailed": "अहिले सदस्यता लोड गर्न असमर्थ।",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "सक्रिय",
+      "pending": "विचाराधीन",
+      "stale": "बासी",
+      "deleted": "मेटाएको"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "वेभहक",
+      "poll": "मतदान"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "सबै घटनाहरू",
+      "allDescription": "यस विषयमा प्रकाशित गरिएका सबै घटनाहरू सुन्नुहोस्",
+      "specific": "विशिष्ट उद्देश्यहरू",
+      "all_except": "उद्देश्यहरू बाहेक सबै"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "सदस्यता ID, विषय, समूह, उद्देश्य, वा URL द्वारा खोज्नुहोस्",
+      "status": "स्थिति",
+      "allStatuses": "सबै स्थितिहरू",
+      "deliveryMode": "डेलिभरी मोड",
+      "allModes": "सबै मोडहरू",
+      "search": "खोज",
+      "clear": "फिल्टरहरू सफा गर्नुहोस्"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "सदस्यता व्यवस्थापन तालिका",
+      "subscriptionId": "सदस्यता ID",
+      "topic": "विषय",
+      "groupId": "समूह ID",
+      "filter": "छान्न",
+      "deliveryMode": "डेलिभरी मोड",
+      "status": "स्थिति",
+      "occurredAt": "को समयमा भयो",
+      "deliveryId": "डेलिभरी ID",
+      "eventId": "घटना ID",
+      "actions": "कार्यहरू",
+      "empty": "कुनै सदस्यता फेला परेन"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "सदस्यता दर्ता गर्नुहोस्",
+      "view": "विवरण हेर्नुहोस्",
+      "verify": "वेबहुक पुन: प्रमाणित गर्नुहोस्",
+      "delete": "सदस्यता मेटाउनुहोस्",
+      "alreadyDeleted": "यो सदस्यता पहिले नै हटाइएको छ।",
+      "backToList": "सदस्यताहरूमा फर्कनुहोस्",
+      "close": "बन्द गर्नुहोस्"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "सदस्यता दर्ता गर्नुहोस्",
+      "registerSubtitle": "नयाँ घटना सूचना सदस्यता र डेलिभरी मोड कन्फिगर गर्नुहोस्",
+      "topicLabel": "विषय",
+      "topicRequired": "विषय आवश्यक छ।",
+      "filterModeLabel": "उद्देश्य फिल्टर मोड",
+      "purposesLabel": "उद्देश्यहरू (अल्पविराम-पृथक)",
+      "purposesPlaceholder": "उदाहरणका लागि, MARKETING, ANALYTICS",
+      "purposesHelper": "छान्नको लागि सहमति उद्देश्यहरूको अल्पविराम-पृथक सूची",
+      "purposesRequired": "विशिष्ट वा सबै-बाहेक द्वारा फिल्टर गर्दा उद्देश्यहरू आवश्यक छ",
+      "deliveryModeLabel": "डेलिभरी मोड",
+      "callbackUrlLabel": "वेभहक कल ब्याक URL",
+      "callbackUrlRequired": "वेभहक सदस्यताहरूको लागि क्यालब्याक URL आवश्यक छ।",
+      "callbackUrlInvalid": "कृपया एक मान्य निरपेक्ष URL (http:// वा https://) प्रदान गर्नुहोस्",
+      "secretLabel": "साझा गोप्य",
+      "secretRequired": "साझा गोप्य आवश्यक छ",
+      "secretHelper": "वेभहक पेलोडहरू साइन इन गर्न वा पोल अनुरोधहरू प्रमाणीकरण गर्न प्रयोग गरिन्छ",
+      "generateSecret": "नयाँ गोप्य कुञ्जी उत्पन्न गर्नुहोस्",
+      "registering": "दर्ता गर्दै...",
+      "registerSubmit": "सदस्यता दर्ता गर्नुहोस्"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "सदस्यता मेटाउने कुराको पुष्टि गर्नुहोस्",
+      "message": "के तपाइँ सदस्यता \"{{id}}\" मेटाउन चाहनुहुन्छ?",
+      "note": "यो सदस्यता मेटाउँदा नयाँ घटनाहरू यस ग्राहक अन्तिम बिन्दुमा पठाउनबाट रोकिन्छ।",
+      "confirm": "सदस्यता मेटाउनुहोस्"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "पक्का पारेर पिंग सफलतापूर्वक पठाइयो।",
+      "failed": "वेभहक प्रमाणीकरण असफल भयो। कृपया अन्तिम बिन्दु पहुँच जाँच गर्नुहोस्।",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "सदस्यता विवरण लोड गर्न असमर्थ।",
+      "configTitle": "सदस्यता कन्फिगरेसन",
+      "configSubtitle": "सामान्य मेटाडेटा, राउटिङ प्यारामिटरहरू, र छनौट नियमहरू",
+      "eventsTitle": "डेलिभरी इतिहास र कार्यान्वयन लग",
+      "eventsSubtitle": "हालैका कार्यक्रम डेलिभरीहरू र यस सदस्यलाई पठाइएका पुनः प्रयासहरू",
+      "createdAt": "सिर्जना गरिएको मिति",
+      "updatedAt": "अन्तिम अपडेट गरिएको"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "डेलिभरी घटना लग तालिका",
+      "empty": "अहिलेसम्म कुनै डेलिभरी घटना रेकर्ड गरिएको छैन",
+      "auditAction": "प्रयासहरू",
+      "viewHistory": "डेलिभरी प्रयासहरू हेर्नुहोस्"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "घटना डेलिभरी कार्यान्वयन लेखा परीक्षण",
+      "loadFailed": "डेलिभरी इतिहास लोड गर्न असमर्थ।",
+      "completion": "पूर्णता प्रमाण",
+      "attemptsTitle": "डेलिभरी प्रयासहरूको कालक्रम",
+      "attemptNumber": "प्रयास",
+      "attemptStatus": "स्थिति",
+      "httpStatus": "HTTP स्थिति",
+      "timestamp": "टाइमस्ट्याम्प",
+      "errorDetails": "त्रुटि विवरणहरू",
+      "noAttempts": "कुनै कार्यान्वयन प्रयास रेकर्ड गरिएको छैन"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "घटनाहरू",
+    "subtitle": "प्रकाशित घटनाहरू हेर्नुहोस् र तपाईँको संगठनमा घटना सूचनाहरू निगरानी गर्नुहोस्",
+    "loadFailed": "घटनाहरू लोड गर्न असमर्थ।",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "डेलिभरी ID, कार्यक्रम ID, वा विषय द्वारा खोज्नुहोस्...",
+      "status": "स्थिति",
+      "allStatuses": "सबै स्थितिहरू",
+      "topic": "विषय",
+      "allTopics": "सबै विषयहरू",
+      "groupId": "समूह ID",
+      "groupIdPlaceholder": "समूह ID द्वारा छान्नुहोस्...",
+      "search": "खोज",
+      "clear": "सफा गर्नुहोस्",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "सबै",
+      "pending": "विचाराधीन",
+      "delivered": "वितरण गरियो",
+      "failed": "असफल",
+      "completed": "पूर्ण भयो",
+      "acknowledged": "स्वीकृत",
+      "in_flight": "उडानमा",
+      "expired": "म्याद सकियो"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "सबै"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "प्रकाशित कार्यक्रम सूची तालिका",
+      "deliveryId": "डेलिभरी ID",
+      "eventId": "घटना ID",
+      "topic": "विषय",
+      "groupId": "समूह ID",
+      "mode": "मोड",
+      "purposes": "उद्देश्यहरू",
+      "deliveries": "डेलिभरीहरू",
+      "subscriber": "सदस्य",
+      "subscribers": "सदस्यहरू",
+      "noSubscribers": "कुनै सदस्यहरू छैनन्",
+      "status": "स्थिति",
+      "occurredAt": "को समयमा भयो",
+      "actions": "कार्यहरू",
+      "empty": "कुनै घटना फेला परेन"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "कार्यक्रम प्रकाशित गर्नुहोस्",
+      "view": "विवरण हेर्नुहोस्",
+      "copyPayload": "पेलोड प्रतिलिपि गर्नुहोस्",
+      "close": "बन्द गर्नुहोस्"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "कार्यक्रम प्रकाशित गर्नुहोस्",
+      "publishSubtitle": "सदस्य फ्यान-आउट ट्रिगर गर्न कार्यक्रम सूचना प्रकाशित गर्नुहोस्",
+      "topicLabel": "विषय",
+      "topicRequired": "विषय आवश्यक छ।",
+      "groupIdLabel": "समूह ID (वैकल्पिक)",
+      "groupIdPlaceholder": "उदाहरणका लागि, consumer-group-01",
+      "groupIdHelper": "लक्षित डेलिभरीको लागि वैकल्पिक समूह पहिचानकर्ता",
+      "purposesLabel": "उद्देश्यहरू (वैकल्पिक, अल्पविराम-पृथक)",
+      "purposesPlaceholder": "उदाहरणका लागि, MARKETING, ANALYTICS",
+      "purposesHelper": "यस घटनासँग सम्बन्धित सहमति उद्देश्यहरूको अल्पविराम-पृथक सूची",
+      "payloadLabel": "पेलोड (JSON)",
+      "payloadHelper": "घटना डेटा प्रतिनिधित्व गर्ने मान्य JSON वस्तु",
+      "payloadRequired": "पेलोड आवश्यक छ",
+      "payloadMustBeObject": "पेलोड एक मान्य JSON वस्तु हुनुपर्छ",
+      "invalidJson": "कृपया मान्य JSON ढाँचा प्रदान गर्नुहोस्",
+      "publishing": "प्रकाशित गर्दै...",
+      "publishSubmit": "कार्यक्रम प्रकाशित गर्नुहोस्",
+      "publishSuccess": "घटना सफलतापूर्वक प्रकाशित भयो।"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "घटना विवरणहरू",
+      "backToEvents": "घटनाहरूमा फर्कनुहोस्",
+      "loadFailed": "घटना विवरण लोड गर्न असमर्थ।",
+      "metadataTitle": "घटना मेटाडेटा",
+      "metadataSubtitle": "पहिचानकर्ताहरू, विषयहरू, र प्रेषण टाइमस्ट्याम्पहरू",
+      "payloadTitle": "घटना पेलोड",
+      "historyTitle": "डेलिभरी प्रयास इतिहास",
+      "historySubtitle": "कालानुक्रमिक कार्यान्वयन प्रयासहरू र HTTP प्रतिक्रिया स्थिति",
+      "noHistory": "कुनै डेलिभरी प्रयास रेकर्ड गरिएको छैन",
+      "completionTitle": "पूर्णता प्रमाण",
+      "allPurposes": "सबै उद्देश्यहरू",
+      "createdAt": "सिर्जना गरिएको मिति",
+      "deliveriesTitle": "डाउनस्ट्रीम ग्राहक डेलिभरीहरू",
+      "deliveriesSubtitle": "यस घटनाको लागि उत्पन्न गरिएका सबै डेलिभरी र पूर्णता स्थितिहरू",
+      "noDeliveries": "कुनै डेलिभरी उत्पन्न भएन",
+      "noDeliveriesMessage": "कार्यक्रम हुँदा यो विषयसँग मिल्ने कुनै सक्रिय सदस्यताहरू छैनन्",
+      "copyPayloadSuccess": "पेलोड क्लिपबोर्डमा प्रतिलिपि गरियो",
+      "copyPayloadFailed": "क्लिपबोर्डमा पेलोड प्रतिलिपि गर्न असफल।",
+      "subscriber": "सदस्य",
+      "subscribers": "सदस्यहरू"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "मेरो खाता मेटाउनुहोस्",
+    "deleteError": "तपाईँको खाता मेटाउन असमर्थ। फेरि प्रयास गर्नुहोस्।",
+    "deletePendingApproval": "तपाईँको मेटाउने अनुरोध अनुमोदनको लागि पेश गरिएको छ। तपाईँको खाता प्रशासकले अनुमोदन नगरेसम्म सक्रिय रहन्छ।",
+    "deleteAlreadyRequested": "तपाईँको खातामा पहिले नै अनुमोदनको लागि पर्खिरहेको मेटाउने अनुरोध छ।",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "खाता",
+      "title": "तपाईंको खाता मेटाउने?",
+      "message": "योले तपाईँको खाता स्थायी रूपमा मेटाउँछ र तपाईँलाई साइन आउट गर्दछ।",
+      "note": "यो कार्य पूर्ववत गर्न सकिँदैन। तपाईंले यो पोर्टलमा पहुँच गुमाउनुहुनेछ, र तपाईंको साइन-इन तुरुन्तै काम गर्न छोड्नेछ।",
+      "confirm": "मेरो खाता मेटाउनुहोस्"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "तपाईँको खाता हटाइएको छ।",
+      "body": "तपाईँको खाता र साइन-इन हटाइएको छ। यदि यो गल्ती थियो भने, आफ्नो प्रशासकलाई सम्पर्क गर्नुहोस्।",
+      "signInLink": "साइन-इनमा जानुहोस्"
     }
   }
 }

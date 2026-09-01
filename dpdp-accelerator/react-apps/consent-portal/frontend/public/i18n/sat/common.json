@@ -39,9 +39,9 @@
     "dataProcessorTopics": "ᱴᱳᱯᱤᱠ",
     "dataProcessorSubscriptions": "ᱥᱟᱵᱽᱥᱠᱨᱤᱯᱥᱚᱱ",
     "dataProcessorEvents": "ᱜᱷᱚᱴᱚᱱ",
-    "events": "Events",
+    "events": "ᱤᱵᱷᱮᱱᱴᱥ",
     "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "subscriptions": "ᱥᱚᱦᱮᱫ"
   },
   "layout": {
     "home": "ᱳᱲᱟᱜ",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "ᱨᱟᱥᱴᱨᱤᱭᱚ ᱯᱷᱤᱞᱴᱟᱨ ᱵᱮᱵᱷᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱹᱠᱭᱟᱹᱛ ᱟᱭ ᱰᱤ ᱯᱷᱤᱞᱴᱟᱨ ᱚᱪᱚᱜ ᱢᱮ ᱾",
       "propertyFilterLabel": "ᱥᱟᱹᱠᱭᱟᱹᱛ ᱥᱚᱢᱯᱚᱛᱛᱤ",
       "removeConsentIdForSubject": "ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱟᱭᱰᱤ ᱯᱷᱤᱞᱴᱟᱨ ᱵᱮᱵᱷᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱹᱠᱭᱟᱹᱛ ᱟᱭᱰᱤ ᱯᱷᱤᱞᱴᱟᱨ ᱚᱪᱚᱜ ᱢᱮ ᱾",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "ᱡᱚᱯᱚᱲᱟᱣ",
+      "relationHelperText": "ᱥᱟᱹᱜᱟᱹᱭ ᱫᱟᱨᱟᱭᱛᱮ ᱯᱷᱤᱞᱴᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱝ ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱵᱮᱱᱟᱣ ᱢᱮ",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ᱡᱟᱦᱟᱱ",
+        "subject": "ᱵᱤᱥᱚᱭ",
+        "authorizer": "ᱟᱹᱭᱫᱟᱹᱨᱤ"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "ᱥᱴᱮᱴᱚᱥ",
         "updated": "ᱟᱯᱰᱮᱴ ᱟᱠᱟᱱᱟ",
         "resources": "ᱨᱤᱥᱳᱨᱥ",
-        "eventType": "ᱤᱵᱷᱮᱱᱴ ᱴᱟᱭᱤᱯ",
         "date": "ᱢᱟᱹᱦᱤᱛ",
         "time": "ᱚᱠᱛᱚ",
         "state": "ᱯᱚᱱᱚᱛ"
@@ -163,7 +162,7 @@
       },
       "resourcesModal": {
         "title": "ᱚᱛᱷᱚᱨᱟᱭᱤᱡᱮᱥᱚᱱ ᱨᱤᱥᱳᱨᱥ",
-        "authRef": "Auth",
+        "authRef": "ᱚᱞ",
         "close": "ᱵᱚᱸᱫᱷ ᱢᱮ"
       },
       "values": {
@@ -254,11 +253,11 @@
       "clearAriaLabel": "ᱡᱚᱛᱚ ᱯᱷᱤᱞᱴᱚᱨ ᱥᱟᱯᱷᱟᱭ ᱢᱮ",
       "serviceSearchPlaceholder": "ᱥᱮᱵᱟ ᱞᱮᱠᱟᱛᱮ ᱯᱟᱸᱡᱟᱭ ᱢᱮ ᱾",
       "state": "ᱯᱚᱱᱚᱛ",
-      "relation": "Relation",
+      "relation": "ᱡᱚᱯᱚᱲᱟᱣ",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "ᱡᱚᱛᱚ",
+        "subject": "ᱤᱧᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ",
+        "authorizer": "ᱤᱧ ᱫᱟᱨᱟᱭᱛᱮ ᱵᱮᱵᱚᱥᱛᱷᱟ ᱟᱠᱟᱱᱟ"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "ᱥᱤᱥᱴᱚᱢ",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "ᱨᱟᱡᱤ ᱛᱮᱭᱟᱨ ᱟᱠᱟᱱ",
+        "updated": "ᱨᱟᱡᱤ ᱟᱯᱰᱮᱴ ᱟᱠᱟᱱ",
+        "approved": "ᱢᱟᱱᱟᱣ ᱟᱠᱟᱱ",
+        "rejected": "ᱵᱟᱹᱛᱤᱞ ᱟᱠᱟᱱ",
+        "authorizeRevoked": "ᱨᱤᱵᱷᱤᱭᱩᱭᱟᱨ ᱫᱟᱨᱟᱭᱛᱮ ᱨᱚᱰᱚᱠ ᱟᱠᱟᱱ",
+        "revoked": "ᱨᱚᱰᱚᱠ ᱟᱠᱟᱱ",
+        "deleted": "ᱢᱤᱢᱤᱫᱟ",
+        "expired": "ᱢᱩᱪᱟᱹᱫᱽ ᱟᱠᱟᱱᱟ",
+        "unknown": "ᱱᱟᱣᱟ ᱟᱠᱟᱱᱟ"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "ᱯᱩᱨᱟᱹ ᱥᱱᱟᱯᱥᱚᱴ ᱤᱛᱤᱦᱟᱥ ᱧᱮᱞᱢᱮ",
+      "close": "ᱵᱚᱸᱫᱽ",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ᱱᱚᱣᱟ ᱟᱯᱰᱮᱴ ᱨᱮ ᱡᱟᱦᱟᱱ ᱵᱚᱫᱚᱞ ᱵᱟᱝ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱᱟ",
+        "needsMoreHistory": "ᱱᱚᱣᱟ ᱟᱯᱰᱮᱴ ᱨᱮ ᱪᱮᱫ ᱵᱚᱫᱚᱞ ᱟᱠᱟᱱᱟ ᱧᱮᱞ ᱞᱟᱹᱜᱤᱫ ᱟᱨᱦᱚᱸ ᱦᱤᱥᱴᱚᱨᱤ ᱞᱳᱰ ᱢᱮ᱾",
+        "initial": "ᱯᱟᱹᱦᱤᱞ ᱥᱱᱟᱯᱥᱚᱴ",
+        "added": "ᱥᱮᱞᱮᱫ ᱟᱠᱟᱱ",
+        "removed": "ᱚᱪᱚᱜ ᱟᱠᱟᱱ",
+        "changed": "ᱵᱚᱫᱚᱞ ᱟᱠᱟᱱ",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "ᱵᱷᱮᱞᱤᱰ ᱛᱟᱦᱮᱸᱱ ᱫᱷᱟᱹᱵᱤᱡ"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ᱱᱚᱣᱟ ᱨᱟᱡᱤ ᱞᱟᱹᱜᱤᱫ ᱡᱟᱦᱟᱱ ᱤᱛᱤᱦᱟᱥ ᱵᱟᱝ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱᱟ"
     }
   },
   "catalog": {
@@ -361,7 +360,7 @@
       "name": "ᱧᱩᱛᱩᱢ",
       "namespace": "ネームスペース",
       "properties": "ᱯᱨᱳᱯᱟᱨᱴᱤ ᱠᱚ",
-      "propertyKey": "Key",
+      "propertyKey": "ᱠᱤ",
       "propertyValue": "Value",
       "purpose": "ᱩᱫᱽᱫᱮᱥ",
       "purposeId": "ᱩᱫᱽᱫᱮᱥ ID",
@@ -387,8 +386,8 @@
     "values": {
       "all": "ᱡᱚᱛᱚ",
       "any": "ᱡᱟᱦᱟᱸᱱᱟᱜ ᱜᱮ",
-      "customNamespace": "Custom Namespace",
-      "defaultNamespace": "Default Namespace",
+      "customNamespace": "ᱠᱟᱥᱴᱚᱢ ᱱᱮᱢᱥᱯᱮᱥ",
+      "defaultNamespace": "ᱰᱤᱯᱷᱚᱞᱴ ᱱᱮᱢᱥᱯᱮᱥ",
       "mandatory": "ᱞᱟᱹᱠᱛᱤᱭᱟᱱᱟᱜ",
       "matches": "ᱢᱮᱞᱚᱜ ᱠᱟᱱᱟ",
       "noDescription": "ᱡᱟᱦᱟᱸᱱᱟᱜ ᱵᱤᱵᱚᱨᱚᱱ ᱵᱟᱹᱱᱩᱜᱼᱟ",
@@ -811,6 +810,7 @@
         "description": "ᱵᱤᱵᱚᱨᱚᱱ",
         "descriptionPlaceholder": "ᱟᱢᱟᱜ ᱚᱵᱷᱤᱡᱳᱜᱽ ᱵᱤᱥᱛᱟᱨ ᱛᱮ ᱞᱟᱹᱭ ᱢᱮ",
         "descriptionHelp": "ᱞᱚᱜᱚᱱ ᱥᱚᱞᱦᱮ ᱞᱟᱹᱜᱤᱫ ᱡᱟᱦᱟᱸ ᱛᱤᱱᱟᱹᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱵᱤᱵᱚᱨᱚᱱ ᱮᱢ ᱢᱮ।",
+        "descriptionPiiWarning": "ᱫᱚᱭᱟ ᱠᱟᱛᱮᱫ ᱟᱢᱟᱜ ᱤᱢᱮᱞ, ᱮᱰᱨᱮᱥ, ᱥᱮ ᱵᱮᱝᱠ ᱮᱠᱟᱣᱩᱱᱴ ᱨᱮᱭᱟᱜ ᱵᱤᱵᱚᱨᱚᱱ ᱞᱮᱠᱟᱱ ᱥᱮᱱᱥᱤᱴᱤᱵᱽ ᱱᱤᱡᱮᱨᱟᱜ ᱵᱟᱰᱟᱭ ᱦᱚᱪᱚ ᱵᱟᱝ ᱥᱮᱞᱮᱫ ᱢᱮ",
         "attachments": "ᱚᱴᱮᱪᱢᱮᱱᱴ (ᱚᱯᱥᱚᱱᱮᱞ)",
         "attachmentsHelp": "PDF, DOCX, PNG, ᱮᱨ JPG ᱡᱚᱛᱚ ᱠᱷᱚᱱ ᱵᱟᱹᱲᱛᱤ {{maxSize}} ᱦᱟᱹᱵᱤᱡ।",
         "uploadButton": "ᱯᱷᱟᱭᱤᱞ ᱟᱯᱞᱳᱰ ᱢᱮ"
@@ -887,7 +887,7 @@
             "category": "ᱠᱮᱴᱮᱜᱚᱨᱤ",
             "priority": "ᱯᱨᱟᱭᱳᱨᱤᱴᱤ",
             "status": "ᱥᱴᱮᱴᱚᱥ",
-            "sla": "SLA",
+            "sla": "ᱮᱥ ᱮᱞ ᱮ",
             "updated": "ᱟᱯᱰᱮᱴ ᱟᱠᱟᱱᱟ"
           }
         }
@@ -922,7 +922,7 @@
           "all": "ᱡᱚᱛᱚ ᱥᱴᱮᱴᱚᱥ",
           "active": "ᱪᱟᱹᱞᱩ",
           "pendingVerification": "ᱵᱟᱹᱠᱤ",
-          "stale": "Stale"
+          "stale": "ᱥᱴᱮᱞ"
         },
         "topicOptions": {
           "all": "ᱡᱚᱛᱚ ᱴᱳᱯᱤᱠ"
@@ -957,7 +957,7 @@
         "eventId": "ᱤᱵᱷᱮᱱᱴ ID",
         "topic": "ᱴᱳᱯᱤᱠ",
         "purposes": "ᱩᱫᱽᱫᱮᱥ",
-        "deliveries": "Deliveries",
+        "deliveries": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤᱡᱽ",
         "occurredAt": "ᱦᱩᱭ ᱟᱠᱟᱱᱟ",
         "action": "ᱠᱟᱹᱢᱤ",
         "all": "ᱡᱚᱛᱚ",
@@ -973,7 +973,7 @@
         "topic": "ᱴᱳᱯᱤᱠ",
         "purposes": "ᱩᱫᱽᱫᱮᱥ",
         "occurredAt": "ᱦᱩᱭ ᱟᱠᱟᱱ ᱚᱠᱛᱚ",
-        "deliveries": "Deliveries",
+        "deliveries": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤᱡᱽ",
         "all": "ᱡᱚᱛᱚ",
         "noSubscribers": "ᱡᱟᱦᱟᱸᱭ ᱥᱟᱵᱽᱥᱠᱨᱟᱭᱵᱚᱨ ᱵᱟᱹᱱᱩᱜ ᱠᱚᱣᱟ",
         "subscriberCount_one": "{{count}} ᱥᱟᱵᱽᱥᱠᱨᱟᱭᱵᱚᱨ",
@@ -981,18 +981,18 @@
       },
       "dialog": {
         "title": "ᱫᱚᱲᱦᱟ ᱪᱮᱥᱴᱟ ᱱᱟᱜᱟᱢ (Retry history)",
-        "deliveryId": "Delivery ID",
+        "deliveryId": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱭᱰᱤ",
         "loading": "ᱤᱵᱷᱮᱱᱴ Delivery ᱱᱟᱜᱟᱢ ᱞᱳᱰ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ...",
         "noRetries": "ᱮᱛᱚᱦᱚᱵ ᱪᱮᱥᱴᱟ ᱯᱩᱨᱟᱹᱣ ᱮᱱᱟ। ᱡᱟᱦᱟᱸᱱᱟᱜ ᱫᱚᱲᱦᱟ ᱪᱮᱥᱴᱟ ᱨᱮᱠᱳᱨᱰ ᱵᱟᱹᱱᱩᱜᱼᱟ।",
         "attempt": "ᱪᱮᱥᱴᱟ {{attempt}}",
         "retrySuffix": "(ᱫᱚᱲᱦᱟ ᱪᱮᱥᱴᱟ)",
         "webhookDescription": "HTTP Delivery ᱟᱨ Retry ᱨᱮᱱᱟᱜ ᱱᱟᱜᱟᱢ।",
         "pollTitle": "Poll Completion Status ᱟᱨ Acknowledgment",
-        "completionStatus": "Completion Status",
-        "completionTimestamp": "Completion Timestamp",
+        "completionStatus": "ᱯᱩᱨᱟᱹᱣ ᱦᱟᱞᱚᱛ",
+        "completionTimestamp": "ᱯᱩᱨᱟᱹᱣ ᱴᱟᱭᱤᱢᱥᱴᱮᱯ",
         "erasureMethod": "Erasure ᱰᱷᱟᱸᱪᱟ",
         "recordsAffected": "ᱚᱨᱥᱚᱝ ᱟᱠᱟᱱ ᱨᱮᱠᱳᱨᱰ",
-        "referenceId": "Reference ID",
+        "referenceId": "ᱨᱮᱯᱷᱨᱮᱱᱥ ᱟᱭᱰᱤ",
         "submittedBy": "ᱮᱢ ᱟᱠᱟᱫ ᱦᱚᱲ",
         "notes": "ᱱᱳᱴ ᱠᱚ",
         "noAcknowledgment": "ᱟᱹᱣᱨᱤ ᱜᱮ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱚᱵᱷᱤᱡᱳᱜᱽ Acknowledgment ᱮᱢ ᱦᱩᱭᱩᱜᱼᱟ।",
@@ -1007,275 +1007,275 @@
   },
   "topics": {
     "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "subtitle": "ᱟᱢᱟᱜ ᱥᱚᱝᱜᱚᱴᱷᱚᱱ ᱨᱮ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱟᱠᱟᱱ ᱤᱵᱷᱮᱱᱴ ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱴᱚᱯᱤᱠ ᱠᱚ ᱧᱮᱞᱢᱮ ᱟᱨ ᱢᱮᱱᱮᱡᱽᱢᱮ",
+    "loadFailed": "ᱱᱤᱛᱚᱜ ᱛᱷᱚᱢ ᱠᱚ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "ᱪᱟᱞᱩ",
+      "deregistered": "ᱰᱤᱨᱮᱡᱤᱥᱴᱟᱨᱰ"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "ᱵᱤᱥᱚᱭ ᱧᱩᱛᱩᱢ, ᱟᱭᱰᱤ, ᱥᱮ ᱵᱤᱵᱚᱨᱚᱱ ᱫᱟᱨᱟᱭᱛᱮ ᱛᱚᱞᱟᱥ ᱢᱮ",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "allStatuses": "ᱡᱚᱛᱚ ᱦᱟᱞᱚᱛ",
+      "search": "ᱛᱚᱞᱟᱥ",
+      "clear": "ᱯᱷᱤᱞᱴᱟᱨ ᱠᱚ ᱥᱟᱯᱷᱟ"
     },
     "table": {
-      "ariaLabel": "Topics management table",
+      "ariaLabel": "ᱛᱷᱚᱢ ᱢᱮᱱᱮᱡᱢᱮᱱᱴ ᱴᱮᱵᱤᱞ",
       "name": "Topic Name",
       "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "description": "ᱵᱤᱵᱨᱚᱱ",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "actions": "ᱠᱟᱹᱢᱤ",
+      "empty": "ᱡᱟᱦᱟᱱ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱟᱠᱟᱱ ᱵᱤᱥᱚᱭ ᱵᱟᱝ ᱧᱟᱢ ᱟᱠᱟᱱᱟ"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
+      "register": "ᱴᱚᱯᱤᱠ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ",
+      "delete": "ᱰᱤᱨᱮᱡᱤᱥᱴᱟᱨ ᱴᱚᱯᱤᱠ",
       "alreadyDeregistered": "This topic is already deregistered"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
+      "registerTitle": "ᱴᱚᱯᱤᱠ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ",
+      "registerSubtitle": "ᱟᱢᱟᱜ ᱥᱚᱝᱜᱚᱴᱷᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱝ ᱱᱟᱣᱟ ᱜᱷᱚᱴᱚᱱ ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱴᱚᱯᱤᱠ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ",
       "nameLabel": "Topic Name",
       "namePlaceholder": "e.g. consent.revoke",
       "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "descriptionLabel": "ᱵᱤᱵᱨᱚᱱ",
+      "descriptionPlaceholder": "ᱵᱤᱥᱚᱭ ᱨᱮᱭᱟᱜ ᱡᱚᱥ ᱨᱮᱭᱟᱜ ᱵᱟᱪᱷᱟᱣ ᱟᱱᱟᱜ ᱵᱤᱵᱚᱨᱚᱱ",
+      "registering": "ᱨᱮᱡᱤᱥᱴᱟᱨ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ...",
+      "registerSubmit": "ᱴᱚᱯᱤᱠ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ᱵᱟᱝ ᱧᱩᱛᱩᱢ ᱫᱚᱦᱚ ᱨᱮᱭᱟᱜ ᱯᱩᱨᱟᱹᱣ ᱢᱮ",
+      "message": "ᱟᱢ ᱪᱮᱫ ᱯᱩᱨᱟᱹᱣ ᱢᱮᱱᱟᱢᱟ ᱡᱮ ᱵᱤᱥᱚᱭ \"{{name}}\" ᱫᱚᱢ ᱵᱟᱝ ᱧᱩᱛᱩᱢ ᱫᱚᱦᱚ ᱥᱟᱱᱟᱭᱮᱫ ᱢᱮᱭᱟ?",
+      "note": "ᱢᱤᱫᱴᱟᱝ ᱴᱚᱯᱤᱠ ᱰᱤᱨᱮᱡᱤᱥᱴᱟᱨ ᱠᱟᱛᱮᱫ ᱱᱟᱣᱟ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱟᱨ ᱱᱚᱣᱟ ᱴᱚᱯᱤᱠ ᱨᱮ ᱤᱵᱷᱮᱱᱴ ᱨᱮᱭᱟᱜ ᱯᱟᱵᱞᱤᱠᱮᱥᱚᱱ ᱮ ᱨᱚᱠᱷᱟᱭᱟ᱾",
+      "confirm": "ᱰᱤᱨᱮᱡᱤᱥᱴᱟᱨ ᱴᱚᱯᱤᱠ"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "ᱥᱚᱦᱮᱫ",
+    "subtitle": "ᱟᱢᱟᱜ ᱥᱚᱝᱜᱚᱴᱷᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱜᱷᱚᱴᱚᱱ ᱨᱮᱭᱟᱜ ᱵᱟᱰᱟᱭ ᱦᱚᱪᱚ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱠᱚ ᱵᱮᱵᱚᱥᱛᱷᱟ ᱟᱨ ᱧᱮᱞ ᱢᱮ",
+    "loadFailed": "ᱱᱤᱛᱚᱜ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱠᱚ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "ᱪᱟᱞᱩ",
+      "pending": "ᱵᱟᱝ ᱯᱩᱨᱟᱹᱣ ᱟᱠᱟᱱᱟ",
+      "stale": "ᱵᱟᱝ ᱵᱮᱵᱷᱟᱨ ᱟᱠᱟᱱ",
+      "deleted": "ᱢᱤᱢᱤᱫᱟ"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "ᱣᱩᱦᱚᱠᱥ",
+      "poll": "ᱯᱳᱞ"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "ᱡᱚᱛᱚ ᱜᱷᱚᱴᱚᱱᱟ",
+      "allDescription": "ᱱᱚᱣᱟ ᱵᱤᱥᱚᱭ ᱨᱮ ᱪᱷᱟᱯᱟ ᱥᱚᱫᱚᱨ ᱟᱠᱟᱱ ᱡᱚᱛᱚ ᱤᱵᱷᱮᱱᱴ ᱟᱸᱡᱚᱢᱟ",
+      "specific": "ᱵᱤᱥᱮᱥ ᱡᱚᱥ",
+      "all_except": "ᱡᱚᱛᱚ ᱡᱚᱥ ᱵᱟᱫᱽ ᱠᱟᱛᱮᱫ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "ᱥᱚᱫᱚᱥᱠᱚᱨᱤᱯᱥᱚᱱ ᱟᱭᱰᱤ, ᱵᱤᱥᱚᱭ, ᱜᱟᱛᱟᱠ, ᱡᱚᱥ, ᱥᱮ ᱭᱩ ᱟᱨ ᱮᱞ ᱫᱟᱨᱟᱭᱛᱮ ᱛᱚᱞᱟᱥ ᱢᱮ",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "allStatuses": "ᱡᱚᱛᱚ ᱦᱟᱞᱚᱛ",
+      "deliveryMode": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱢᱳᱰ",
+      "allModes": "ᱡᱚᱛᱚ ᱢᱚᱰ",
+      "search": "ᱛᱚᱞᱟᱥ",
+      "clear": "ᱯᱷᱤᱞᱴᱟᱨ ᱠᱚ ᱥᱟᱯᱷᱟ"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
+      "ariaLabel": "ᱥᱚᱦᱮᱫ ᱨᱮᱭᱟᱜ ᱵᱮᱵᱚᱥᱛᱷᱟ ᱴᱮᱵᱤᱞ",
+      "subscriptionId": "ᱥᱚᱦᱮᱫ ᱟᱭᱰᱤ",
       "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "groupId": "ᱜᱨᱩᱯ ᱟᱭᱰᱤ",
+      "filter": "ᱯᱷᱤᱞᱴᱟᱨ",
+      "deliveryMode": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱢᱳᱰ",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "occurredAt": "ᱦᱩᱭ ᱟᱠᱟᱱᱟ",
+      "deliveryId": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱭᱰᱤ",
+      "eventId": "ᱤᱵᱷᱮᱱᱴ ᱟᱭᱰᱤ",
+      "actions": "ᱠᱟᱹᱢᱤ",
+      "empty": "ᱡᱟᱦᱟᱱ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱵᱟᱝ ᱧᱟᱢ ᱟᱠᱟᱱᱟ"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
+      "register": "ᱥᱟᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ",
+      "view": "ᱵᱤᱥᱛᱟᱨ ᱧᱮᱞᱢᱮ",
+      "verify": "ᱣᱮᱵᱦᱩᱠ ᱫᱚᱲᱦᱟᱛᱮ ᱪᱮᱠ ᱢᱮ",
+      "delete": "ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱢᱤᱢᱤᱫᱟ",
       "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "backToList": "ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱠᱚ ᱥᱮᱡᱽ ᱨᱩᱣᱟᱹᱲ",
+      "close": "ᱵᱚᱸᱫᱽ"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
+      "registerTitle": "ᱥᱟᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ",
+      "registerSubtitle": "ᱢᱤᱫᱴᱟᱝ ᱱᱟᱣᱟ ᱜᱷᱚᱴᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱟᱨ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱢᱚᱰ ᱠᱚᱱᱯᱷᱤᱜᱟᱨ ᱢᱮ",
       "topicLabel": "Topic",
       "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
+      "filterModeLabel": "ᱡᱚᱥ ᱯᱷᱤᱞᱴᱟᱨ ᱢᱚᱰ",
+      "purposesLabel": "ᱡᱚᱥ (ᱠᱚᱢᱟ ᱛᱮ ᱵᱷᱮᱜᱟᱨ ᱟᱠᱟᱱ)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "purposesHelper": "ᱯᱷᱤᱞᱴᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱨᱟᱡᱤ ᱨᱮᱭᱟᱜ ᱡᱚᱥ ᱠᱚᱣᱟᱜ ᱠᱚᱢᱟ ᱛᱮ ᱵᱷᱮᱜᱟᱨ ᱟᱠᱟᱱ ᱞᱤᱥᱴ",
+      "purposesRequired": "ᱡᱚᱥ ᱫᱚ ᱞᱟᱹᱠᱛᱤᱭᱟᱱᱟᱜ ᱜᱮᱭᱟ ᱡᱚᱠᱷᱚᱱ ᱵᱤᱥᱮᱥ ᱥᱮ ᱡᱚᱛᱚ ᱵᱟᱫᱽ ᱠᱟᱛᱮᱫ ᱯᱷᱤᱞᱴᱟᱨ ᱦᱩᱭᱩᱜᱼᱟ",
+      "deliveryModeLabel": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱢᱳᱰ",
+      "callbackUrlLabel": "ᱣᱩᱦᱚᱠᱥ ᱠᱮᱞᱵᱮᱠ ᱭᱩ ᱟᱨ ᱮᱞ",
+      "callbackUrlRequired": "ᱣᱮᱵᱦᱩᱠ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱞᱟᱹᱜᱤᱫ ᱠᱚᱞ ᱮᱠᱥ ᱟᱨ ᱮᱞ ᱞᱟᱹᱜᱛᱤᱭᱟᱱᱟᱜ ᱠᱟᱱᱟ᱾",
+      "callbackUrlInvalid": "ᱫᱚᱭᱟ ᱠᱟᱛᱮᱫ ᱢᱤᱫᱴᱟᱝ ᱵᱷᱟᱹᱞᱤ ᱮᱵᱥᱚᱞᱩᱴ ᱭᱩ ᱟᱨ ᱮᱞ (http:// ᱥᱮ https://) ᱮᱢ ᱢᱮ",
+      "secretLabel": "ᱦᱟᱹᱴᱤᱧ ᱟᱠᱟᱱ ᱩᱠᱩ ᱠᱟᱛᱷᱟ",
+      "secretRequired": "ᱦᱟᱹᱴᱤᱧ ᱟᱠᱟᱱ ᱩᱠᱩ ᱠᱟᱛᱷᱟ ᱞᱟᱹᱜᱛᱤᱭᱟᱱᱟᱜ ᱠᱟᱱᱟ",
+      "secretHelper": "ᱣᱮᱵᱦᱩᱠ ᱯᱮᱞᱳᱰ ᱥᱟᱭᱤᱱ ᱥᱮ ᱯᱳᱞ ᱨᱤᱠᱷᱤᱥᱴ ᱟᱣᱛᱷᱮᱱᱴᱤᱠᱮᱴ ᱞᱟᱹᱜᱤᱫ ᱵᱮᱵᱷᱟᱨᱚᱜᱼᱟ ᱾",
+      "generateSecret": "ᱱᱟᱣᱟ ᱩᱠᱩ ᱛᱮᱭᱟᱨᱟ",
+      "registering": "ᱨᱮᱡᱤᱥᱴᱟᱨ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ...",
+      "registerSubmit": "ᱥᱟᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱨᱮᱡᱤᱥᱴᱟᱨ ᱢᱮ"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱢᱤᱥᱟᱹᱣ ᱨᱮᱭᱟᱜ ᱯᱩᱨᱟᱹᱣ ᱢᱮ",
+      "message": "ᱟᱢ ᱪᱮᱫ ᱯᱩᱨᱟᱹᱣ ᱢᱮᱱᱟᱢᱟ ᱡᱮ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ \"{{id}}\" ᱫᱚᱢ ᱢᱤᱥᱟᱹᱣ ᱥᱟᱱᱟᱭᱮᱫ ᱢᱮᱭᱟ?",
+      "note": "ᱱᱚᱣᱟ ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱢᱤᱢᱤᱫ ᱫᱚ ᱱᱚᱣᱟ ᱥᱚᱵᱥᱠᱨᱤᱵᱟᱨ ᱮᱱᱰᱯᱚᱭᱮᱱᱴ ᱨᱮ ᱱᱟᱣᱟ ᱜᱷᱚᱴᱚᱱ ᱠᱚ ᱵᱟᱝ ᱠᱩᱞ ᱦᱩᱭᱩᱜ ᱠᱷᱚᱱᱮ ᱵᱟᱧᱪᱟᱣᱟ᱾",
+      "confirm": "ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱢᱤᱥᱟᱹᱣ ᱢᱮ"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
+      "success": "ᱵᱷᱮᱨᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱯᱤᱝ ᱥᱟᱹᱯᱷᱟᱹᱞ ᱞᱮᱠᱟᱛᱮ ᱠᱩᱞ ᱦᱩᱭᱮᱱᱟ.",
       "failed": "Webhook verification failed. Please check endpoint reachability.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "ᱥᱚᱵᱥᱠᱨᱤᱯᱥᱚᱱ ᱰᱤᱴᱮᱞᱥ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
+      "configTitle": "ᱥᱚᱦᱮᱫ ᱨᱮᱭᱟᱜ ᱵᱮᱵᱚᱥᱛᱷᱟ",
+      "configSubtitle": "ᱥᱟᱫᱷᱟᱨᱚᱱ ᱢᱮᱴᱟᱰᱟᱴᱟ, ᱨᱩᱴᱤᱝ ᱯᱮᱨᱟᱢᱤᱴᱟᱨ, ᱟᱨ ᱯᱷᱤᱞᱴᱟᱨᱤᱝ ᱱᱤᱭᱚᱢ",
+      "eventsTitle": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱤᱛᱤᱦᱟᱥ ᱟᱨ ᱮᱠᱡᱤᱠᱭᱩᱥᱚᱱ ᱞᱚᱜᱽ",
+      "eventsSubtitle": "ᱱᱟᱦᱟᱜ ᱜᱷᱚᱴᱚᱱ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱨ ᱱᱚᱣᱟ ᱥᱟᱵᱥᱠᱨᱟᱭᱵᱟᱨ ᱴᱷᱮᱱ ᱠᱩᱞ ᱟᱠᱟᱱ ᱫᱚᱲᱦᱟᱛᱮ ᱠᱩᱨᱩᱢᱩᱴᱩ",
+      "createdAt": "ᱛᱮᱭᱟᱨ ᱟᱠᱟᱱ ᱚᱠᱛᱚ",
+      "updatedAt": "ᱢᱩᱪᱟᱹᱫᱽ ᱟᱯᱰᱮᱴ"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱤᱵᱷᱮᱱᱴ ᱞᱚᱜᱽ ᱴᱮᱵᱤᱞ",
+      "empty": "ᱱᱤᱛ ᱫᱷᱟᱹᱵᱤᱡ ᱡᱟᱦᱟᱱ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱜᱷᱚᱴᱚᱱ ᱵᱟᱝ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱᱟ",
+      "auditAction": "ᱠᱩᱨᱩᱢᱩᱴᱩ ᱠᱚ",
+      "viewHistory": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱧᱮᱞᱢᱮ"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
+      "title": "ᱤᱵᱷᱮᱱᱴ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱮᱠᱡᱤᱠᱭᱩᱥᱚᱱ ᱚᱰᱤᱴ",
+      "loadFailed": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱦᱤᱥᱴᱚᱨᱤ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
+      "completion": "ᱯᱩᱨᱟᱹᱣ ᱨᱮᱭᱟᱜ ᱯᱨᱚᱢᱟᱱ",
+      "attemptsTitle": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱨᱮᱭᱟᱜ ᱠᱨᱚᱱᱚᱞᱚᱡᱤ",
+      "attemptNumber": "ᱠᱩᱨᱩᱢᱩᱴᱩ",
+      "attemptStatus": "ᱦᱟᱞᱚᱛ",
+      "httpStatus": "ᱮᱪᱴᱤᱴᱤᱯᱤ ᱦᱟᱞᱚᱛ",
       "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "errorDetails": "ᱵᱷᱩᱞ ᱨᱮᱭᱟᱜ ᱵᱤᱵᱨᱚᱱ",
+      "noAttempts": "ᱡᱟᱦᱟᱱ ᱠᱟᱹᱢᱤ ᱨᱮᱭᱟᱜ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱵᱟᱝ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱᱟ"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ᱤᱵᱷᱮᱱᱴᱥ",
+    "subtitle": "ᱯᱨᱚᱠᱟᱥᱤᱛ ᱤᱵᱷᱮᱱᱴ ᱠᱚ ᱧᱮᱞᱢᱮ ᱟᱨ ᱟᱢᱟᱜ ᱥᱚᱝᱜᱚᱴᱷᱚᱱ ᱨᱮ ᱤᱵᱷᱮᱱᱴ ᱱᱚᱴᱤᱯᱷᱤᱠᱮᱥᱚᱱ ᱠᱚ ᱢᱚᱱᱤᱴᱚᱨᱢᱮ",
+    "loadFailed": "ᱤᱵᱷᱮᱱᱴ ᱠᱚ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
+      "searchPlaceholder": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱭ ᱰᱤ, ᱜᱷᱚᱴᱚᱱ ᱟᱭ ᱰᱤ, ᱥᱮ ᱴᱚᱯᱤᱠ ᱫᱟᱨᱟᱭᱛᱮ ᱛᱚᱞᱟᱥ ᱢᱮ...",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "allStatuses": "ᱡᱚᱛᱚ ᱦᱟᱞᱚᱛ",
       "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "allTopics": "ᱡᱚᱛᱚ ᱵᱤᱥᱚᱭ",
+      "groupId": "ᱜᱨᱩᱯ ᱟᱭᱰᱤ",
+      "groupIdPlaceholder": "ᱜᱨᱩᱯ ᱟᱭᱰᱤ ᱫᱟᱨᱟᱭᱛᱮ ᱯᱷᱤᱞᱴᱟᱨ...",
+      "search": "ᱛᱚᱞᱟᱥ",
+      "clear": "ᱥᱟᱯᱷᱟ",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "ᱡᱚᱛᱚ",
+      "pending": "ᱵᱟᱝ ᱯᱩᱨᱟᱹᱣ ᱟᱠᱟᱱᱟ",
+      "delivered": "ᱰᱮᱞᱤᱵᱷᱟᱨᱰ",
+      "failed": "ᱵᱟᱝ ᱥᱟᱯᱷᱟᱞ",
+      "completed": "ᱯᱩᱨᱟᱹᱣ ᱟᱠᱟᱱ",
+      "acknowledged": "ᱢᱟᱱᱟᱣ ᱟᱠᱟᱱ",
+      "in_flight": "ᱩᱰᱟᱹᱣ ᱨᱮ",
+      "expired": "ᱢᱩᱪᱟᱹᱫᱽ ᱟᱠᱟᱱᱟ"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "ᱡᱚᱛᱚ"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
+      "ariaLabel": "ᱯᱟᱨᱥᱟᱞ ᱟᱠᱟᱱ ᱜᱷᱚᱴᱚᱱ ᱛᱟᱞᱤᱠᱟ ᱴᱮᱵᱚᱞ",
+      "deliveryId": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱭᱰᱤ",
+      "eventId": "ᱤᱵᱷᱮᱱᱴ ᱟᱭᱰᱤ",
       "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "groupId": "ᱜᱨᱩᱯ ᱟᱭᱰᱤ",
+      "mode": "ᱢᱚᱰ",
+      "purposes": "ᱡᱚᱥ ᱠᱚ",
+      "deliveries": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤᱡᱽ",
+      "subscriber": "ᱥᱚᱦᱮᱫ",
+      "subscribers": "ᱥᱚᱦᱮᱫᱤᱭᱟᱹ",
+      "noSubscribers": "ᱡᱟᱦᱟᱱ ᱥᱚᱵᱥᱠᱨᱟᱭᱵᱟᱨ ᱵᱟᱝ ᱢᱮᱱᱟᱜ ᱠᱚᱣᱟ",
+      "status": "ᱦᱟᱞᱚᱛ",
+      "occurredAt": "ᱦᱩᱭ ᱟᱠᱟᱱᱟ",
+      "actions": "ᱠᱟᱹᱢᱤ",
+      "empty": "ᱡᱟᱦᱟᱱ ᱜᱷᱚᱴᱚᱱ ᱵᱟᱝ ᱧᱟᱢ ᱟᱠᱟᱱᱟ"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ᱜᱷᱚᱴᱚᱱ ᱯᱟᱨᱥᱟᱞ ᱢᱮ",
+      "view": "ᱵᱤᱥᱛᱟᱨ ᱧᱮᱞᱢᱮ",
+      "copyPayload": "ᱯᱮᱞᱰᱚ ᱠᱚᱯᱤ ᱢᱮ",
+      "close": "ᱵᱚᱸᱫᱽ"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
+      "publishTitle": "ᱜᱷᱚᱴᱚᱱ ᱯᱟᱨᱥᱟᱞ ᱢᱮ",
+      "publishSubtitle": "ᱥᱚᱵᱥᱠᱨᱟᱭᱵᱟᱨ ᱯᱷᱮᱱᱼᱟᱣᱩᱴ ᱴᱨᱤᱜᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫᱴᱟᱝ ᱜᱷᱚᱴᱚᱱ ᱨᱮᱭᱟᱜ ᱵᱟᱰᱟᱭ ᱦᱚᱪᱚ ᱯᱟᱨᱥᱟᱞ ᱢᱮ",
       "topicLabel": "Topic",
       "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
+      "groupIdLabel": "ᱜᱨᱩᱯ ᱟᱭᱰᱤ (ᱵᱟᱪᱷᱟᱣᱟᱱᱟᱜ)",
       "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
+      "groupIdHelper": "ᱴᱟᱨᱜᱮᱴᱮᱰ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱪᱷᱟᱣ ᱟᱱᱟᱜ ᱜᱨᱩᱯ ᱪᱤᱱᱦᱟᱹᱣ ᱞᱟᱹᱜᱤᱫ",
+      "purposesLabel": "ᱡᱚᱥ (ᱵᱟᱪᱷᱟᱣ ᱜᱟᱱᱚᱜᱼᱟ, ᱠᱚᱢᱟ ᱛᱮ ᱵᱷᱮᱜᱟᱨ ᱟᱠᱟᱱ)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "purposesHelper": "ᱱᱚᱣᱟ ᱜᱷᱚᱴᱚᱱᱟ ᱥᱟᱶ ᱡᱚᱯᱚᱲᱟᱣ ᱟᱠᱟᱱ ᱨᱟᱡᱤ ᱨᱮᱭᱟᱜ ᱡᱚᱥ ᱠᱚᱣᱟᱜ ᱠᱚᱢᱟ ᱛᱮ ᱵᱷᱮᱜᱟᱨ ᱟᱠᱟᱱ ᱞᱤᱥᱴ",
+      "payloadLabel": "ᱯᱮᱞᱰ (JSON)",
+      "payloadHelper": "ᱵᱷᱮᱞᱤᱰ ᱡᱮ ᱰᱤ ᱮᱥ ᱳᱵᱽᱡᱮᱠᱴ ᱤᱵᱷᱮᱱᱴ ᱰᱟᱴᱟ ᱨᱮᱭᱟᱜ ᱯᱨᱚᱛᱤᱱᱤᱫᱷᱤᱛᱚᱭᱮᱫᱟ",
+      "payloadRequired": "ᱯᱮᱞᱰ ᱞᱟᱹᱜᱛᱤᱭᱟᱱᱟ",
+      "payloadMustBeObject": "ᱯᱮᱞᱰ ᱫᱚ ᱢᱤᱫᱴᱟᱝ ᱵᱷᱟᱹᱞᱤ JSON ᱚᱵᱡᱮᱠᱴ ᱦᱩᱭᱩᱜ ᱞᱟᱹᱜᱛᱤᱭᱟᱱᱟ",
+      "invalidJson": "ᱫᱚᱭᱟ ᱠᱟᱛᱮᱫ ᱵᱷᱟᱹᱞᱤ JSON ᱯᱷᱚᱨᱢᱮᱴ ᱮᱢ ᱢᱮ",
+      "publishing": "ᱯᱟᱨᱥᱟᱞ ᱮᱫᱟ...",
+      "publishSubmit": "ᱜᱷᱚᱴᱚᱱ ᱯᱟᱨᱥᱟᱞ ᱢᱮ",
+      "publishSuccess": "ᱤᱵᱷᱮᱱᱴ ᱥᱟᱯᱷᱟᱞᱛᱟ ᱥᱟᱶᱛᱮ ᱪᱷᱟᱯᱟ ᱥᱚᱫᱚᱨ ᱦᱩᱭᱮᱱᱟ"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ᱤᱵᱷᱮᱱᱴ ᱨᱮᱭᱟᱜ ᱵᱤᱵᱨᱚᱱ",
+      "backToEvents": "ᱜᱷᱚᱴᱚᱱᱟ ᱠᱚ ᱥᱮᱡᱽ ᱨᱩᱣᱟᱹᱲ",
+      "loadFailed": "ᱤᱵᱷᱮᱱᱴ ᱰᱤᱴᱮᱞᱥ ᱫᱚ ᱵᱟᱝ ᱞᱳᱰ ᱜᱟᱱᱚᱜᱼᱟ ᱾",
+      "metadataTitle": "ᱤᱵᱷᱮᱱᱴ ᱢᱮᱴᱟᱰᱟᱴᱟ",
+      "metadataSubtitle": "ᱟᱭᱰᱮᱱᱴᱤᱯᱷᱟᱭᱟᱨ, ᱵᱤᱥᱚᱭ, ᱟᱨ ᱰᱤᱥᱯᱮᱪ ᱴᱟᱭᱤᱢᱥᱴᱮᱢᱯ",
+      "payloadTitle": "ᱤᱵᱷᱮᱱᱴ ᱯᱮᱞᱰᱩᱭᱰ",
+      "historyTitle": "ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱨᱮᱭᱟᱜ ᱤᱛᱤᱦᱟᱥ",
+      "historySubtitle": "ᱠᱟᱞᱟᱱᱩᱠᱨᱚᱢᱤᱠ ᱠᱟᱹᱢᱤ ᱨᱮᱭᱟᱜ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱟᱨ ᱮᱪ ᱴᱤ ᱴᱤ ᱯᱤ ᱨᱮᱭᱟᱜ ᱡᱚᱵᱟᱵ ᱦᱟᱞᱚᱛ",
+      "noHistory": "ᱡᱟᱦᱟᱱ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩ ᱵᱟᱝ ᱨᱮᱠᱚᱨᱰ ᱟᱠᱟᱱᱟ",
+      "completionTitle": "ᱯᱩᱨᱟᱹᱣ ᱨᱮᱭᱟᱜ ᱯᱨᱚᱢᱟᱱ",
+      "allPurposes": "ᱡᱚᱛᱚ ᱡᱚᱥ",
+      "createdAt": "ᱛᱮᱭᱟᱨ ᱟᱠᱟᱱ ᱚᱠᱛᱚ",
+      "deliveriesTitle": "ᱰᱟᱣᱩᱱᱥᱴᱨᱤᱢ ᱥᱚᱵᱥᱠᱨᱟᱭᱵᱟᱨ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ",
+      "deliveriesSubtitle": "ᱱᱚᱣᱟ ᱜᱷᱚᱴᱚᱱᱟ ᱞᱟᱹᱜᱤᱫ ᱛᱮᱭᱟᱨ ᱟᱠᱟᱱ ᱡᱚᱛᱚ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱟᱨ ᱯᱩᱨᱟᱹᱣ ᱦᱟᱞᱚᱛ",
+      "noDeliveries": "ᱡᱟᱦᱟᱱ ᱰᱮᱞᱤᱵᱷᱟᱨᱤ ᱵᱟᱝ ᱛᱮᱭᱟᱨ ᱟᱠᱟᱱᱟ",
+      "noDeliveriesMessage": "ᱡᱚᱠᱷᱚᱱ ᱜᱷᱚᱴᱚᱱ ᱦᱩᱭ ᱞᱮᱱᱟ ᱛᱚᱠᱷᱚᱱ ᱱᱚᱣᱟ ᱵᱤᱥᱚᱭ ᱥᱟᱶ ᱡᱟᱦᱟᱱ ᱵᱮᱵᱚᱥᱛᱷᱟ ᱟᱠᱟᱱᱟ",
+      "copyPayloadSuccess": "ᱯᱮᱞᱰ ᱠᱞᱤᱯᱵᱳᱨᱰ ᱨᱮ ᱠᱚᱯᱤ ᱟᱠᱟᱱᱟ",
+      "copyPayloadFailed": "ᱯᱮᱞᱰᱩᱭᱰ ᱠᱞᱤᱯᱵᱳᱨᱰ ᱨᱮ ᱠᱚᱯᱤ ᱨᱮ ᱵᱟᱝ ᱥᱟᱯᱷᱟᱞ",
+      "subscriber": "ᱥᱚᱦᱮᱫ",
+      "subscribers": "ᱥᱚᱦᱮᱫᱤᱭᱟᱹ"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
+    "deleteMenuItem": "ᱤᱧᱟᱜ ᱮᱠᱟᱣᱩᱱᱴ ᱢᱤᱥᱟᱹᱣ ᱢᱮ",
+    "deleteError": "ᱟᱢᱟᱜ ᱮᱠᱟᱣᱩᱱᱴ ᱫᱚ ᱵᱟᱝ ᱢᱤᱥᱟᱹᱣ ᱜᱟᱱᱚᱜᱼᱟ ᱾ ᱫᱚᱭᱟ ᱠᱟᱛᱮᱫ ᱫᱚᱲᱦᱟᱛᱮ ᱠᱩᱨᱩᱢᱩᱴᱩᱭ ᱢᱮ ᱾",
     "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
     "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "ᱮᱠᱟᱣᱩᱱᱴ",
+      "title": "ᱟᱢᱟᱜ ᱮᱠᱟᱣᱩᱱᱴ ᱢᱤᱢᱤᱫᱟ?",
+      "message": "ᱱᱚᱣᱟ ᱫᱚ ᱟᱢᱟᱜ ᱮᱠᱟᱣᱩᱱᱴ ᱫᱚ ᱡᱟᱣᱜᱮ ᱢᱤᱢᱤᱫᱟ ᱟᱨ ᱟᱢᱮ ᱥᱟᱭᱤᱱ ᱟᱣᱩᱴᱟ᱾",
+      "note": "ᱱᱚᱣᱟ ᱠᱟᱹᱢᱤ ᱫᱚ ᱵᱟᱝ ᱨᱩᱣᱟᱹᱲ ᱜᱟᱱᱚᱜᱼᱟ ᱾ ᱟᱢ ᱱᱚᱣᱟ ᱯᱳᱨᱴᱟᱞ ᱨᱮᱭᱟᱜ ᱵᱮᱵᱷᱟᱨ ᱠᱷᱚᱱ ᱪᱷᱟᱰᱟᱜᱼᱟ, ᱟᱨ ᱟᱢᱟᱜ ᱥᱟᱭᱤᱱᱼᱤᱱ ᱛᱟᱛᱠᱷᱚᱱᱤᱱ ᱠᱟᱹᱢᱤ ᱵᱚᱱᱫᱚᱜᱼᱟ ᱾",
+      "confirm": "ᱤᱧᱟᱜ ᱮᱠᱟᱣᱩᱱᱴ ᱢᱤᱥᱟᱹᱣ ᱢᱮ"
     },
     "deletedPage": {
       "title": "Your account has been deleted",
       "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "signInLink": "ᱥᱟᱭᱤᱱᱼᱤᱱ ᱨᱮ ᱪᱟᱞᱟᱜᱽ"
     }
   }
 }

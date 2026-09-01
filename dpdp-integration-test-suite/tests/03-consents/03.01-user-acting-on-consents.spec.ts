@@ -141,7 +141,7 @@ test.describe('User acting on Consents (UI)', () => {
     await detailPage.openActionDialog('approve')
     await detailPage.confirmAction('approve')
 
-    await expect(userPage.getByText('Active', { exact: true })).toBeVisible()
+    await expect(userPage.getByText('Active', { exact: true }).first()).toBeVisible()
     await userPage.context().close()
     await consentAdminPage.context().close()
   })

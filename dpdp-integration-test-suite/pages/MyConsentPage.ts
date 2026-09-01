@@ -18,6 +18,7 @@
 
 import { type Locator, type Page } from '@playwright/test'
 import { selectMuiOption } from '../utils/muiSelect'
+import { submitFilterValue } from '../utils/filterCommit'
 import { ConsentRegistryTable } from './ConsentRegistryTable'
 
 /** A user's own consent list at /consents, labelled "My Consents" in the sidebar. */
@@ -40,8 +41,15 @@ export class MyConsentPage extends ConsentRegistryTable {
   }
 
   async searchByService(serviceId: string): Promise<void> {
-    await this.serviceSearch.fill(serviceId)
-    await this.serviceSearch.press('Enter')
+    await submitFilterValue(
+      this.page,
+      this.serviceSearch,
+      async () => {
+        await this.serviceSearch.press('Enter')
+      },
+      'serviceId',
+      serviceId,
+    )
   }
 
   async filterByState(stateLabel: string): Promise<void> {

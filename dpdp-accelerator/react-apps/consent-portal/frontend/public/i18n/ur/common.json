@@ -39,9 +39,9 @@
     "dataProcessorTopics": "موضوعات",
     "dataProcessorSubscriptions": "سبسکرپشنز",
     "dataProcessorEvents": "تقریبات (Events)",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "واقعات",
+    "topics": "موضوعات",
+    "subscriptions": "سبسکرپشنز"
   },
   "layout": {
     "home": "ہوم",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "ریاستی فلٹر استعمال کرنے کے لیے رضامندی شناختی فلٹر ہٹا دیں۔",
       "propertyFilterLabel": "رضامندی کی جائیداد",
       "removeConsentIdForSubject": "یوزر آئی ڈی فلٹر استعمال کرنے کے لیے کنسنٹ آئی ڈی فلٹر ہٹا دیں۔",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "تعلق",
+      "relationHelperText": "تعلق کے ذریعے فلٹر کرنے کے لیے ایک صارف سیٹ کریں",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "کوئی بھی",
+        "subject": "موضوع",
+        "authorizer": "اختیار دہندہ"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "اسٹیٹس",
         "updated": "اپ ڈیٹ شدہ",
         "resources": "وسائل",
-        "eventType": "تقریب کی قسم",
         "date": "تاریخ",
         "time": "وقت",
         "state": "ریاست"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "تمام فلٹرز صاف کریں",
       "serviceSearchPlaceholder": "سروس کے ذریعے تلاش کریں۔",
       "state": "ریاست",
-      "relation": "Relation",
+      "relation": "تعلق",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "تمام",
+        "subject": "میری اپنی",
+        "authorizer": "میرے زیر انتظام"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "سسٹم",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "رضامندی تخلیق کی گئی",
+        "updated": "رضامندی اپ ڈیٹ کی گئی",
+        "approved": "منظور شدہ",
+        "rejected": "مسترد",
+        "authorizeRevoked": "جائزہ لینے والے کی طرف سے منسوخ",
+        "revoked": "منسوخ",
+        "deleted": "حذف کر دیا",
+        "expired": "ختم شدہ",
+        "unknown": "اپ ڈیٹ کیا گیا"
       },
-      "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "description": "{{action}} بذریعہ {{actor}}",
+      "viewFullSnapshot": "مکمل سنیپ شاٹ ہسٹری دیکھیں",
+      "close": "بند کریں",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "اس اپ ڈیٹ میں کوئی تبدیلی ریکارڈ نہیں کی گئی۔",
+        "needsMoreHistory": "اس اپ ڈیٹ میں کیا تبدیل ہوا یہ دیکھنے کے لیے مزید تاریخ لوڈ کریں۔",
+        "initial": "ابتدائی سنیپ شاٹ",
+        "added": "شامل کیا گیا",
+        "removed": "ہٹایا گیا",
+        "changed": "تبدیل شدہ",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "اس وقت تک درست"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "اس رضامندی کی کوئی تاریخ ریکارڈ نہیں کی گئی۔"
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "تفصیل",
         "descriptionPlaceholder": "اپنی شکایت کی تفصیلی وضاحت کریں",
         "descriptionHelp": "اسے جلد حل کرنے میں ہماری مدد کے لیے زیادہ سے زیادہ تفصیلات شامل کریں۔",
+        "descriptionPiiWarning": "براہ کرم ذاتی معلومات جیسے کہ آپ کا ای میل، پتہ، یا بینک اکاؤنٹ کی تفصیلات شامل نہ کریں۔",
         "attachments": "منسلکات (اختیاری)",
         "attachmentsHelp": "ہر ایک فائل {{maxSize}} تک PDF, DOCX, PNG, یا JPG میں۔",
         "uploadButton": "فائلیں اپ لوڈ کریں"
@@ -1006,276 +1006,276 @@
     "next": "اگلا"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "موضوعات",
+    "subtitle": "اپنی تنظیم میں رجسٹرڈ ایونٹ نوٹیفیکیشن موضوعات کو دیکھیں اور ان کا انتظام کریں",
+    "loadFailed": "ابھی موضوعات لوڈ کرنے سے قاصر ہیں۔",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "فعال",
+      "deregistered": "ڈی رجسٹرڈ"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "موضوع کے نام، ID، یا تفصیل کے ذریعے تلاش کریں",
+      "status": "حیثیت",
+      "allStatuses": "تمام سٹیٹس",
+      "search": "تلاش",
+      "clear": "فلٹرز صاف کریں"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "موضوعات کے انتظام کا ٹیبل",
+      "name": "موضوع کا نام",
+      "topicId": "موضوع آئی ڈی",
+      "description": "تفصیل",
+      "status": "حیثیت",
+      "actions": "کارروائیاں",
+      "empty": "کوئی رجسٹرڈ موضوع نہیں ملا۔"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "موضوع رجسٹر کریں",
+      "delete": "موضوع کو ڈی رجسٹر کریں",
+      "alreadyDeregistered": "یہ موضوع پہلے ہی ڈی رجسٹرڈ ہے۔"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "موضوع رجسٹر کریں",
+      "registerSubtitle": "اپنی تنظیم کے لیے ایک نیا ایونٹ نوٹیفیکیشن موضوع رجسٹر کریں۔",
+      "nameLabel": "موضوع کا نام",
+      "namePlaceholder": "مثال کے طور پر، رضامندی۔ منسوخ کریں۔",
+      "nameRequired": "موضوع کا نام ضروری ہے۔",
+      "descriptionLabel": "تفصیل",
+      "descriptionPlaceholder": "موضوع کے مقصد کی اختیاری تفصیل",
+      "registering": "رجسٹر ہو رہا ہے...",
+      "registerSubmit": "موضوع رجسٹر کریں"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ڈی رجسٹریشن کی تصدیق کریں",
+      "message": "کیا آپ واقعی موضوع \"{{name}}\" کو ڈی رجسٹر کرنا چاہتے ہیں؟",
+      "note": "موضوع کو ڈی رجسٹر کرنے سے نئے سبسکرپشنز اور اس موضوع پر واقعات کی اشاعت سے روکا جاتا ہے۔",
+      "confirm": "موضوع کو ڈی رجسٹر کریں"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "سبسکرپشنز",
+    "subtitle": "آپ کی تنظیم کے لیے ایونٹ نوٹیفیکیشن سبسکرپشنز کو منظم اور مانیٹر کریں۔",
+    "loadFailed": "ابھی سبسکرپشنز لوڈ کرنے سے قاصر ہیں۔",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "فعال",
+      "pending": "زیر التوا",
+      "stale": "باسی",
+      "deleted": "حذف کر دیا"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "ویب ہک",
+      "poll": "پول"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "تمام واقعات",
+      "allDescription": "اس موضوع پر شائع ہونے والے تمام واقعات کو سنتا ہے",
+      "specific": "مخصوص مقاصد",
+      "all_except": "تمام مقاصد کے علاوہ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "سبسکرپشن ID، موضوع، گروپ، مقصد، یا URL کے ذریعے تلاش کریں",
+      "status": "حیثیت",
+      "allStatuses": "تمام سٹیٹس",
+      "deliveryMode": "ڈیلیوری موڈ",
+      "allModes": "تمام موڈز",
+      "search": "تلاش",
+      "clear": "فلٹرز صاف کریں"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "سبسکرپشنز مینجمنٹ ٹیبل",
+      "subscriptionId": "سبسکرپشن ID",
+      "topic": "موضوع",
+      "groupId": "گروپ آئی ڈی",
+      "filter": "فلٹر",
+      "deliveryMode": "ڈیلیوری موڈ",
+      "status": "حیثیت",
+      "occurredAt": "واقعہ اس وقت ہوا",
+      "deliveryId": "ڈیلیوری آئی ڈی",
+      "eventId": "ایونٹ آئی ڈی",
+      "actions": "کارروائیاں",
+      "empty": "کوئی سبسکرپشن نہیں ملی۔"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "سبسکرپشن رجسٹر کریں",
+      "view": "تفصیلات دیکھیں",
+      "verify": "ویب ہک کی دوبارہ تصدیق کریں",
+      "delete": "سبسکرپشن حذف کریں",
+      "alreadyDeleted": "یہ سبسکرپشن پہلے ہی حذف ہو چکی ہے۔",
+      "backToList": "واپس سبسکرپشنز پر",
+      "close": "بند کریں"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "سبسکرپشن رجسٹر کریں",
+      "registerSubtitle": "ایک نئی ایونٹ نوٹیفیکیشن سبسکرپشن اور ڈیلیوری موڈ ترتیب دیں",
+      "topicLabel": "موضوع",
+      "topicRequired": "موضوع ضروری ہے۔",
+      "filterModeLabel": "مقصد فلٹر موڈ",
+      "purposesLabel": "مقاصد (کمیہ سے جدا)",
+      "purposesPlaceholder": "مثال کے طور پر، مارکیٹنگ، تجزیات",
+      "purposesHelper": "فلٹر کرنے کے لیے رضامندی کے مقاصد کی کوما سے جدا فہرست",
+      "purposesRequired": "مخصوص یا تمام کے علاوہ کے ذریعے فلٹر کرتے وقت مقاصد کی ضرورت ہوتی ہے۔",
+      "deliveryModeLabel": "ڈیلیوری موڈ",
+      "callbackUrlLabel": "ویب ہک کال بیک یو آر ایل",
+      "callbackUrlRequired": "ویب ہک سبسکرپشنز کے لیے کال بیک یو آر ایل درکار ہے۔",
+      "callbackUrlInvalid": "براہ کرم ایک درست مطلق URL فراہم کریں (http:// یا https://)۔",
+      "secretLabel": "مشترکہ راز",
+      "secretRequired": "مشترکہ راز ضروری ہے۔",
+      "secretHelper": "ویب ہک پے لوڈز پر دستخط کرنے یا پول کی درخواستوں کی تصدیق کرنے کے لیے استعمال کیا جاتا ہے",
+      "generateSecret": "نیا خفیہ بنائیں",
+      "registering": "رجسٹر ہو رہا ہے...",
+      "registerSubmit": "سبسکرپشن رجسٹر کریں"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "سبسکرپشن حذف کرنے کی تصدیق کریں",
+      "message": "کیا آپ واقعی سبسکرپشن \"{{id}}\" کو حذف کرنا چاہتے ہیں؟",
+      "note": "اس سبسکرپشن کو حذف کرنے سے نئے واقعات اس سبسکرائبر اینڈ پوائنٹ پر بھیجے جانے سے روکا جاتا ہے۔",
+      "confirm": "سبسکرپشن حذف کریں"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "تصدیقی پنگ کامیابی سے روانہ کر دی گئی۔",
+      "failed": "ویب ہک کی تصدیق ناکام ہو گئی۔ براہ کرم اینڈ پوائنٹ کی رسائی کی جانچ کریں۔",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "سبسکرپشن کی تفصیلات لوڈ کرنے سے قاصر ہیں۔",
+      "configTitle": "سبسکرپشن کنفیگریشن",
+      "configSubtitle": "جنرل میٹا ڈیٹا، روٹنگ پیرامیٹرز، اور فلٹرنگ رولز",
+      "eventsTitle": "ڈیلیوری کی تاریخ اور عمل درآمد کا لاگ",
+      "eventsSubtitle": "حالیہ ایونٹ ڈیلیوریز اور اس سبسکرائبر کو بھیجی گئی دوبارہ کوششیں",
+      "createdAt": "تخلیق کی تاریخ",
+      "updatedAt": "آخری بار اپ ڈیٹ کیا گیا"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ڈیلیوری ایونٹس لاگ ٹیبل",
+      "empty": "ابھی تک کوئی ڈیلیوری ایونٹ ریکارڈ نہیں کیا گیا۔",
+      "auditAction": "کوششیں",
+      "viewHistory": "ڈیلیوری کی کوششیں دیکھیں"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "ایونٹ ڈیلیوری ایگزیکیوشن آڈٹ",
+      "loadFailed": "ڈیلیوری کی تاریخ لوڈ کرنے سے قاصر ہیں۔",
+      "completion": "تکمیل کا ثبوت",
+      "attemptsTitle": "ڈیلیوری کی کوششوں کی زمانی ترتیب",
+      "attemptNumber": "کوشش",
+      "attemptStatus": "حیثیت",
+      "httpStatus": "HTTP سٹیٹس",
+      "timestamp": "ٹائم اسٹیمپ",
+      "errorDetails": "ایرر کی تفصیلات",
+      "noAttempts": "ایگزیکیوشن کی کوئی کوشش ریکارڈ نہیں کی گئی۔"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "واقعات",
+    "subtitle": "اپنی تنظیم میں شائع شدہ ایونٹس دیکھیں اور ایونٹ نوٹیفیکیشنز کی نگرانی کریں",
+    "loadFailed": "ایونٹس لوڈ کرنے سے قاصر ہیں۔",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "ڈیلیوری ID، ایونٹ ID، یا موضوع کے ذریعے تلاش کریں...",
+      "status": "حیثیت",
+      "allStatuses": "تمام سٹیٹس",
+      "topic": "موضوع",
+      "allTopics": "تمام موضوعات",
+      "groupId": "گروپ آئی ڈی",
+      "groupIdPlaceholder": "گروپ آئی ڈی کے ذریعے فلٹر کریں...",
+      "search": "تلاش",
+      "clear": "صاف کریں",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "تمام",
+      "pending": "زیر التوا",
+      "delivered": "ڈیلیور کیا گیا",
+      "failed": "ناکام",
+      "completed": "مکمل ہوا",
+      "acknowledged": "تسلیم شدہ",
+      "in_flight": "پرواز میں",
+      "expired": "ختم شدہ"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "تمام"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "شائع شدہ ایونٹس کی فہرست کا ٹیبل",
+      "deliveryId": "ڈیلیوری آئی ڈی",
+      "eventId": "ایونٹ آئی ڈی",
+      "topic": "موضوع",
+      "groupId": "گروپ آئی ڈی",
+      "mode": "موڈ",
+      "purposes": "مقاصد",
+      "deliveries": "ڈیلیوریز",
+      "subscriber": "سبسکرائبر",
+      "subscribers": "سبسکرائبرز",
+      "noSubscribers": "کوئی سبسکرائبر نہیں",
+      "status": "حیثیت",
+      "occurredAt": "واقعہ اس وقت ہوا",
+      "actions": "کارروائیاں",
+      "empty": "کوئی ایونٹ نہیں ملا۔"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ایونٹ شائع کریں",
+      "view": "تفصیلات دیکھیں",
+      "copyPayload": "پے لوڈ کاپی کریں",
+      "close": "بند کریں"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "ایونٹ شائع کریں",
+      "publishSubtitle": "سبسکرائبر فین آؤٹ کو متحرک کرنے کے لیے ایونٹ نوٹیفیکیشن شائع کریں۔",
+      "topicLabel": "موضوع",
+      "topicRequired": "موضوع ضروری ہے۔",
+      "groupIdLabel": "گروپ آئی ڈی (اختیاری)",
+      "groupIdPlaceholder": "مثال کے طور پر، صارف گروپ-01",
+      "groupIdHelper": "ٹارگٹڈ ڈیلیوری کے لیے اختیاری گروپ شناخت کنندہ",
+      "purposesLabel": "مقاصد (اختیاری، کوما سے جدا)",
+      "purposesPlaceholder": "مثال کے طور پر، مارکیٹنگ، تجزیات",
+      "purposesHelper": "اس ایونٹ سے وابستہ رضامندی کے مقاصد کی کوما سے جدا فہرست",
+      "payloadLabel": "پے لوڈ (JSON)",
+      "payloadHelper": "ایونٹ ڈیٹا کی نمائندگی کرنے والا درست JSON آبجیکٹ",
+      "payloadRequired": "پے لوڈ ضروری ہے۔",
+      "payloadMustBeObject": "پے لوڈ ایک درست JSON آبجیکٹ ہونا چاہیے۔",
+      "invalidJson": "براہ کرم درست JSON فارمیٹ فراہم کریں۔",
+      "publishing": "شائع کیا جا رہا ہے...",
+      "publishSubmit": "ایونٹ شائع کریں",
+      "publishSuccess": "ایونٹ کامیابی سے شائع ہوا۔"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ایونٹ کی تفصیلات",
+      "backToEvents": "واپس واقعات پر",
+      "loadFailed": "ایونٹ کی تفصیلات لوڈ کرنے سے قاصر ہیں۔",
+      "metadataTitle": "ایونٹ میٹا ڈیٹا",
+      "metadataSubtitle": "شناخت کنندگان، موضوعات، اور روانگی کے ٹائم اسٹیمپ",
+      "payloadTitle": "ایونٹ پے لوڈ",
+      "historyTitle": "ڈیلیوری کی کوشش کی تاریخ",
+      "historySubtitle": "زمانی ترتیب سے عمل درآمد کی کوششیں اور HTTP رسپانس سٹیٹس",
+      "noHistory": "ڈیلیوری کی کوئی کوشش ریکارڈ نہیں کی گئی۔",
+      "completionTitle": "تکمیل کا ثبوت",
+      "allPurposes": "تمام مقاصد",
+      "createdAt": "تخلیق کی تاریخ",
+      "deliveriesTitle": "ڈاؤن اسٹریم سبسکرائبر ڈیلیوریز",
+      "deliveriesSubtitle": "اس ایونٹ کے لیے تیار کردہ تمام ڈیلیوریز اور تکمیل کی صورتحال",
+      "noDeliveries": "کوئی ڈیلیوریز تیار نہیں ہوئیں۔",
+      "noDeliveriesMessage": "ایونٹ کے رونما ہونے پر اس موضوع سے کوئی فعال سبسکرپشنز نہیں ملیں۔",
+      "copyPayloadSuccess": "پے لوڈ کو کلپ بورڈ پر کاپی کیا گیا۔",
+      "copyPayloadFailed": "پے لوڈ کو کلپ بورڈ پر کاپی کرنے میں ناکام۔",
+      "subscriber": "سبسکرائبر",
+      "subscribers": "سبسکرائبرز"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "میرا اکاؤنٹ حذف کریں",
+    "deleteError": "آپ کا اکاؤنٹ حذف کرنے سے قاصر ہیں۔ دوبارہ کوشش کریں۔",
+    "deletePendingApproval": "آپ کی ڈیلیٹ کرنے کی درخواست منظوری کے لیے جمع کر دی گئی ہے۔ آپ کا اکاؤنٹ اس وقت تک فعال رہے گا جب تک کہ کوئی ایڈمنسٹریٹر اسے منظور نہیں کر لیتا۔",
+    "deleteAlreadyRequested": "آپ کے اکاؤنٹ میں پہلے سے ہی ڈیلیٹ کرنے کی درخواست منظوری کے منتظر ہے۔",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "اکاؤنٹ",
+      "title": "اپنا اکاؤنٹ حذف کریں؟",
+      "message": "یہ آپ کے اکاؤنٹ کو مستقل طور پر حذف کر دیتا ہے اور آپ کو سائن آؤٹ کر دیتا ہے۔",
+      "note": "اس عمل کو کالعدم نہیں کیا جا سکتا۔ آپ اس پورٹل تک رسائی کھو دیں گے، اور آپ کا سائن ان فوری طور پر کام کرنا چھوڑ دے گا۔",
+      "confirm": "میرا اکاؤنٹ حذف کریں"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "آپ کا اکاؤنٹ حذف کر دیا گیا ہے۔",
+      "body": "آپ کا اکاؤنٹ اور سائن ان ہٹا دیا گیا ہے۔ اگر یہ کوئی غلطی تھی تو اپنے ایڈمنسٹریٹر سے رابطہ کریں۔",
+      "signInLink": "سائن ان پر جائیں"
     }
   }
 }

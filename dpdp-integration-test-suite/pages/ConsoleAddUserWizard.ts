@@ -56,19 +56,24 @@ export class ConsoleAddUserWizard {
   constructor(page: Page) {
     this.addUserButton = page.getByRole('button', { name: 'Add User' })
     this.singleUserOption = page.getByText('Single User', { exact: true })
-    // Not `getByRole('dialog')` - confirmed live this wizard is a Semantic UI modal with no
-    // `role="dialog"` (unlike ConsoleRootOrganizationWizard's dialog, which is a different,
-    // MUI-based component) - a role-based locator here silently never matches anything.
-    this.root = page.locator('.ui.modal').filter({ hasText: 'Create User' })
-    this.usernameField = this.root.getByPlaceholder('Enter the username')
-    this.emailField = this.root.getByPlaceholder('Enter the email address')
-    this.firstNameField = this.root.getByPlaceholder('Enter the first name')
-    this.lastNameField = this.root.getByPlaceholder('Enter the last name')
-    this.setPasswordOption = this.root.getByText('Set a password for the user', { exact: true })
-    this.passwordField = this.root.locator('input[type="password"]')
-    this.nextButton = this.root.getByRole('button', { name: 'Next' })
-    this.saveAndContinueButton = this.root.getByRole('button', { name: 'Save & Continue' })
-    this.closeButton = this.root.getByRole('button', { name: 'Close' })
+    // Unscoped, unlike the rest of this suite's page objects: the wizard carries neither
+    // `role="dialog"` nor the Semantic UI `.ui.modal` class it used to, so there is no stable
+    // container to hang the fields off. Its placeholders are unique on the Users page while it
+    // is open, which is what makes page-level locators safe here.
+    this.root = page.getByText('Follow the steps to create a new user.')
+    // One field, not two: Console now labels it "Username (Email)" and the accelerator
+    // enforces an email-address username, so the separate username input is gone.
+    this.usernameField = page.getByPlaceholder('Enter the email address')
+    this.emailField = this.usernameField
+    this.firstNameField = page.getByPlaceholder('Enter the first name')
+    this.lastNameField = page.getByPlaceholder('Enter the last name')
+    this.setPasswordOption = page.getByText('Set a password for the user', { exact: true })
+    this.passwordField = page.getByPlaceholder('Enter the password')
+    // exact: the Users table's pagination has a "Next Page" button that a substring match
+    // also resolves to.
+    this.nextButton = page.getByRole('button', { name: 'Next', exact: true })
+    this.saveAndContinueButton = page.getByRole('button', { name: 'Save & Continue' })
+    this.closeButton = page.getByRole('button', { name: 'Close', exact: true })
   }
 
   async open(): Promise<void> {
@@ -79,8 +84,9 @@ export class ConsoleAddUserWizard {
   /** Fills every Basic Details field, including the two easy-to-miss ones: Last Name and the
    * explicit-password option (the wizard defaults to emailing an invitation instead). */
   async fillBasicDetails(fields: NewUserFields): Promise<void> {
+    // username and email are the same field now; fields.email is kept in the interface so
+    // callers need not change, but filling it twice would just overwrite the same input.
     await this.usernameField.fill(fields.username)
-    await this.emailField.fill(fields.email)
     await this.firstNameField.fill(fields.firstName)
     await this.lastNameField.fill(fields.lastName)
     await this.setPasswordOption.click()

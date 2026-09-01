@@ -39,9 +39,9 @@
     "dataProcessorTopics": "વિષયો",
     "dataProcessorSubscriptions": "સબ્સ્ક્રિપ્શન્સ",
     "dataProcessorEvents": "ઇવેન્ટ્સ",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "ઘટનાઓ",
+    "topics": "વિષયો",
+    "subscriptions": "સબ્સ્ક્રિપ્શન્સ"
   },
   "layout": {
     "home": "હોમ",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "રાજ્ય ફિલ્ટરનો ઉપયોગ કરવા માટે સંમતિ ID ફિલ્ટર દૂર કરો.",
       "propertyFilterLabel": "સંમતિ મિલકત",
       "removeConsentIdForSubject": "યુઝર આઈડી ફિલ્ટરનો ઉપયોગ કરવા માટે સંમતિ આઈડી ફિલ્ટર દૂર કરો.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "સંબંધ",
+      "relationHelperText": "સંબંધ દ્વારા ફિલ્ટર કરવા માટે વપરાશકર્તા સેટ કરો",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "કોઈપણ",
+        "subject": "વિષય",
+        "authorizer": "અધિકૃત"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "સ્થિતિ",
         "updated": "અપડેટ કરેલ",
         "resources": "સંસાધનો",
-        "eventType": "ઇવેન્ટ પ્રકાર",
         "date": "તારીખ",
         "time": "સમય",
         "state": "રાજ્ય"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "બધા ફિલ્ટર્સ સાફ કરો",
       "serviceSearchPlaceholder": "સેવા દ્વારા શોધો",
       "state": "રાજ્ય",
-      "relation": "Relation",
+      "relation": "સંબંધ",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "બધું",
+        "subject": "મારી પોતાની",
+        "authorizer": "મારા દ્વારા સંચાલિત"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "સિસ્ટમ",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "સંમતિ બનાવવામાં આવી",
+        "updated": "સંમતિ અપડેટ કરવામાં આવી",
+        "approved": "મંજૂર",
+        "rejected": "અસ્વીકાર્ય",
+        "authorizeRevoked": "સમીક્ષક દ્વારા રદ કરાયેલ",
+        "revoked": "રદ કરાયેલ",
+        "deleted": "ડિલીટ થયું",
+        "expired": "સમાપ્ત થઈ",
+        "unknown": "અપડેટ કરાયું"
       },
-      "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "description": "{{action}} દ્વારા {{actor}}",
+      "viewFullSnapshot": "સંપૂર્ણ સ્નેપશોટ ઇતિહાસ જુઓ",
+      "close": "બંધ કરો",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "આ અપડેટમાં કોઈ ફેરફાર નોંધાયો નથી.",
+        "needsMoreHistory": "આ અપડેટમાં શું બદલાયું છે તે જોવા માટે વધુ ઇતિહાસ લોડ કરો.",
+        "initial": "પ્રારંભિક સ્નેપશોટ",
+        "added": "ઉમેરવામાં આવ્યું",
+        "removed": "દૂર કરાયેલ",
+        "changed": "બદલાયેલ",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "જ્યાં સુધી માન્ય"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "આ સંમતિ માટે કોઈ ઇતિહાસ નોંધાયો નથી."
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "વર્ણન",
         "descriptionPlaceholder": "તમારી ફરિયાદનું વિગતવાર વર્ણન કરો",
         "descriptionHelp": "ઝડપી ઉકેલ માટે શક્ય તેટલી વધુ વિગતો આપો.",
+        "descriptionPiiWarning": "કૃપા કરીને તમારી ઇમેઇલ, સરનામું અથવા બેંક ખાતાની વિગતો જેવી સંવેદનશીલ વ્યક્તિગત માહિતી શામેલ કરશો નહીં.",
         "attachments": "જોડાણો / ફાઈલો (મરજિયાત)",
         "attachmentsHelp": "દરેક ફાઇલ મહત્તમ {{maxSize}} સુધીની PDF, DOCX, PNG, અથવા JPG.",
         "uploadButton": "ફાઇલો અપલોડ કરો"
@@ -1006,276 +1006,276 @@
     "next": "આગળ"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "વિષયો",
+    "subtitle": "તમારી સંસ્થામાં નોંધાયેલ ઇવેન્ટ સૂચના વિષયો જુઓ અને મેનેજ કરો",
+    "loadFailed": "હમણાં વિષયો લોડ કરવામાં અસમર્થ.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "સક્રિય",
+      "deregistered": "ડિ-રજીસ્ટર થયું"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "વિષય નામ, ID અથવા વર્ણન દ્વારા શોધો",
+      "status": "સ્થિતિ",
+      "allStatuses": "બધી સ્થિતિઓ",
+      "search": "શોધો",
+      "clear": "ફિલ્ટર્સ સાફ કરો"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "વિષયો વ્યવસ્થાપન કોષ્ટક",
+      "name": "વિષયનું નામ",
+      "topicId": "વિષય ID",
+      "description": "વર્ણન",
+      "status": "સ્થિતિ",
+      "actions": "ક્રિયાઓ",
+      "empty": "કોઈ નોંધાયેલ વિષયો મળ્યા નથી."
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "વિષય રજીસ્ટર કરો",
+      "delete": "વિષયને ડિ-રજીસ્ટર કરો",
+      "alreadyDeregistered": "આ વિષય પહેલેથી જ ડિ-રજિસ્ટર્ડ થઈ ગયો છે"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "વિષય રજીસ્ટર કરો",
+      "registerSubtitle": "તમારી સંસ્થા માટે નવી ઇવેન્ટ નોટિફિકેશન વિષય રજીસ્ટર કરો",
+      "nameLabel": "વિષયનું નામ",
+      "namePlaceholder": "દા.ત. સંમતિ. રદ કરો",
+      "nameRequired": "વિષયનું નામ જરૂરી છે.",
+      "descriptionLabel": "વર્ણન",
+      "descriptionPlaceholder": "વિષય હેતુનું વૈકલ્પિક વર્ણન",
+      "registering": "રજીસ્ટર થઈ રહ્યું છે...",
+      "registerSubmit": "વિષય રજીસ્ટર કરો"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ડિ-રજીસ્ટ્રેશનની પુષ્ટિ કરો",
+      "message": "શું તમે ખાતરી કરો છો કે તમે વિષય \"{{name}}\" ને ડિ-રજીસ્ટર કરવા માંગો છો?",
+      "note": "વિષયને ડિ-રજીસ્ટર કરવાથી આ વિષય પર નવી સબ્સ્ક્રિપ્શન્સ અને ઘટનાઓનું પ્રકાશન અટકે છે.",
+      "confirm": "વિષયને ડિ-રજીસ્ટર કરો"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "સબ્સ્ક્રિપ્શન્સ",
+    "subtitle": "તમારી સંસ્થા માટે ઇવેન્ટ નોટિફિકેશન સબ્સ્ક્રિપ્શન્સનું સંચાલન અને દેખરેખ રાખો",
+    "loadFailed": "હમણાં સબ્સ્ક્રિપ્શન્સ લોડ કરવામાં અસમર્થ.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "સક્રિય",
+      "pending": "પેન્ડિંગ",
+      "stale": "વાસી",
+      "deleted": "ડિલીટ થયું"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "વેબહૂક",
+      "poll": "મતદાન"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "બધી ઘટનાઓ",
+      "allDescription": "આ વિષય પર પ્રકાશિત થયેલી તમામ ઘટનાઓને સાંભળે છે",
+      "specific": "ચોક્કસ હેતુઓ",
+      "all_except": "હેતુઓ સિવાયની બધી ઘટનાઓ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "સબ્સ્ક્રિપ્શન ID, વિષય, જૂથ, હેતુ અથવા URL દ્વારા શોધો",
+      "status": "સ્થિતિ",
+      "allStatuses": "બધી સ્થિતિઓ",
+      "deliveryMode": "ડિલિવરી મોડ",
+      "allModes": "બધા મોડ્સ",
+      "search": "શોધો",
+      "clear": "ફિલ્ટર્સ સાફ કરો"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "સબ્સ્ક્રિપ્શન્સ મેનેજમેન્ટ કોષ્ટક",
+      "subscriptionId": "સબ્સ્ક્રિપ્શન ID",
+      "topic": "વિષય",
+      "groupId": "ગ્રુપ ID",
+      "filter": "ફિલ્ટર કરો",
+      "deliveryMode": "ડિલિવરી મોડ",
+      "status": "સ્થિતિ",
+      "occurredAt": "ક્યારે થયું",
+      "deliveryId": "ડિલિવરી ID",
+      "eventId": "ઇવેન્ટ ID",
+      "actions": "ક્રિયાઓ",
+      "empty": "કોઈ સબ્સ્ક્રિપ્શન્સ મળ્યા નથી."
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "સબ્સ્ક્રિપ્શન રજીસ્ટર કરો",
+      "view": "વિગતો જુઓ",
+      "verify": "વેબહૂક ફરીથી ચકાસો",
+      "delete": "સબ્સ્ક્રિપ્શન ડિલીટ કરો",
+      "alreadyDeleted": "આ સબ્સ્ક્રિપ્શન પહેલેથી જ ડિલીટ થઈ ગયું છે",
+      "backToList": "સબ્સ્ક્રિપ્શન્સ પર પાછા ફરો",
+      "close": "બંધ કરો"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "સબ્સ્ક્રિપ્શન રજીસ્ટર કરો",
+      "registerSubtitle": "નવી ઘટના સૂચના સબ્સ્ક્રિપ્શન અને ડિલિવરી મોડને ગોઠવો",
+      "topicLabel": "વિષય",
+      "topicRequired": "વિષય જરૂરી છે.",
+      "filterModeLabel": "હેતુ ફિલ્ટર મોડ",
+      "purposesLabel": "હેતુઓ (અલ્પવિરામથી અલગ કરેલ)",
+      "purposesPlaceholder": "દા.ત. માર્કેટિંગ, એનાલિટિક્સ",
+      "purposesHelper": "ફિલ્ટર કરવા માટે સંમતિ હેતુઓની અલ્પવિરામથી અલગ કરેલી સૂચિ",
+      "purposesRequired": "ચોક્કસ અથવા બધા સિવાય ફિલ્ટર કરતી વખતે હેતુઓ જરૂરી છે.",
+      "deliveryModeLabel": "ડિલિવરી મોડ",
+      "callbackUrlLabel": "વેબહૂક કૉલબેક URL",
+      "callbackUrlRequired": "વેબહૂક સબ્સ્ક્રિપ્શન્સ માટે કૉલબેક URL જરૂરી છે.",
+      "callbackUrlInvalid": "કૃપા કરીને માન્ય સંપૂર્ણ URL (http:// અથવા https://) પ્રદાન કરો.",
+      "secretLabel": "શેર કરેલું રહસ્ય",
+      "secretRequired": "શેર કરેલું રહસ્ય જરૂરી છે.",
+      "secretHelper": "વેબહૂક પેલોડ્સ સાઇન કરવા અથવા પોલ વિનંતીઓને પ્રમાણિત કરવા માટે વપરાય છે",
+      "generateSecret": "નવું સિક્રેટ જનરેટ કરો",
+      "registering": "રજીસ્ટર થઈ રહ્યું છે...",
+      "registerSubmit": "સબ્સ્ક્રિપ્શન રજીસ્ટર કરો"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "સબ્સ્ક્રિપ્શન ડિલીટ કરવાની પુષ્ટિ કરો",
+      "message": "શું તમે ખાતરી કરો છો કે તમે સબ્સ્ક્રિપ્શન \"{{id}}\" કાઢી નાખવા માંગો છો?",
+      "note": "આ સબ્સ્ક્રિપ્શનને ડિલીટ કરવાથી આ સબ્સ્ક્રાઇબર એન્ડપોઇન્ટ પર નવી ઘટનાઓ મોકલવામાં આવતી અટકે છે.",
+      "confirm": "સબ્સ્ક્રિપ્શન ડિલીટ કરો"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "ચકાસણી પિંગ સફળતાપૂર્વક મોકલવામાં આવી.",
+      "failed": "વેબહૂક ચકાસણી નિષ્ફળ ગઈ. કૃપા કરીને એન્ડપોઇન્ટની પહોંચ ચકાસો.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "સબ્સ્ક્રિપ્શનની વિગતો લોડ કરવામાં અસમર્થ.",
+      "configTitle": "સબ્સ્ક્રિપ્શન રૂપરેખાંકન",
+      "configSubtitle": "સામાન્ય મેટાડેટા, રૂટીંગ પરિમાણો અને ફિલ્ટરિંગ નિયમો",
+      "eventsTitle": "ડિલિવરી ઇતિહાસ અને એક્ઝિક્યુશન લોગ",
+      "eventsSubtitle": "તાજેતરની ઇવેન્ટ ડિલિવરી અને આ સબ્સ્ક્રાઇબરને મોકલવામાં આવેલા ફરી પ્રયાસના પ્રયાસો",
+      "createdAt": "બનાવ્યું આવ્યું",
+      "updatedAt": "છેલ્લું અપડેટ"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ડિલિવરી ઇવેન્ટ્સ લોગ ટેબલ",
+      "empty": "હજી સુધી કોઈ ડિલિવરી ઇવેન્ટ્સ નોંધાયા નથી.",
+      "auditAction": "પ્રયાસો",
+      "viewHistory": "ડિલિવરી પ્રયાસો જુઓ"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "ઇવેન્ટ ડિલિવરી એક્ઝિક્યુશન ઓડિટ",
+      "loadFailed": "ડિલિવરી ઇતિહાસ લોડ કરવામાં અસમર્થ.",
+      "completion": "પૂર્ણતા પુરાવા",
+      "attemptsTitle": "ડિલિવરી પ્રયાસો ક્રોનોલોજી",
+      "attemptNumber": "પ્રયાસ",
+      "attemptStatus": "સ્થિતિ",
+      "httpStatus": "HTTP સ્થિતિ",
+      "timestamp": "ટાઇમસ્ટેમ્પ",
+      "errorDetails": "ભૂલ વિગતો",
+      "noAttempts": "કોઈ એક્ઝિક્યુશન પ્રયાસો નોંધાયા નથી."
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ઘટનાઓ",
+    "subtitle": "તમારી સંસ્થામાં પ્રકાશિત ઇવેન્ટ્સ જુઓ અને ઇવેન્ટ સૂચનાઓનું નિરીક્ષણ કરો",
+    "loadFailed": "ઇવેન્ટ્સ લોડ કરવામાં અસમર્થ.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "ડિલિવરી ID, ઇવેન્ટ ID અથવા વિષય દ્વારા શોધો...",
+      "status": "સ્થિતિ",
+      "allStatuses": "બધી સ્થિતિઓ",
+      "topic": "વિષય",
+      "allTopics": "બધા વિષયો",
+      "groupId": "ગ્રુપ ID",
+      "groupIdPlaceholder": "ગ્રુપ ID દ્વારા ફિલ્ટર કરો...",
+      "search": "શોધો",
+      "clear": "સાફ કરો",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "બધું",
+      "pending": "પેન્ડિંગ",
+      "delivered": "ડિલિવર થયું",
+      "failed": "નિષ્ફળ",
+      "completed": "પૂર્ણ થયું",
+      "acknowledged": "સ્વીકૃત",
+      "in_flight": "ઇન ફ્લાઇટ",
+      "expired": "સમાપ્ત થઈ"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "બધું"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "પ્રકાશિત ઇવેન્ટ્સ યાદી કોષ્ટક",
+      "deliveryId": "ડિલિવરી ID",
+      "eventId": "ઇવેન્ટ ID",
+      "topic": "વિષય",
+      "groupId": "ગ્રુપ ID",
+      "mode": "મોડ",
+      "purposes": "હેતુઓ",
+      "deliveries": "ડિલિવરીઓ",
+      "subscriber": "સબ્સ્ક્રાઇબર",
+      "subscribers": "સબ્સ્ક્રાઇબર્સ",
+      "noSubscribers": "કોઈ સબ્સ્ક્રાઇબર્સ નથી",
+      "status": "સ્થિતિ",
+      "occurredAt": "ક્યારે થયું",
+      "actions": "ક્રિયાઓ",
+      "empty": "કોઈ ઇવેન્ટ્સ મળી નથી."
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ઇવેન્ટ પ્રકાશિત કરો",
+      "view": "વિગતો જુઓ",
+      "copyPayload": "પેલોડની નકલ કરો",
+      "close": "બંધ કરો"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "ઇવેન્ટ પ્રકાશિત કરો",
+      "publishSubtitle": "સબ્સ્ક્રાઇબર ફેન-આઉટને ટ્રિગર કરવા માટે ઇવેન્ટ નોટિફિકેશન પ્રકાશિત કરો",
+      "topicLabel": "વિષય",
+      "topicRequired": "વિષય જરૂરી છે.",
+      "groupIdLabel": "ગ્રુપ ID (વૈકલ્પિક)",
+      "groupIdPlaceholder": "દા.ત. ગ્રાહક-જૂથ-01",
+      "groupIdHelper": "લક્ષિત ડિલિવરી માટે વૈકલ્પિક જૂથ ઓળખકર્તા",
+      "purposesLabel": "હેતુઓ (વૈકલ્પિક, અલ્પવિરામથી અલગ કરેલ)",
+      "purposesPlaceholder": "દા.ત. માર્કેટિંગ, એનાલિટિક્સ",
+      "purposesHelper": "આ ઘટના સાથે સંકળાયેલ સંમતિ હેતુઓની અલ્પવિરામથી અલગ કરેલી સૂચિ",
+      "payloadLabel": "પેલોડ (JSON)",
+      "payloadHelper": "ઇવેન્ટ ડેટાનું પ્રતિનિધિત્વ કરતું માન્ય JSON ઑબ્જેક્ટ",
+      "payloadRequired": "પેલોડ આવશ્યક છે.",
+      "payloadMustBeObject": "પેલોડ માન્ય JSON ઑબ્જેક્ટ હોવો જોઈએ.",
+      "invalidJson": "કૃપા કરીને માન્ય JSON ફોર્મેટ પ્રદાન કરો.",
+      "publishing": "પ્રકાશિત થઈ રહ્યું છે...",
+      "publishSubmit": "ઇવેન્ટ પ્રકાશિત કરો",
+      "publishSuccess": "ઇવેન્ટ સફળતાપૂર્વક પ્રકાશિત થઈ."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ઇવેન્ટ વિગતો",
+      "backToEvents": "ઘટનાઓ પર પાછા ફરો",
+      "loadFailed": "ઇવેન્ટની વિગતો લોડ કરવામાં અસમર્થ.",
+      "metadataTitle": "ઇવેન્ટ મેટાડેટા",
+      "metadataSubtitle": "ઓળખકર્તાઓ, વિષયો અને ડિસ્પેચ ટાઇમસ્ટેમ્પ્સ",
+      "payloadTitle": "ઇવેન્ટ પેલોડ",
+      "historyTitle": "ડિલિવરી પ્રયાસ ઇતિહાસ",
+      "historySubtitle": "કાલક્રમિક અમલના પ્રયાસો અને HTTP પ્રતિભાવ સ્થિતિ",
+      "noHistory": "કોઈ ડિલિવરી પ્રયાસો નોંધાયા નથી.",
+      "completionTitle": "પૂર્ણતા પુરાવા",
+      "allPurposes": "બધા હેતુઓ",
+      "createdAt": "બનાવ્યું આવ્યું",
+      "deliveriesTitle": "ડાઉનસ્ટ્રીમ સબ્સ્ક્રાઇબર ડિલિવરીઓ",
+      "deliveriesSubtitle": "આ ઘટના માટે જનરેટ થયેલ તમામ ડિલિવરી અને પૂર્ણતાની સ્થિતિઓ",
+      "noDeliveries": "કોઈ ડિલિવરી જનરેટ થઈ નથી",
+      "noDeliveriesMessage": "જ્યારે ઇવેન્ટ બની ત્યારે આ વિષય સાથે કોઈ સક્રિય સબ્સ્ક્રિપ્શન્સ મેળ ખાતા નથી.",
+      "copyPayloadSuccess": "પેલોડ ક્લિપબોર્ડ પર કૉપિ કરવામાં આવ્યો.",
+      "copyPayloadFailed": "પેલોડને ક્લિપબોર્ડ પર કૉપિ કરવામાં નિષ્ફળ",
+      "subscriber": "સબ્સ્ક્રાઇબર",
+      "subscribers": "સબ્સ્ક્રાઇબર્સ"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "મારું એકાઉન્ટ ડિલીટ કરો",
+    "deleteError": "તમારું એકાઉન્ટ ડિલીટ કરવામાં અસમર્થ. કૃપા કરીને ફરી પ્રયાસ કરો.",
+    "deletePendingApproval": "તમારી ડિલીટ કરવાની વિનંતી મંજૂરી માટે સબમિટ કરવામાં આવી છે. જ્યાં સુધી સંચાલક તેને મંજૂર ન કરે ત્યાં સુધી તમારું એકાઉન્ટ સક્રિય રહેશે.",
+    "deleteAlreadyRequested": "તમારા એકાઉન્ટમાં પહેલેથી જ મંજૂરીની રાહ જોઈ રહેલી ડિલીટ કરવાની વિનંતી છે.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "એકાઉન્ટ",
+      "title": "તમારું એકાઉન્ટ ડિલીટ કરવું છે?",
+      "message": "આ તમારા એકાઉન્ટને કાયમી ધોરણે ડિલીટ કરે છે અને તમને સાઇન આઉટ કરે છે.",
+      "note": "આ ક્રિયા પૂર્વવત્ કરી શકાતી નથી. તમે આ પોર્ટલની ઍક્સેસ ગુમાવશો, અને તમારું સાઇન-ઇન તરત જ કામ કરવાનું બંધ કરી દેશે.",
+      "confirm": "મારું એકાઉન્ટ ડિલીટ કરો"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "તમારું એકાઉન્ટ ડિલીટ થઈ ગયું છે",
+      "body": "તમારું એકાઉન્ટ અને સાઇન-ઇન દૂર કરવામાં આવ્યા છે. જો આ ભૂલ હતી, તો તમારા સંચાલકનો સંપર્ક કરો.",
+      "signInLink": "સાઇન-ઇન પર જાઓ"
     }
   }
 }

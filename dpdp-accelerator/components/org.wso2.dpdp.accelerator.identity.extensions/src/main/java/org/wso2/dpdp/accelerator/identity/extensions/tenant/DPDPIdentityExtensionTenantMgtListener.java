@@ -150,6 +150,10 @@ public class DPDPIdentityExtensionTenantMgtListener implements TenantMgtListener
                             DPDPApiResourceProvisioningUtil.HISTORY_VIEW_SELF));
             userScopes.addAll(DPDPApiResourceProvisioningUtil
                     .authorizeAccountSelfServiceApi(applicationId, tenantDomain));
+            // The DPO role only ever needs the "any" complaint scopes - never the full admin set,
+            // so it's built directly from the constants rather than filtered out of adminScopes.
+            List<String> dpoScopes = Arrays.asList(DPDPApiResourceProvisioningUtil.COMPLAINTS_READ_ANY,
+                    DPDPApiResourceProvisioningUtil.COMPLAINTS_WRITE_ANY);
             for (String complaintScope : complaintScopes) {
                 if (complaintScope.endsWith(":self")) {
                     userScopes.add(complaintScope);
@@ -158,9 +162,27 @@ public class DPDPIdentityExtensionTenantMgtListener implements TenantMgtListener
                 }
             }
             List<RoleV2> roles = DPDPConsentPortalRoleProvisioningUtil.createRoles(tenantDomain, adminScopes,
-                    userScopes);
+                    userScopes, dpoScopes);
             DPDPConsentPortalAppProvisioningUtil.associateOrganizationRoles(tenantDomain, tenantInfoBean.getAdmin(),
                     roles);
+
+            if (configurationService.isConsentApiInvokerProvisioningEnabled()) {
+                String invokerApplicationId = DPDPConsentApiInvokerAppProvisioningUtil.getApplicationId(tenantDomain);
+                if (invokerApplicationId == null) {
+                    invokerApplicationId = DPDPConsentApiInvokerAppProvisioningUtil
+                            .provisionApplication(tenantInfoBean);
+                } else {
+                    LOG.debug("The DPDP Consent API Invoker application already exists for tenant: " + tenantDomain
+                            + "; reconciling its API authorization and roles.");
+                }
+                // Only the consents resource - this app exists to invoke consent operations
+                // directly, not to manage the purposes/elements catalog.
+                DPDPApiResourceProvisioningUtil.authorizeConsentAPI(invokerApplicationId, tenantDomain);
+                DPDPConsentApiInvokerAppProvisioningUtil.associateOrganizationRoles(tenantDomain,
+                        tenantInfoBean.getAdmin(), roles);
+            } else {
+                LOG.debug("DPDP Consent API Invoker provisioning is disabled; skipping tenant: " + tenantDomain);
+            }
 
             LOG.info("Provisioned the DPDP Consent Portal for tenant: " + tenantDomain);
         } finally {

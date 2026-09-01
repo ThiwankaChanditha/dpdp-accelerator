@@ -76,6 +76,18 @@ public class DPDPConfigurationServiceImpl implements DPDPConfigurationService {
     }
 
     @Override
+    public boolean isConsentApiInvokerProvisioningEnabled() {
+
+        return configParser == null || configParser.isConsentApiInvokerProvisioningEnabled();
+    }
+
+    @Override
+    public String getConsentApiInvokerClientId() {
+
+        return configParser == null ? "DPDP_CONSENT_API_INVOKER" : configParser.getConsentApiInvokerClientId();
+    }
+
+    @Override
     public int getComplaintsStatutoryDuePeriodDays() {
 
         return configParser == null ? DPDPCommonConstants.DEFAULT_COMPLAINTS_STATUTORY_DUE_PERIOD_DAYS

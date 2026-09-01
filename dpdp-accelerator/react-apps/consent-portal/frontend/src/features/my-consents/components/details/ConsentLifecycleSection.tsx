@@ -247,7 +247,7 @@ function ConsentLifecycleSection({
           <TableHead>
             <TableRow sx={{ bgcolor: 'action.default' }}>
               <TableCell sx={{ width: '16%', fontWeight: 700 }}>
-                {t('consentRegistry.details.table.eventType')}
+                {t('consentRegistry.details.table.status')}
               </TableCell>
               <TableCell sx={{ width: '15%', fontWeight: 700 }}>
                 {t('consentRegistry.details.table.date')}

@@ -16,9 +16,18 @@
  * under the License.
  */
 
-import { test, expect, loginAsUser, loginAsConsentAdmin } from '../../fixtures/auth.fixtures'
+import {
+  test,
+  expect,
+  getPersonaState,
+  hasSecondUser,
+  loginAsUser,
+  loginAsConsentAdmin,
+} from '../../fixtures/auth.fixtures'
+import { ConsentApiClient } from '../../clients/ConsentApiClient'
 import { ConsentDetailPage } from '../../pages/ConsentDetailPage'
 import { ConsentFullHistoryDialogPage } from '../../pages/ConsentFullHistoryDialogPage'
+import { authHeadersFromPersonaState } from '../../utils/authStorage'
 import { env } from '../../utils/env'
 import { seedConsent } from '../../utils/consentSetup'
 
@@ -55,7 +64,7 @@ test.describe('User viewing Consent History (UI)', () => {
     await detailPage.goto(consentId)
     await detailPage.openActionDialog('approve')
     await detailPage.confirmAction('approve')
-    await expect(userPage.getByText('Active', { exact: true })).toBeVisible()
+    await expect(userPage.getByText('Active', { exact: true }).first()).toBeVisible()
 
     // See the file-level comment above - the history queries need a fresh page load.
     await detailPage.goto(consentId)
@@ -155,7 +164,7 @@ test.describe('User viewing Consent History (UI)', () => {
     await detailPage.goto(consentId)
     await detailPage.openActionDialog('approve')
     await detailPage.confirmAction('approve')
-    await expect(userPage.getByText('Active', { exact: true })).toBeVisible()
+    await expect(userPage.getByText('Active', { exact: true }).first()).toBeVisible()
 
     // Chained without a reload - Revoke becomes available reactively once Active is reflected.
     await detailPage.openActionDialog('revoke')
@@ -196,6 +205,68 @@ test.describe('User viewing Consent History (UI)', () => {
 
     await dialog.close()
     await userPage.context().close()
+    await consentAdminPage.context().close()
+  })
+
+  test('02.07.04 - A delegated consent (parent approving on behalf of a child) attributes the approval to the parent, not the subject', async ({
+    browser,
+    request,
+    consentAdminConsentApi,
+    consentCleanupTracker,
+  }) => {
+    // No dedicated "parent"/"child" persona exists - the second, generic user account stands in
+    // for the parent, and env.user (this file's usual subject) stands in for the child.
+    test.skip(!hasSecondUser(), 'TEST_USER_2_USERNAME/PASSWORD is not configured')
+    const parent = env.secondUser()
+    if (!parent) {
+      throw new Error('Unreachable: hasSecondUser() already checked this above.')
+    }
+
+    const consentAdminPage = await loginAsConsentAdmin(browser)
+    // authorizations lists only the parent, never the child - carbon-consent-mgt-core's model has
+    // no separate "subject" field on an authorization; delegation is expressed purely by the
+    // subjectId (child) and authorizations[].userId (parent) not matching.
+    const { consentId } = await seedConsent(
+      consentAdminPage,
+      consentAdminConsentApi,
+      consentCleanupTracker,
+      env.user.username,
+      'PENDING',
+      undefined,
+      undefined,
+      [{ userId: parent.username, type: 'PARENT' }],
+    )
+
+    // The parent approves on the child's behalf through the same self-service endpoint a subject
+    // would use - IS's own consent-mgt resolves authorization by matching the caller against the
+    // receipt's authorizations list, not by requiring caller === subject, which is exactly what
+    // makes a delegated/guardian approval possible at all. Called directly via the API (not the
+    // UI) since this test's point is the resulting history attribution, not the approve form.
+    const parentPersonaState = await getPersonaState(browser, 'user-2', parent)
+    const parentConsentApi = new ConsentApiClient(request, authHeadersFromPersonaState(parentPersonaState))
+    const authorizeResponse = await parentConsentApi.authorizeMyConsent(consentId, 'APPROVED')
+    expect(authorizeResponse.ok()).toBe(true)
+
+    // The child - the consent's subject - sees their own consent's history with the approval
+    // attributed to the PARENT, not to themselves: actionBy records who actually performed the
+    // action (DPDPConsentHistoryListener.getActionBy(), the caller's own PrivilegedCarbonContext
+    // username), which is a different thing from whose consent this is.
+    const childPage = await loginAsUser(browser)
+    const detailPage = new ConsentDetailPage(childPage, 'self')
+    await detailPage.goto(consentId)
+    // The page's own metadata card renders the subject as plain text (see 02.02.01) - confirms
+    // the child, not the parent, is who this consent is about.
+    await expect(childPage.getByText(env.user.username)).toBeVisible()
+    await expect(detailPage.lifecycleRow('Approved', parent.username)).toBeVisible()
+    await expect(detailPage.lifecycleRow('Approved', env.user.username)).toHaveCount(0)
+
+    await detailPage.openFullHistoryDialog()
+    const dialog = new ConsentFullHistoryDialogPage(childPage)
+    await dialog.expand('Approved', parent.username)
+    await expect(dialog.changedTag('Approved', parent.username)).toBeVisible()
+    await dialog.close()
+
+    await childPage.context().close()
     await consentAdminPage.context().close()
   })
 })

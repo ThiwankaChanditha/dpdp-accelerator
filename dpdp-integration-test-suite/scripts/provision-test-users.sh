@@ -53,9 +53,12 @@ IGNORE_HTTPS_ERRORS="${IGNORE_HTTPS_ERRORS:-true}"
 # it holds only internal_login. dpdp-consent-user carries zero permissions (it is
 # created with an empty permission list), so assigning it grants no scopes and cannot
 # perturb those assertions - it is assigned only to mirror the documented setup.
-USER_NAME="dpdp-ci-user"
-USER_2_NAME="dpdp-ci-user-2"
-ADMIN_NAME="dpdp-ci-admin"
+# Email-shaped because the accelerator enforces it: the username regex is
+# ^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$, so a bare "dpdp-ci-user" is
+# rejected with SCIM2 31301 and provisioning aborts.
+USER_NAME="dpdp-ci-user@dpdp.test"
+USER_2_NAME="dpdp-ci-user-2@dpdp.test"
+ADMIN_NAME="dpdp-ci-admin@dpdp.test"
 USER_ROLE="dpdp-consent-user"
 ADMIN_ROLE="dpdp-consent-admin"
 
@@ -116,7 +119,7 @@ print(json.dumps({
     "userName": os.environ["UN"],
     "password": os.environ["TP"],
     "name": {"givenName": "DPDP", "familyName": "CI"},
-    "emails": [{"primary": True, "value": os.environ["UN"] + "@dpdp.test"}],
+    "emails": [{"primary": True, "value": os.environ["UN"]}],
 }))
 ')
   response=$(api -X POST "${IS_BASE_URL}/scim2/Users" \

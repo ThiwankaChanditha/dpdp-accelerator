@@ -147,7 +147,6 @@
         "status": "Status",
         "updated": "Updated",
         "resources": "Resources",
-        "eventType": "Event Type",
         "date": "Date",
         "time": "Time",
         "state": "State"
@@ -811,6 +810,7 @@
         "description": "Description",
         "descriptionPlaceholder": "Describe your complaint in detail",
         "descriptionHelp": "Include as much detail as possible to help us resolve this quickly.",
+        "descriptionPiiWarning": "Please don't include sensitive personal information such as your email, address, or bank account details.",
         "attachments": "Attachments (optional)",
         "attachmentsHelp": "You can attach 1 file (PDF, DOCX, PNG, or JPG) up to {{maxSize}}.",
         "uploadButton": "Upload files"

@@ -24,8 +24,10 @@ import {
   TextField,
   Typography,
 } from '@wso2/oxygen-ui'
+import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { PurposeElementInput } from '../../../types/catalog'
+import { buildElementNameFilter } from '../api/catalogApi'
 import { useElementsQuery } from '../hooks/useCatalogQueries'
 
 export interface SelectedElement extends PurposeElementInput {
@@ -39,8 +41,16 @@ interface PurposeElementPickerProps {
   onChange: (selected: SelectedElement[]) => void
 }
 
-/** Best-effort single-page fetch for the picker; not a true "list everything". */
-const ELEMENT_PICKER_PAGE_SIZE = 200
+/**
+ * The Identity Server caps paginated results at 100 regardless of the limit
+ * requested, so a static fetch can never surface every element once the
+ * catalog grows past that - see
+ * https://github.com/wso2/dpdp-accelerator/issues/7. Typing into the picker
+ * now searches server-side via `buildElementNameFilter`, the same filter the
+ * Elements list page itself uses, instead of filtering this one page client-side.
+ */
+const ELEMENT_PICKER_PAGE_SIZE = 100
+const ELEMENT_SEARCH_DEBOUNCE_MS = 300
 
 /** Multi-select against the Elements catalog, with a per-selection Mandatory toggle. */
 function PurposeElementPicker({
@@ -49,19 +59,41 @@ function PurposeElementPicker({
   onChange,
 }: PurposeElementPickerProps): React.JSX.Element {
   const { t } = useTranslation('common')
-  const elementsQuery = useElementsQuery({ limit: ELEMENT_PICKER_PAGE_SIZE })
+  const [inputValue, setInputValue] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSearchTerm(inputValue), ELEMENT_SEARCH_DEBOUNCE_MS)
+    return () => clearTimeout(timer)
+  }, [inputValue])
+
+  const elementsQuery = useElementsQuery({
+    limit: ELEMENT_PICKER_PAGE_SIZE,
+    filter: buildElementNameFilter(searchTerm),
+  })
   const options = elementsQuery.data?.Elements ?? []
   // A selection seeded from an existing version may not be on this page of
   // options (the query is still pending, or the catalog exceeds the page
   // size), so fall back to the metadata already carried on `selected`
   // rather than silently dropping it from the value and the next submit.
-  const selectedOptions = selected.map(
-    (item) =>
-      options.find((option) => option.id === item.id) ?? {
-        id: item.id,
-        name: item.name,
-        displayName: item.displayName,
-      },
+  //
+  // Memoized so this array keeps the same reference across renders that
+  // don't actually change the selection - otherwise Autocomplete sees a
+  // "new" value on every keystroke (searchTerm/options changing re-renders
+  // this component) and resets its typed input text back to empty, making
+  // the field appear untypable.
+  const selectedOptions = useMemo(
+    () =>
+      selected.map(
+        (item) =>
+          options.find((option) => option.id === item.id) ?? {
+            id: item.id,
+            name: item.name,
+            displayName: item.displayName,
+          },
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- re-deriving on every `options` page change would recreate this on every keystroke, defeating the memoization
+    [selected],
   )
 
   return (
@@ -72,6 +104,13 @@ function PurposeElementPicker({
         loading={elementsQuery.isPending}
         options={options}
         value={selectedOptions}
+        inputValue={inputValue}
+        onInputChange={(_event, newInputValue) => setInputValue(newInputValue)}
+        // The options list is already name-filtered server-side (see
+        // useElementsQuery above); re-filtering client-side here would just
+        // hide results whose display name doesn't share the typed substring
+        // even though the server matched on the underlying name.
+        filterOptions={(currentOptions) => currentOptions}
         getOptionLabel={(option) => option.displayName ?? option.name}
         isOptionEqualToValue={(option, optionValue) => option.id === optionValue.id}
         onChange={(_event, newValue) => {

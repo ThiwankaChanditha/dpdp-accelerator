@@ -231,6 +231,18 @@ public final class DPDPConfigParser {
                 .orElse("DPDP_CONSENT_PORTAL");
     }
 
+    public boolean isConsentApiInvokerProvisioningEnabled() {
+
+        return getConfigurationAsString(DPDPCommonConstants.CONSENT_API_INVOKER_AUTO_PROVISIONING_ENABLED)
+                .map(Boolean::parseBoolean).orElse(true);
+    }
+
+    public String getConsentApiInvokerClientId() {
+
+        return getConfigurationAsString(DPDPCommonConstants.CONSENT_API_INVOKER_CLIENT_ID)
+                .orElse("DPDP_CONSENT_API_INVOKER");
+    }
+
     public int getComplaintsStatutoryDuePeriodDays() {
 
         return getPositiveInt(DPDPCommonConstants.COMPLAINTS_STATUTORY_DUE_PERIOD_DAYS,

@@ -35,6 +35,10 @@ public interface DPDPConfigurationService {
 
     String getConsentPortalClientId();
 
+    boolean isConsentApiInvokerProvisioningEnabled();
+
+    String getConsentApiInvokerClientId();
+
     int getComplaintsStatutoryDuePeriodDays();
 
     long getComplaintsAttachmentMaxSizeBytes();

@@ -39,9 +39,9 @@
     "dataProcessorTopics": "വിഷയങ്ങൾ",
     "dataProcessorSubscriptions": "സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ",
     "dataProcessorEvents": "ഇവന്റുകൾ",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "ഇവന്റുകൾ",
+    "topics": "വിഷയങ്ങൾ",
+    "subscriptions": "സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ"
   },
   "layout": {
     "home": "ഹോം",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "സംസ്ഥാന ഫിൽട്ടർ ഉപയോഗിക്കുന്നതിന് സമ്മത ഐഡി ഫിൽട്ടർ നീക്കം ചെയ്യുക.",
       "propertyFilterLabel": "സമ്മത സ്വത്ത്",
       "removeConsentIdForSubject": "ഉപയോക്തൃ ഐഡി ഫിൽട്ടർ ഉപയോഗിക്കുന്നതിന് സമ്മത ഐഡി ഫിൽട്ടർ നീക്കം ചെയ്യുക.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "ബന്ധം",
+      "relationHelperText": "ബന്ധം അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യാൻ ഒരു ഉപയോക്താവിനെ സജ്ജമാക്കുക",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ഏതെങ്കിലും",
+        "subject": "വിഷയം",
+        "authorizer": "അധികാരി"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "സ്റ്റാറ്റസ്",
         "updated": "അപ്ഡേറ്റ് ചെയ്തത്",
         "resources": "വിഭവങ്ങൾ",
-        "eventType": "ഇവന്റ് തരം",
         "date": "തീയതി",
         "time": "സമയം",
         "state": "സംസ്ഥാനം"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "എല്ലാ ഫിൽട്ടറുകളും മായ്‌ക്കുക",
       "serviceSearchPlaceholder": "സേവനം അനുസരിച്ച് തിരയുക",
       "state": "സംസ്ഥാനം",
-      "relation": "Relation",
+      "relation": "ബന്ധം",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "എല്ലാം",
+        "subject": "എന്റേത്",
+        "authorizer": "എന്നെ നിയന്ത്രിക്കുന്നത്"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "സിസ്റ്റം",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "സമ്മതം സൃഷ്ടിച്ചു",
+        "updated": "സമ്മതം പുതുക്കി",
+        "approved": "അംഗീകരിച്ചു",
+        "rejected": "തിരസ്കരിച്ചു",
+        "authorizeRevoked": "റിവ്യൂവർ റദ്ദാക്കിയത്",
+        "revoked": "റദ്ദാക്കി",
+        "deleted": "ഡിലീറ്റ് ചെയ്തു",
+        "expired": "കാലഹരണപ്പെട്ടു",
+        "unknown": "പുതുക്കിയത്"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "പൂർണ്ണമായ സ്നാപ്പ്ഷോട്ട് ഹിസ്റ്ററി കാണുക",
+      "close": "അടയ്ക്കുക",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ഈ അപ്‌ഡേറ്റിൽ മാറ്റങ്ങളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.",
+        "needsMoreHistory": "ഈ അപ്‌ഡേറ്റിൽ എന്താണ് മാറിയതെന്ന് കാണാൻ കൂടുതൽ ചരിത്രം ലോഡ് ചെയ്യുക.",
+        "initial": "പ്രാരംഭ സ്നാപ്പ്ഷോട്ട്",
+        "added": "ചേർത്തത്",
+        "removed": "നീക്കം ചെയ്തു",
+        "changed": "മാറ്റം വരുത്തി",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "ഇതുവരെ സാധുതയുണ്ട്"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ഈ സമ്മതത്തിന് ഒരു ഹിസ്റ്ററിയും രേഖപ്പെടുത്തിയിട്ടില്ല."
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "വിവരണം",
         "descriptionPlaceholder": "നിങ്ങളുടെ പരാതി വിശദമായി വിവരിക്കുക",
         "descriptionHelp": "ഇത് വേഗത്തിൽ പരിഹരിക്കാൻ ഞങ്ങളെ സഹായിക്കുന്നതിന് കഴിയുന്നത്ര വിശദാംശങ്ങൾ ഉൾപ്പെടുത്തുക.",
+        "descriptionPiiWarning": "നിങ്ങളുടെ ഇമെയിൽ, വിലാസം അല്ലെങ്കിൽ ബാങ്ക് അക്കൗണ്ട് വിശദാംശങ്ങൾ പോലുള്ള സെൻസിറ്റീവ് വ്യക്തിഗത വിവരങ്ങൾ ഉൾപ്പെടുത്തരുത്.",
         "attachments": "അറ്റാച്ച്മെന്റുകൾ (ഓപ്ഷണൽ)",
         "attachmentsHelp": "ഓരോന്നും {{maxSize}} വരെയുള്ള PDF, DOCX, PNG, അല്ലെങ്കിൽ JPG.",
         "uploadButton": "ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക"
@@ -1006,276 +1006,276 @@
     "next": "അടുത്തത്"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "വിഷയങ്ങൾ",
+    "subtitle": "നിങ്ങളുടെ സ്ഥാപനത്തിലുടനീളമുള്ള രജിസ്റ്റർ ചെയ്ത ഇവന്റ് നോട്ടിഫിക്കേഷൻ വിഷയങ്ങൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക",
+    "loadFailed": "ഇപ്പോൾ വിഷയങ്ങൾ ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "സജീവമായത്",
+      "deregistered": "ഡീരജിസ്റ്റർ ചെയ്തു"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "വിഷയത്തിന്റെ പേര്, ഐഡി അല്ലെങ്കിൽ വിവരണം ഉപയോഗിച്ച് തിരയുക",
+      "status": "സ്ഥിതി",
+      "allStatuses": "എല്ലാ സ്റ്റാറ്റസുകളും",
+      "search": "തിരയുക",
+      "clear": "ഫിൽട്ടറുകൾ ഒഴിവാക്കുക"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "വിഷയ മാനേജ്മെൻ്റ് പട്ടിക",
+      "name": "വിഷയത്തിന്റെ പേര്",
+      "topicId": "വിഷയ ഐഡി",
+      "description": "വിവരണം",
+      "status": "സ്ഥിതി",
+      "actions": "പ്രവർത്തനങ്ങൾ",
+      "empty": "രജിസ്റ്റർ ചെയ്ത വിഷയങ്ങളൊന്നും കണ്ടെത്തിയില്ല."
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "വിഷയം രജിസ്റ്റർ ചെയ്യുക",
+      "delete": "വിഷയം ഡീരജിസ്റ്റർ ചെയ്യുക",
+      "alreadyDeregistered": "ഈ വിഷയം ഇതിനകം ഡീ-രജിസ്റ്റർ ചെയ്തു"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
-      "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "registerTitle": "വിഷയം രജിസ്റ്റർ ചെയ്യുക",
+      "registerSubtitle": "നിങ്ങളുടെ സ്ഥാപനത്തിനായി ഒരു പുതിയ ഇവന്റ് നോട്ടിഫിക്കേഷൻ വിഷയം രജിസ്റ്റർ ചെയ്യുക",
+      "nameLabel": "വിഷയത്തിന്റെ പേര്",
+      "namePlaceholder": "ഉദാഹരണത്തിന്, consent. revoke",
+      "nameRequired": "വിഷയത്തിന്റെ പേര് ആവശ്യമാണ്.",
+      "descriptionLabel": "വിവരണം",
+      "descriptionPlaceholder": "വിഷയത്തിന്റെ ഉദ്ദേശ്യത്തെക്കുറിച്ചുള്ള ഓപ്ഷണൽ വിവരണം",
+      "registering": "രജിസ്റ്റർ ചെയ്യുന്നു...",
+      "registerSubmit": "വിഷയം രജിസ്റ്റർ ചെയ്യുക"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ഡീരജിസ്ട്രേഷൻ സ്ഥിരീകരിക്കുക",
+      "message": "വിഷയം \"{{name}}\" ഡീരജിസ്റ്റർ ചെയ്യാൻ നിങ്ങൾ ഉറപ്പാണോ?",
+      "note": "ഒരു വിഷയം ഡീരജിസ്റ്റർ ചെയ്യുന്നത് പുതിയ സബ്സ്ക്രിപ്ഷനുകളും ഈ വിഷയത്തിലേക്കുള്ള ഇവന്റുകളുടെ പ്രസിദ്ധീകരണവും തടയും.",
+      "confirm": "വിഷയം ഡീരജിസ്റ്റർ ചെയ്യുക"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ",
+    "subtitle": "നിങ്ങളുടെ സ്ഥാപനത്തിനായുള്ള ഇവന്റ് നോട്ടിഫിക്കേഷൻ സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ കൈകാര്യം ചെയ്യുകയും നിരീക്ഷിക്കുകയും ചെയ്യുക",
+    "loadFailed": "ഇപ്പോൾ സബ്സ്ക്രിപ്ഷനുകൾ ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "സജീവമായത്",
+      "pending": "തീർപ്പാക്കാത്തവ",
+      "stale": "പഴകിയത്",
+      "deleted": "ഡിലീറ്റ് ചെയ്തു"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "വെബ്ഹൂക്ക്",
+      "poll": "പോൾ"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "എല്ലാ ഇവന്റുകളും",
+      "allDescription": "ഈ വിഷയത്തിൽ പ്രസിദ്ധീകരിച്ച എല്ലാ ഇവന്റുകളും ശ്രദ്ധിക്കുന്നു",
+      "specific": "നിർദ്ദിഷ്ട ഉദ്ദേശ്യങ്ങൾ",
+      "all_except": "ലക്ഷ്യങ്ങൾ ഒഴികെ ബാക്കിയെല്ലാം"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "സബ്‌സ്‌ക്രിപ്ഷൻ ഐഡി, വിഷയം, ഗ്രൂപ്പ്, ഉദ്ദേശ്യം അല്ലെങ്കിൽ URL ഉപയോഗിച്ച് തിരയുക",
+      "status": "സ്ഥിതി",
+      "allStatuses": "എല്ലാ സ്റ്റാറ്റസുകളും",
+      "deliveryMode": "ഡെലിവറി മോഡ്",
+      "allModes": "എല്ലാ മോഡുകളും",
+      "search": "തിരയുക",
+      "clear": "ഫിൽട്ടറുകൾ ഒഴിവാക്കുക"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "സബ്‌സ്‌ക്രിപ്‌ഷൻ മാനേജ്‌മെന്റ് ടേബിൾ",
+      "subscriptionId": "സബ്‌സ്‌ക്രിപ്ഷൻ ഐഡി",
+      "topic": "വിഷയം",
+      "groupId": "ഗ്രൂപ്പ് ഐഡി",
+      "filter": "ഫിൽട്ടർ ചെയ്യുക",
+      "deliveryMode": "ഡെലിവറി മോഡ്",
+      "status": "സ്ഥിതി",
+      "occurredAt": "സംഭവിച്ചത്",
+      "deliveryId": "ഡെലിവറി ഐഡി",
+      "eventId": "ഇവന്റ് ഐഡി",
+      "actions": "പ്രവർത്തനങ്ങൾ",
+      "empty": "സബ്‌സ്‌ക്രിപ്‌ഷനുകളൊന്നും കണ്ടെത്തിയില്ല."
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "സബ്‌സ്‌ക്രിപ്‌ഷൻ രജിസ്റ്റർ ചെയ്യുക",
+      "view": "വിശദാംശങ്ങൾ കാണുക",
+      "verify": "വെബ്‌ഹുക്ക് വീണ്ടും പരിശോധിക്കുക",
+      "delete": "സബ്സ്ക്രിപ്ഷൻ ഡിലീറ്റ് ചെയ്യുക",
+      "alreadyDeleted": "ഈ സബ്സ്ക്രിപ്ഷൻ ഇതിനകം ഡിലീറ്റ് ചെയ്തു.",
+      "backToList": "സബ്സ്ക്രിപ്ഷനുകളിലേക്ക് മടങ്ങുക",
+      "close": "അടയ്ക്കുക"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "registerTitle": "സബ്‌സ്‌ക്രിപ്‌ഷൻ രജിസ്റ്റർ ചെയ്യുക",
+      "registerSubtitle": "പുതിയ ഇവന്റ് നോട്ടിഫിക്കേഷൻ സബ്സ്ക്രിപ്ഷനും ഡെലിവറി മോഡും ക്രമീകരിക്കുക",
+      "topicLabel": "വിഷയം",
+      "topicRequired": "വിഷയം ആവശ്യമാണ്.",
+      "filterModeLabel": "ഉദ്ദേശ്യ ഫിൽട്ടർ മോഡ്",
+      "purposesLabel": "ഉദ്ദേശ്യങ്ങൾ (കോമ ഉപയോഗിച്ച് വേർതിരിച്ചത്)",
+      "purposesPlaceholder": "ഉദാഹരണത്തിന്, MARKETING, ANALYTICS",
+      "purposesHelper": "ഫിൽട്ടർ ചെയ്യാനുള്ള സമ്മത ലക്ഷ്യങ്ങളുടെ കോമ ഉപയോഗിച്ച് വേർതിരിച്ച ലിസ്റ്റ്",
+      "purposesRequired": "നിർദ്ദിഷ്ടമായതോ അല്ലെങ്കിൽ എല്ലാം ഒഴികെയുള്ളതോ ഉപയോഗിച്ച് ഫിൽട്ടർ ചെയ്യുമ്പോൾ ഉദ്ദേശ്യങ്ങൾ ആവശ്യമാണ്.",
+      "deliveryModeLabel": "ഡെലിവറി മോഡ്",
+      "callbackUrlLabel": "വെബ്ഹൂക്ക് കാൾബാക്ക് URL",
+      "callbackUrlRequired": "വെബ്‌ഹൂക്ക് സബ്സ്ക്രിപ്ഷനുകൾക്കായി കാൾബാക്ക് URL ആവശ്യമാണ്.",
+      "callbackUrlInvalid": "ഒരു സാധുവായ URL നൽകുക (http:// അല്ലെങ്കിൽ https://).",
+      "secretLabel": "പങ്കിട്ട രഹസ്യം",
+      "secretRequired": "പങ്കിട്ട രഹസ്യം ആവശ്യമാണ്.",
+      "secretHelper": "വെബ്ഹൂക്ക് പേലോഡുകൾ സൈൻ ഇൻ ചെയ്യാൻ അല്ലെങ്കിൽ പോൾ അഭ്യർത്ഥനകൾക്ക് പ്രാമാണീകരണം നൽകാൻ ഉപയോഗിച്ചിരുന്നു",
+      "generateSecret": "പുതിയ രഹസ്യം ഉണ്ടാക്കുക",
+      "registering": "രജിസ്റ്റർ ചെയ്യുന്നു...",
+      "registerSubmit": "സബ്‌സ്‌ക്രിപ്‌ഷൻ രജിസ്റ്റർ ചെയ്യുക"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "സബ്സ്ക്രിപ്ഷൻ ഡിലീഷൻ സ്ഥിരീകരിക്കുക",
+      "message": "സബ്സ്ക്രിപ്ഷൻ \"{{id}}\" ഡിലീറ്റ് ചെയ്യാൻ നിങ്ങൾ ഉറപ്പാണോ?",
+      "note": "ഈ സബ്സ്ക്രിപ്ഷൻ ഡിലീറ്റ് ചെയ്യുന്നത് പുതിയ ഇവന്റുകൾ ഈ സബ്സ്ക്രൈബർ എൻഡ്പോയിന്റിലേക്ക് അയക്കുന്നത് തടയും.",
+      "confirm": "സബ്സ്ക്രിപ്ഷൻ ഡിലീറ്റ് ചെയ്യുക"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
-      "failed": "Webhook verification failed. Please check endpoint reachability.",
+      "success": "പരിശോധന പിംഗ് വിജയകരമായി അയച്ചു.",
+      "failed": "വെബ്ഹൂക്ക് പരിശോധന പരാജയപ്പെട്ടു. ദയവായി എൻഡ് പോയിന്റ് ലഭ്യത പരിശോധിക്കുക.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "സബ്സ്ക്രിപ്ഷൻ വിശദാംശങ്ങൾ ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
+      "configTitle": "സബ്‌സ്‌ക്രിപ്ഷൻ കോൺഫിഗറേഷൻ",
+      "configSubtitle": "പൊതു മെറ്റാഡാറ്റ, റൂട്ടിംഗ് പാരാമീറ്ററുകൾ, ഫിൽട്ടറിംഗ് നിയമങ്ങൾ",
+      "eventsTitle": "ഡെലിവറി ചരിത്രവും എക്സിക്യൂഷൻ ലോഗും",
+      "eventsSubtitle": "ഈ സബ്‌സ്‌ക്രൈബറിലേക്ക് അയച്ച ഏറ്റവും പുതിയ ഇവന്റ് ഡെലിവറികളും വീണ്ടും ശ്രമിച്ചുള്ള ശ്രമങ്ങളും",
+      "createdAt": "സൃഷ്ടിച്ചത്",
+      "updatedAt": "അവസാനം പുതുക്കിയത്"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ഡെലിവറി ഇവന്റ് ലോഗ് ടേബിൾ",
+      "empty": "ഡെലിവറി ഇവന്റുകളൊന്നും ഇതുവരെ രേഖപ്പെടുത്തിയിട്ടില്ല.",
+      "auditAction": "ശ്രമങ്ങൾ",
+      "viewHistory": "ഡെലിവറി ശ്രമങ്ങൾ കാണുക"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "ഇവന്റ് ഡെലിവറി എക്സിക്യൂഷൻ ഓഡിറ്റ്",
+      "loadFailed": "ഡെലിവറി ഹിസ്റ്ററി ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
+      "completion": "പൂർത്തീകരണ തെളിവ്",
+      "attemptsTitle": "ഡെലിവറി ശ്രമങ്ങളുടെ കാലഗണന",
+      "attemptNumber": "ശ്രമം",
+      "attemptStatus": "സ്ഥിതി",
+      "httpStatus": "HTTP സ്റ്റാറ്റസ്",
+      "timestamp": "timestamp",
+      "errorDetails": "പിശക് വിശദാംശങ്ങൾ",
+      "noAttempts": "എക്സിക്യൂഷൻ ശ്രമങ്ങളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല."
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ഇവന്റുകൾ",
+    "subtitle": "പ്രസിദ്ധീകരിച്ച ഇവന്റുകൾ കാണുകയും നിങ്ങളുടെ സ്ഥാപനത്തിലുടനീളമുള്ള ഇവന്റ് നോട്ടിഫിക്കേഷനുകൾ നിരീക്ഷിക്കുകയും ചെയ്യുക",
+    "loadFailed": "ഇവന്റുകൾ ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "ഡെലിവറി ഐഡി, ഇവന്റ് ഐഡി അല്ലെങ്കിൽ വിഷയം ഉപയോഗിച്ച് തിരയുക...",
+      "status": "സ്ഥിതി",
+      "allStatuses": "എല്ലാ സ്റ്റാറ്റസുകളും",
+      "topic": "വിഷയം",
+      "allTopics": "എല്ലാ വിഷയങ്ങളും",
+      "groupId": "ഗ്രൂപ്പ് ഐഡി",
+      "groupIdPlaceholder": "ഗ്രൂപ്പ് ഐഡി അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യുക...",
+      "search": "തിരയുക",
+      "clear": "ഒഴിവാക്കുക",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "എല്ലാം",
+      "pending": "തീർപ്പാക്കാത്തവ",
+      "delivered": "ഡെലിവറി ചെയ്തു",
+      "failed": "പരാജയപ്പെട്ടു",
+      "completed": "പൂർത്തിയായി",
+      "acknowledged": "അംഗീകരിച്ചത്",
+      "in_flight": "ഇൻ ഫ്ലൈറ്റ്",
+      "expired": "കാലഹരണപ്പെട്ടു"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "എല്ലാം"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "പ്രസിദ്ധീകരിച്ച ഇവന്റുകളുടെ ലിസ്റ്റ് ടേബിൾ",
+      "deliveryId": "ഡെലിവറി ഐഡി",
+      "eventId": "ഇവന്റ് ഐഡി",
+      "topic": "വിഷയം",
+      "groupId": "ഗ്രൂപ്പ് ഐഡി",
+      "mode": "മോഡ്",
+      "purposes": "ഉദ്ദേശ്യങ്ങൾ",
+      "deliveries": "ഡെലിവറികൾ",
+      "subscriber": "സബ്‌സ്‌ക്രൈബർ",
+      "subscribers": "സബ്‌സ്‌ക്രൈബർമാർ",
+      "noSubscribers": "സബ്‌സ്‌ക്രൈബർമാരില്ല",
+      "status": "സ്ഥിതി",
+      "occurredAt": "സംഭവിച്ചത്",
+      "actions": "പ്രവർത്തനങ്ങൾ",
+      "empty": "ഇവന്റുകളൊന്നും കണ്ടെത്തിയില്ല."
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ഇവന്റ് പ്രസിദ്ധീകരിക്കുക",
+      "view": "വിശദാംശങ്ങൾ കാണുക",
+      "copyPayload": "പേലോഡ് പകർത്തുക",
+      "close": "അടയ്ക്കുക"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
-      "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
-      "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "publishTitle": "ഇവന്റ് പ്രസിദ്ധീകരിക്കുക",
+      "publishSubtitle": "സബ്‌സ്‌ക്രൈബർ ഫാൻ-ഔട്ട് പ്രവർത്തനക്ഷമമാക്കാൻ ഒരു ഇവന്റ് നോട്ടിഫിക്കേഷൻ പ്രസിദ്ധീകരിക്കുക",
+      "topicLabel": "വിഷയം",
+      "topicRequired": "വിഷയം ആവശ്യമാണ്.",
+      "groupIdLabel": "ഗ്രൂപ്പ് ഐഡി (ഓപ്ഷണൽ)",
+      "groupIdPlaceholder": "ഉദാഹരണത്തിന്, consumer-group-01",
+      "groupIdHelper": "ലക്ഷ്യമിട്ടുള്ള ഡെലിവറിക്കുള്ള ഓപ്ഷണൽ ഗ്രൂപ്പ് ഐഡന്റിഫയർ",
+      "purposesLabel": "ഉദ്ദേശ്യങ്ങൾ (ഓപ്ഷണൽ, കോമ ഉപയോഗിച്ച് വേർതിരിച്ചത്)",
+      "purposesPlaceholder": "ഉദാഹരണത്തിന്, MARKETING, ANALYTICS",
+      "purposesHelper": "ഈ ഇവന്റുമായി ബന്ധപ്പെട്ട സമ്മത ലക്ഷ്യങ്ങളുടെ കോമ ഉപയോഗിച്ച് വേർതിരിച്ച ലിസ്റ്റ്",
+      "payloadLabel": "പേലോഡ് (JSON)",
+      "payloadHelper": "ഇവന്റ് ഡാറ്റയെ പ്രതിനിധീകരിക്കുന്ന സാധുവായ JSON ഒബ്ജക്റ്റ്",
+      "payloadRequired": "പേലോഡ് ആവശ്യമാണ്.",
+      "payloadMustBeObject": "പേലോഡ് ഒരു സാധുവായ JSON ഒബ്ജക്റ്റ് ആയിരിക്കണം.",
+      "invalidJson": "ഒരു സാധുവായ JSON ഫോർമാറ്റ് നൽകുക.",
+      "publishing": "പ്രസിദ്ധീകരിക്കുന്നു...",
+      "publishSubmit": "ഇവന്റ് പ്രസിദ്ധീകരിക്കുക",
+      "publishSuccess": "ഇവന്റ് വിജയകരമായി പ്രസിദ്ധീകരിച്ചു."
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ഇവന്റ് വിശദാംശങ്ങൾ",
+      "backToEvents": "ഇവന്റുകളിലേക്ക് മടങ്ങുക",
+      "loadFailed": "ഇവന്റ് വിശദാംശങ്ങൾ ലോഡ് ചെയ്യാൻ കഴിയില്ല.",
+      "metadataTitle": "ഇവന്റ് മെറ്റാഡാറ്റ",
+      "metadataSubtitle": "ഐഡൻ്റിഫയറുകൾ, വിഷയങ്ങൾ, ഡിസ്പാച്ച് ടൈംസ്റ്റാമ്പുകൾ",
+      "payloadTitle": "ഇവന്റ് പേലോഡ്",
+      "historyTitle": "ഡെലിവറി ശ്രമ ചരിത്രം",
+      "historySubtitle": "കാലക്രമീകൃതമായ എക്സിക്യൂഷൻ ശ്രമങ്ങളും HTTP പ്രതികരണ സ്റ്റാറ്റസും",
+      "noHistory": "ഡെലിവറി ശ്രമങ്ങളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.",
+      "completionTitle": "പൂർത്തീകരണ തെളിവ്",
+      "allPurposes": "എല്ലാ ലക്ഷ്യങ്ങളും",
+      "createdAt": "സൃഷ്ടിച്ചത്",
+      "deliveriesTitle": "ഡൗൺസ്ട്രീം സബ്സ്ക്രൈബർ ഡെലിവറികൾ",
+      "deliveriesSubtitle": "ഈ ഇവന്റിനായി സൃഷ്ടിച്ച എല്ലാ ഡെലിവറികളും പൂർത്തീകരണ സ്റ്റാറ്റസുകളും",
+      "noDeliveries": "ഡെലിവറികൾ ഒന്നും ഉണ്ടാക്കിയിട്ടില്ല",
+      "noDeliveriesMessage": "ഈ ഇവന്റ് നടന്നപ്പോൾ ഈ വിഷയവുമായി പൊരുത്തപ്പെടുന്ന സബ്‌സ്‌ക്രിപ്‌ഷനുകളൊന്നും നിലവിലില്ല.",
+      "copyPayloadSuccess": "പേലോഡ് ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തിയിരിക്കുന്നു.",
+      "copyPayloadFailed": "പേലോഡ് ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്താൻ പരാജയപ്പെട്ടു.",
+      "subscriber": "സബ്‌സ്‌ക്രൈബർ",
+      "subscribers": "സബ്‌സ്‌ക്രൈബർമാർ"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
-    "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
-    "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
+    "deleteMenuItem": "എന്റെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യുക",
+    "deleteError": "നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യാൻ കഴിയില്ല. വീണ്ടും ശ്രമിക്കുക.",
+    "deletePendingApproval": "നിങ്ങളുടെ ഡിലീഷൻ അഭ്യർത്ഥന അംഗീകാരത്തിനായി സമർപ്പിച്ചിരിക്കുന്നു. ഒരു അഡ്മിനിസ്ട്രേറ്റർ അംഗീകരിക്കുന്നത് വരെ നിങ്ങളുടെ അക്കൗണ്ട് സജീവമായിരിക്കും.",
+    "deleteAlreadyRequested": "നിങ്ങളുടെ അക്കൗണ്ടിന് ഇതിനകം അംഗീകാരത്തിനായി കാത്തിരിക്കുന്ന ഒരു ഡിലീഷൻ അഭ്യർത്ഥനയുണ്ട്.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "അക്കൗണ്ട്",
+      "title": "നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യണോ?",
+      "message": "ഇത് നിങ്ങളുടെ അക്കൗണ്ട് സ്ഥിരമായി ഡിലീറ്റ് ചെയ്യുകയും നിങ്ങളെ സൈൻ ഔട്ട് ചെയ്യുകയും ചെയ്യുന്നു.",
+      "note": "ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല. ഈ പോർട്ടലിലേക്കുള്ള നിങ്ങളുടെ ആക്‌സസ് നഷ്ടപ്പെടുകയും നിങ്ങളുടെ സൈൻ-ഇൻ ഉടനടി പ്രവർത്തനരഹിതമാവുകയും ചെയ്യും.",
+      "confirm": "എന്റെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്യുക"
     },
     "deletedPage": {
-      "title": "Your account has been deleted",
-      "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "title": "നിങ്ങളുടെ അക്കൗണ്ട് ഡിലീറ്റ് ചെയ്തു",
+      "body": "നിങ്ങളുടെ അക്കൗണ്ടും സൈൻ-ഇന്നും നീക്കം ചെയ്തിട്ടുണ്ട്. ഇത് ഒരു തെറ്റായിരുന്നെങ്കിൽ, നിങ്ങളുടെ അഡ്മിനിസ്ട്രേറ്ററുമായി ബന്ധപ്പെടുക.",
+      "signInLink": "സൈൻ-ഇന്നിലേക്ക് പോകുക"
     }
   }
 }

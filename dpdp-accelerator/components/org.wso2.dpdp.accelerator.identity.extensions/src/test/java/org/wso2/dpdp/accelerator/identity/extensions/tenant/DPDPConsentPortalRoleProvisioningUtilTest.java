@@ -52,6 +52,7 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
     private static final String ROLE_AUDIENCE = "organization";
     private static final String ADMIN_ROLE_ID = "role-admin-1234";
     private static final String USER_ROLE_ID = "role-user-1234";
+    private static final String DPO_ROLE_ID = "role-dpo-1234";
 
     @Mock
     private RoleManagementService roleManagementService;
@@ -75,6 +76,10 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
         when(roleManagementService.addRole(eq(DPDPConsentPortalRoleProvisioningUtil.USER_ROLE), anyList(), anyList(),
                 anyList(), eq(ROLE_AUDIENCE), eq(ORGANIZATION_ID), eq(TENANT_DOMAIN)))
                 .thenReturn(userRoleBasicInfo);
+        RoleBasicInfo dpoRoleBasicInfo = roleBasicInfo(DPO_ROLE_ID);
+        when(roleManagementService.addRole(eq(DPDPConsentPortalRoleProvisioningUtil.DPO_ROLE), anyList(), anyList(),
+                anyList(), eq(ROLE_AUDIENCE), eq(ORGANIZATION_ID), eq(TENANT_DOMAIN)))
+                .thenReturn(dpoRoleBasicInfo);
     }
 
     @Test
@@ -83,15 +88,18 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
         List<String> adminScopes = Arrays.asList("internal_consent_mgt_consent_view",
                 "consent:status-history:view:any", "consent:history:view:any");
         List<String> userScopes = Arrays.asList("consent:status-history:view:self", "consent:history:view:self");
+        List<String> dpoScopes = Arrays.asList("complaints:read:any", "complaints:write:any");
 
         List<RoleV2> roles = DPDPConsentPortalRoleProvisioningUtil.createRoles(TENANT_DOMAIN, adminScopes,
-                userScopes);
+                userScopes, dpoScopes);
 
-        assertEquals(roles.size(), 2);
+        assertEquals(roles.size(), 3);
         assertEquals(roles.get(0).getId(), ADMIN_ROLE_ID);
         assertEquals(roles.get(0).getName(), DPDPConsentPortalRoleProvisioningUtil.ADMIN_ROLE);
         assertEquals(roles.get(1).getId(), USER_ROLE_ID);
         assertEquals(roles.get(1).getName(), DPDPConsentPortalRoleProvisioningUtil.USER_ROLE);
+        assertEquals(roles.get(2).getId(), DPO_ROLE_ID);
+        assertEquals(roles.get(2).getName(), DPDPConsentPortalRoleProvisioningUtil.DPO_ROLE);
 
         ArgumentCaptor<List<Permission>> adminPermissionsCaptor = ArgumentCaptor.forClass(List.class);
         verify(roleManagementService).addRole(eq(DPDPConsentPortalRoleProvisioningUtil.ADMIN_ROLE),
@@ -105,7 +113,13 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
                 eq(ROLE_AUDIENCE), eq(ORGANIZATION_ID), eq(TENANT_DOMAIN));
         assertEquals(permissionNames(userPermissionsCaptor.getValue()), userScopes);
 
-        verify(roleManagementService, times(2)).addRole(anyString(), anyList(), anyList(), anyList(), anyString(),
+        ArgumentCaptor<List<Permission>> dpoPermissionsCaptor = ArgumentCaptor.forClass(List.class);
+        verify(roleManagementService).addRole(eq(DPDPConsentPortalRoleProvisioningUtil.DPO_ROLE),
+                eq(Collections.emptyList()), eq(Collections.emptyList()), dpoPermissionsCaptor.capture(),
+                eq(ROLE_AUDIENCE), eq(ORGANIZATION_ID), eq(TENANT_DOMAIN));
+        assertEquals(permissionNames(dpoPermissionsCaptor.getValue()), dpoScopes);
+
+        verify(roleManagementService, times(3)).addRole(anyString(), anyList(), anyList(), anyList(), anyString(),
                 anyString(), anyString());
     }
 
@@ -113,7 +127,7 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
     public void createRolesHandlesEmptyScopeLists() throws Exception {
 
         DPDPConsentPortalRoleProvisioningUtil.createRoles(TENANT_DOMAIN, Collections.emptyList(),
-                Collections.emptyList());
+                Collections.emptyList(), Collections.emptyList());
 
         verify(roleManagementService).addRole(eq(DPDPConsentPortalRoleProvisioningUtil.ADMIN_ROLE),
                 eq(Collections.emptyList()), eq(Collections.emptyList()), eq(Collections.emptyList()),
@@ -133,7 +147,7 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
                 ORGANIZATION_ID, TENANT_DOMAIN)).thenReturn(false);
 
         List<RoleV2> roles = DPDPConsentPortalRoleProvisioningUtil.createRoles(TENANT_DOMAIN, Collections.emptyList(),
-                Collections.emptyList());
+                Collections.emptyList(), Collections.emptyList());
 
         assertEquals(roles.get(0).getId(), ADMIN_ROLE_ID);
         verify(roleManagementService, never()).addRole(eq(DPDPConsentPortalRoleProvisioningUtil.ADMIN_ROLE),
@@ -164,7 +178,8 @@ public class DPDPConsentPortalRoleProvisioningUtilTest {
         when(roleManagementService.getRole(USER_ROLE_ID, TENANT_DOMAIN)).thenReturn(userRole);
 
         List<String> adminScopes = Arrays.asList("consent:status-history:view:any", "consent:history:view:any");
-        DPDPConsentPortalRoleProvisioningUtil.createRoles(TENANT_DOMAIN, adminScopes, Collections.emptyList());
+        DPDPConsentPortalRoleProvisioningUtil.createRoles(TENANT_DOMAIN, adminScopes, Collections.emptyList(),
+                Collections.emptyList());
 
         ArgumentCaptor<List<Permission>> addedCaptor = ArgumentCaptor.forClass(List.class);
         verify(roleManagementService).updatePermissionListOfRole(eq(ADMIN_ROLE_ID), addedCaptor.capture(),

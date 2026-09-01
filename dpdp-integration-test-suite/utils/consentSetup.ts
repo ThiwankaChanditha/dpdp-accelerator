@@ -17,7 +17,7 @@
  */
 
 import { expect, type Page } from '@playwright/test'
-import type { ConsentApiClient } from '../clients/ConsentApiClient'
+import type { AuthorizationEntry, ConsentApiClient } from '../clients/ConsentApiClient'
 import type { ConsentCleanupTracker } from '../fixtures/auth.fixtures'
 import { ElementFormDialog } from '../pages/ElementFormDialog'
 import { ElementListPage } from '../pages/ElementListPage'
@@ -65,6 +65,17 @@ export async function seedConsent(
   subjectId: string,
   state: 'ACTIVE' | 'REJECTED' | 'PENDING',
   serviceId: string = randomServiceId(),
+  /** Epoch millis. Omit for no expiry - only the consent-expiry reconciliation tests need this. */
+  expiryTime?: number,
+  /**
+   * Only meaningful when `state === 'PENDING'`. Defaults to a single self-authorization (the
+   * subject approving their own consent) - every caller before this parameter existed relied on
+   * exactly that. Pass a different `userId`/`type` (e.g. `{ userId: parentId, type: 'PARENT' }`)
+   * to seed a delegated consent instead, where the subject and the authorizer are different
+   * people - see tests/03-consents/03.07-user-viewing-consent-history.spec.ts's delegated-consent
+   * case.
+   */
+  authorizations: AuthorizationEntry[] = [{ userId: subjectId, type: 'USER' }],
 ): Promise<SeededConsent> {
   const element = randomElementProfile()
   const elementDisplayName = element.displayName
@@ -110,9 +121,8 @@ export async function seedConsent(
     // not a test bug - see tests/plan.md.
     language: 'en',
     purposes: [{ id: purposeId, elements: [{ id: elementId }] }],
-    ...(state === 'PENDING'
-      ? { authorizations: [{ userId: subjectId, type: 'USER' }] }
-      : { state }),
+    ...(state === 'PENDING' ? { authorizations } : { state }),
+    ...(expiryTime === undefined ? {} : { expiryTime }),
   })
   expect(consentResponse.status()).toBe(201)
   const consent = (await consentResponse.json()) as { id: string }

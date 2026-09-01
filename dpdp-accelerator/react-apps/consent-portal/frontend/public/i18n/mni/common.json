@@ -24,13 +24,13 @@
     "ariaLabel": "অহানবা নেভিগেসন",
     "dashboard": "ড্যাসবোর্ড (Dashboard)",
     "consent": "য়ানবা (Consent)",
-    "allConsents": "My Consents",
-    "pendingConsents": "My Pending Consents",
+    "allConsents": "ꯑꯩꯒꯤ ꯀꯟꯁꯦꯟꯠꯁꯤꯡ",
+    "pendingConsents": "ꯑꯩꯒꯤ ꯄꯦꯟꯗꯤꯡ ꯀꯟꯁꯦꯟꯠꯁꯤꯡ",
     "catalog": "সংজ্ঞাসিং (Definitions)",
     "purposes": "পান্দমশিং (Purposes)",
     "elements": "মচাকশিং (Elements)",
     "administration": "শাসন/পরিচালনা",
-    "adminConsents": "All Consents",
+    "adminConsents": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯌꯥꯅꯕ",
     "nominations": "মনোনয়ন (Nominations)",
     "nomineeActivation": "মনোনীত মীওই থবক খৌবা",
     "myComplaints": "ইগী ৱাকৎশিং",
@@ -39,9 +39,9 @@
     "dataProcessorTopics": "হিরমশিং",
     "dataProcessorSubscriptions": "সাবস্ক্রিপসনশিং",
     "dataProcessorEvents": "থৌদোকশিং",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "ꯏꯚꯦꯟꯠꯁꯤꯡ",
+    "topics": "ꯇꯣꯄꯤꯛꯁꯤꯡ",
+    "subscriptions": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ"
   },
   "layout": {
     "home": "য়ুম (Home)",
@@ -75,9 +75,9 @@
     "typeBreakdownSubtitle": "নহাৎকী য়ানবা পুম্নমক মখালগী মাতুংইন্না খায়দোকপা",
     "noTypes": "য়ানবা মখাল লৈত্রে।",
     "viewPending": "ঙাইরিবা য়ানবা পুম্নমক য়েংবিয়ু",
-    "serviceBreakdown": "Consent breakdown by service",
-    "serviceBreakdownSubtitle": "All of your consents grouped by requesting service",
-    "noServices": "No services are available yet."
+    "serviceBreakdown": "ꯁꯔꯚꯤꯁ ꯃꯈꯥꯗ ꯀꯟꯁꯦꯟꯠ ꯕ꯭ꯔꯦꯛꯗꯥꯎꯟ",
+    "serviceBreakdownSubtitle": "ꯅꯍꯥꯛꯀꯤ ꯀꯟꯁꯦꯟꯠ ꯄꯨꯝꯅꯃꯛ ꯔꯤꯀ꯭ꯕꯦꯁꯠ ꯇꯧꯔꯤꯕ ꯁꯔꯚꯤꯁꯀꯤ ꯃꯈꯥꯗ ꯒ꯭ꯔꯨꯞ ꯇꯧꯔꯤ",
+    "noServices": "ꯁꯔꯕꯤꯁ ꯑꯃꯠꯇ ꯍꯧꯖꯤꯛ ꯐꯪꯗꯦ꯫"
   },
   "adminConsents": {
     "title": "য়ানবা কেন্দ্র",
@@ -90,16 +90,16 @@
       "groupIds": "গ্রুপ আইডিসিং",
       "commaSeparatedUsers": "কমা শীজিন্নদুনা কয়াংশিং খাইদোকবিয়ু",
       "active": "অ্যাক্টিভ ফিল্টরশিং",
-      "serviceId": "Service",
-      "removeConsentIdForState": "Remove the Consent ID filter to use the state filter.",
-      "propertyFilterLabel": "Consent property",
-      "removeConsentIdForSubject": "Remove the Consent ID filter to use the User ID filter.",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "serviceId": "ꯁꯔꯚꯤꯁ",
+      "removeConsentIdForState": "ꯁ꯭ꯇꯦꯠ ꯐꯤꯜꯇꯔ ꯁꯤꯖꯤꯟꯅꯅꯕ ꯀꯟꯁꯦꯟꯠ ꯑꯥꯏ.ꯗꯤ. ꯐꯤꯜꯇꯔ ꯑꯗꯨ ꯂꯧꯊꯣꯛꯎ꯫",
+      "propertyFilterLabel": "ꯀꯟꯁꯦꯟꯠ ꯄ꯭ꯔꯣꯄꯔꯇꯤ",
+      "removeConsentIdForSubject": "ꯌꯨꯖꯔ ꯑꯥꯏ.ꯗꯤ. ꯐꯤꯜꯇꯔ ꯁꯤꯖꯤꯟꯅꯅꯕ ꯀꯟꯁꯦꯟꯠ ꯑꯥꯏ.ꯗꯤ. ꯐꯤꯜꯇꯔ ꯑꯗꯨ ꯂꯧꯊꯣꯛꯎ꯫",
+      "relation": "ꯔꯤꯂꯦꯁꯟ",
+      "relationHelperText": "ꯔꯤꯂꯦꯁꯟꯒꯤ ꯃꯈꯥꯗ ꯐꯤꯜꯇꯔ ꯇꯧꯅꯕ ꯌꯨꯖꯔ ꯑꯃ ꯁꯦꯠ ꯇꯧ꯫",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "ꯀꯔꯤꯒꯨꯝꯕ",
+        "subject": "ꯁꯕꯖꯦꯛꯠ",
+        "authorizer": "ꯑꯣꯊꯣꯔꯥꯏꯖꯔ"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "ফিভম",
         "updated": "নৌহোংবা",
         "resources": "রিসোর্সশিং",
-        "eventType": "থৌদোক মখাল",
         "date": "তারিখ",
         "time": "তম্পাক/সময়",
         "state": "State"
@@ -172,14 +171,14 @@
         "required": "মথৌ তাবা",
         "optional": "অপাম্বা অমা (Optional)"
       },
-      "service": "Service",
+      "service": "ꯁꯔꯚꯤꯁ",
       "elementCount": "{{count}} elements",
       "elementCount_one": "{{count}} element",
       "elementCount_other": "{{count}} elements",
-      "noAuthorizations": "No authorizations are recorded for this consent.",
-      "noElements": "No elements are associated with this purpose.",
-      "noPurposes": "No purposes are associated with this consent.",
-      "noProperties": "No properties are associated with this consent."
+      "noAuthorizations": "ꯍꯥꯏꯅꯕ ꯑꯁꯤꯒꯤꯗꯃꯛ ꯑꯌꯥꯕ ꯄꯤꯕꯒꯤ ꯔꯦꯀꯣꯔꯗ ꯂꯩꯇꯦ",
+      "noElements": "ꯍꯥꯏꯅꯕ ꯑꯁꯤꯒ ꯃꯔꯤ ꯂꯩꯅꯕ ꯑꯦꯂꯤꯃꯦꯟꯠ ꯑꯃꯠꯇ ꯂꯩꯇꯦ",
+      "noPurposes": "ꯃꯁꯤꯒꯤ ꯌꯥꯅꯕꯒꯤꯗꯃꯛ ꯄꯔꯄꯖ ꯑꯃꯠꯇ ꯂꯩꯇꯦ꯫",
+      "noProperties": "ꯃꯁꯤꯒꯤ ꯌꯥꯅꯕꯒꯤꯗꯃꯛ ꯄ꯭ꯔꯣꯄꯔꯇꯤ ꯑꯃꯠꯇ ꯂꯩꯇꯦ꯫"
     },
     "actions": {
       "view": "য়েংবিয়ু",
@@ -205,9 +204,9 @@
         "toggleWithDetails": "{{purposeLabel}} গী মনুংদা {{elementLabel}} গী অয়াবা ওন্থোক-ওনশিন তৌবিয়ু",
         "loading": "য়ানবা অকুপ্পা মরোল লোড তৌরি...",
         "noMandatory": "য়ানবা অসিগী মথৌ তাবা তঙাইফদবা লৈত্রে।",
-        "confirm": "Approve Consent",
-        "message": "Are you sure you want to approve this consent?",
-        "note": "Approving grants every purpose and element requested by this consent."
+        "confirm": "ꯀꯟꯁꯦꯟꯠ ꯑꯦꯞꯔꯨꯚ ꯇꯧ꯫ ꯑꯦꯞꯔꯨꯚ ꯇꯧꯔꯦ",
+        "message": "ꯅꯍꯥꯛꯅ ꯀꯟꯁꯦꯟꯠ ꯑꯁꯤ ꯑꯦꯞꯔꯨꯚ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+        "note": "ꯑꯦꯞꯔꯨꯚ ꯇꯧꯔꯤꯕ ꯑꯁꯤꯅ ꯀꯟꯁꯦꯟꯠ ꯑꯁꯤꯅ ꯔꯤꯀ꯭ꯕꯦꯁꯠ ꯇꯧꯔꯤꯕ ꯄꯔꯄꯁ ꯑꯃꯁꯨꯡ ꯑꯦꯂꯤꯃꯦꯟꯠ ꯈꯨꯗꯤꯡꯃꯛꯀꯤꯗꯃꯛꯅꯤ꯫"
       },
       "rejection": {
         "title": "য়াদবা চেকনবা",
@@ -252,13 +251,13 @@
       "endDateAriaLabel": "লোইবা তারিখ ফিল্টর",
       "clear": "পুম্নমক সেংদোকপা",
       "clearAriaLabel": "ফিল্টর পুম্নমক সেংদোকপা",
-      "serviceSearchPlaceholder": "Search by service",
+      "serviceSearchPlaceholder": "ꯁꯔꯚꯤꯁꯀꯤ ꯃꯈꯥꯗ ꯁꯔꯆ ꯇꯧ꯫",
       "state": "State",
-      "relation": "Relation",
+      "relation": "ꯔꯤꯂꯦꯁꯟ",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "ꯄꯨꯝꯅꯃꯛ",
+        "subject": "ꯑꯩꯒꯤ ꯑꯣꯏꯕ",
+        "authorizer": "ꯑꯩꯅ ꯃꯦꯅꯦꯖ ꯇꯧꯈꯤ"
       }
     },
     "messages": {
@@ -285,38 +284,38 @@
         "updated": "নৌহোংবা",
         "expiration": "লোইবা নুমিত",
         "actions": "থবকশিং",
-        "service": "Service",
+        "service": "ꯁꯔꯚꯤꯁ",
         "state": "State"
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "ꯁꯤꯁ꯭ꯇꯦꯝ",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "ꯀꯟꯁꯦꯟꯠ ꯁꯦꯝꯈꯤ",
+        "updated": "ꯀꯟꯁꯦꯟꯠ ꯑꯞꯗꯦꯠ ꯇꯧꯈꯤ",
+        "approved": "ꯑꯦꯞꯔꯨꯚ ꯇꯧꯔꯤ",
+        "rejected": "ꯔꯤꯖꯦꯛꯠ ꯇꯧꯔꯦ",
+        "authorizeRevoked": "ꯔꯤꯚꯤꯌꯨꯑꯔꯅ ꯔꯤꯚꯣꯛ ꯇꯧꯔꯦ",
+        "revoked": "ꯔꯤꯚꯣꯛ ꯇꯧꯔꯦ",
+        "deleted": "ꯗꯤꯂꯤꯠ ꯇꯧꯔꯦ",
+        "expired": "ꯃꯇꯝ ꯂꯣꯏꯔꯦ",
+        "unknown": "ꯑꯞꯗꯦꯠ ꯇꯧꯔꯦ꯫"
       },
       "description": "{{action}} by {{actor}}",
-      "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "viewFullSnapshot": "ꯐꯨꯜ ꯁ꯭ꯅꯥꯞꯁꯣꯠ ꯍꯤꯁꯇꯔꯤ ꯌꯦꯡꯎ",
+      "close": "ꯊꯤꯡꯖꯤꯟꯗꯣꯛꯄ",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "ꯑꯅꯧꯕ ꯑꯍꯣꯡꯕ ꯑꯁꯤꯗ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯈꯤꯗꯦ",
+        "needsMoreHistory": "ꯍꯥꯏꯔꯤꯕ ꯑꯞꯗꯦꯠ ꯑꯁꯤꯗ ꯀꯔꯤ ꯍꯣꯡꯈꯤꯕꯒꯦ ꯍꯥꯏꯕ ꯎꯅꯕ ꯑꯍꯣꯔꯤ ꯑꯇꯣꯞꯄ ꯂꯣꯗ ꯇꯧ꯫",
+        "initial": "ꯑꯍꯥꯟꯕ ꯁ꯭ꯅꯦꯞꯁꯣꯠ",
+        "added": "ꯍꯥꯞꯈꯤ",
+        "removed": "ꯔꯤꯃꯨꯚ ꯇꯧꯔꯦ",
+        "changed": "ꯍꯣꯡꯈꯤ",
         "field": {
-          "expiryTime": "Valid until"
+          "expiryTime": "ꯚꯦꯂꯤꯗ ꯑꯟꯇꯤꯜ"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "ꯃꯁꯤꯒꯤ ꯌꯥꯅꯕꯒꯤꯗꯃꯛ ꯄꯨꯋꯥꯔꯤ ꯑꯃꯠꯇ ꯂꯩꯇꯦ꯫"
     }
   },
   "catalog": {
@@ -339,10 +338,10 @@
       "view": "য়েংবিয়ু",
       "viewElement": "{{name}} য়েংবিয়ু",
       "viewPurpose": "{{name}} য়েংবিয়ু",
-      "addVersion": "Add Version",
-      "reset": "Reset",
-      "search": "Search",
-      "setLatest": "Set as latest"
+      "addVersion": "ꯚꯔꯁꯟ ꯍꯥꯞꯄ",
+      "reset": "ꯔꯤꯁꯦꯠ ꯇꯧ꯫",
+      "search": "ꯁꯔꯆ",
+      "setLatest": "ꯂꯦꯇꯦꯁꯠ ꯑꯣꯏꯅ ꯁꯦꯠ ꯇꯧ꯫"
     },
     "fields": {
       "actions": "থবকশিং",
@@ -373,7 +372,7 @@
       "schema": "স্কিমা (Schema)",
       "type": "মখাল",
       "version": "ভার্সন",
-      "latestVersion": "Latest version"
+      "latestVersion": "ꯑꯅꯧꯕ ꯚꯔꯁꯟ"
     },
     "help": {
       "commaSeparatedGroups": "কমা শীজিন্নদুনা কয়াংশিং খাইদোকবিয়ু",
@@ -419,22 +418,22 @@
         "nameLabel": "মমিং",
         "nameRequired": "মমিং ইবা তঙাইফাই।",
         "displayNameLabel": "উৎকদবা মমিং",
-        "nameHelp": "A unique machine identifier, for example \"email-address\".",
-        "submitting": "Creating...",
-        "duplicateName": "An element named \"{{name}}\" already exists. Choose a different name.",
+        "nameHelp": "ꯑꯈꯟꯅꯕ ꯃꯦꯁꯤꯟ ꯑꯥꯏꯗꯦꯟꯇꯤꯐꯥꯏꯌꯔ, ꯈꯨꯗꯝ ꯑꯣꯏꯅ \"email-address\"।",
+        "submitting": "ꯁꯦꯝꯃꯤꯡ...",
+        "duplicateName": "\"{{name}}\" ꯀꯧꯕ ꯑꯦꯂꯤꯃꯦꯟꯠ ꯑꯃ ꯍꯥꯟꯅꯗꯒꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄ ꯃꯃꯤꯡ ꯑꯃ ꯈꯟꯎ꯫",
         "createFailed": "Something went wrong and the element could not be created. Please try again.",
-        "propertyDuplicateKey": "This key is used more than once. Use a different key for each property.",
-        "propertyKeyRequired": "Add a key, or this value will not be saved."
+        "propertyDuplicateKey": "ꯃꯁꯤꯒꯤ ꯀꯤ ꯑꯁꯤ ꯑꯃꯗꯒꯤ ꯍꯦꯟꯅ ꯁꯤꯖꯤꯟꯅꯩ꯫ ꯄ꯭ꯔꯣꯄꯔꯇꯤ ꯈꯨꯗꯤꯡꯃꯛꯀꯤꯗꯃꯛ ꯈꯦꯠꯅꯕ ꯀꯤ ꯑꯃ ꯁꯤꯖꯤꯟꯅꯎ꯫",
+        "propertyKeyRequired": "ꯀꯤ ꯑꯃ ꯍꯥꯞꯄ, ꯅꯠꯇ꯭ꯔꯒ ꯃꯁꯤꯒꯤ ꯚꯦꯜꯌꯨ ꯑꯁꯤ ꯁꯦꯚ ꯇꯧꯔꯣꯏ꯫"
       },
       "delete": {
-        "title": "Delete Element",
-        "message": "Are you sure you want to delete \"{{name}}\"?",
-        "note": "This action is permanent and cannot be undone.",
-        "confirm": "Delete Element",
-        "conflict": "This element can't be deleted because it's still used by one or more purposes. Remove it from those purposes first.",
+        "title": "ꯑꯦꯂꯤꯃꯦꯟꯠ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+        "message": "ꯅꯍꯥꯛꯅ \"{{name}}\" ꯑꯁꯤ ꯗꯤꯂꯤꯠ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+        "note": "ꯃꯁꯤꯒꯤ ꯑꯦꯛꯁꯟ ꯑꯁꯤ ꯄꯔꯃꯥꯟꯦꯟꯠ ꯑꯣꯏ ꯑꯃꯁꯨꯡ ꯑꯟꯗꯨꯟ ꯇꯧꯕ ꯌꯥꯔꯣꯏ꯫",
+        "confirm": "ꯑꯦꯂꯤꯃꯦꯟꯠ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+        "conflict": "ꯃꯁꯤꯒꯤ ꯑꯦꯂꯤꯃꯦꯟꯠ ꯑꯁꯤ ꯂꯤꯞꯊꯣꯛꯄ ꯌꯥꯔꯣꯏ ꯃꯔꯃꯗꯤ ꯃꯁꯤ ꯑꯃ ꯅꯠꯇ꯭ꯔꯒ ꯃꯁꯤꯗꯒꯤ ꯍꯦꯟꯅ ꯄꯔꯄꯁꯀꯤꯗꯃꯛ ꯁꯤꯖꯤꯟꯅꯔꯤ꯫ ꯃꯗꯨꯒꯤ ꯄꯔꯄꯁꯁꯤꯡ ꯑꯗꯨꯗꯒꯤ ꯃꯁꯤ ꯂꯧꯊꯣꯛꯎ꯫",
         "deleteFailed": "Something went wrong and the element could not be deleted. Please try again."
       },
-      "emptySearch": "No elements match \"{{term}}\"."
+      "emptySearch": "ꯑꯦꯜꯤꯃꯦꯟꯠ ꯑꯃꯠꯇ \"{{term}}\" ꯒ ꯃꯥꯟꯅꯗꯦ"
     },
     "purposes": {
       "add": "পান্দম হাপচিনবা",
@@ -464,38 +463,38 @@
         "typeLabel": "মখাল",
         "versionLabel": "ভার্সন",
         "elementsLabel": "মচাকশিং",
-        "typeRequired": "Type is required.",
-        "typeHelp": "Type of the purpose, e.g. \"Policy\".",
-        "versionRequired": "Version is required.",
-        "versionHelp": "A version identifier, e.g. \"v1\".",
-        "submitting": "Creating...",
+        "typeRequired": "ꯇꯥꯏꯞ ꯑꯁꯤ ꯃꯊꯧ ꯇꯥꯏ꯫",
+        "typeHelp": "ꯄꯔꯄꯁ ꯑꯁꯤꯒꯤ ꯇꯥꯏꯞ, ꯈꯨꯗꯝ ꯑꯣꯏꯅ \"ꯄꯣꯂꯤꯁꯤ\"꯫",
+        "versionRequired": "ꯚꯔꯁꯟ ꯃꯊꯧ ꯇꯥꯏ꯫",
+        "versionHelp": "ꯚꯔꯁꯟ ꯑꯥꯏꯗꯦꯟꯇꯤꯐꯥꯏꯌꯔ, ꯈꯨꯗꯝ ꯑꯣꯏꯅ \"v1\"।",
+        "submitting": "ꯁꯦꯝꯃꯤꯡ...",
         "createFailed": "Something went wrong and the purpose could not be created. Please try again."
       },
       "versionForm": {
         "versionLabel": "ভার্সন",
-        "title": "Add Version",
-        "versionRequired": "Version is required.",
-        "versionDuplicate": "This purpose already has a version with this name.",
-        "versionHelp": "A version identifier, e.g. \"v2\".",
+        "title": "ꯚꯔꯁꯟ ꯍꯥꯞꯄ",
+        "versionRequired": "ꯚꯔꯁꯟ ꯃꯊꯧ ꯇꯥꯏ꯫",
+        "versionDuplicate": "ꯃꯁꯤꯒꯤ ꯄꯔꯄꯁ ꯑꯁꯤ ꯃꯃꯤꯡ ꯑꯁꯤꯒ ꯂꯣꯏꯅꯅ ꯍꯥꯟꯅꯗꯒꯤ ꯚꯔꯁꯟ ꯑꯃ ꯂꯩꯔꯦ꯫",
+        "versionHelp": "ꯚꯔꯁꯟ ꯑꯥꯏꯗꯦꯟꯇꯤꯐꯥꯏꯌꯔ, ꯈꯨꯗꯝ ꯑꯣꯏꯅ \"v2\"।",
         "setAsLatestLabel": "Set as the latest version",
-        "submitting": "Creating...",
+        "submitting": "ꯁꯦꯝꯃꯤꯡ...",
         "createFailed": "Something went wrong and the version could not be created. Please try again."
       },
       "delete": {
-        "title": "Delete Purpose",
-        "message": "Are you sure you want to delete \"{{name}}\"?",
-        "note": "This action is permanent and cannot be undone.",
-        "confirm": "Delete Purpose",
-        "conflict": "This purpose can't be deleted because it's still referenced by one or more consents.",
+        "title": "ꯄꯔꯄꯁ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+        "message": "ꯅꯍꯥꯛꯅ \"{{name}}\" ꯑꯁꯤ ꯗꯤꯂꯤꯠ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+        "note": "ꯃꯁꯤꯒꯤ ꯑꯦꯛꯁꯟ ꯑꯁꯤ ꯄꯔꯃꯥꯟꯦꯟꯠ ꯑꯣꯏ ꯑꯃꯁꯨꯡ ꯑꯟꯗꯨꯟ ꯇꯧꯕ ꯌꯥꯔꯣꯏ꯫",
+        "confirm": "ꯄꯔꯄꯁ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+        "conflict": "ꯃꯁꯤꯒꯤ ꯄꯔꯄꯁ ꯑꯁꯤ ꯀꯔꯤꯒꯤ ꯂꯧꯊꯣꯛꯄ ꯌꯥꯗꯦ ꯃꯔꯝꯗꯤ ꯃꯁꯤ ꯍꯧꯖꯤꯛꯁꯨ ꯑꯃ ꯅꯠꯇ꯭ꯔꯒ ꯑꯃꯗꯒꯤ ꯍꯦꯟꯅ ꯀꯟꯁꯦꯟꯠ ꯇꯧꯔꯤ꯫",
         "deleteFailed": "Something went wrong and the purpose could not be deleted. Please try again."
       },
       "versionDelete": {
-        "message": "Are you sure you want to delete version \"{{version}}\"?",
-        "note": "This action is permanent and cannot be undone.",
+        "message": "ꯅꯍꯥꯛꯅ ꯚꯔꯁꯟ \"{{version}}\" ꯑꯁꯤ ꯗꯤꯂꯤꯠ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+        "note": "ꯃꯁꯤꯒꯤ ꯑꯦꯛꯁꯟ ꯑꯁꯤ ꯄꯔꯃꯥꯟꯦꯟꯠ ꯑꯣꯏ ꯑꯃꯁꯨꯡ ꯑꯟꯗꯨꯟ ꯇꯧꯕ ꯌꯥꯔꯣꯏ꯫",
         "deleteFailed": "Something went wrong and the version could not be deleted. Please try again.",
-        "latestBlocked": "The latest version cannot be deleted. Set another version as latest first."
+        "latestBlocked": "ꯂꯦꯇꯦꯁꯠ ꯚꯔꯁꯟ ꯑꯗꯨ ꯂꯤꯞꯊꯣꯛꯄ ꯌꯥꯔꯣꯏ꯫ ꯑꯇꯣꯞꯄ ꯚꯔꯁꯟ ꯑꯃ ꯂꯦꯇꯦꯁꯠ ꯑꯣꯏꯅ ꯍꯥꯞꯄꯨ꯫"
       },
-      "emptySearch": "No purposes match this search."
+      "emptySearch": "ꯄꯔꯄꯖ ꯑꯃꯠꯇ ꯁꯔꯆ ꯑꯁꯤꯒ ꯃꯥꯟꯅꯗꯦ꯫"
     },
     "details": {
       "definition": "সংজ্ঞা",
@@ -521,7 +520,7 @@
       "noPurposeElements": "পান্দম শেম্নবগীদমক খ্বাইদগী য়ামদ্রবদা মচাক অমা হাপচিনবিয়ু।",
       "noVersions": "ভার্সন লৈত্রে।",
       "versionsLoadFailed": "হージュিক ভার্সন ইতিহাস লোড তৌবা ঙমদ্রে।",
-      "setLatestFailed": "Unable to set this version as the latest. Please try again."
+      "setLatestFailed": "ꯃꯁꯤꯒꯤ ꯚꯔꯁꯟ ꯑꯁꯤ ꯂꯦꯇꯦꯁꯠ ꯑꯣꯏꯅ ꯁꯦꯠ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫ ꯑꯗꯣꯝꯅ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫"
     },
     "validation": {
       "duplicateElements": "মচাক অমমম অহাংবা একবার খক্তা হাপচিনবা য়াই।",
@@ -811,6 +810,7 @@
         "description": "অকুপ্পা সন্দোকনা তাকপা",
         "descriptionPlaceholder": "নহাৎকী ৱাকৎ অসি অকুপ্পা মরোলগা লোয়ননা ইবিয়ু",
         "descriptionHelp": "যাম্না থুনা লোইশিননবগীদমক য়াংনা অকুপ্পা মরোল হাপচিনবিয়ু।",
+        "descriptionPiiWarning": "ꯅꯍꯥꯛꯀꯤ ꯏꯃꯦꯜ, ꯑꯦꯗ꯭ꯔꯦꯁ ꯅꯠꯇ꯭ꯔꯒ ꯕꯦꯡꯛ ꯑꯦꯀꯥꯎꯟꯠ ꯗꯤꯇꯦꯜꯁꯤꯡ ꯑꯁꯤꯒꯨꯝꯕ ꯁꯦꯟꯁꯤꯇꯤꯕ ꯄꯔꯁꯣꯅꯦꯜ ꯏꯟꯐꯣꯔꯃꯦꯁꯟ ꯑꯗꯨ ꯌꯥꯎꯍꯟꯗꯕꯤꯌꯨ",
         "attachments": "ফাইলশিং (অপাম্বা ওইরবদি)",
         "attachmentsHelp": "PDF, DOCX, PNG, বা JPG ফাইল অমা হেক্তদা {{maxSize}} ফাওবা।",
         "uploadButton": "ফাইল আপলোড তৌবা"
@@ -887,7 +887,7 @@
             "category": "মখাল",
             "priority": "মরুওইবা",
             "status": "ফিভম",
-            "sla": "SLA",
+            "sla": "ꯑꯦꯁ.ꯑꯦꯜ.ꯑꯦ.",
             "updated": "নৌহোংবা"
           }
         }
@@ -1001,281 +1001,281 @@
     }
   },
   "pagination": {
-    "rowsPerPage": "Rows per page",
-    "previous": "Previous",
-    "next": "Next"
+    "rowsPerPage": "ꯄꯦꯖ ꯑꯃꯗ ꯔꯣꯁꯤꯡ",
+    "previous": "ꯃꯃꯥꯡꯒꯤ",
+    "next": "ꯃꯈꯥꯗ"
   },
   "topics": {
-    "title": "Topics",
-    "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "title": "ꯇꯣꯄꯤꯛꯁꯤꯡ",
+    "subtitle": "ꯑꯗꯣꯝꯒꯤ ꯑꯣꯔꯒꯥꯅꯥꯏꯖꯦꯁꯟ ꯄꯨꯝꯅꯃꯛꯇ ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧꯔꯕ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯇꯣꯄꯤꯛꯁꯤꯡ ꯌꯦꯡꯎ ꯑꯃꯁꯨꯡ ꯃꯦꯅꯦꯖ ꯇꯧꯎ",
+    "loadFailed": "ꯇꯣꯄꯤꯛꯁꯤꯡ ꯍꯧꯖꯤꯛ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "ꯑꯦꯛꯇꯤꯕ",
+      "deregistered": "ꯗꯤꯔꯦꯖꯤꯁ꯭ꯠꯔ ꯇꯧꯔꯦ"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
+      "searchPlaceholder": "ꯇꯣꯄꯤꯛ ꯃꯃꯤꯡ, ꯑꯥꯏ.ꯗꯤ., ꯅꯠꯇ꯭ꯔꯒ ꯗꯤꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯒꯤ ꯃꯈꯥꯗ ꯁꯔꯆ ꯇꯧ꯫",
       "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "allStatuses": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯁ꯭ꯇꯦꯇꯁꯁꯤꯡ",
+      "search": "ꯁꯔꯆ",
+      "clear": "ꯐꯤꯜꯇꯔꯁꯤꯡ ꯁꯦꯡꯗꯣꯛꯄ"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
+      "ariaLabel": "ꯇꯣꯄꯤꯛꯁ ꯃꯦꯅꯦꯖꯃꯦꯟꯠ ꯇꯦꯕꯜ",
+      "name": "ꯇꯣꯄꯤꯛ ꯅꯦꯝ",
+      "topicId": "ꯇꯣꯄꯤꯛ ꯑꯥꯏ.ꯗꯤ.",
+      "description": "ꯐꯣꯡꯗꯣꯛꯄ",
       "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "actions": "ꯑꯦꯛꯁꯟꯁꯤꯡ",
+      "empty": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧꯔꯕ ꯇꯣꯄꯤꯛ ꯑꯃꯠꯇ ꯐꯪꯗꯦ꯫"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯣꯄꯤꯛ",
+      "delete": "ꯗꯤꯔꯦꯖꯤꯁ꯭ꯠꯔ ꯇꯣꯄꯤꯛ",
+      "alreadyDeregistered": "ꯃꯁꯤꯒꯤ ꯇꯣꯄꯤꯛ ꯑꯁꯤ ꯍꯥꯟꯅꯗꯒꯤ ꯗꯤꯔꯦꯖꯤꯁꯇꯔ ꯇꯧꯔꯦ꯫"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
+      "registerTitle": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯣꯄꯤꯛ",
+      "registerSubtitle": "ꯅꯍꯥꯛꯀꯤ ꯑꯣꯔꯒꯥꯅꯥꯏꯖꯦꯁꯟꯒꯤꯗꯃꯛ ꯑꯅꯧꯕ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯇꯣꯄꯤꯛ ꯑꯃ ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧ꯫",
+      "nameLabel": "ꯇꯣꯄꯤꯛ ꯅꯦꯝ",
       "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "nameRequired": "ꯇꯣꯄꯤꯛ ꯅꯦꯝ ꯑꯁꯤ ꯃꯊꯧ ꯇꯥꯏ꯫",
+      "descriptionLabel": "ꯐꯣꯡꯗꯣꯛꯄ",
+      "descriptionPlaceholder": "ꯍꯥꯏꯖꯔꯤꯕ ꯍꯤꯔꯝ ꯑꯗꯨꯒꯤ ꯃꯇꯥꯡꯗ ꯑꯄꯥꯝꯕ ꯋꯥꯔꯣꯟ ꯄꯤꯕ ꯌꯥꯏ",
+      "registering": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧꯔꯤ...",
+      "registerSubmit": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯣꯄꯤꯛ"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "ꯗꯤꯔꯦꯖꯤꯁ꯭ꯠꯔꯦꯁꯟ ꯀꯟꯐꯔꯝ ꯇꯧ꯫",
+      "message": "ꯅꯍꯥꯛꯅ ꯇꯣꯄꯤꯛ \"{{name}}\" ꯑꯁꯤ ꯔꯤꯗꯤꯁ꯭ꯇꯔ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+      "note": "ꯇꯣꯄꯤꯛ ꯑꯃ ꯗꯤꯔꯦꯖꯤꯁ꯭ꯠꯔ ꯇꯧꯕꯅ ꯑꯅꯧꯕ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯏꯚꯦꯟꯠꯁꯤꯡ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧꯕ ꯑꯁꯤ ꯊꯥꯗꯣꯛꯄ ꯉꯝꯍꯟꯗꯦ꯫",
+      "confirm": "ꯗꯤꯔꯦꯖꯤꯁ꯭ꯠꯔ ꯇꯣꯄꯤꯛ"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ",
+    "subtitle": "ꯅꯍꯥꯛꯀꯤ ꯑꯣꯔꯒꯥꯅꯥꯏꯖꯦꯁꯟꯒꯤꯗꯃꯛ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ ꯃꯦꯅꯦꯖ ꯑꯃꯁꯨꯡ ꯃꯣꯅꯤꯇꯔ ꯇꯧ꯫",
+    "loadFailed": "ꯍꯧꯖꯤꯛ ꯁꯕꯁꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
+      "active": "ꯑꯦꯛꯇꯤꯕ",
+      "pending": "ꯄꯦꯟꯗꯤꯡ",
       "stale": "Stale",
-      "deleted": "Deleted"
+      "deleted": "ꯗꯤꯂꯤꯠ ꯇꯧꯔꯦ"
     },
     "deliveryMode": {
-      "webhook": "Webhook",
-      "poll": "Poll"
+      "webhook": "ꯋꯦꯕꯍꯨꯛ",
+      "poll": "ꯄꯣꯜ"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
+      "all": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯊꯧꯔꯝꯁꯤꯡ",
+      "allDescription": "ꯃꯁꯤꯒꯤ ꯇꯣꯄꯤꯛ ꯑꯁꯤꯗ ꯐꯣꯡꯗꯣꯛꯈꯤꯕ ꯏꯚꯦꯟꯠ ꯄꯨꯝꯅꯃꯛ ꯇꯥꯏ",
       "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all_except": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯄꯔꯄꯁꯁꯤꯡ ꯅꯠꯇꯅ"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
+      "searchPlaceholder": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯥꯏ.ꯗꯤ., ꯇꯣꯄꯤꯛ, ꯒ꯭ꯔꯨꯞ, ꯄꯔꯄꯖ, ꯅꯠꯇ꯭ꯔꯒ ꯌꯨ.ꯑꯥꯔ.ꯑꯦꯜ.ꯀꯤ ꯃꯈꯥꯗ ꯁꯔꯆ ꯇꯧ꯫",
       "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "allStatuses": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯁ꯭ꯇꯦꯇꯁꯁꯤꯡ",
+      "deliveryMode": "ꯗꯦꯂꯤꯚꯔꯤ ꯃꯣꯗ",
+      "allModes": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯃꯣꯗꯁꯤꯡ",
+      "search": "ꯁꯔꯆ",
+      "clear": "ꯐꯤꯜꯇꯔꯁꯤꯡ ꯁꯦꯡꯗꯣꯛꯄ"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
+      "ariaLabel": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡ ꯃꯦꯅꯦꯖꯃꯦꯟꯠ ꯇꯦꯕꯜ",
+      "subscriptionId": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯥꯏ.ꯗꯤ.",
+      "topic": "ꯇꯣꯄꯤꯛ",
+      "groupId": "ꯒ꯭ꯔꯨꯞ ꯑꯥꯏ.ꯗꯤ.",
+      "filter": "ꯐꯤꯜꯇꯔ",
+      "deliveryMode": "ꯗꯦꯂꯤꯚꯔꯤ ꯃꯣꯗ",
       "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "occurredAt": "ꯊꯣꯛꯈꯤꯕ ꯃꯇꯝꯗ꯫",
+      "deliveryId": "ꯗꯦꯂꯤꯚꯔꯤ ꯑꯥꯏ.ꯗꯤ.",
+      "eventId": "ꯏꯚꯦꯟꯠ ꯑꯥꯏ.ꯗꯤ.",
+      "actions": "ꯑꯦꯛꯁꯟꯁꯤꯡ",
+      "empty": "ꯁꯕꯁꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯃꯠꯇ ꯐꯪꯗꯦ꯫"
     },
     "actions": {
-      "register": "Register Subscription",
-      "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "register": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧ꯫",
+      "view": "ꯗꯤꯇꯦꯜꯁꯤꯡ ꯌꯦꯡꯎ",
+      "verify": "ꯋꯦꯕꯍꯨꯛ ꯑꯃꯨꯛ ꯆꯥꯡꯌꯦꯡ ꯇꯧ꯫",
+      "delete": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+      "alreadyDeleted": "ꯃꯁꯤꯒꯤ ꯁꯕꯁꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯁꯤ ꯍꯥꯟꯅꯗꯒꯤ ꯂꯧꯊꯣꯛꯈ꯭ꯔꯦ꯫",
+      "backToList": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡꯗ ꯍꯟꯅ ꯆꯠꯅꯕ",
+      "close": "ꯊꯤꯡꯖꯤꯟꯗꯣꯛꯄ"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
+      "registerTitle": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧ꯫",
+      "registerSubtitle": "ꯑꯅꯧꯕ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯃꯁꯨꯡ ꯗꯦꯂꯤꯚꯔꯤ ꯃꯣꯗ ꯑꯃ ꯀꯟꯐꯤꯒꯔ ꯇꯧ꯫",
+      "topicLabel": "ꯇꯣꯄꯤꯛ",
+      "topicRequired": "ꯇꯣꯄꯤꯛ ꯑꯁꯤ ꯃꯊꯧ ꯇꯥꯏ꯫",
+      "filterModeLabel": "ꯄꯔꯄꯖ ꯐꯤꯂꯇꯔ ꯃꯣꯗ",
+      "purposesLabel": "ꯄꯔꯄꯖꯁꯤꯡ (ꯀꯣꯃꯥꯅ ꯈꯦꯠꯅꯍꯟꯕ)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
-      "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
+      "purposesHelper": "ꯐꯤꯜꯇꯔ ꯇꯧꯅꯕ ꯀꯟꯁꯦꯟꯠ ꯄꯔꯄꯁꯁꯤꯡꯒꯤ ꯀꯣꯃꯥꯅ ꯁꯦꯄꯔꯦꯠ ꯇꯧꯔꯕ ꯂꯤꯁꯠ",
+      "purposesRequired": "ꯄꯔꯄꯖꯁꯤꯡ ꯑꯁꯤ ꯑꯀꯛꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯄꯨꯝꯅꯃꯛ ꯈꯦꯠꯅꯕꯒꯤ ꯃꯈꯥꯗ ꯐꯤꯜꯇꯔ ꯇꯧꯕ ꯃꯇꯝꯗ ꯃꯊꯧ ꯇꯥꯏ꯫",
+      "deliveryModeLabel": "ꯗꯦꯂꯤꯚꯔꯤ ꯃꯣꯗ",
+      "callbackUrlLabel": "ꯋꯦꯕꯍꯨꯛ ꯀꯦꯜꯕꯦꯛ ꯌꯨ.ꯑꯥꯔ.ꯑꯦꯜ.",
+      "callbackUrlRequired": "ꯋꯦꯚꯍꯨꯛ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟꯁꯤꯡꯒꯤꯗꯃꯛ ꯀꯦꯜꯕꯦꯛ ꯌꯨ.ꯑꯥꯔ.ꯑꯦꯜ. ꯃꯊꯧ ꯇꯥꯏ꯫",
+      "callbackUrlInvalid": "ꯚꯦꯂꯤꯗ ꯑꯣꯏꯕ ꯑꯦꯕꯁꯣꯂꯨꯠ ꯌꯨ.ꯑꯥꯔ.ꯑꯦꯜ. (http:// ꯅꯠꯇ꯭ꯔꯒ https://) ꯑꯃ ꯄꯤꯌꯨ",
       "secretLabel": "Shared Secret",
       "secretRequired": "Shared secret is required.",
-      "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "secretHelper": "ꯋꯦꯕꯍꯨꯛ ꯄꯦꯂꯣꯗꯁꯤꯡ ꯁꯥꯏꯟ ꯇꯧꯅꯕ ꯅꯠꯇ꯭ꯔꯒ ꯄꯣꯜ ꯔꯤꯀ꯭ꯋꯦꯁꯠꯁꯤꯡ ꯑꯣꯊꯦꯟꯇꯤꯀꯦꯠ ꯇꯧꯅꯕ ꯁꯤꯖꯤꯟꯅꯩ",
+      "generateSecret": "ꯑꯅꯧꯕ ꯁꯤꯀ꯭ꯔꯦꯠ ꯖꯦꯅꯔꯦꯠ ꯇꯧ꯫",
+      "registering": "ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧꯔꯤ...",
+      "registerSubmit": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯔꯦꯖꯤꯁꯇꯔ ꯇꯧ꯫"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯗꯤꯂꯤꯁꯟ ꯀꯟꯐꯔꯝ ꯇꯧ꯫",
+      "message": "ꯅꯍꯥꯛꯅ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ \"{{id}}\" ꯑꯁꯤ ꯗꯤꯂꯤꯠ ꯇꯧꯕ ꯄꯥꯝꯃꯤ ꯍꯥꯏꯕ ꯁꯣꯔ ꯇꯧꯔꯕ꯭ꯔꯥ?",
+      "note": "ꯍꯥꯏꯕ ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯑꯁꯤ ꯗꯤꯂꯤꯠ ꯇꯧꯕꯅ ꯑꯅꯧꯕ ꯏꯚꯦꯟꯠꯁꯤꯡ ꯑꯁꯤ ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ ꯑꯦꯟꯗꯄꯣꯏꯟꯠ ꯑꯁꯤꯗ ꯊꯥꯗꯣꯛꯄ ꯉꯝꯍꯟꯗꯦ꯫",
+      "confirm": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯗꯤꯂꯤꯠ ꯇꯧ꯫"
     },
     "verification": {
-      "success": "Verification ping dispatched successfully.",
+      "success": "ꯚꯦꯔꯤꯐꯤꯀꯦꯁꯟ ꯄꯤꯡ ꯃꯥꯏꯄꯥꯛꯅ ꯊꯥꯈꯤ꯫",
       "failed": "Webhook verification failed. Please check endpoint reachability.",
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "ꯁꯕꯁꯀ꯭ꯔꯤꯞꯁꯟ ꯗꯤꯇꯦꯜꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
+      "configTitle": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯤꯞꯁꯟ ꯀꯟꯐꯤꯒꯔꯦꯁꯟ",
+      "configSubtitle": "ꯖꯦꯅꯔꯦꯜ ꯃꯦꯇꯥꯗꯦꯇꯥ, ꯔꯥꯎꯇꯤꯡ ꯄꯦꯔꯥꯃꯤꯇꯔꯁꯤꯡ, ꯑꯃꯁꯨꯡ ꯐꯤꯜꯇꯔꯤꯡ ꯔꯨꯜꯁꯤꯡ",
+      "eventsTitle": "ꯗꯦꯂꯤꯚꯔꯤ ꯍꯤꯁ꯭ꯇꯔꯤ ꯑꯃꯁꯨꯡ ꯑꯦꯛꯁꯤꯀ꯭ꯌꯨꯁꯟ ꯂꯣꯒ",
+      "eventsSubtitle": "ꯃꯁꯤꯒꯤ ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ ꯑꯁꯤꯗ ꯊꯥꯈꯤꯕ ꯅꯧꯕ ꯏꯚꯦꯟꯠ ꯗꯦꯂꯤꯚꯔꯤꯁꯤꯡ ꯑꯃꯁꯨꯡ ꯑꯅꯤꯁꯨꯕ ꯑꯣꯏꯅ ꯍꯣꯠꯅꯕꯁꯤꯡ",
+      "createdAt": "ꯁꯦꯝꯈꯤꯕ ꯃꯇꯝ",
+      "updatedAt": "ꯃꯈꯥ ꯇꯥꯅ ꯑꯞꯗꯦꯠ ꯇꯧꯈꯤ"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
-      "viewHistory": "View Delivery Attempts"
+      "ariaLabel": "ꯗꯦꯂꯤꯚꯔꯤ ꯏꯚꯦꯟꯠꯁ ꯂꯣꯒ ꯇꯦꯕꯜ",
+      "empty": "ꯊꯤꯟꯕꯒꯤ ꯊꯧꯔꯝ ꯑꯃꯠꯇ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯈꯤꯗꯦ",
+      "auditAction": "ꯑꯦꯇꯦꯝꯁꯤꯡ",
+      "viewHistory": "ꯗꯦꯂꯤꯕꯔꯤ ꯑꯦꯇꯦꯝꯠꯁꯤꯡ ꯌꯦꯡꯎ"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
+      "title": "ꯏꯚꯦꯟꯠ ꯗꯦꯂꯤꯕꯔꯤ ꯑꯦꯛꯖꯤꯀ꯭ꯌꯨꯁꯟ ꯑꯣꯗꯤꯠ",
+      "loadFailed": "ꯗꯦꯂꯤꯚꯔꯤ ꯍꯤꯁ꯭ꯇꯣꯔꯤ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
+      "completion": "ꯂꯣꯏꯔꯕꯒꯤ ꯈꯨꯗꯝ",
+      "attemptsTitle": "ꯗꯦꯂꯤꯚꯔꯤ ꯑꯦꯇꯦꯝꯞꯁꯤꯡ ꯀ꯭ꯔꯣꯅꯣꯂꯣꯖꯤ",
+      "attemptNumber": "ꯑꯦꯇꯦꯝꯞꯠ",
       "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "httpStatus": "ꯑꯦꯆ.ꯇꯤ.ꯇꯤ.ꯄꯤ. ꯁ꯭ꯇꯦꯇꯁ",
+      "timestamp": "ꯇꯥꯏꯝꯁ꯭ꯇꯥꯛ",
+      "errorDetails": "ꯑꯦꯔꯔ ꯗꯤꯇꯦꯜꯁꯤꯡ",
+      "noAttempts": "ꯊꯕꯛ ꯊꯤꯟꯅꯕꯒꯤ ꯍꯣꯠꯅꯕ ꯑꯃꯠꯇ ꯂꯩꯇꯦ꯫"
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "title": "ꯏꯚꯦꯟꯠꯁꯤꯡ",
+    "subtitle": "ꯑꯗꯣꯝꯒꯤ ꯑꯣꯔꯒꯥꯅꯥꯏꯖꯦꯁꯟ ꯄꯨꯝꯅꯃꯛꯇ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧꯔꯕ ꯏꯚꯦꯟꯠꯁꯤꯡ ꯌꯦꯡꯎ ꯑꯃꯁꯨꯡ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟꯁꯤꯡ ꯃꯣꯅꯤꯇꯔ ꯇꯧꯎ",
+    "loadFailed": "ꯏꯚꯦꯟꯠꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
+      "searchPlaceholder": "ꯗꯦꯂꯤꯚꯔꯤ ꯑꯥꯏ.ꯗꯤ., ꯏꯚꯦꯟꯠ ꯑꯥꯏ.ꯗꯤ., ꯅꯠꯇ꯭ꯔꯒ ꯇꯣꯄꯤꯛ ꯑꯗꯨꯒꯤ ꯃꯈꯥꯗ ꯁꯔꯆ ꯇꯧ꯫",
       "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "allStatuses": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯁ꯭ꯇꯦꯇꯁꯁꯤꯡ",
+      "topic": "ꯇꯣꯄꯤꯛ",
+      "allTopics": "ꯇꯣꯄꯤꯛ ꯄꯨꯝꯅꯃꯛ",
+      "groupId": "ꯒ꯭ꯔꯨꯞ ꯑꯥꯏ.ꯗꯤ.",
+      "groupIdPlaceholder": "ꯒ꯭ꯔꯨꯞ ꯑꯥꯏ.ꯗꯤ.ꯒꯤ ꯃꯈꯥꯗ ꯐꯤꯜꯇꯔ ꯇꯧ꯫",
+      "search": "ꯁꯔꯆ",
+      "clear": "ꯁꯦꯡꯗꯣꯛꯄ",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "ꯄꯨꯝꯅꯃꯛ",
+      "pending": "ꯄꯦꯟꯗꯤꯡ",
+      "delivered": "ꯗꯦꯂꯤꯚꯔ ꯇꯧꯔꯦ",
+      "failed": "ꯐꯦꯜ ꯑꯣꯏꯔꯦ",
+      "completed": "ꯂꯣꯏꯔꯦ",
+      "acknowledged": "ꯑꯦꯛꯅꯣꯂꯣꯖꯗ",
+      "in_flight": "ꯏꯟ ꯐ꯭ꯂꯥꯏꯠ",
+      "expired": "ꯃꯇꯝ ꯂꯣꯏꯔꯦ"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "ꯄꯨꯝꯅꯃꯛ"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
+      "ariaLabel": "ꯄꯕ꯭ꯂꯤꯁ ꯇꯧꯔꯕ ꯏꯚꯦꯟꯠꯁꯤꯡꯒꯤ ꯂꯤꯁꯠ ꯇꯦꯕꯜ",
+      "deliveryId": "ꯗꯦꯂꯤꯚꯔꯤ ꯑꯥꯏ.ꯗꯤ.",
+      "eventId": "ꯏꯚꯦꯟꯠ ꯑꯥꯏ.ꯗꯤ.",
+      "topic": "ꯇꯣꯄꯤꯛ",
+      "groupId": "ꯒ꯭ꯔꯨꯞ ꯑꯥꯏ.ꯗꯤ.",
+      "mode": "ꯃꯣꯗ",
+      "purposes": "ꯄꯔꯄꯖꯁꯤꯡ",
+      "deliveries": "ꯗꯦꯂꯤꯚꯔꯤꯁꯤꯡ",
+      "subscriber": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ",
+      "subscribers": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔꯁꯤꯡ",
+      "noSubscribers": "ꯊꯕꯛ ꯇꯧꯔꯤꯕ ꯃꯤꯑꯣꯏ ꯑꯃꯠꯇ ꯂꯩꯇꯦ",
       "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "occurredAt": "ꯊꯣꯛꯈꯤꯕ ꯃꯇꯝꯗ꯫",
+      "actions": "ꯑꯦꯛꯁꯟꯁꯤꯡ",
+      "empty": "ꯊꯧꯔꯝ ꯑꯃꯠꯇ ꯐꯪꯗꯦ꯫"
     },
     "actions": {
-      "publish": "Publish Event",
-      "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "publish": "ꯏꯚꯦꯟꯠ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧ",
+      "view": "ꯗꯤꯇꯦꯜꯁꯤꯡ ꯌꯦꯡꯎ",
+      "copyPayload": "ꯄꯦꯂꯣꯗ ꯀꯣꯄꯤ꯫",
+      "close": "ꯊꯤꯡꯖꯤꯟꯗꯣꯛꯄ"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
+      "publishTitle": "ꯏꯚꯦꯟꯠ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧ",
+      "publishSubtitle": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ ꯐꯦꯟ-ꯑꯥꯎꯠ ꯇ꯭ꯔꯤꯒꯔ ꯇꯧꯅꯕ ꯏꯚꯦꯟꯠ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯑꯃ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧ",
+      "topicLabel": "ꯇꯣꯄꯤꯛ",
+      "topicRequired": "ꯇꯣꯄꯤꯛ ꯑꯁꯤ ꯃꯊꯧ ꯇꯥꯏ꯫",
+      "groupIdLabel": "ꯒ꯭ꯔꯨꯞ ꯑꯥꯏ.ꯗꯤ. (ꯑꯣꯞꯁꯅꯦꯜ)",
       "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
+      "groupIdHelper": "ꯍꯥꯏꯖꯔꯤꯕ ꯗꯦꯂꯤꯕꯔꯤꯒꯤꯗꯃꯛ ꯑꯄꯥꯝꯕ ꯒ꯭ꯔꯨꯞ ꯑꯗꯨ ꯈꯪꯅꯕ ꯄꯤꯕ ꯌꯥꯏ",
+      "purposesLabel": "ꯄꯔꯄꯖꯁꯤꯡ (ꯑꯣꯞꯁꯅꯦꯜ, ꯀꯣꯃꯥꯅ ꯈꯦꯠꯅꯍꯟꯕ)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
-      "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "purposesHelper": "ꯊꯧꯔꯝ ꯑꯁꯤꯒ ꯃꯔꯤ ꯂꯩꯅꯕ ꯀꯟꯁꯦꯟꯠ ꯄꯔꯄꯁꯁꯤꯡꯒꯤ ꯀꯣꯃꯥꯅ ꯁꯦꯄꯔꯦꯠ ꯇꯧꯔꯕ ꯂꯤꯁꯠ",
+      "payloadLabel": "ꯄꯦꯂꯥꯎꯗ (JSON)",
+      "payloadHelper": "ꯏꯚꯦꯟꯠ ꯗꯦꯇꯥ ꯎꯠꯂꯤꯕ ꯚꯦꯂꯤꯗ ꯖꯦ.ꯑꯦꯁ.ꯑꯣꯟ ꯑꯣꯕꯖꯦꯛꯠ",
+      "payloadRequired": "ꯄꯦꯂꯥꯎꯗ ꯑꯗꯨ ꯃꯊꯧ ꯇꯥꯏ",
+      "payloadMustBeObject": "ꯄꯦꯂꯥꯎꯗ ꯑꯗꯨ ꯚꯦꯂꯤꯗ ꯑꯣꯏꯕ JSON ꯑꯣꯕꯖꯦꯛꯠ ꯑꯃ ꯑꯣꯏꯒꯗꯕꯅꯤ",
+      "invalidJson": "ꯚꯦꯂꯤꯗ ꯑꯣꯏꯕ JSON ꯐꯣꯔꯃꯦꯠ ꯑꯃ ꯄꯤꯌꯨ",
+      "publishing": "ꯄꯕ꯭ꯂꯤꯁ ꯇꯧꯔꯤ...",
+      "publishSubmit": "ꯏꯚꯦꯟꯠ ꯄꯕ꯭ꯂꯤꯁ ꯇꯧ",
+      "publishSuccess": "ꯏꯚꯦꯟꯠ ꯃꯥꯏꯊꯤꯕ ꯊꯣꯛꯈꯤ꯫"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "ꯏꯚꯦꯟꯠ ꯗꯤꯇꯦꯜꯁꯤꯡ",
+      "backToEvents": "ꯏꯚꯦꯟꯠꯁꯤꯡꯗ ꯍꯟꯅ ꯆꯠꯅꯕ",
+      "loadFailed": "ꯏꯚꯦꯟꯠ ꯗꯤꯇꯦꯜꯁꯤꯡ ꯂꯣꯗ ꯇꯧꯕ ꯌꯥꯔꯛꯇꯦ꯫",
+      "metadataTitle": "ꯏꯚꯦꯟꯠ ꯃꯦꯇꯥꯗꯦꯇꯥ",
+      "metadataSubtitle": "ꯑꯥꯏꯗꯦꯟꯇꯤꯐꯥꯏꯌꯔꯁꯤꯡ, ꯇꯣꯄꯤꯛꯁꯤꯡ, ꯑꯃꯁꯨꯡ ꯗꯤꯁꯄꯦꯠꯆ ꯇꯥꯏꯝꯁ꯭ꯇꯦꯝꯁꯤꯡ",
+      "payloadTitle": "ꯏꯚꯦꯟꯠ ꯄꯦꯂꯣꯗ",
+      "historyTitle": "ꯗꯦꯂꯤꯚꯔꯤ ꯑꯦꯇꯦꯝꯞ ꯍꯤꯁ꯭ꯇꯔꯤ",
+      "historySubtitle": "ꯀ꯭ꯔꯣꯅꯣꯂꯣꯖꯤꯀꯦꯜ ꯑꯦꯛꯁꯤꯀ꯭ꯌꯨꯁꯟ ꯇ꯭ꯔꯥꯏ ꯑꯃꯁꯨꯡ HTTP ꯔꯤꯁꯄꯣꯟꯁ ꯁ꯭ꯇꯦꯇꯁ",
+      "noHistory": "ꯊꯤꯟꯕꯒꯤ ꯍꯣꯠꯅꯕ ꯑꯃꯠꯇ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯈꯤꯗꯦ",
+      "completionTitle": "ꯂꯣꯏꯔꯕꯒꯤ ꯈꯨꯗꯝ",
+      "allPurposes": "ꯄꯨꯝꯅꯃꯛꯀꯤ ꯄꯔꯄꯁꯁꯤꯡ",
+      "createdAt": "ꯁꯦꯝꯈꯤꯕ ꯃꯇꯝ",
+      "deliveriesTitle": "ꯗꯥꯎꯟꯁ꯭ꯇ꯭ꯔꯤꯝ ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ ꯗꯦꯂꯤꯕꯔꯤꯁꯤꯡ",
+      "deliveriesSubtitle": "ꯊꯧꯔꯝ ꯑꯁꯤꯒꯤꯗꯃꯛ ꯁꯦꯝꯂꯤꯕ ꯗꯦꯂꯤꯕꯔꯤ ꯑꯃꯁꯨꯡ ꯀꯝꯄ꯭ꯂꯤꯁꯟ ꯁ꯭ꯇꯦꯇꯁ ꯄꯨꯝꯅꯃꯛ",
+      "noDeliveries": "ꯀꯔꯤ ꯗꯦꯂꯤꯕꯔꯤꯁꯤꯡ ꯖꯦꯅꯔꯦꯠ ꯇꯧꯗꯦ",
+      "noDeliveriesMessage": "ꯊꯧꯔꯝ ꯑꯗꯨ ꯊꯣꯛꯈꯤꯕ ꯃꯇꯝꯗ ꯍꯥꯏꯔꯤꯕ ꯍꯤꯔꯝ ꯑꯁꯤꯒ ꯃꯥꯟꯅꯕ ꯊꯕꯛ ꯇꯧꯔꯤꯕ ꯃꯤꯑꯣꯏ ꯑꯃꯠꯇ ꯂꯩꯇꯦ",
+      "copyPayloadSuccess": "ꯄꯦꯂꯥꯎꯗ ꯑꯗꯨ ꯀ꯭ꯂꯤꯞꯕꯣꯔꯗꯇ ꯀꯣꯄꯤ ꯇꯧꯔꯦ",
+      "copyPayloadFailed": "ꯄꯦꯂꯣꯗ ꯑꯗꯨ ꯀ꯭ꯂꯤꯞꯕꯣꯔꯗꯇ ꯀꯣꯄꯤ ꯇꯧꯕ ꯉꯝꯗꯦ",
+      "subscriber": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔ",
+      "subscribers": "ꯁꯕꯁ꯭ꯀ꯭ꯔꯥꯏꯕꯔꯁꯤꯡ"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
+    "deleteMenuItem": "ꯑꯩꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯗꯤꯂꯤꯠ ꯇꯧ꯫",
+    "deleteError": "ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯗꯨ ꯂꯧꯊꯣꯛꯄ ꯌꯥꯔꯛꯇꯦ꯫ ꯑꯗꯣꯝꯅ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫",
     "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
     "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "ꯑꯦꯀꯥꯎꯟꯠ",
+      "title": "ꯑꯗꯣꯝꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯗꯤꯂꯤꯠ ꯇꯧꯒꯅꯤ꯫",
+      "message": "ꯃꯁꯤꯅ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯑꯗꯨ ꯄꯔꯃꯥꯟꯦꯟꯇꯂꯤ ꯑꯣꯏꯅ ꯂꯤꯞꯊꯣꯛꯏ ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯄꯨ ꯁꯥꯏꯟ ꯑꯥꯎꯠ ꯇꯧꯏ꯫",
+      "note": "ꯃꯁꯤꯒꯤ ꯑꯦꯛꯁꯟ ꯑꯁꯤ ꯑꯟꯗꯨꯟ ꯇꯧꯕ ꯌꯥꯔꯣꯏ꯫ ꯅꯍꯥꯛꯅ ꯄꯣꯔꯇꯦꯜ ꯑꯁꯤꯒꯤ ꯑꯦꯛꯁꯦꯁ ꯂꯧꯕ ꯉꯝꯂꯣꯏ, ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯀꯤ ꯁꯥꯏꯟ-ꯏꯟ ꯑꯗꯨ ꯈꯨꯗꯤꯡꯒꯤ ꯊꯕꯛ ꯇꯧꯕ ꯂꯣꯏꯒꯅꯤ꯫",
+      "confirm": "ꯑꯩꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ ꯗꯤꯂꯤꯠ ꯇꯧ꯫"
     },
     "deletedPage": {
       "title": "Your account has been deleted",
       "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "signInLink": "ꯁꯥꯏꯟ-ꯏꯟ ꯇꯧꯅꯕ ꯆꯠꯎ"
     }
   }
 }

@@ -11,6 +11,7 @@
     "test:consents": "playwright test tests/03-consents",
     "test:authorization": "playwright test tests/04-authorization",
     "test:multi-tenancy": "playwright test tests/05-multi-tenancy",
+    "test:event-notifications": "playwright test tests/08-event-notifications",
     "test:account": "playwright test tests/06-account",
     "report": "playwright show-report"
   },

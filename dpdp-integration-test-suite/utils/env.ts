@@ -54,6 +54,25 @@ export interface Persona {
 }
 
 const rawPortalBaseUrl = trimTrailingSlash(required('PORTAL_BASE_URL'))
+const ignoreHttpsErrors = (process.env.IGNORE_HTTPS_ERRORS ?? 'true') === 'true'
+
+// Node's global fetch (unlike Playwright's own browser/request APIs) has no per-call option to
+// ignore an untrusted certificate - it only honors this process-wide env var. The shipped
+// Identity Server certificate is self-signed, so without this every plain fetch() call in
+// fixtures/auth.fixtures.ts (terminateAllSessions, verifyConsentAdminAuthorized) fails with a
+// generic "fetch failed"/"self-signed certificate" error.
+//
+// Set HERE, not only in global-setup.ts, because global-setup.ts runs in Playwright's own
+// orchestrator process, and whether that mutation is actually visible to a given TEST WORKER
+// process depends on exactly when Playwright forks that worker relative to globalSetup
+// finishing - confirmed non-deterministic live (an isolated `--workers=1 -g "..."` run
+// reproducibly hit the unset case on a fresh persona login, right after a run that had it set
+// throughout). Every worker imports this module directly (via env.ts's own consumers, including
+// auth.fixtures.ts), so setting it here executes it in-process for whichever process actually
+// makes the plain fetch() call, with no cross-process inheritance to race.
+if (ignoreHttpsErrors) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+}
 
 export const env = {
   portalBaseUrl: rawPortalBaseUrl,
@@ -67,7 +86,7 @@ export const env = {
   // the consent API URL helpers below need that form.
   portalNavigationBaseUrl: `${rawPortalBaseUrl}/`,
   identityServerBaseUrl: trimTrailingSlash(required('IS_BASE_URL')),
-  ignoreHttpsErrors: (process.env.IGNORE_HTTPS_ERRORS ?? 'true') === 'true',
+  ignoreHttpsErrors,
 
   user: {
     username: required('TEST_USER_USERNAME'),
@@ -155,6 +174,66 @@ export function tenantPortalUrl(tenantDomain: string): string {
 /** SCIM2 user management, used for the throwaway account the deletion test creates. */
 export function scim2UsersUrl(path: string): string {
   return `${env.identityServerBaseUrl}/scim2/Users${path}`
+}
+
+// The accelerator's own complaint-server webapp (org.wso2.dpdp.accelerator.complaint.mgt.endpoint,
+// finalName "api#dpdp#complaints#v1") - unlike consent-mgt, this is NOT an IS-native API, so there
+// is no tenant-qualification concern to mirror from consentPurposesApiUrl et al.
+const COMPLAINT_SERVER_BASE = '/api/dpdp/complaints/v1'
+
+/** Officer/admin surface: `/complaints/*`, requiring a portal:complaints:* (non-self) scope. */
+export function complaintsApiUrl(path: string): string {
+  return `${env.identityServerBaseUrl}${COMPLAINT_SERVER_BASE}/complaints${path}`
+}
+
+/** Data Principal self-service surface: `/me/complaints/*`, requiring portal:complaints:*:self. */
+export function meComplaintsApiUrl(path: string): string {
+  return `${env.identityServerBaseUrl}${COMPLAINT_SERVER_BASE}/me/complaints${path}`
+}
+
+// The accelerator's own event-notification webapp (org.wso2.dpdp.accelerator.event.notifications.endpoint,
+// finalName "api#dpdp#event-notifications#v1"). Unlike the complaint-server, this IS
+// tenant-qualified (see docs/event-notification-guide.md) - every path goes through
+// tenantSegment the same way the IS-native consent APIs above do.
+export function eventNotificationsApiUrl(path: string, tenantDomain?: string): string {
+  return `${env.identityServerBaseUrl}${tenantSegment(tenantDomain)}/api/dpdp/event-notifications/v1${path}`
+}
+
+// The accelerator's own consent-history webapp (org.wso2.dpdp.accelerator.consent.mgt.extensions.endpoint,
+// see consent-history.yaml) - status-audit/full-snapshot reads, tenant-qualified the same way as
+// eventNotificationsApiUrl above. Not wired into the consent-portal frontend yet (see CLAUDE.md),
+// but deployment.config.json already requests the consent:history:view:*/consent:status-history:view:*
+// scopes, so a real persona login already carries them.
+export function consentHistoryApiUrl(path: string, tenantDomain?: string): string {
+  return `${env.identityServerBaseUrl}${tenantSegment(tenantDomain)}/api/dpdp/consent-mgt/v1${path}`
+}
+
+/**
+ * Opt-in only (see .env.example): the real ConsentExpiryJob's default daily cron makes waiting on
+ * it impractical for an automated run, so the one test that actually waits on the live scheduler
+ * (rather than triggering DPDPConsentExpiryReconciler via a mutation) needs the operator to have
+ * both shortened [dpdp_accelerator.consent_expiry].cron_value in deployment.toml and restarted the
+ * server, then set this to a timeout comfortably larger than that interval. Undefined means "not
+ * configured" - that test skips itself, mirroring hasSecondUser()/webhookReceiverConfig() above.
+ */
+export function consentExpirySchedulerPollTimeoutMs(): number | undefined {
+  const raw = optional('CONSENT_EXPIRY_SCHEDULER_POLL_TIMEOUT_MS')
+  return raw ? Number(raw) : undefined
+}
+
+/**
+ * A real webhook end-to-end round trip (subscription verification, signed delivery, retries)
+ * needs a receiver process the WSO2 IS host can actually reach over the network to POST/GET
+ * against - EventNotificationUrlValidator rejects loopback/127.0.0.1 unconditionally (see
+ * tests/08-event-notifications/README.md, "Webhook-dependent tests"), so a receiver bound to
+ * this machine's own loopback interface can never pass callback-URL validation no matter what
+ * deployment.toml says. Tests that need this skip themselves (mirroring hasSecondUser()) unless
+ * both a receiver host and confirmation that the deployment allows it are explicitly configured.
+ */
+export function webhookReceiverConfig(): { host: string; allowPrivateNetwork: boolean } | undefined {
+  const host = optional('WEBHOOK_RECEIVER_HOST')
+  const allowPrivateNetwork = (process.env.WEBHOOK_RECEIVER_ALLOW_PRIVATE_NETWORK ?? 'false') === 'true'
+  return host ? { host, allowPrivateNetwork } : undefined
 }
 
 export type PersonaName = 'user' | 'user-2' | 'consent-admin'

@@ -194,7 +194,14 @@ function PurposeListPage(): React.JSX.Element {
                         }}
                       >
                         <TableCell>
-                          <Typography component="code" variant="body2" fontWeight={600} noWrap>
+                          <Typography
+                            component="code"
+                            variant="body2"
+                            fontWeight={600}
+                            noWrap
+                            title={purpose.name}
+                            sx={{ display: 'block' }}
+                          >
                             {purpose.name}
                           </Typography>
                         </TableCell>

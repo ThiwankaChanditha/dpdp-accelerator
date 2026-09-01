@@ -39,9 +39,9 @@
     "dataProcessorTopics": "विषय",
     "dataProcessorSubscriptions": "सब्सक्रिप्शन",
     "dataProcessorEvents": "इवेंट",
-    "events": "Events",
-    "topics": "Topics",
-    "subscriptions": "Subscriptions"
+    "events": "घटनां",
+    "topics": "विशे।",
+    "subscriptions": "सदस्यताएं"
   },
   "layout": {
     "home": "होम",
@@ -94,12 +94,12 @@
       "removeConsentIdForState": "स्टेट फिल्टर दा इस्तेमाल करने आस्तै सहमति आईडी फिल्टर हटाइयै रक्खो।",
       "propertyFilterLabel": "सहमति संपत्ति",
       "removeConsentIdForSubject": "यूजर आईडी फिल्टर दा इस्तेमाल करने आस्तै सहमति आईडी फिल्टर हटाई देओ।",
-      "relation": "Relation",
-      "relationHelperText": "Set a User to filter by relation",
+      "relation": "संबंध",
+      "relationHelperText": "कुसै बरतूनी गी संबंध राहें फिल्टर करने आस्तै सैट्ट करो",
       "relationOptions": {
-        "any": "Any",
-        "subject": "Subject",
-        "authorizer": "Authorizer"
+        "any": "कोई बी",
+        "subject": "विशे",
+        "authorizer": "अधिकारक"
       }
     }
   },
@@ -147,7 +147,6 @@
         "status": "स्टेटस",
         "updated": "अपडेट कीता",
         "resources": "संसाधन",
-        "eventType": "इवेंट प्रकार",
         "date": "तरीक",
         "time": "समैं",
         "state": "राज्य"
@@ -254,11 +253,11 @@
       "clearAriaLabel": "सारे फिल्टर साफ करो",
       "serviceSearchPlaceholder": "सेवा राहें तुप्पो",
       "state": "राज्य",
-      "relation": "Relation",
+      "relation": "संबंध",
       "relationOptions": {
-        "any": "All",
-        "subject": "My Own",
-        "authorizer": "Managed by Me"
+        "any": "सभनें",
+        "subject": "अपनी आपूं दी",
+        "authorizer": "मेरे आसेआ प्रबंधत"
       }
     },
     "messages": {
@@ -290,33 +289,33 @@
       }
     },
     "history": {
-      "systemActor": "System",
+      "systemActor": "सिस्टम",
       "actions": {
-        "created": "Consent created",
-        "updated": "Consent updated",
-        "approved": "Approved",
-        "rejected": "Rejected",
-        "authorizeRevoked": "Revoked by reviewer",
-        "revoked": "Revoked",
-        "deleted": "Deleted",
-        "expired": "Expired",
-        "unknown": "Updated"
+        "created": "सहमति बनाई गेई",
+        "updated": "सहमति अपडेट कीती गेई",
+        "approved": "मंजूर कीता गेदा",
+        "rejected": "अस्वीकृत",
+        "authorizeRevoked": "समीक्षक आसेआ रद्द कीता गेआ",
+        "revoked": "रद्द कीता गेआ",
+        "deleted": "मिटाया गेदा",
+        "expired": "समाप्त होई गेदी",
+        "unknown": "अपडेट कीता गेआ।"
       },
       "description": "{{action}} by {{actor}}",
       "viewFullSnapshot": "View Full Snapshot History",
-      "close": "Close",
+      "close": "बंद करो",
       "snapshot": {
-        "noChanges": "No changes were recorded in this update.",
-        "needsMoreHistory": "Load more history to see what changed in this update.",
-        "initial": "Initial snapshot",
-        "added": "Added",
-        "removed": "Removed",
-        "changed": "Changed",
+        "noChanges": "इस अपडेट च कोई बदलाव दर्ज नेईं कीता गेआ।",
+        "needsMoreHistory": "इस अपडेट च केह्‌ बदलेआ, एह्‌ दिक्खने आस्तै होर इतिहास लोड करो।",
+        "initial": "शुरूआती स्नैपशाट",
+        "added": "जोड़ी गेदी",
+        "removed": "हटाया गेआ",
+        "changed": "बदलेआ गेदा",
         "field": {
           "expiryTime": "Valid until"
         }
       },
-      "empty": "No history is recorded for this consent."
+      "empty": "इस सहमति आस्तै कोई इतिहास दर्ज नेईं कीता गेआ।"
     }
   },
   "catalog": {
@@ -811,6 +810,7 @@
         "description": "विवरण",
         "descriptionPlaceholder": "तुंदी शिकायत दा विस्तार कन्नै वर्णन करो",
         "descriptionHelp": "जितना हो सके उतना ब्यौरा देओ तां जे अस इसगी जल्दी हल करी सकियै।",
+        "descriptionPiiWarning": "कृपा करियै संवेदनशील निजी जानकारी जि’यां तुंदा ईमेल, पता, जां बैंक खाते दे ब्योरे शामल नेईं करो।",
         "attachments": "अटैचमेंट (मर्जी ऐ)",
         "attachmentsHelp": "PDF, DOCX, PNG, जां JPG हर इक {{maxSize}} तकर।",
         "uploadButton": "फाईलां अपलोड करो"
@@ -887,7 +887,7 @@
             "category": "श्रेणी",
             "priority": "प्राथमिकता",
             "status": "स्टेटस",
-            "sla": "SLA",
+            "sla": "ऐस्सऐल्लए",
             "updated": "अपडेट कीता"
           }
         }
@@ -1006,130 +1006,130 @@
     "next": "अगला"
   },
   "topics": {
-    "title": "Topics",
+    "title": "विशे।",
     "subtitle": "View and manage registered event notification topics across your organization",
-    "loadFailed": "Unable to load topics right now.",
+    "loadFailed": "हुनै विशे लोड करने च असमर्थ।",
     "status": {
-      "active": "Active",
-      "deregistered": "Deregistered"
+      "active": "सक्रिय",
+      "deregistered": "रद्द कीता गेदा"
     },
     "filters": {
-      "searchPlaceholder": "Search by topic name, ID, or description",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "विशे दे नांऽ, आईडी, जां ब्योरे राहें खोजो",
+      "status": "स्थिति",
+      "allStatuses": "सभनें स्थितियां",
+      "search": "खोजो",
+      "clear": "फिल्टर साफ करो"
     },
     "table": {
-      "ariaLabel": "Topics management table",
-      "name": "Topic Name",
-      "topicId": "Topic ID",
-      "description": "Description",
-      "status": "Status",
-      "actions": "Actions",
-      "empty": "No registered topics found."
+      "ariaLabel": "विशे प्रबंधन तालिका।",
+      "name": "विशे दा नांऽ।",
+      "topicId": "विशे आईडी।",
+      "description": "विवरण",
+      "status": "स्थिति",
+      "actions": "कारवाई",
+      "empty": "कोई पंजीकृत विशे नेईं लब्भेआ गेआ।"
     },
     "actions": {
-      "register": "Register Topic",
-      "delete": "Deregister topic",
-      "alreadyDeregistered": "This topic is already deregistered"
+      "register": "विषे पंजीकृत करो",
+      "delete": "विशे गी रद्द करो",
+      "alreadyDeregistered": "एह्‌ विशे पैह्‌लें गै गैर-पंजीकृत करी दित्ता गेआ ऐ।"
     },
     "dialog": {
-      "registerTitle": "Register Topic",
-      "registerSubtitle": "Register a new event notification topic for your organization",
-      "nameLabel": "Topic Name",
+      "registerTitle": "विषे पंजीकृत करो",
+      "registerSubtitle": "अपने संगठन आस्तै इक नमां इवेंट सूचना विशे पंजीकृत करो",
+      "nameLabel": "विशे दा नांऽ।",
       "namePlaceholder": "e.g. consent.revoke",
-      "nameRequired": "Topic name is required.",
-      "descriptionLabel": "Description",
-      "descriptionPlaceholder": "Optional description of the topic purpose",
-      "registering": "Registering...",
-      "registerSubmit": "Register Topic"
+      "nameRequired": "विशे दा नांऽ जरूरी ऐ।",
+      "descriptionLabel": "विवरण",
+      "descriptionPlaceholder": "विषे दे मकसद दा वैकल्पिक ब्योरा",
+      "registering": "पंजीकृत कीता जा करदा ऐ...",
+      "registerSubmit": "विषे पंजीकृत करो"
     },
     "deleteModal": {
-      "title": "Confirm Deregistration",
-      "message": "Are you sure you want to deregister topic \"{{name}}\"?",
-      "note": "Deregistering a topic prevents new subscriptions and publication of events to this topic.",
-      "confirm": "Deregister Topic"
+      "title": "रद्द करने दी पुष्टी करो",
+      "message": "क्या तुस पक्के ओ जे तुस विशे \"{{name}}\" गी रद्द करना चांह्‌दे ओ?",
+      "note": "विशे गी रद्द करने कन्नै इस विशे पर नमें सदस्यता ते घटनां दे प्रकाशन गी रोकेआ जंदा ऐ।",
+      "confirm": "विशे गी रद्द करो"
     }
   },
   "subscriptions": {
-    "title": "Subscriptions",
-    "subtitle": "Manage and monitor event notification subscriptions for your organization",
-    "loadFailed": "Unable to load subscriptions right now.",
+    "title": "सदस्यताएं",
+    "subtitle": "अपने संगठन आस्तै इवेंट सूचना सदस्यताएं दा प्रबंधन ते निगरानी करो",
+    "loadFailed": "हुनै सदस्यता लोड करने च असमर्थ।",
     "status": {
-      "active": "Active",
-      "pending": "Pending",
-      "stale": "Stale",
-      "deleted": "Deleted"
+      "active": "सक्रिय",
+      "pending": "लंबित",
+      "stale": "बासी",
+      "deleted": "मिटाया गेदा"
     },
     "deliveryMode": {
       "webhook": "Webhook",
-      "poll": "Poll"
+      "poll": "पोल"
     },
     "filterType": {
-      "all": "All Events",
-      "allDescription": "Listens to all events published to this topic",
-      "specific": "Specific Purposes",
-      "all_except": "All Except Purposes"
+      "all": "सभनें घटनां",
+      "allDescription": "इस विशे पर प्रकाशत कीतियां गेदियां सभनें घटनां गी सुनदा ऐ",
+      "specific": "खास मकसद",
+      "all_except": "सभनें मकसदें गी छड्डीयै"
     },
     "filters": {
-      "searchPlaceholder": "Search by subscription ID, topic, group, purpose, or URL",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "deliveryMode": "Delivery Mode",
-      "allModes": "All Modes",
-      "search": "Search",
-      "clear": "Clear filters"
+      "searchPlaceholder": "सदस्यता आईडी, विशे, समूह, मकसद, जां यूआरऐल्ल राहें खोजो",
+      "status": "स्थिति",
+      "allStatuses": "सभनें स्थितियां",
+      "deliveryMode": "डिलीवरी मोड",
+      "allModes": "सभनें मोड",
+      "search": "खोजो",
+      "clear": "फिल्टर साफ करो"
     },
     "table": {
-      "ariaLabel": "Subscriptions management table",
-      "subscriptionId": "Subscription ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "filter": "Filter",
-      "deliveryMode": "Delivery Mode",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "actions": "Actions",
-      "empty": "No subscriptions found."
+      "ariaLabel": "सदस्यताएं प्रबंधन तालिका",
+      "subscriptionId": "सदस्यता आईडी",
+      "topic": "विशे।",
+      "groupId": "समूह आईडी",
+      "filter": "फिल्टर करो",
+      "deliveryMode": "डिलीवरी मोड",
+      "status": "स्थिति",
+      "occurredAt": "होआ",
+      "deliveryId": "डिलीवरी आईडी",
+      "eventId": "घटना आईडी",
+      "actions": "कारवाई",
+      "empty": "कोई सदस्यताएं नेईं लब्भेआ गेइयां।"
     },
     "actions": {
-      "register": "Register Subscription",
+      "register": "सदस्यता पंजीकृत करो",
       "view": "View Details",
-      "verify": "Re-verify webhook",
-      "delete": "Delete subscription",
-      "alreadyDeleted": "This subscription is already deleted",
-      "backToList": "Back to Subscriptions",
-      "close": "Close"
+      "verify": "वेबहूक गी परतियै सत्यापित करो",
+      "delete": "सदस्यता मिटाओ",
+      "alreadyDeleted": "एह्‌ सदस्यता पैह्‌लें गै मिटाई दित्ती गेई ऐ।",
+      "backToList": "सदस्यताएं पर वापस जाओ",
+      "close": "बंद करो"
     },
     "dialog": {
-      "registerTitle": "Register Subscription",
-      "registerSubtitle": "Configure a new event notification subscription and delivery mode",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "filterModeLabel": "Consent Purpose Filter Mode",
-      "purposesLabel": "Consent Purposes (comma-separated)",
+      "registerTitle": "सदस्यता पंजीकृत करो",
+      "registerSubtitle": "इक नमीं घटना अधिसूचना सदस्यता ते डिलीवरी मोड कन्फिगर करो",
+      "topicLabel": "विशे।",
+      "topicRequired": "विशे जरूरी ऐ।",
+      "filterModeLabel": "मक्सद फिल्टर मोड",
+      "purposesLabel": "मक्सद (कोमा कन्नै बक्ख कीते गेदे)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes to filter",
-      "purposesRequired": "Purposes are required when filtering by specific or all-except.",
-      "deliveryModeLabel": "Delivery Mode",
+      "purposesHelper": "फिल्टर करने आस्तै सहमति दे मकसदें दी अल्पविराम कन्नै बक्ख कीती गेदी सूची",
+      "purposesRequired": "मक्सद लोड़चदे न जिसलै खास जां सभनें गी छोड़ियै फिल्टर कीता जा करदा ऐ।",
+      "deliveryModeLabel": "डिलीवरी मोड",
       "callbackUrlLabel": "Webhook Callback URL",
-      "callbackUrlRequired": "Callback URL is required for webhook subscriptions.",
-      "callbackUrlInvalid": "Please provide a valid absolute URL (http:// or https://).",
-      "secretLabel": "Shared Secret",
-      "secretRequired": "Shared secret is required.",
+      "callbackUrlRequired": "वेबहुक सदस्यता आस्तै कॉलबैक यूआरऐल्ल जरूरी ऐ।",
+      "callbackUrlInvalid": "कृपा करियै इक मान्य निरपेक्ष यूआरऐल्ल (http:// जां https://) देओ।",
+      "secretLabel": "साझा रहस्य",
+      "secretRequired": "साझा रहस्य जरूरी ऐ।",
       "secretHelper": "Used to sign webhook payloads or authenticate poll requests",
-      "generateSecret": "Generate new secret",
-      "registering": "Registering...",
-      "registerSubmit": "Register Subscription"
+      "generateSecret": "नमां गुप्त कोड बनाओ",
+      "registering": "पंजीकृत कीता जा करदा ऐ...",
+      "registerSubmit": "सदस्यता पंजीकृत करो"
     },
     "deleteModal": {
-      "title": "Confirm Subscription Deletion",
-      "message": "Are you sure you want to delete subscription \"{{id}}\"?",
-      "note": "Deleting this subscription prevents new events from being dispatched to this subscriber endpoint.",
-      "confirm": "Delete Subscription"
+      "title": "सदस्यता मिटाने दी पुष्टी करो",
+      "message": "क्या तुस पक्के ओ जे तुस सदस्यता \"{{id}}\" गी मिटाना चांह्‌दे ओ?",
+      "note": "इस सदस्यता गी मिटाने कन्नै इस ग्राहक दे ऐंडप्वाइंट पर नमें घटनां गी भेजने थमां रोकेआ जंदा ऐ।",
+      "confirm": "मिटाओ सदस्यता"
     },
     "verification": {
       "success": "Verification ping dispatched successfully.",
@@ -1137,145 +1137,145 @@
       "retriesExhausted": "Callback URL could not be verified after all retry attempts. Ensure the URL is reachable and returns the exact verification challenge."
     },
     "details": {
-      "loadFailed": "Unable to load subscription details.",
-      "configTitle": "Subscription Configuration",
-      "configSubtitle": "General metadata, routing parameters, and filtering rules",
-      "eventsTitle": "Delivery History & Execution Log",
-      "eventsSubtitle": "Recent event deliveries and retry attempts dispatched to this subscriber",
-      "createdAt": "Created At",
-      "updatedAt": "Last Updated"
+      "loadFailed": "सदस्यता दे ब्यौरे लोड करने च असमर्थ।",
+      "configTitle": "सदस्यता कन्फिगरेशन",
+      "configSubtitle": "आम मेटाडेटा, रूटिंग पैरामीटर, ते फिल्टरिंग नियम",
+      "eventsTitle": "डिलीवरी इतिहास ते निष्पादन लाग",
+      "eventsSubtitle": "इस सदस्य गी भेजे गेदे हालिया इवेंट डिलीवरी ते परतियै कोशशें",
+      "createdAt": "बनाया गेदा:",
+      "updatedAt": "आखरी बारी अपडेट कीता गेदा"
     },
     "deliveryEvents": {
-      "ariaLabel": "Delivery events log table",
-      "empty": "No delivery events recorded yet.",
-      "auditAction": "Attempts",
+      "ariaLabel": "डिलीवरी घटनां लाग टेबल",
+      "empty": "हुनै तक्कर कोई डिलीवरी इवेंट दर्ज नेईं कीता गेआ।",
+      "auditAction": "कोशशां",
       "viewHistory": "View Delivery Attempts"
     },
     "deliveryHistory": {
-      "title": "Event Delivery Execution Audit",
-      "loadFailed": "Unable to load delivery history.",
-      "completion": "Completion Evidence",
-      "attemptsTitle": "Delivery Attempts Chronology",
-      "attemptNumber": "Attempt",
-      "attemptStatus": "Status",
-      "httpStatus": "HTTP Status",
-      "timestamp": "Timestamp",
-      "errorDetails": "Error Details",
-      "noAttempts": "No execution attempts recorded."
+      "title": "घटना डिलीवरी निष्पादन आडिट",
+      "loadFailed": "डिलीवरी दा इतिहास लोड करने च असमर्थ।",
+      "completion": "पूरा होने दा सबूत",
+      "attemptsTitle": "डिलीवरी कोशशां कालक्रम",
+      "attemptNumber": "कोशश",
+      "attemptStatus": "स्थिति",
+      "httpStatus": "ऐच्चटीटीपी स्थिति",
+      "timestamp": "टाइमस्टैम्प।",
+      "errorDetails": "त्रुटि ब्योरा",
+      "noAttempts": "कुसै बी निष्पादन दी कोशश दर्ज नेईं कीती गेई।"
     }
   },
   "events": {
-    "title": "Events",
+    "title": "घटनां",
     "subtitle": "View published events and monitor event notifications across your organization",
-    "loadFailed": "Unable to load events.",
+    "loadFailed": "इवेंटें लोड करने च असमर्थ।",
     "filters": {
-      "searchPlaceholder": "Search by delivery ID, event ID, or topic...",
-      "status": "Status",
-      "allStatuses": "All Statuses",
-      "topic": "Topic",
-      "allTopics": "All Topics",
-      "groupId": "Group ID",
-      "groupIdPlaceholder": "Filter by Group ID...",
-      "search": "Search",
-      "clear": "Clear",
+      "searchPlaceholder": "डिलीवरी आईडी, इवेंट आईडी, जां विशे राहें खोजो...",
+      "status": "स्थिति",
+      "allStatuses": "सभनें स्थितियां",
+      "topic": "विशे।",
+      "allTopics": "सभनें विशे",
+      "groupId": "समूह आईडी",
+      "groupIdPlaceholder": "समूह आईडी राहें फिल्टर करो...",
+      "search": "खोजो",
+      "clear": "साफ करो",
       "subscriptionId": "Subscription ID",
       "subscriptionIdPlaceholder": "Filter by Subscription ID..."
     },
     "status": {
-      "all": "All",
-      "pending": "Pending",
-      "delivered": "Delivered",
-      "failed": "Failed",
-      "completed": "Completed",
-      "acknowledged": "Acknowledged",
-      "in_flight": "In Flight",
-      "expired": "Expired"
+      "all": "सभनें",
+      "pending": "लंबित",
+      "delivered": "डिलीवर कीता गेदा",
+      "failed": "असफल",
+      "completed": "पूरा होआ गेदा",
+      "acknowledged": "मंजूर कीता गेदा",
+      "in_flight": "उड़ान च",
+      "expired": "समाप्त होई गेदी"
     },
     "purposes": {
-      "all": "ALL"
+      "all": "सभनें"
     },
     "table": {
-      "ariaLabel": "Published events list table",
-      "deliveryId": "Delivery ID",
-      "eventId": "Event ID",
-      "topic": "Topic",
-      "groupId": "Group ID",
-      "mode": "Mode",
-      "purposes": "Purposes",
-      "deliveries": "Deliveries",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers",
-      "noSubscribers": "No Subscribers",
-      "status": "Status",
-      "occurredAt": "Occurred At",
-      "actions": "Actions",
-      "empty": "No events found."
+      "ariaLabel": "प्रकाशत इवेंट सूची तालिका",
+      "deliveryId": "डिलीवरी आईडी",
+      "eventId": "घटना आईडी",
+      "topic": "विशे।",
+      "groupId": "समूह आईडी",
+      "mode": "मोड",
+      "purposes": "मक्सद",
+      "deliveries": "डिलीवरी",
+      "subscriber": "सदस्य",
+      "subscribers": "सदस्य",
+      "noSubscribers": "कोई सदस्य नेईं",
+      "status": "स्थिति",
+      "occurredAt": "होआ",
+      "actions": "कारवाई",
+      "empty": "कोई इवेंट नेईं लब्भेआ गेआ।"
     },
     "actions": {
-      "publish": "Publish Event",
+      "publish": "इवेंट प्रकाशत करो",
       "view": "View Details",
-      "copyPayload": "Copy Payload",
-      "close": "Close"
+      "copyPayload": "पेलोड कापी करो",
+      "close": "बंद करो"
     },
     "dialog": {
-      "publishTitle": "Publish Event",
-      "publishSubtitle": "Publish an event notification to trigger subscriber fan-out",
-      "topicLabel": "Topic",
-      "topicRequired": "Topic is required.",
-      "groupIdLabel": "Group ID (Optional)",
+      "publishTitle": "इवेंट प्रकाशत करो",
+      "publishSubtitle": "सदस्य फैन-आउट गी ट्रिगर करने आस्तै इक इवेंट सूचना प्रकाशत करो",
+      "topicLabel": "विशे।",
+      "topicRequired": "विशे जरूरी ऐ।",
+      "groupIdLabel": "समूह आईडी (वैकल्पिक)",
       "groupIdPlaceholder": "e.g. consumer-group-01",
-      "groupIdHelper": "Optional group identifier for targeted delivery",
-      "purposesLabel": "Purposes (Optional, comma-separated)",
+      "groupIdHelper": "लक्शित डिलीवरी आस्तै वैकल्पिक समूह शनाखतकर्ता",
+      "purposesLabel": "मक्सद (वैकल्पिक, कोमा कन्नै बक्ख कीते गेदे)",
       "purposesPlaceholder": "e.g. MARKETING, ANALYTICS",
-      "purposesHelper": "Comma-separated list of consent purposes associated with this event",
-      "payloadLabel": "Payload (JSON)",
+      "purposesHelper": "इस घटना कन्नै जुड़े दे सहमति दे मकसदें दी अल्पविराम कन्नै बक्ख कीती गेदी सूची",
+      "payloadLabel": "पेलोड (JSON)",
       "payloadHelper": "Valid JSON object representing the event data",
-      "payloadRequired": "Payload is required.",
-      "payloadMustBeObject": "Payload must be a valid JSON object.",
-      "invalidJson": "Please provide valid JSON format.",
-      "publishing": "Publishing...",
-      "publishSubmit": "Publish Event",
-      "publishSuccess": "Event published successfully."
+      "payloadRequired": "पेलोड जरूरी ऐ।",
+      "payloadMustBeObject": "पेलोड इक मान्य JSON आब्जैक्ट होना लोड़चदा ऐ।",
+      "invalidJson": "कृपा करियै मान्य JSON फार्मेट देओ।",
+      "publishing": "प्रकाशत कीता जा करदा ऐ...",
+      "publishSubmit": "इवेंट प्रकाशत करो",
+      "publishSuccess": "घटना सफलतापूर्वक प्रकाशत होई गेई।"
     },
     "details": {
-      "title": "Event Details",
-      "backToEvents": "Back to Events",
-      "loadFailed": "Unable to load event details.",
-      "metadataTitle": "Event Metadata",
-      "metadataSubtitle": "Identifiers, topics, and dispatch timestamps",
-      "payloadTitle": "Event Payload",
-      "historyTitle": "Delivery Attempt History",
-      "historySubtitle": "Chronological execution attempts and HTTP response status",
-      "noHistory": "No delivery attempts recorded.",
-      "completionTitle": "Completion Evidence",
-      "allPurposes": "All Purposes",
-      "createdAt": "Created At",
-      "deliveriesTitle": "Downstream Subscriber Deliveries",
-      "deliveriesSubtitle": "All deliveries and completion statuses generated for this event",
-      "noDeliveries": "No Deliveries Generated",
-      "noDeliveriesMessage": "No active subscriptions matched this topic when the event occurred.",
-      "copyPayloadSuccess": "Payload copied to clipboard.",
-      "copyPayloadFailed": "Failed to copy payload to clipboard.",
-      "subscriber": "Subscriber",
-      "subscribers": "Subscribers"
+      "title": "घटना ब्योरा",
+      "backToEvents": "घटनां पर वापस जाओ",
+      "loadFailed": "इवेंटें दे ब्यौरे लोड करने च असमर्थ।",
+      "metadataTitle": "घटना मेटाडेटा",
+      "metadataSubtitle": "पਛਾणकर्ता, विशे, ते भेजने दे समें",
+      "payloadTitle": "घटना पेलोड",
+      "historyTitle": "डिलीवरी कोशश इतिहास",
+      "historySubtitle": "कालानुक्रमिक निष्पादन कोशशां ते ऐच्चटीटीपी प्रतिक्रिया स्थिति",
+      "noHistory": "कुसै बी डिलीवरी दी कोशश दर्ज नेईं कीती गेई।",
+      "completionTitle": "पूरा होने दा सबूत",
+      "allPurposes": "सभनें मकसद",
+      "createdAt": "बनाया गेदा:",
+      "deliveriesTitle": "डाउनस्ट्रीम ग्राहक डिलीवरी",
+      "deliveriesSubtitle": "इस घटना आस्तै पैदा कीतियां गेदियां सभनें डिलीवरी ते पूरा होने दियां स्थितियां",
+      "noDeliveries": "कोई डिलीवरी पैदा नेईं होई",
+      "noDeliveriesMessage": "जिसलै इवेंट होआ, उसलै इस विशे कन्नै मेल खाने आह्‌लियां कोई सक्रिय सदस्यताएं नेईं हियां।",
+      "copyPayloadSuccess": "पेलोड क्लिपबोर्ड उप्पर कॉपी कीता गेआ।",
+      "copyPayloadFailed": "पेलोड गी क्लिपबोर्ड पर कापी करने च असफल।",
+      "subscriber": "सदस्य",
+      "subscribers": "सदस्य"
     }
   },
   "account": {
-    "deleteMenuItem": "Delete my account",
-    "deleteError": "Unable to delete your account. Please try again.",
+    "deleteMenuItem": "मिटाओ मेरा खाता",
+    "deleteError": "तुंदा खाता मिटाने च असमर्थ। कृपा करियै परतियै कोशश करो।",
     "deletePendingApproval": "Your deletion request has been submitted for approval. Your account stays active until an administrator approves it.",
     "deleteAlreadyRequested": "Your account already has a deletion request awaiting approval.",
     "deleteDialog": {
-      "accountLabel": "Account",
-      "title": "Delete your account?",
-      "message": "This permanently deletes your account and signs you out.",
-      "note": "This action cannot be undone. You will lose access to this portal, and your sign-in will stop working immediately.",
-      "confirm": "Delete my account"
+      "accountLabel": "खाता",
+      "title": "तुंदा खाता मिटाओ?",
+      "message": "एह्‌ तुंदा खाता पक्के तौरे पर मिटाई दिंदा ऐ ते तुसें गी साइन आउट करी दिंदा ऐ।",
+      "note": "एह्‌ कार्रवाई पूर्ववत नेईं कीती जाई सकदी। तुंदा इस पोर्टल तगर पुज्ज खत्म होई जाग, ते तुंदा साइन-इन फौरन कम्म करना बंद करी देग।",
+      "confirm": "मिटाओ मेरा खाता"
     },
     "deletedPage": {
       "title": "Your account has been deleted",
       "body": "Your account and sign-in have been removed. If this was a mistake, contact your administrator.",
-      "signInLink": "Go to sign-in"
+      "signInLink": "साइन-इन पर जाओ"
     }
   }
 }

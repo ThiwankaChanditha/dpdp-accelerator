@@ -45,6 +45,18 @@
         <ClientId>DPDP_CONSENT_PORTAL</ClientId>
         {% endif %}
     </ConsentPortal>
+    <ConsentApiInvoker>
+        {% if dpdp_accelerator.consent_api_invoker.auto_provisioning_enabled is defined %}
+        <AutoProvisioningEnabled>{{dpdp_accelerator.consent_api_invoker.auto_provisioning_enabled}}</AutoProvisioningEnabled>
+        {% else %}
+        <AutoProvisioningEnabled>true</AutoProvisioningEnabled>
+        {% endif %}
+        {% if dpdp_accelerator.consent_api_invoker.client_id is defined %}
+        <ClientId>{{dpdp_accelerator.consent_api_invoker.client_id}}</ClientId>
+        {% else %}
+        <ClientId>DPDP_CONSENT_API_INVOKER</ClientId>
+        {% endif %}
+    </ConsentApiInvoker>
     <Complaints>
         {% if dpdp_accelerator.complaints.statutory_due_period_days is defined %}
         <StatutoryDuePeriodDays>{{dpdp_accelerator.complaints.statutory_due_period_days}}</StatutoryDuePeriodDays>

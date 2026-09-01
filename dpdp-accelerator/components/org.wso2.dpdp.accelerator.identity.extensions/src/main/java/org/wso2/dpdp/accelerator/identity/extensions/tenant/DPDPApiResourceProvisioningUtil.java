@@ -122,6 +122,17 @@ public final class DPDPApiResourceProvisioningUtil {
     }
 
     /**
+     * Authorizes only the IS-native consent-mgt v2 "consents" resource - narrower than
+     * {@link #authorizeConsentManagementAPIs}, which also authorizes purposes and elements.
+     * For consumers like the Consent API Invoker machine-to-machine app that only ever call
+     * consent endpoints directly.
+     */
+    public static List<String> authorizeConsentAPI(String applicationId, String tenantDomain) throws Exception {
+
+        return authorizeAPIs(applicationId, tenantDomain, new String[]{CONSENT_MGT_API_IDENTIFIERS[0]});
+    }
+
+    /**
      * Registers the Event Notification API resources for a tenant when they are not already
      * present. This is intentionally idempotent because tenant provisioning can be retried.
      */
