@@ -56,10 +56,10 @@ This project uses npm. `package-lock.json` is the committed lockfile; the Maven 
 
 Create a local `.env` file from `.env.example` before running or building the portal.
 
-| Variable          | Description                                                                                                                | Example |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------- | ------- |
+| Variable            | Description                                                                                                                                                                                                                                             | Example    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
 | `VITE_API_BASE_URL` | Optional. Vite embeds this at build time. Leave empty for the normal deployment: inside IS, the portal's APIs are same-origin and tenant-qualified, resolved at runtime by `src/utils/basePath.ts`. Only set this pointing a dev server at a remote IS. | `` (empty) |
-| `VITE_AUTH_ENABLED` | Enables frontend authentication gating; set to `true` for protected deployments. | `true` |
+| `VITE_AUTH_ENABLED` | Enables frontend authentication gating; set to `true` for protected deployments.                                                                                                                                                                        | `true`     |
 
 There is no backend of the portal's own and no `GET /me` endpoint — the portal is a public OIDC
 client (`@asgardeo/auth-spa`) talking directly to the Identity Server's REST APIs. Tokens live in
@@ -147,8 +147,10 @@ repository root.
 
 ## CI
 
-`.github/workflows/pr-checks.yml` builds the whole accelerator (including this frontend, via
-`mvn clean install` from the repository root) on every pull request to `main` and `dev`.
+`.github/workflows/pr-build.yml` builds the whole accelerator (including this frontend, via
+`mvn clean install` from the repository root) on every pull request to `main` and `dev`. That
+build runs the Vitest suite too, since it is bound to the Maven test phase. The same workflow's
+`Frontend quality` job checks Prettier formatting; `npm run lint` is not enforced yet.
 
 ## AI Instructions
 
