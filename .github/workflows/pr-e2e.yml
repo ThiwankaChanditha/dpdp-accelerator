@@ -1,0 +1,131 @@
+# Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+#
+# WSO2 LLC. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+# The secret-bearing E2E path. Triggers:
+#
+#   - pull_request_target [labeled]: runs only once a maintainer applies
+#     Action/trigger-e2e, having reviewed the diff. pull_request_target runs with
+#     the base repository's write-capable GITHUB_TOKEN and its cache scope, so
+#     executing PR code under it is the classic "pwn request" exposure - the review
+#     is what makes that acceptable. pr-e2e-gate.yml strips the label on every
+#     subsequent push, so an approval cannot carry over to code nobody looked at.
+#     (Subscription secrets are deliberately *not* passed on this path - see the
+#     secrets block below.)
+#   - workflow_dispatch: manual and already authenticated, so no label needed.
+#     It is also the only way to pick `is_source: release` (a GA pack plus U2
+#     updates); labelled PR runs always build product-is from master, which
+#     needs no subscription secrets at all.
+#
+# E2E checks out refs/pull/N/merge - the PR merged onto the current base - not
+# the branch tip, so it tests what merging would actually produce rather than
+# code that may be green only in isolation. e2e.yml additionally verifies that
+# merge ref still carries the head commit the label authorised.
+name: PR E2E
+
+on:
+  pull_request_target:
+    branches: [main, dev]
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      is_source:
+        description: Where to get the Identity Server pack from
+        type: choice
+        options: [release, master]
+        default: release
+
+# A genuine E2E run shares pr-e2e-gate.yml's group, so a new push cancels a run
+# against the commit it supersedes.
+#
+# A run created by some *other* label must not join that group. Concurrency is a
+# run-level property, evaluated before any job's `if:`, so a run that is going to
+# skip both its jobs would still cancel a legitimate E2E already in flight -
+# labelling a PR `documentation` mid-run would kill its E2E and leave the gate
+# status pending for good. Those runs therefore get a throwaway group of their own,
+# keyed on run_id so they neither cancel nor queue behind anything.
+concurrency:
+  group: >-
+    ${{ (github.event_name == 'workflow_dispatch' || github.event.label.name == 'Action/trigger-e2e')
+        && format('pr-e2e-{0}', github.event.pull_request.number || github.ref)
+        || format('pr-e2e-ignored-label-{0}', github.run_id) }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    # Guard on the label's name: applying any other label fires `labeled` too.
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.label.name == 'Action/trigger-e2e'
+    uses: ./.github/workflows/e2e.yml
+    with:
+      ref: ${{ github.event_name == 'pull_request_target' && format('refs/pull/{0}/merge', github.event.pull_request.number) || '' }}
+      expected_head_sha: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || '' }}
+      is_source: ${{ github.event_name == 'workflow_dispatch' && inputs.is_source || 'master' }}
+      allow_unsafe_pr_checkout: ${{ github.event_name == 'pull_request_target' }}
+    # Not `inherit`. A labelled PR run always builds product-is from master, and
+    # every consumer of these three in e2e.yml is gated on is_source == 'release',
+    # so a PR run has no use for them - and PR runs are exactly the ones executing
+    # code that may have come from a fork. They are passed only on a manual
+    # dispatch, which is the only way to select the release+U2 path.
+    secrets:
+      SOLUTIONS_BOT_EMAIL: ${{ github.event_name == 'workflow_dispatch' && secrets.SOLUTIONS_BOT_EMAIL || '' }}
+      SOLUTIONS_BOT_U2_PASSWORD: ${{ github.event_name == 'workflow_dispatch' && secrets.SOLUTIONS_BOT_U2_PASSWORD || '' }}
+      WSO2_UPDATE_TOOL_SETUP_DECRYPTION_PASSPHRASE: ${{ github.event_name == 'workflow_dispatch' && secrets.WSO2_UPDATE_TOOL_SETUP_DECRYPTION_PASSPHRASE || '' }}
+
+  # Flips the "E2E (label-gated)" status pr-e2e-gate.yml set to pending, on the head SHA the
+  # label event carried.
+  #
+  # Cancelled runs are skipped: a cancellation means a newer push has already
+  # re-pended the gate on its own head commit, so writing to the superseded SHA
+  # would just be noise. That does not cover every stale write - if e2e.yml's
+  # merge-ref guard fails because the PR moved, the result is `failure`, not
+  # `cancelled`, and a failure lands on the by-then-superseded commit. Harmless,
+  # since the gate run for the new head publishes its own pending status.
+  report:
+    name: Report E2E result
+    needs: e2e
+    if: >
+      always() && github.event_name == 'pull_request_target' &&
+      github.event.label.name == 'Action/trigger-e2e' &&
+      needs.e2e.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - name: Set the E2E status
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.e2e.result }}
+        run: |
+          # Every description has to be actionable on its own: the label is stripped on
+          # each push, so "failed" and "not run yet" both need the reader to know that
+          # re-applying it is what re-runs E2E. GitHub truncates these at 140 chars.
+          if [ "$RESULT" = "success" ]; then
+            state=success
+            description="E2E passed on this commit"
+          else
+            state=failure
+            description="E2E $RESULT - see Details, then re-apply Action/trigger-e2e to run it again"
+          fi
+          gh api "repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha }}" \
+            -f state="$state" \
+            -f context="E2E (label-gated)" \
+            -f description="$description" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
