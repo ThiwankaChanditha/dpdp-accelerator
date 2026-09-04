@@ -195,26 +195,64 @@ jobs:
         env:
           MAVEN_OPTS: -Xmx4g
 
+      # product-is builds two archives into this directory: the runtime distribution and
+      # a source distribution, wso2is-<version>-src.zip. Both match `wso2is-*.zip`, and
+      # `find` lists them in filesystem order rather than sorted - so taking the first
+      # match staged one or the other essentially at random. A run that drew the source
+      # zip unpacked a source tree, pointed IS_HOME at it and failed several steps later
+      # in merge.sh with "not a valid Carbon product path", which reads like a packaging
+      # bug rather than the wrong input. Exclude the source archive and sort, so the
+      # choice is both correct and reproducible.
       - name: Stage the built distribution zip
         if: env.IS_SOURCE == 'master'
         run: |
-          zip_path=$(find /tmp/product-is/modules/distribution/target -maxdepth 1 -name "wso2is-*.zip" | head -1)
-          if [ -z "${zip_path}" ]; then
-            echo "::error::No wso2is-*.zip under modules/distribution/target - did the module path change?"
+          zips=$(find /tmp/product-is/modules/distribution/target -maxdepth 1 \
+            -name "wso2is-*.zip" ! -name "*-src.zip" | sort)
+          count=$(echo "${zips}" | grep -c . || true)
+          if [ "${count}" -eq 0 ]; then
+            echo "::error::No runtime wso2is-*.zip under modules/distribution/target" \
+                 "(source distributions are excluded) - did the module path change?"
+            ls -1 /tmp/product-is/modules/distribution/target/*.zip 2>/dev/null || true
             exit 1
           fi
+          if [ "${count}" -gt 1 ]; then
+            echo "::error::Expected one runtime distribution zip, found ${count} - refusing" \
+                 "to guess which to test:"
+            echo "${zips}" >&2
+            exit 1
+          fi
+          zip_path="${zips}"
           mkdir -p ~/is-pack
           cp "${zip_path}" ~/is-pack/wso2is.zip
-          echo "Built $(basename "${zip_path}")"
+          echo "Staged $(basename "${zip_path}")"
 
       - name: Unpack IS
         run: unzip -q ~/is-pack/wso2is.zip -d "${GITHUB_WORKSPACE}"
 
       - name: Resolve IS_HOME
         run: |
-          dir=$(find "${GITHUB_WORKSPACE}" -maxdepth 1 -type d -name "wso2is-*")
-          if [ -z "${dir}" ]; then
-            echo "::error::No wso2is-* directory found after unpacking"
+          # An unpacked source distribution matches this glob as readily as the runtime
+          # pack, and an unquoted multi-line result would have silently produced an
+          # unusable IS_HOME, so exclude it and insist on exactly one match.
+          dirs=$(find "${GITHUB_WORKSPACE}" -maxdepth 1 -type d -name "wso2is-*" ! -name "*-src" | sort)
+          count=$(echo "${dirs}" | grep -c . || true)
+          if [ "${count}" -eq 0 ]; then
+            echo "::error::No runtime wso2is-* directory after unpacking. A source" \
+                 "distribution alone does not count - check which zip was staged."
+            ls -1d "${GITHUB_WORKSPACE}"/wso2is-* 2>/dev/null || true
+            exit 1
+          fi
+          if [ "${count}" -gt 1 ]; then
+            echo "::error::Expected one unpacked product directory, found ${count}:"
+            echo "${dirs}" >&2
+            exit 1
+          fi
+          # Assert it really is a runtime pack. Without this the first symptom of a wrong
+          # pack is merge.sh's "not a valid Carbon product path" much further down.
+          dir="${dirs}"
+          if [ ! -f "${dir}/bin/wso2server.sh" ]; then
+            echo "::error::${dir} has no bin/wso2server.sh, so it is not a runtime" \
+                 "Identity Server pack."
             exit 1
           fi
           echo "IS_HOME=${dir}" >> "$GITHUB_ENV"
