@@ -44,11 +44,12 @@ on:
       db_type:
         description: >-
           Database the Identity Server runs on - any type with a block in the accelerator's
-          repository/conf/dbprofiles.properties, currently `h2` or `mysql`. The accelerator
-          ships `h2` so a fresh install needs no database server; CI defaults to `mysql`
-          because that is what a real deployment uses, and because Identity Server 7.3
-          disables Basic auth on any deployment whose root organization postdates
-          2026-08-13 - true of every MySQL install, so it is the path worth guarding.
+          repository/conf/dbprofiles.properties, currently `h2`, `mysql` or `postgresql`.
+          The accelerator ships `h2` so a fresh install needs no database server; CI defaults
+          to `mysql` because that is what a real deployment uses, and because Identity Server
+          7.3 disables Basic auth on any deployment whose root organization postdates
+          2026-08-13 - true of every MySQL or PostgreSQL install, so it is the path worth
+          guarding.
         required: false
         type: string
         default: mysql
@@ -433,6 +434,35 @@ jobs:
           mysql -h 127.0.0.1 -u root -proot -e 'SELECT VERSION();' \
             || { echo "::error::MySQL did not become reachable on the runner"; exit 1; }
 
+      # A container rather than the runner's own PostgreSQL (16.x, stopped by default), so CI
+      # runs the same server version locally and here: 17 is the newest line Identity Server
+      # 7.3.0 is tested against. configure.sh still drives the schema through the runner's psql.
+      # Unlike MySQL, nothing here matches configure.properties' defaults, so the connection
+      # settings go to the next step through GITHUB_ENV.
+      - name: Start PostgreSQL
+        if: inputs.db_type == 'postgresql'
+        env:
+          POSTGRES_IMAGE: postgres:17-alpine
+        run: |
+          command -v psql > /dev/null \
+            || { echo "::error::psql is not on the runner; configure.sh needs it"; exit 1; }
+          password="$(openssl rand -hex 16)"
+          echo "::add-mask::${password}"
+          docker run -d --name dpdp-postgres -e POSTGRES_PASSWORD="${password}" \
+            -p 127.0.0.1:5432:5432 "${POSTGRES_IMAGE}" > /dev/null
+          for _ in $(seq 1 30); do
+            docker exec dpdp-postgres pg_isready -U postgres -q && break
+            sleep 2
+          done
+          PGPASSWORD="${password}" psql -h 127.0.0.1 -U postgres -d postgres -tAc 'SELECT version();' \
+            || { echo "::error::PostgreSQL did not become reachable on the runner"; exit 1; }
+          {
+            echo "DB_HOST=127.0.0.1"
+            echo "DB_PORT=5432"
+            echo "DB_USER=postgres"
+            echo "DB_PASS=${password}"
+          } >> "$GITHUB_ENV"
+
       - name: Apply the accelerator
         run: |
           zip_path=$(find dpdp-accelerator/accelerators/dpdp-is/target -maxdepth 1 -name "wso2-dpdpiam-accelerator-*.zip" | head -1)
@@ -450,6 +480,16 @@ jobs:
           sed -i -E "s/^DB_TYPE=.*/DB_TYPE=${DB_TYPE}/" "${properties}"
           grep -qx "DB_TYPE=${DB_TYPE}" "${properties}" \
             || { echo "::error::could not set DB_TYPE=${DB_TYPE} in ${properties}"; exit 1; }
+          # Only a database step that exported its connection settings overrides the shipped
+          # defaults; MySQL relies on the runner already matching them.
+          for key in DB_HOST DB_PORT DB_USER DB_PASS; do
+            value="${!key:-}"
+            if [ -n "${value}" ]; then
+              sed -i -E "s|^${key}=.*|${key}=${value}|" "${properties}"
+              grep -qx "${key}=${value}" "${properties}" \
+                || { echo "::error::could not set ${key} in ${properties}"; exit 1; }
+            fi
+          done
           echo "Installing against ${DB_TYPE}"
           echo "Database \`${DB_TYPE}\`" >> "$GITHUB_STEP_SUMMARY"
 
@@ -619,7 +659,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: playwright-report
+          # Suffixed so a caller running more than one database in the same workflow run -
+          # the nightly - does not collide on artifact names.
+          name: playwright-report-${{ inputs.db_type }}
           path: |
             dpdp-integration-test-suite/playwright-report/
             dpdp-integration-test-suite/test-results/
@@ -629,7 +671,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: carbon-logs
+          name: carbon-logs-${{ inputs.db_type }}
           path: ${{ env.IS_HOME }}/repository/logs/
           retention-days: 7
 

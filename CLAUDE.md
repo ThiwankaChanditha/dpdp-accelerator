@@ -52,6 +52,11 @@ against the default branch nightly, so a super-tenant-only regression surfaces w
 than going unnoticed until the Saturday weekly jobs or a release gate. `release-builder.yml`
 likewise passes no `projects` override, so a release is still gated on every project.
 
+Every caller of `e2e.yml` takes its `db_type` default, `mysql`, except `nightly-e2e.yml`, which
+runs it as a matrix over every database type (`h2`, `mysql`, `postgresql`), in parallel and with
+`fail-fast: false`. That nightly is the only end-to-end h2 and PostgreSQL coverage; a PR or a
+release is not gated on either.
+
 The Identity Server under test comes from the `updates2.0` S3 bucket (`IS_PACK_S3_URI`) with U2
 updates applied. The published GitHub release zip is *not* U2-updatable — don't reintroduce that
 path. `e2e.yml` still accepts `is_source: master`, which `weekly-e2e-is-master.yml` runs on a

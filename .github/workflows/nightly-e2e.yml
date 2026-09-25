@@ -17,6 +17,8 @@
 # pr-e2e.yml runs only the `multi-tenant` project, so `super-tenant`'s own coverage
 # (unqualified-root routing via basePath.ts, the tenant-provisioning-skip path) would otherwise
 # go untested between the Saturday weekly runs. This exercises every project nightly instead.
+# It is also the only caller that runs every database type: the rest take e2e.yml's `mysql`
+# default, so this is the only end-to-end coverage h2 and postgresql get.
 name: '[Nightly] Test every E2E project'
 
 on:
@@ -35,9 +37,20 @@ permissions:
 
 jobs:
   e2e:
+    strategy:
+      # One database's failure must not cancel the other databases' runs.
+      fail-fast: false
+      matrix:
+        # Every type with a block in dbprofiles.properties. A server-based type also needs its
+        # own "Start ..." step in e2e.yml before it is listed here; h2 is embedded and needs none.
+        db_type: [h2, mysql, postgresql]
+    name: E2E (${{ matrix.db_type }})
     # No `ref`: a scheduled run checks out the default branch, which is what we want tested.
     # No `projects`: e2e.yml's own default is every project.
+    # The legs run in parallel; if they all miss the IS pack cache they race to save the same
+    # key, and actions/cache/save logs every loser as a warning rather than a failure.
     uses: ./.github/workflows/e2e.yml
     with:
       is_source: s3
+      db_type: ${{ matrix.db_type }}
     secrets: inherit
