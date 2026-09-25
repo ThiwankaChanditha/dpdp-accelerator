@@ -7,9 +7,7 @@ server.
 
 ## Prerequisites
 
-- WSO2 Identity Server 7.3.0 at U2 update level 17 or later (`org.wso2.carbon.consent.mgt.core`
-  2.9.0.5+) - this is where WSO2 fixed the consent-mgt v2 migration's MySQL error 1075 and added
-  `revoke_active_consents_on_create`; earlier update levels are not supported
+- WSO2 Identity Server 7.3.0 at U2 update level 17 or later
 - A database administrator account for the selected DBMS
 - The database client tools needed to create databases and execute SQL scripts
 - The JDBC driver JAR for the selected DBMS
