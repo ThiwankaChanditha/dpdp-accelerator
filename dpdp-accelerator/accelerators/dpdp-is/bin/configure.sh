@@ -73,7 +73,8 @@ resolve_db_profile() {
 
   for key in PORT DRIVER URL_TEMPLATE SCRIPT_SUFFIX DRIVER_URL CLIENT \
              CLIENT_ARGS CLIENT_QUERY_ARGS PW_ENV ADMIN_DB \
-             DB_EXISTS_SQL CREATE_DB_SQL DROP_DB_SQL IS_CHARSET DPDP_CHARSET; do
+             DB_EXISTS_SQL CREATE_DB_SQL DROP_DB_SQL IS_CHARSET DPDP_CHARSET \
+             DIALECT EXEC_FLAG VALIDATION_QUERY; do
     var="${prefix}_${key}"
     eval "DB_${key}=\${${var}-}"
   done
@@ -145,7 +146,7 @@ apply_sql_file() {
 
 # run_admin_sql <sql>  - executed against the server-level database, for CREATE/DROP.
 run_admin_sql() {
-  run_client "${DB_ADMIN_DB}" -e "$1" > /dev/null
+  run_client "${DB_ADMIN_DB}" "${DB_EXEC_FLAG}" "$1" > /dev/null
 }
 
 # database_exists <name>
@@ -159,7 +160,7 @@ database_exists() {
     export "${DB_PW_ENV}=${DB_PASS}"
   fi
   # shellcheck disable=SC2086
-  if ! out="$("${DB_CLIENT}" ${args} ${DB_CLIENT_QUERY_ARGS} -e "${sql}" 2>&1)"; then
+  if ! out="$("${DB_CLIENT}" ${args} ${DB_CLIENT_QUERY_ARGS} "${DB_EXEC_FLAG}" "${sql}" 2>&1)"; then
     printf '\nERROR: could not query %s on %s:%s for database "%s".\n' \
       "${DB_ADMIN_DB}" "${DB_HOST}" "${DB_PORT}" "$1"
     printf '       %s\n' "${out}"
@@ -174,7 +175,7 @@ database_exists() {
 # values below are filled in for whichever DB_TYPE is selected. The template is the
 # stock IS file except that those blocks are tokenised and carry a uniform
 # driver + pool_options (validationQuery guards a pooled connection the server has
-# already dropped from serving a stale/failed read).
+# already dropped from serving a stale/failed read; its text is per type).
 if [ ! -f "${TOML_TEMPLATE}" ]; then
   echo "ERROR: no deployment.toml template at ${TOML_TEMPLATE}"
   echo "       Check PRODUCT_CONF_PATH in repository/conf/configure.properties."
@@ -207,7 +208,8 @@ cp "${TOML_TEMPLATE}" "${TOML_STAGING}"
 subst_token IS_HOSTNAME "${IS_HOSTNAME}"
 subst_token IS_ADMIN_USERNAME "${IS_ADMIN_USERNAME}"
 subst_token IS_ADMIN_PASSWORD "${IS_ADMIN_PASSWORD}"
-subst_token DB_DIALECT "${DB_TYPE}"
+subst_token DB_DIALECT "${DB_DIALECT}"
+subst_token DB_VALIDATION_QUERY "${DB_VALIDATION_QUERY}"
 subst_token DB_DRIVER_CLASS "${DB_DRIVER}"
 subst_token DB_CONN_USERNAME "${CONN_USER}"
 subst_token DB_CONN_PASSWORD "${CONN_PASS}"
@@ -345,10 +347,10 @@ apply_consent_migration() {
   fi
   echo "      Applying the consent schema migration to ${target}"
   tmp_sql="$(mktemp)"
-  if [ "${DB_TYPE}" = "h2" ]; then
-    grep -v '^#' "${migration}" > "${tmp_sql}"
-  else
+  if [ "${DB_TYPE}" = "mysql" ]; then
     grep -v '^#' "${migration}" | mysqlify_migration > "${tmp_sql}"
+  else
+    grep -v '^#' "${migration}" > "${tmp_sql}"
   fi
   apply_sql_file "${target}" "${tmp_sql}"
   rm -f "${tmp_sql}"
@@ -401,9 +403,11 @@ else
     for FEATURE_DIR in "${DPDP_DBSCRIPTS_DIR}"/*/; do
       FEATURE_NAME="$(basename "${FEATURE_DIR}")"
       FEATURE_SCRIPT="${FEATURE_DIR}${DB_SCRIPT_SUFFIX}.sql"
+      # Fatal rather than skipped: a server started on a partial DPDP schema fails later,
+      # at the first request that touches the missing feature's tables.
       if [ ! -f "${FEATURE_SCRIPT}" ]; then
-        echo "      WARNING: no ${DB_SCRIPT_SUFFIX}.sql for feature '${FEATURE_NAME}'; skipping."
-        continue
+        echo "      ERROR: no ${DB_SCRIPT_SUFFIX}.sql for feature '${FEATURE_NAME}'."
+        exit 2
       fi
       echo "      Applying ${FEATURE_NAME}/${DB_SCRIPT_SUFFIX}.sql"
       apply_sql_file "${DB_DPDP}" "${FEATURE_SCRIPT}"
