@@ -47,12 +47,11 @@ class WebhookRequestHandler(BaseHTTPRequestHandler):
         log("WARN", f"<-- Method '{self.command}' not allowed. Webhook endpoints accept POST only. Returning HTTP 405.")
         self.send_error(405, "Method Not Allowed")
 
-    do_GET = _handle_unsupported_method
-    do_PUT = _handle_unsupported_method
-    do_DELETE = _handle_unsupported_method
-    do_PATCH = _handle_unsupported_method
-    do_HEAD = _handle_unsupported_method
-    do_OPTIONS = _handle_unsupported_method
+    def __getattr__(self, name):
+        # Catch-all for any non-POST HTTP method (GET, PUT, DELETE, TRACE, CONNECT, etc.)
+        if name.startswith("do_"):
+            return self._handle_unsupported_method
+        raise AttributeError(name)
 
     def do_POST(self):
         log("INFO", f"--> Incoming POST {self.path} from {self.client_address[0]}")
