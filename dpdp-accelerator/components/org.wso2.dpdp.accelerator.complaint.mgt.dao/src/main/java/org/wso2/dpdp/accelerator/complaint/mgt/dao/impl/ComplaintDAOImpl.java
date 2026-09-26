@@ -36,7 +36,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,19 +62,19 @@ public class ComplaintDAOImpl implements ComplaintDAO {
             return ps.executeUpdate() > 0;
         /*
          * Distinguishes an expected reference-ID collision (retry) from a genuine COMPLAINT_ID
-         * collision (real bug) by checking the driver's error message text - the only portable
-         * way, since neither driver exposes the violated constraint as a structured field.
+         * collision (real bug). A constraint violation is recognised by its SQLState class, 23,
+         * rather than by exception type: MySQL's and H2's drivers throw
+         * SQLIntegrityConstraintViolationException, but PostgreSQL's throws a plain PSQLException.
+         * The violated constraint is then read from the message text - the only portable way,
+         * since no driver exposes it as a structured field.
          */
-        } catch (SQLIntegrityConstraintViolationException e) {
-
-            if (e.getMessage() != null && e.getMessage().toUpperCase(java.util.Locale.ROOT)
-                    .contains("UQ_COMPLAINT_REFERENCE")) {
+        } catch (SQLException e) {
+            String sqlState = e.getSQLState();
+            if (sqlState != null && sqlState.startsWith("23") && e.getMessage() != null
+                    && e.getMessage().toUpperCase(java.util.Locale.ROOT).contains("UQ_COMPLAINT_REFERENCE")) {
                 LOG.warn("Duplicate reference ID for org: " + complaint.getOrgId(), e);
                 throw new DuplicateReferenceIdException(e);
             }
-            LOG.error("Error adding complaint for org: " + complaint.getOrgId(), e);
-            throw new ComplaintDAOException("Error adding complaint for org: " + complaint.getOrgId(), e);
-        } catch (SQLException e) {
             LOG.error("Error adding complaint for org: " + complaint.getOrgId(), e);
             throw new ComplaintDAOException("Error adding complaint for org: " + complaint.getOrgId(), e);
         }

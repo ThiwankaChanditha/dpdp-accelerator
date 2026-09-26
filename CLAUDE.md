@@ -583,14 +583,17 @@ The real deployment workflow is "rebuild the accelerator, merge it over an alrea
 
 ## Database scripts
 
-DDL lives at `accelerators/dpdp-is/carbon-home/dbscripts/<feature>/{h2,mysql}.sql` (one directory
-per feature, not per module) and is packaged into the shipped zip automatically since
-`carbon-home/` is included wholesale by the assembly descriptor — no separate wiring needed.
+DDL lives at `accelerators/dpdp-is/carbon-home/dbscripts/<feature>/{h2,mysql,postgresql}.sql`
+(one directory per feature, not per module) and is packaged into the shipped zip automatically
+since `carbon-home/` is included wholesale by the assembly descriptor — no separate wiring needed.
+A new feature ships all three: `configure.sh` stops rather than install a partial schema when
+the selected database's script is missing.
 Unlike the product's own bundled databases (which get a pre-built, pre-populated file baked in
 at WSO2's own build time), a new accelerator-owned database has no such build pipeline: its
-schema gets created at install time by `bin/configure.sh`, which runs the `.sql` file with H2's
-`org.h2.tools.RunScript` using the H2 engine jar already shipped in
-`<IS_HOME>/repository/components/plugins/`. Register the new datasource in `deployment.toml`
+schema gets created at install time by `bin/configure.sh`, which runs each feature's `.sql` file
+— on H2 through `org.h2.tools.RunScript` using the H2 engine jar already shipped in
+`<IS_HOME>/repository/components/plugins/`, on MySQL and PostgreSQL through the database's own
+client (`mysql`, `psql`). Register the new datasource in `deployment.toml`
 using the product's own named-table form (`[datasource.Name]`, matching
 `[datasource.AgentIdentity]`), not the `[[datasource]]` array form.
 

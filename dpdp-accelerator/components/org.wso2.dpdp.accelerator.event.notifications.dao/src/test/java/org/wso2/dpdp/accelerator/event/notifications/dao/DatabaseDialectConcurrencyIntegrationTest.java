@@ -83,7 +83,7 @@ public class DatabaseDialectConcurrencyIntegrationTest {
         try (PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.2-alpine")) {
             postgres.start();
             runConcurrencyScenarios(() -> openConnection(postgres.getJdbcUrl(), postgres.getUsername(),
-                    postgres.getPassword(), "postgres"), "JSONB", EventNotificationPostgresDBQueries.class);
+                    postgres.getPassword(), "postgres"), "TEXT", EventNotificationPostgresDBQueries.class);
         }
     }
 
