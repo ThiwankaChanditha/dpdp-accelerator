@@ -22,16 +22,4 @@ package org.wso2.dpdp.accelerator.event.notifications.dao.queries;
  * PostgreSQL dialect query provider for DPDP Event Notification Framework.
  */
 public class EventNotificationPostgresDBQueries extends EventNotificationCommonDBQueries {
-
-    @Override
-    public String getAddEventQuery() {
-        return "INSERT INTO EVENT (EVENT_ID, ORG_ID, GROUP_ID, TOPIC_ID, PAYLOAD, CREATED_AT) " +
-                "SELECT ?, ?, ?, ?, CAST(? AS JSONB), ? FROM TOPIC " +
-                "WHERE TOPIC_ID = ? AND ORG_ID = ? AND STATUS = " + SQL_TOPIC_ACTIVE;
-    }
-
-    @Override
-    public String getEventPayloadSearchExpression() {
-        return "LOWER(CAST(e.PAYLOAD AS TEXT))";
-    }
 }

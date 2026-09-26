@@ -44,8 +44,6 @@ public class EventNotificationQueryFactory {
                 return new EventNotificationPostgresDBQueries();
             } else if (k.contains(DBDialectConstants.DB_TYPE_MYSQL)) {
                 return new EventNotificationMysqlDBQueries();
-            } else if (k.contains(DBDialectConstants.DB_TYPE_SQLITE)) {
-                return new EventNotificationSqliteDBQueries();
             } else if (k.contains(DBDialectConstants.DB_TYPE_H2)) {
                 return new EventNotificationH2DBQueries();
             }

@@ -19,7 +19,7 @@ password = "DB_CONN_PASSWORD"
 driver = "DB_DRIVER_CLASS"
 
 [database.identity_db.pool_options]
-validationQuery = "SELECT 1"
+validationQuery = "DB_VALIDATION_QUERY"
 validationInterval = "30000"
 testOnBorrow = true
 
@@ -31,7 +31,7 @@ password = "DB_CONN_PASSWORD"
 driver = "DB_DRIVER_CLASS"
 
 [database.shared_db.pool_options]
-validationQuery = "SELECT 1"
+validationQuery = "DB_VALIDATION_QUERY"
 validationInterval = "30000"
 testOnBorrow = true
 
@@ -41,7 +41,7 @@ url = "DB_AGENT_URL"
 username = "DB_CONN_USERNAME"
 password = "DB_CONN_PASSWORD"
 driver = "DB_DRIVER_CLASS"
-pool_options.validationQuery = "SELECT 1"
+pool_options.validationQuery = "DB_VALIDATION_QUERY"
 pool_options.validationInterval = "30000"
 pool_options.testOnBorrow = true
 
@@ -116,7 +116,7 @@ url = "DB_DPDP_URL"
 username = "DB_CONN_USERNAME"
 password = "DB_CONN_PASSWORD"
 driver = "DB_DRIVER_CLASS"
-pool_options.validationQuery = "SELECT 1"
+pool_options.validationQuery = "DB_VALIDATION_QUERY"
 pool_options.validationInterval = "30000"
 pool_options.testOnBorrow = true
 

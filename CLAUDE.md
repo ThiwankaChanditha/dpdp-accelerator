@@ -52,15 +52,26 @@ against the default branch nightly, so a super-tenant-only regression surfaces w
 than going unnoticed until the Saturday weekly jobs or a release gate. `release-builder.yml`
 likewise passes no `projects` override, so a release is still gated on every project.
 
+Every caller of `e2e.yml` takes its `db_type` default, `mysql`, except `nightly-e2e.yml`, which
+runs it as a matrix over every database type (`h2`, `mysql`, `postgresql`), in parallel and with
+`fail-fast: false`; a manual dispatch can narrow it to one database and/or one project. That
+nightly is the only end-to-end h2 and PostgreSQL coverage; a PR or a release is not gated on
+either.
+
 The Identity Server under test comes from the `updates2.0` S3 bucket (`IS_PACK_S3_URI`) with U2
 updates applied. The published GitHub release zip is *not* U2-updatable — don't reintroduce that
 path. `e2e.yml` still accepts `is_source: master`, which `weekly-e2e-is-master.yml` runs on a
 schedule so upstream breakage surfaces before the next IS upgrade rather than during it. The
 updated pack is cached, and **only `workflow_dispatch` / `schedule` / `push` runs may write that
 cache** — never the labelled-PR path, or a PR could poison the pack for every later run,
-including the release gate. Keep the restore read-only. Role *membership*
-is the one thing the accelerator never provisions, so both CI and a fresh local install get their
-accounts from `dpdp-integration-test-suite/scripts/provision-test-users.sh` (idempotent).
+including the release gate. Keep the restore read-only. Cache entries are immutable, so
+`nightly-e2e.yml` refreshes it: unless a manual run ticks `use_cached_is_pack`, it deletes the
+default branch's `is-pack-*` entry, rebuilds the pack at the latest U2 level once
+(`e2e.yml` with `pack_only`), saves it, and runs every database leg on that same pack.
+
+Role *membership* is the one thing the accelerator never provisions, so both CI and a fresh local
+install get their accounts from `dpdp-integration-test-suite/scripts/provision-test-users.sh`
+(idempotent).
 
 **Use npm, not pnpm.** `package-lock.json` is the committed lockfile and the Maven build invokes
 `npm install` / `npm run build`. The frontend `README.md` and `AGENTS.md` both say pnpm — they are
@@ -572,14 +583,17 @@ The real deployment workflow is "rebuild the accelerator, merge it over an alrea
 
 ## Database scripts
 
-DDL lives at `accelerators/dpdp-is/carbon-home/dbscripts/<feature>/{h2,mysql}.sql` (one directory
-per feature, not per module) and is packaged into the shipped zip automatically since
-`carbon-home/` is included wholesale by the assembly descriptor — no separate wiring needed.
+DDL lives at `accelerators/dpdp-is/carbon-home/dbscripts/<feature>/{h2,mysql,postgresql}.sql`
+(one directory per feature, not per module) and is packaged into the shipped zip automatically
+since `carbon-home/` is included wholesale by the assembly descriptor — no separate wiring needed.
+A new feature ships all three: `configure.sh` stops rather than install a partial schema when
+the selected database's script is missing.
 Unlike the product's own bundled databases (which get a pre-built, pre-populated file baked in
 at WSO2's own build time), a new accelerator-owned database has no such build pipeline: its
-schema gets created at install time by `bin/configure.sh`, which runs the `.sql` file with H2's
-`org.h2.tools.RunScript` using the H2 engine jar already shipped in
-`<IS_HOME>/repository/components/plugins/`. Register the new datasource in `deployment.toml`
+schema gets created at install time by `bin/configure.sh`, which runs each feature's `.sql` file
+— on H2 through `org.h2.tools.RunScript` using the H2 engine jar already shipped in
+`<IS_HOME>/repository/components/plugins/`, on MySQL and PostgreSQL through the database's own
+client (`mysql`, `psql`). Register the new datasource in `deployment.toml`
 using the product's own named-table form (`[datasource.Name]`, matching
 `[datasource.AgentIdentity]`), not the `[[datasource]]` array form.
 

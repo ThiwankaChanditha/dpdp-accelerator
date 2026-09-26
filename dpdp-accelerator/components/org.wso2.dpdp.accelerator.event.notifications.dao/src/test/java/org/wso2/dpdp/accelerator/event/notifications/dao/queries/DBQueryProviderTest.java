@@ -18,8 +18,7 @@ public class DBQueryProviderTest {
     public void queryProvidersExposeNonEmptyQueries() throws Exception {
         for (EventNotificationCommonDBQueries provider : new EventNotificationCommonDBQueries[] {
                 new EventNotificationCommonDBQueries(), new EventNotificationMysqlDBQueries(),
-                new EventNotificationH2DBQueries(), new EventNotificationPostgresDBQueries(),
-                new EventNotificationSqliteDBQueries() }) {
+                new EventNotificationH2DBQueries(), new EventNotificationPostgresDBQueries() }) {
             for (Method method : EventNotificationCommonDBQueries.class.getMethods()) {
                 if (method.getDeclaringClass() == EventNotificationCommonDBQueries.class
                         && method.getReturnType() == String.class && method.getParameterCount() == 0) {
@@ -29,8 +28,8 @@ public class DBQueryProviderTest {
         }
         Assert.assertTrue(EventNotificationQueryFactory.getQueryProvider("postgres")
                 instanceof EventNotificationPostgresDBQueries);
-        Assert.assertTrue(EventNotificationQueryFactory.getQueryProvider("sqlite")
-                instanceof EventNotificationSqliteDBQueries);
+        Assert.assertTrue(EventNotificationQueryFactory.getQueryProvider("mysql")
+                instanceof EventNotificationMysqlDBQueries);
         Assert.assertTrue(EventNotificationQueryFactory.getQueryProvider("h2") instanceof EventNotificationH2DBQueries);
         Assert.assertTrue(EventNotificationQueryFactory.getQueryProvider() instanceof EventNotificationH2DBQueries);
     }
@@ -43,14 +42,11 @@ public class DBQueryProviderTest {
     }
 
     @Test
-    public void transactionalFanOutQueriesUseLocksExceptOnSqlite() {
+    public void transactionalFanOutQueriesUseLocks() {
         EventNotificationCommonDBQueries common = new EventNotificationCommonDBQueries();
-        EventNotificationSqliteDBQueries sqlite = new EventNotificationSqliteDBQueries();
 
         Assert.assertTrue(common.getActiveTopicByOrgAndNameForUpdateQuery().endsWith("FOR UPDATE"));
         Assert.assertTrue(common.getActiveSubscriptionsForFanOutQuery().endsWith("FOR UPDATE"));
-        Assert.assertFalse(sqlite.getActiveTopicByOrgAndNameForUpdateQuery().contains("FOR UPDATE"));
-        Assert.assertFalse(sqlite.getActiveSubscriptionsForFanOutQuery().contains("FOR UPDATE"));
         Assert.assertTrue(common.getAddEventQuery().contains("STATUS = 'active'"));
         Assert.assertTrue(common.getLockSubscriptionForVerificationQuery().contains("DELIVERY_MODE = 'webhook'"));
         Assert.assertTrue(common.getLockSubscriptionForVerificationQuery().contains("STATUS = ?"));

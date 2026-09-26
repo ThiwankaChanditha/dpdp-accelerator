@@ -34,11 +34,6 @@ public class EscapedLikeDialectTest {
         assertLiteralSearch("jdbc:h2:mem:escaped_like;DB_CLOSE_DELAY=-1");
     }
 
-    @Test
-    public void sqliteTreatsPercentAndUnderscoreAsLiterals() throws Exception {
-        assertLiteralSearch("jdbc:sqlite::memory:");
-    }
-
     private static void assertLiteralSearch(String jdbcUrl) throws Exception {
         try (Connection connection = DriverManager.getConnection(jdbcUrl);
              Statement statement = connection.createStatement()) {

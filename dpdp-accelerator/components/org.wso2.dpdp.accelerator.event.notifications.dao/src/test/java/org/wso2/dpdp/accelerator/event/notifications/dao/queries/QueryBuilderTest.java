@@ -78,13 +78,13 @@ public class QueryBuilderTest {
     }
 
     @Test
-    public void postgresEventSearchCastsJsonPayloadToText() {
+    public void postgresEventSearchReadsTheTextPayloadDirectly() {
         QueryResult result = new EventQueryBuilder("org", new EventNotificationPostgresDBQueries())
                 .setSearch("account")
                 .buildCountQuery("SELECT COUNT(*) FROM EVENT e JOIN TOPIC t ON 1=1 WHERE e.ORG_ID = ?");
 
-        assertTrue(result.getSql().contains("LOWER(CAST(e.PAYLOAD AS TEXT)) LIKE ? ESCAPE '!'"));
-        assertTrue(!result.getSql().contains("LOWER(e.PAYLOAD) LIKE ?"));
+        assertTrue(result.getSql().contains("LOWER(e.PAYLOAD) LIKE ? ESCAPE '!'"));
+        assertTrue(!result.getSql().contains("CAST(e.PAYLOAD"));
     }
 
     @Test
