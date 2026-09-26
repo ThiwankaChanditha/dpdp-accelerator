@@ -51,7 +51,7 @@ test.describe('Webhook delivery', () => {
     return total
   }
 
-  /** Registers a webhook subscription, waits for the verification GET to be answered, and returns the receiver already past `pending`. */
+  /** Registers a webhook subscription, waits for the verification POST to be answered, and returns the receiver already past `pending`. */
   async function registerVerifiedWebhookSubscription(
     consentAdminEventApi: import('../../clients/EventNotificationApiClient').EventNotificationApiClient,
     label: string,
