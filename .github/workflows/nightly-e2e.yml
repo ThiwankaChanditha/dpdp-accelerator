@@ -19,6 +19,11 @@
 # go untested between the Saturday weekly runs. This exercises every project nightly instead.
 # It is also the only caller that runs every database type: the rest take e2e.yml's `mysql`
 # default, so this is the only end-to-end coverage h2 and postgresql get.
+#
+# By default it also refreshes the cached IS pack: the old entry is dropped, a fresh pack is
+# downloaded and brought to the latest U2 level once, saved, and every database leg then tests
+# that same pack. PR E2E restores it too, so a U2 update that breaks the accelerator fails here
+# first. A manual run can tick "use cached IS pack" to skip the refresh for a quick check.
 name: '[Nightly] Test every E2E project'
 
 on:
@@ -28,8 +33,12 @@ on:
     - cron: '15 3 * * *'
   workflow_dispatch:
     # A manual run can narrow the matrix. A scheduled run has no inputs, so every expression
-    # below falls back to the full run: every database type and every project.
+    # below falls back to the full run: a fresh IS pack, every database type and every project.
     inputs:
+      use_cached_is_pack:
+        description: Use the cached IS pack instead of downloading a fresh one and applying U2.
+        type: boolean
+        default: false
       db_type:
         description: Database to run against.
         type: choice
@@ -49,7 +58,55 @@ permissions:
   contents: read
 
 jobs:
+  # Cache entries are immutable - "you cannot change the contents of an existing cache" - so
+  # the old pack has to go before refresh-pack can save a new one under the same key. Only the
+  # default branch's entry is deleted: it is the one PR E2E restores, and a run dispatched on
+  # another branch saves into that branch's own scope, so it could not replace it anyway.
+  drop-pack-cache:
+    name: Drop the cached IS pack
+    if: >-
+      inputs.use_cached_is_pack != true &&
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Delete the default branch's pack cache entry
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF: ${{ github.ref }}
+        run: |
+          keys=$(gh api "repos/${GITHUB_REPOSITORY}/actions/caches?ref=${REF}&key=is-pack-" \
+            --jq '.actions_caches[].key' | sort -u)
+          if [ -z "${keys}" ]; then
+            echo "No is-pack-* entry on ${REF}; refresh-pack will create one."
+            exit 0
+          fi
+          echo "${keys}" | while read -r key; do
+            echo "Deleting ${key} on ${REF}"
+            gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/caches?key=${key}&ref=${REF}" \
+              > /dev/null
+          done
+
+  # Builds the pack once and saves it (schedule and workflow_dispatch may write the cache), so
+  # every leg below restores the same update level instead of each applying U2 itself.
+  refresh-pack:
+    needs: drop-pack-cache
+    uses: ./.github/workflows/e2e.yml
+    with:
+      is_source: s3
+      use_cached_is_pack: false
+      pack_only: true
+    secrets: inherit
+
   e2e:
+    needs: [drop-pack-cache, refresh-pack]
+    # Runs after a refresh, and also when both refresh jobs were skipped - a cached run, or a
+    # refresh requested on a non-default branch - but not after either of them failed.
+    if: >-
+      !cancelled() && needs.drop-pack-cache.result != 'failure' &&
+      needs.refresh-pack.result != 'failure'
     strategy:
       # One database's failure must not cancel the other databases' runs.
       fail-fast: false
@@ -63,11 +120,13 @@ jobs:
     # No `ref`: a scheduled run checks out the default branch, which is what we want tested.
     # `projects` is empty unless a manual run picked one; e2e.yml treats empty as every project.
     # Not `x == 'all' && '' || y`: an empty string is falsy, so that form always yields y.
-    # The legs run in parallel; if they all miss the IS pack cache they race to save the same
-    # key, and actions/cache/save logs every loser as a warning rather than a failure.
     uses: ./.github/workflows/e2e.yml
     with:
       is_source: s3
       db_type: ${{ matrix.db_type }}
       projects: ${{ inputs.projects != 'all' && inputs.projects || '' }}
+      # Restore the pack refresh-pack just saved, or the existing one when the run asked for
+      # it. A refresh requested on a non-default branch skipped the shared refresh, so each leg
+      # then builds its own fresh pack.
+      use_cached_is_pack: ${{ inputs.use_cached_is_pack == true || needs.refresh-pack.result == 'success' }}
     secrets: inherit

@@ -135,9 +135,8 @@ PR runs exercise only the `multi-tenant` project - `super-tenant` differs mainly
 unqualified-root routing (`basePath.ts`) and skipping tenant creation, not in re-testing already
 covered features, and running both sequentially in the same job roughly doubled the runtime.
 `.github/workflows/nightly-e2e.yml` runs every project once a day instead, so a super-tenant-only
-regression surfaces within a day rather than only at the next weekly or release run. Both
-`weekly-e2e-is-master.yml`/`weekly-e2e-is-latest-u2.yml` and the release gate also run every
-project, unconditionally.
+regression surfaces within a day rather than only at the next weekly or release run.
+`weekly-e2e-is-master.yml` and the release gate also run every project, unconditionally.
 
 `.github/workflows/e2e.yml` (the reusable job every one of the above calls) also resolves the
 runner's own private IP as `WEBHOOK_RECEIVER_HOST` and runs

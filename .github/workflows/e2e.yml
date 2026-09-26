@@ -69,6 +69,23 @@ on:
         required: false
         type: string
         default: ''
+      use_cached_is_pack:
+        description: >-
+          Restore the updated IS pack from the cache. False builds a fresh one - download from
+          S3 and apply U2 - even when an entry exists; a dispatch or scheduled run then saves
+          it, which only succeeds once the caller has deleted the old entry (entries are
+          immutable).
+        required: false
+        type: boolean
+        default: true
+      pack_only:
+        description: >-
+          Stop after preparing the IS pack: skip the accelerator build, the install and the
+          tests. nightly-e2e.yml uses it to refresh the cached pack once before its database
+          matrix restores it.
+        required: false
+        type: boolean
+        default: false
     secrets:
       SOLUTIONS_BOT_EMAIL:
         required: false
@@ -89,7 +106,7 @@ env:
 
 jobs:
   e2e:
-    name: E2E integration tests
+    name: ${{ inputs.pack_only && 'Refresh the IS pack' || 'E2E integration tests' }}
     runs-on: ubuntu-latest
     timeout-minutes: 110
     env:
@@ -100,6 +117,8 @@ jobs:
       IS_ADMIN_PASSWORD: wso2123
       IS_SOURCE: ${{ inputs.is_source }}
       DB_TYPE: ${{ inputs.db_type }}
+      # Every step after the pack block is skipped on a pack-only run.
+      PACK_ONLY: ${{ inputs.pack_only }}
       # Shortened retry timing for tests/09.10's retry-exhaustion tests - see
       # scripts/enable-webhook-callbacks.sh and utils/config.ts's webhook.*Override fields.
       WEBHOOK_BASE_BACKOFF_SECONDS: '1'
@@ -176,6 +195,7 @@ jobs:
       # different event, so its run never overlaps this one and there is nothing to
       # download. This job builds the accelerator itself.
       - name: Build the accelerator
+        if: env.PACK_ONLY != 'true'
         run: mvn -B -ntp clean install
         env:
           MAVEN_OPTS: -Xmx4g
@@ -205,7 +225,7 @@ jobs:
       # pack for every later run, the release gate included. Only the save step below writes.
       - name: Restore the updated IS pack
         id: is-cache
-        if: env.IS_SOURCE == 's3'
+        if: env.IS_SOURCE == 's3' && inputs.use_cached_is_pack
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/is-pack/updated.tar.zst
@@ -408,7 +428,7 @@ jobs:
 
       # Placed after both paths converge: a warm-cache run skips the update step entirely
       # and so emits no U2 output, leaving this the only record of the level actually under
-      # test - which is the question the weekly refresh exists to move.
+      # test - which is the question the nightly pack refresh exists to move.
       - name: Report the IS update level
         run: |
           cfg="${IS_HOME}/updates/config.json"
@@ -424,7 +444,7 @@ jobs:
       # The runner image ships MySQL 8 stopped, with root/root - which is already what the
       # accelerator's configure.properties expects, so only DB_TYPE below needs changing.
       - name: Start MySQL
-        if: inputs.db_type == 'mysql'
+        if: inputs.db_type == 'mysql' && env.PACK_ONLY != 'true'
         run: |
           sudo systemctl start mysql
           for _ in $(seq 1 30); do
@@ -440,7 +460,7 @@ jobs:
       # Unlike MySQL, nothing here matches configure.properties' defaults, so the connection
       # settings go to the next step through GITHUB_ENV.
       - name: Start PostgreSQL
-        if: inputs.db_type == 'postgresql'
+        if: inputs.db_type == 'postgresql' && env.PACK_ONLY != 'true'
         env:
           POSTGRES_IMAGE: postgres:17-alpine
         run: |
@@ -464,6 +484,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Apply the accelerator
+        if: env.PACK_ONLY != 'true'
         run: |
           zip_path=$(find dpdp-accelerator/accelerators/dpdp-is/target -maxdepth 1 -name "wso2-dpdpiam-accelerator-*.zip" | head -1)
           if [ -z "${zip_path}" ]; then
@@ -498,16 +519,19 @@ jobs:
 
       # Must run after configure.sh (writes deployment.toml) and before the server starts.
       - name: Enable private-network webhook callbacks
+        if: env.PACK_ONLY != 'true'
         run: |
           bash dpdp-integration-test-suite/scripts/enable-webhook-callbacks.sh \
             "$IS_HOME" "$WEBHOOK_BASE_BACKOFF_SECONDS" "$WEBHOOK_MAX_RETRIES"
 
       - name: Speed up consent expiry reconciliation
+        if: env.PACK_ONLY != 'true'
         run: |
           bash dpdp-integration-test-suite/scripts/enable-fast-consent-expiry.sh \
             "$IS_HOME" "$CONSENT_EXPIRY_INTERVAL_SECONDS"
 
       - name: Start the Identity Server
+        if: env.PACK_ONLY != 'true'
         run: |
           "${IS_HOME}/bin/wso2server.sh" start
           for i in $(seq 1 60); do
@@ -525,6 +549,7 @@ jobs:
       # suite's dependencies and Chromium have to exist before the first authenticated call, not
       # after it.
       - name: Install the suite's dependencies
+        if: env.PACK_ONLY != 'true'
         working-directory: dpdp-integration-test-suite
         run: |
           npm ci
@@ -532,6 +557,7 @@ jobs:
 
       # IS and WebhookReceiver share this runner; the receiver needs the runner's own non-loopback IP.
       - name: Resolve the runner's webhook-reachable IP
+        if: env.PACK_ONLY != 'true'
         run: |
           host=$(hostname -I | awk '{print $1}')
           if [ -z "${host}" ]; then
@@ -545,6 +571,7 @@ jobs:
       # override supplies only what is generated per run. Written before provisioning, which now
       # reads the account password from here rather than taking it as an environment variable.
       - name: Configure the suite
+        if: env.PACK_ONLY != 'true'
         working-directory: dpdp-integration-test-suite
         run: |
           # Ephemeral - thrown away with the runner - but masked so it cannot reach a log.
@@ -581,10 +608,12 @@ jobs:
       # every authenticated call below uses a client_credentials token instead, which behaves the
       # same on all of them. See scripts/bootstrap-provisioning-app.ts.
       - name: Bootstrap the provisioning client
+        if: env.PACK_ONLY != 'true'
         working-directory: dpdp-integration-test-suite
         run: npm run --silent bootstrap:provisioning-app
 
       - name: Verify accelerator provisioning
+        if: env.PACK_ONLY != 'true'
         run: |
           # Written by the bootstrap step above. It lives here rather than under .auth/ because
           # the suite's global teardown removes that whole directory after every run.
@@ -639,12 +668,14 @@ jobs:
           fi
 
       - name: Provision test users
+        if: env.PACK_ONLY != 'true'
         run: bash dpdp-integration-test-suite/scripts/provision-test-users.sh
 
       # npm ci and the browser install are already done, so run-e2e.sh skips both and
       # just execs playwright. The github reporter adds inline annotations; the config
       # itself only declares html.
       - name: Run Playwright
+        if: env.PACK_ONLY != 'true'
         working-directory: dpdp-integration-test-suite
         env:
           PROJECTS: ${{ inputs.projects }}
@@ -656,7 +687,7 @@ jobs:
           ./run-e2e.sh --reporter=github,html "${project_args[@]}"
 
       - name: Upload Playwright report
-        if: always()
+        if: always() && env.PACK_ONLY != 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           # Suffixed so a caller running more than one database in the same workflow run -
@@ -668,7 +699,7 @@ jobs:
           retention-days: 7
 
       - name: Upload server logs
-        if: failure()
+        if: failure() && env.PACK_ONLY != 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: carbon-logs-${{ inputs.db_type }}
@@ -676,7 +707,7 @@ jobs:
           retention-days: 7
 
       - name: Stop the Identity Server
-        if: always()
+        if: always() && env.PACK_ONLY != 'true'
         run: |
           "${IS_HOME}/bin/wso2server.sh" stop || true
 

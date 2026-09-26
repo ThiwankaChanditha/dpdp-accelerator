@@ -64,9 +64,14 @@ path. `e2e.yml` still accepts `is_source: master`, which `weekly-e2e-is-master.y
 schedule so upstream breakage surfaces before the next IS upgrade rather than during it. The
 updated pack is cached, and **only `workflow_dispatch` / `schedule` / `push` runs may write that
 cache** — never the labelled-PR path, or a PR could poison the pack for every later run,
-including the release gate. Keep the restore read-only. Role *membership*
-is the one thing the accelerator never provisions, so both CI and a fresh local install get their
-accounts from `dpdp-integration-test-suite/scripts/provision-test-users.sh` (idempotent).
+including the release gate. Keep the restore read-only. Cache entries are immutable, so
+`nightly-e2e.yml` refreshes it: unless a manual run ticks `use_cached_is_pack`, it deletes the
+default branch's `is-pack-*` entry, rebuilds the pack at the latest U2 level once
+(`e2e.yml` with `pack_only`), saves it, and runs every database leg on that same pack.
+
+Role *membership* is the one thing the accelerator never provisions, so both CI and a fresh local
+install get their accounts from `dpdp-integration-test-suite/scripts/provision-test-users.sh`
+(idempotent).
 
 **Use npm, not pnpm.** `package-lock.json` is the committed lockfile and the Maven build invokes
 `npm install` / `npm run build`. The frontend `README.md` and `AGENTS.md` both say pnpm — they are
