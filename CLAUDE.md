@@ -150,9 +150,9 @@ artifact into the distribution via the antrun `create-solution` execution in
 ### `deployment.toml` is replaced, not merged
 
 `accelerators/dpdp-is/repository/resources/wso2is-7.3.0-deployment.toml` is the **complete** stock
-IS 7.3.0 file, byte-for-byte, with three placeholders (`IS_HOSTNAME`, `IS_ADMIN_USERNAME`,
-`IS_ADMIN_PASSWORD`) that `configure.sh` substitutes, plus the accelerator's settings appended
-under a banner. Keep the banner boundary honest: anything above it must stay identical to stock so
+IS 7.3.0 file, byte-for-byte, except for the placeholders `configure.sh` substitutes: `IS_HOSTNAME`,
+`IS_ADMIN_USERNAME` and `IS_ADMIN_PASSWORD`, and the `DB_*` tokens in the four datasource blocks
+(filled from `dbprofiles.properties`), plus the accelerator's settings appended under a banner. Keep the banner boundary honest: anything above it must stay identical to stock so
 the diff against a fresh pack remains reviewable. `configure.sh` backs the operator's file up to
 `deployment.toml.bak-<timestamp>`.
 
