@@ -243,7 +243,12 @@ function ConsentDetailsPage({ variant = 'self' }: ConsentDetailsPageProps): Reac
             </Button>
           ) : null}
           {statusMessageKey ? (
-            <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              fontWeight={700}
+              sx={{ fontStyle: 'italic' }}
+            >
               {t(`consentRegistry.details.statusMessages.${statusMessageKey}`)}
             </Typography>
           ) : null}
