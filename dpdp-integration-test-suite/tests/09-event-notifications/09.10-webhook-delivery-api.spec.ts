@@ -159,7 +159,9 @@ test.describe('Webhook delivery', () => {
       await expect.poll(() => postCount, { timeout: postCountPollTimeoutMs }).toBeGreaterThanOrEqual(3)
 
       const deliveryIds = new Set(
-        receiver.requests.filter((r) => r.method === 'POST').map((r) => r.headers['delivery-id']),
+        receiver.requests
+          .filter((r) => r.method === 'POST' && Boolean(r.headers['delivery-id']))
+          .map((r) => r.headers['delivery-id']),
       )
       expect(deliveryIds.size).toBe(1)
 

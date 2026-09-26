@@ -204,7 +204,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         }
 
         validatePurposeFilterMode(filterType, purposes);
-        if (topicNames.size() > 1 && filterType != PurposeFilterMode.ALL
+        if (filterType != PurposeFilterMode.ALL
                 && (normalizedNames.contains("user.account.delete") || normalizedNames.contains("user.data.change"))) {
             throw new EventNotificationServiceException(
                     EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST,

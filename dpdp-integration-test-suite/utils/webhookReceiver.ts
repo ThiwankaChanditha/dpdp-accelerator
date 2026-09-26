@@ -159,7 +159,7 @@ export class WebhookReceiver {
     })
   }
 
-  /** Overrides how every subsequent request is answered, until changed again. Default: echoes verification challenge on POST, 204 on everything else. */
+  /** Overrides how every subsequent request is answered, until changed again. Default: echoes verification challenge on POST, 204 on event delivery POSTs, and 405 on non-POST requests. */
   respondWith(handler: (request: CapturedRequest) => ReceiverResponse): void {
     this.handler = handler
   }

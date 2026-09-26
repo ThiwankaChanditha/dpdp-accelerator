@@ -104,7 +104,7 @@ export function createReceiver(config = {}) {
         const bufReceived = Buffer.from(eventSignature, 'utf8');
 
         if (bufExpected.length !== bufReceived.length || !timingSafeEqual(bufExpected, bufReceived)) {
-          log('ERROR', `<-- HMAC mismatch! Expected ${expectedHmac}, got ${eventSignature}. Returning HTTP 401.`);
+          log('ERROR', '<-- HMAC-SHA256 signature verification failed. Returning HTTP 401.');
           return reply(401, 'HMAC-SHA256 signature mismatch');
         }
         log('INFO', 'HMAC-SHA256 signature verified successfully.');

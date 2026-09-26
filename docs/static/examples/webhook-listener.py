@@ -42,9 +42,17 @@ def log(level, message):
 class WebhookRequestHandler(BaseHTTPRequestHandler):
     server_version = "DPDPWebhookListener/1.0"
 
-    def do_GET(self):
-        log("WARN", f"<-- Method 'GET' not allowed on '{self.path}'. Webhook endpoints accept POST only. Returning HTTP 405.")
+    def _handle_unsupported_method(self):
+        log("INFO", f"--> Incoming {self.command} {self.path} from {self.client_address[0]}")
+        log("WARN", f"<-- Method '{self.command}' not allowed. Webhook endpoints accept POST only. Returning HTTP 405.")
         self.send_error(405, "Method Not Allowed")
+
+    do_GET = _handle_unsupported_method
+    do_PUT = _handle_unsupported_method
+    do_DELETE = _handle_unsupported_method
+    do_PATCH = _handle_unsupported_method
+    do_HEAD = _handle_unsupported_method
+    do_OPTIONS = _handle_unsupported_method
 
     def do_POST(self):
         log("INFO", f"--> Incoming POST {self.path} from {self.client_address[0]}")
@@ -137,7 +145,7 @@ class WebhookRequestHandler(BaseHTTPRequestHandler):
             received_hmac = event_signature[len("sha256="):].strip()
 
             if not hmac.compare_digest(expected_hmac.lower(), received_hmac.lower()):
-                log("ERROR", f"<-- HMAC mismatch! Expected sha256={expected_hmac}, got {event_signature}. Returning HTTP 401.")
+                log("ERROR", "<-- HMAC-SHA256 signature verification failed. Returning HTTP 401.")
                 self.send_error(401, "HMAC-SHA256 signature mismatch")
                 return
 
@@ -169,8 +177,10 @@ class WebhookRequestHandler(BaseHTTPRequestHandler):
         log("INFO", "==========================================================")
 
     def log_message(self, format, *args):
-        # Suppress default BaseHTTPRequestHandler access log to avoid duplicate lines
-        pass
+        # Capture unhandled internal server messages (e.g. syntax errors or unhandled HTTP verbs)
+        msg = format % args
+        if any(msg.startswith(prefix) for prefix in ("code 4", "code 5", "Unsupported")):
+            log("WARN", f"[HTTP Server] {msg}")
 
 
 def main():
