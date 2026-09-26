@@ -67,7 +67,7 @@ when each schema change is applied. Apply each schema change only once.
 Run `merge.sh` from `<ACCELERATOR_HOME>`, with the Identity Server stopped:
 
 ```sh
-sh bin/merge.sh <IS_HOME>
+bash bin/merge.sh <IS_HOME>
 ```
 
 It first removes any previous accelerator version:
@@ -393,6 +393,11 @@ it needs U2 update level 17 or later.
 After [step 1](#1-install-the-accelerator-artifacts),
 they are also in `<IS_HOME>/dbscripts/`.
 
+**The command blocks below stop at the first failing command.** They run in a
+subshell with `set -e`, so a failure (the consent migration, for example) stops
+the remaining scripts instead of leaving the schema half-applied, and the
+subshell keeps a pasted block from closing your terminal.
+
 **Apply the Identity Server's scripts once, to new, empty databases.** They are
 not safe to re-run: some `CREATE TABLE` statements are unguarded, and the
 PostgreSQL agent script starts by dropping its tables. The accelerator's own
@@ -402,18 +407,21 @@ scripts use `CREATE ... IF NOT EXISTS` throughout, so they can be re-run.
 <summary>MySQL</summary>
 
 ```sh
-IS=<IS_HOME>
-DPDP=<ACCELERATOR_HOME>/carbon-home/dbscripts/dpdp-accelerator
-MYSQL="mysql -h <database-host> -u <database-user> -p"
+(
+  set -e
+  IS=<IS_HOME>
+  DPDP=<ACCELERATOR_HOME>/carbon-home/dbscripts/dpdp-accelerator
+  MYSQL="mysql -h <database-host> -u <database-user> -p"
 
-$MYSQL WSO2SHARED_DB        < "$IS/dbscripts/mysql.sql"
-$MYSQL WSO2IDENTITY_DB      < "$IS/dbscripts/identity/mysql.sql"
-$MYSQL WSO2IDENTITY_DB      < "$IS/dbscripts/consent/mysql.sql"
-grep -v '^#' "$IS/dbscripts/migrations/consent/mysql-migration.txt" | $MYSQL WSO2IDENTITY_DB
-$MYSQL WSO2AGENTIDENTITY_DB < "$IS/dbscripts/identity/agent/mysql.sql"
-for feature in complaint consent-history event-notification; do
-  $MYSQL WSO2DPDP_DB < "$DPDP/$feature/mysql.sql"
-done
+  $MYSQL WSO2SHARED_DB        < "$IS/dbscripts/mysql.sql"
+  $MYSQL WSO2IDENTITY_DB      < "$IS/dbscripts/identity/mysql.sql"
+  $MYSQL WSO2IDENTITY_DB      < "$IS/dbscripts/consent/mysql.sql"
+  grep -v '^#' "$IS/dbscripts/migrations/consent/mysql-migration.txt" | $MYSQL WSO2IDENTITY_DB
+  $MYSQL WSO2AGENTIDENTITY_DB < "$IS/dbscripts/identity/agent/mysql.sql"
+  for feature in complaint consent-history event-notification; do
+    $MYSQL WSO2DPDP_DB < "$DPDP/$feature/mysql.sql"
+  done
+)
 ```
 
 </details>
@@ -425,18 +433,21 @@ done
 `psql` carries on and still exits successfully.
 
 ```sh
-IS=<IS_HOME>
-DPDP=<ACCELERATOR_HOME>/carbon-home/dbscripts/dpdp-accelerator
-PSQL="psql -h <database-host> -U <database-user> -v ON_ERROR_STOP=1"
+(
+  set -e
+  IS=<IS_HOME>
+  DPDP=<ACCELERATOR_HOME>/carbon-home/dbscripts/dpdp-accelerator
+  PSQL="psql -h <database-host> -U <database-user> -v ON_ERROR_STOP=1"
 
-$PSQL -d WSO2SHARED_DB        -f "$IS/dbscripts/postgresql.sql"
-$PSQL -d WSO2IDENTITY_DB      -f "$IS/dbscripts/identity/postgresql.sql"
-$PSQL -d WSO2IDENTITY_DB      -f "$IS/dbscripts/consent/postgresql.sql"
-grep -v '^#' "$IS/dbscripts/migrations/consent/postgresql-migration.txt" | $PSQL -d WSO2IDENTITY_DB
-$PSQL -d WSO2AGENTIDENTITY_DB -f "$IS/dbscripts/identity/agent/postgresql.sql"
-for feature in complaint consent-history event-notification; do
-  $PSQL -d WSO2DPDP_DB -f "$DPDP/$feature/postgresql.sql"
-done
+  $PSQL -d WSO2SHARED_DB        -f "$IS/dbscripts/postgresql.sql"
+  $PSQL -d WSO2IDENTITY_DB      -f "$IS/dbscripts/identity/postgresql.sql"
+  $PSQL -d WSO2IDENTITY_DB      -f "$IS/dbscripts/consent/postgresql.sql"
+  grep -v '^#' "$IS/dbscripts/migrations/consent/postgresql-migration.txt" | $PSQL -d WSO2IDENTITY_DB
+  $PSQL -d WSO2AGENTIDENTITY_DB -f "$IS/dbscripts/identity/agent/postgresql.sql"
+  for feature in complaint consent-history event-notification; do
+    $PSQL -d WSO2DPDP_DB -f "$DPDP/$feature/postgresql.sql"
+  done
+)
 ```
 
 </details>

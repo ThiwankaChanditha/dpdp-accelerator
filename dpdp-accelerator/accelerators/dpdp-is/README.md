@@ -35,12 +35,12 @@ production, run `merge.sh` and then configure by hand instead of running
 
 2. Copy the artifacts in, with the server stopped:
    ```
-   sh bin/merge.sh <IS_HOME>
+   bash bin/merge.sh <IS_HOME>
    ```
 
 3. Apply the configuration, still stopped:
    ```
-   sh bin/configure.sh <IS_HOME>
+   bash bin/configure.sh <IS_HOME>
    ```
    Edit `repository/conf/configure.properties` first for hostname,
    administrator-credential, database type, and schema-migration settings.

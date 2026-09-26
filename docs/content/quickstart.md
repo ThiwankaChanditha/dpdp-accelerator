@@ -25,8 +25,8 @@ Extract the accelerator ZIP, enter its directory, and run the two installation
 scripts while Identity Server is stopped:
 
 ```sh
-sh bin/merge.sh <IS_HOME>
-sh bin/configure.sh <IS_HOME>
+bash bin/merge.sh <IS_HOME>
+bash bin/configure.sh <IS_HOME>
 ```
 
 `configure.sh` backs up and then replaces
