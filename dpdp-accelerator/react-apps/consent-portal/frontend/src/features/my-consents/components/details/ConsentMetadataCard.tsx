@@ -116,7 +116,12 @@ function ConsentMetadataCard({
           <Stack direction="row" spacing={1} alignItems="center">
             {managed ? (
               <>
-                <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  fontWeight={700}
+                  sx={{ fontStyle: 'italic' }}
+                >
                   {t('consentRegistry.details.managed')}
                 </Typography>
                 <Typography variant="body2" color="text.disabled" aria-hidden="true">
@@ -127,8 +132,13 @@ function ConsentMetadataCard({
             <Chip
               label={t(`consentRegistry.status.${getConsentStateLabelKey(detail.state)}`)}
               color={getConsentStateChipColor(detail.state)}
-              size="small"
+              size="medium"
               variant="outlined"
+              sx={{
+                fontWeight: 700,
+                borderWidth: 2,
+                '& .MuiChip-label': { px: 1.5 },
+              }}
             />
           </Stack>
         }
