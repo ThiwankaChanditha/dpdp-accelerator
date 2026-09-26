@@ -54,8 +54,9 @@ likewise passes no `projects` override, so a release is still gated on every pro
 
 Every caller of `e2e.yml` takes its `db_type` default, `mysql`, except `nightly-e2e.yml`, which
 runs it as a matrix over every database type (`h2`, `mysql`, `postgresql`), in parallel and with
-`fail-fast: false`. That nightly is the only end-to-end h2 and PostgreSQL coverage; a PR or a
-release is not gated on either.
+`fail-fast: false`; a manual dispatch can narrow it to one database and/or one project. That
+nightly is the only end-to-end h2 and PostgreSQL coverage; a PR or a release is not gated on
+either.
 
 The Identity Server under test comes from the `updates2.0` S3 bucket (`IS_PACK_S3_URI`) with U2
 updates applied. The published GitHub release zip is *not* U2-updatable — don't reintroduce that

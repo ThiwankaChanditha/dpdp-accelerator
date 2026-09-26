@@ -27,6 +27,19 @@ on:
     # with those jobs for runners.
     - cron: '15 3 * * *'
   workflow_dispatch:
+    # A manual run can narrow the matrix. A scheduled run has no inputs, so every expression
+    # below falls back to the full run: every database type and every project.
+    inputs:
+      db_type:
+        description: Database to run against.
+        type: choice
+        options: [all, h2, mysql, postgresql]
+        default: all
+      projects:
+        description: Playwright project to run. Each one pulls in its own setup project.
+        type: choice
+        options: [all, super-tenant, multi-tenant]
+        default: all
 
 concurrency:
   group: nightly-e2e
@@ -43,14 +56,18 @@ jobs:
       matrix:
         # Every type with a block in dbprofiles.properties. A server-based type also needs its
         # own "Start ..." step in e2e.yml before it is listed here; h2 is embedded and needs none.
-        db_type: [h2, mysql, postgresql]
+        db_type: ${{ fromJSON((!inputs.db_type || inputs.db_type == 'all')
+          && '["h2", "mysql", "postgresql"]'
+          || format('["{0}"]', inputs.db_type)) }}
     name: E2E (${{ matrix.db_type }})
     # No `ref`: a scheduled run checks out the default branch, which is what we want tested.
-    # No `projects`: e2e.yml's own default is every project.
+    # `projects` is empty unless a manual run picked one; e2e.yml treats empty as every project.
+    # Not `x == 'all' && '' || y`: an empty string is falsy, so that form always yields y.
     # The legs run in parallel; if they all miss the IS pack cache they race to save the same
     # key, and actions/cache/save logs every loser as a warning rather than a failure.
     uses: ./.github/workflows/e2e.yml
     with:
       is_source: s3
       db_type: ${{ matrix.db_type }}
+      projects: ${{ inputs.projects != 'all' && inputs.projects || '' }}
     secrets: inherit
