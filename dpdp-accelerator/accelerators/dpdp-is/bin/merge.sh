@@ -58,4 +58,4 @@ find "${WSO2_IS_HOME}/repository/components/dropins" -name "org.wso2.dpdp.accele
 echo "Copying accelerator artifacts"
 cp -r "${ACCELERATOR_HOME}"/carbon-home/* "${WSO2_IS_HOME}/"
 
-printf '\nMerge complete. Next: sh bin/configure.sh %s\n\n' "${WSO2_IS_HOME}"
+printf '\nMerge complete. Next: bash bin/configure.sh %s\n\n' "${WSO2_IS_HOME}"

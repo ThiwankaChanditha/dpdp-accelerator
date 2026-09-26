@@ -100,8 +100,9 @@ app_password= "dashboard"
 # WSO2 DPDP Accelerator
 #
 # Everything above this banner is the stock WSO2 Identity Server 7.3.0
-# deployment.toml, unchanged apart from the IS_HOSTNAME, IS_ADMIN_USERNAME and
-# IS_ADMIN_PASSWORD placeholders that configure.sh substitutes.
+# deployment.toml, unchanged apart from the placeholders configure.sh substitutes:
+# IS_HOSTNAME, IS_ADMIN_USERNAME, IS_ADMIN_PASSWORD, and the DB_* tokens in the
+# four datasource blocks.
 # =============================================================================
 
 # Registers the DPDP user lifecycle event handler with the

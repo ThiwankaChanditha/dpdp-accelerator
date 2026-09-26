@@ -5,6 +5,11 @@ embedded H2 databases, open the Consent Portal, and verify initial access.
 Use the [Setup Guide](setup-guide.md) for external databases and the
 [Configuration Guide](configuration-guide.md) for roles and runtime settings.
 
+`configure.sh`, used below, is for evaluation and development: it replaces
+`deployment.toml` and sets up the databases for you. For a production deployment,
+run `merge.sh` as below, then follow the [Setup Guide](setup-guide.md) in place
+of `configure.sh`.
+
 ## Prerequisites
 
 - WSO2 Identity Server 7.3.0 at U2 update level 17 or later
@@ -20,8 +25,8 @@ Extract the accelerator ZIP, enter its directory, and run the two installation
 scripts while Identity Server is stopped:
 
 ```sh
-sh bin/merge.sh <IS_HOME>
-sh bin/configure.sh <IS_HOME>
+bash bin/merge.sh <IS_HOME>
+bash bin/configure.sh <IS_HOME>
 ```
 
 `configure.sh` backs up and then replaces
