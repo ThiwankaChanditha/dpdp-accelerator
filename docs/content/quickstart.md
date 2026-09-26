@@ -7,7 +7,7 @@ Use the [Setup Guide](setup-guide.md) for external databases and the
 
 ## Prerequisites
 
-- WSO2 Identity Server 7.3.0 with the mandatory U2 updates applied
+- WSO2 Identity Server 7.3.0 at U2 update level 17 or later
 - JDK 21 or later
 - A released `wso2-dpdpiam-accelerator-<version>.zip`, or a ZIP built from the
   repository with `mvn clean install`

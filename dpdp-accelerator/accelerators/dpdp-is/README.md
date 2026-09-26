@@ -18,9 +18,8 @@ carry a copy of the docs — the links below go to the source repository instead
 
 ## Prerequisites
 
-- WSO2 Identity Server 7.3.0
+- WSO2 Identity Server 7.3.0 at U2 update level 17 or later
 - JDK 21 or later on the PATH
-- Mandatory WSO2 U2 updates applied to the Identity Server pack
 
 ## Installation
 
