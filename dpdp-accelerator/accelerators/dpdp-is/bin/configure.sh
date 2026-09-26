@@ -315,27 +315,6 @@ apply_is_schema() {
   fi
 }
 
-# MySQL's InnoDB rejects standalone "ADD COLUMN ... AUTO_INCREMENT". We fold consecutive
-# ALTERs into one to avoid MySQL 1075 errors.
-mysqlify_migration() {
-  awk '
-    held != "" {
-      if ($0 ~ /^[[:space:]]*$/) { next }
-      if (match($0, /^[[:space:]]*ALTER TABLE[[:space:]]+[^[:space:]]+[[:space:]]+/)) {
-        print held ", " substr($0, RLENGTH + 1)
-      } else {
-        print held ";"; print $0
-      }
-      held = ""; next
-    }
-    /ADD COLUMN/ && /AUTO_INCREMENT[[:space:]]*;[[:space:]]*$/ {
-      held = $0; sub(/[[:space:]]*;[[:space:]]*$/, "", held); next
-    }
-    { print }
-    END { if (held != "") print held ";" }
-  '
-}
-
 # The consent v2 tables ship in neither the base scripts nor the pre-built H2 file -
 # they exist only in this migration, which arrives with the U2 updates.
 apply_consent_migration() {
@@ -347,11 +326,7 @@ apply_consent_migration() {
   fi
   echo "      Applying the consent schema migration to ${target}"
   tmp_sql="$(mktemp)"
-  if [ "${DB_TYPE}" = "mysql" ]; then
-    grep -v '^#' "${migration}" | mysqlify_migration > "${tmp_sql}"
-  else
-    grep -v '^#' "${migration}" > "${tmp_sql}"
-  fi
+  grep -v '^#' "${migration}" > "${tmp_sql}"
   apply_sql_file "${target}" "${tmp_sql}"
   rm -f "${tmp_sql}"
 }
