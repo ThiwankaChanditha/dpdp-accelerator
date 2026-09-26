@@ -50,7 +50,7 @@ public class ConsentHistoryQueryFactoryTest {
     @Test
     public void fallsBackToAnsiBaselineForUnrecognizedDialects() {
 
-        assertEquals(ConsentHistoryQueryFactory.getQueryProvider("Derby").getClass(),
+        assertEquals(ConsentHistoryQueryFactory.getQueryProvider("UnknownDatabase").getClass(),
                 ConsentHistoryCommonDBQueries.class);
     }
 

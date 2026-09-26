@@ -14,12 +14,14 @@ server.
 
 ## Choose automated or manual database setup
 
-The installer supports `h2` and `mysql` profiles in
-`repository/conf/dbprofiles.properties`. For automated MySQL setup, edit
-`repository/conf/configure.properties` before running `bin/configure.sh`:
-set `DB_TYPE=mysql`, `DB_HOST`, `DB_PORT` if needed, `DB_USER`, and `DB_PASS`.
-Install the `mysql` command-line client and give the configured account
-permission to create the databases on the first run.
+The supported databases are H2, MySQL and PostgreSQL, and the installer has an
+`h2`, `mysql` and `postgresql` profile for each in
+`repository/conf/dbprofiles.properties`. For automated MySQL or PostgreSQL setup,
+edit `repository/conf/configure.properties` before running `bin/configure.sh`:
+set `DB_TYPE=mysql` or `DB_TYPE=postgresql`, `DB_HOST`, `DB_PORT` if needed,
+`DB_USER`, and `DB_PASS`. Install the matching command-line client (`mysql` or
+`psql`) and give the configured account permission to create the databases on the
+first run.
 
 The script downloads the configured JDBC driver into
 `<IS_HOME>/repository/components/lib`, configures the datasource URLs, creates
@@ -32,9 +34,8 @@ existing databases; setting it to `true` drops and recreates all four.
 After a successful automated run, review the generated connection settings
 for your environment, including TLS, and skip schema steps already completed.
 For manually managed databases, follow the steps below and apply each required
-migration only once. PostgreSQL, Oracle, and Microsoft SQL Server require
-manual configuration; they do not have shipped installer profiles. See the
-[Quickstart](quickstart.md) for installation commands.
+migration only once. See the [Quickstart](quickstart.md) for installation
+commands.
 
 ## 1. Create the databases
 
@@ -70,9 +71,8 @@ GRANT ALL PRIVILEGES ON WSO2DPDP_DB.* TO '<database-user>'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-For PostgreSQL, Oracle, and Microsoft SQL Server, create equivalent databases
-or schemas and grant the required permissions using the commands recommended
-by the selected DBMS.
+For PostgreSQL, create equivalent databases and grant the required permissions
+using the commands recommended by PostgreSQL.
 
 ## 2. Install the JDBC driver
 
@@ -83,7 +83,7 @@ version. Copy the driver JAR to:
 <IS_HOME>/repository/components/lib
 ```
 
-> **Note:** The MySQL, PostgreSQL, Oracle, and Microsoft SQL Server JDBC driver
+> **Note:** The MySQL and PostgreSQL JDBC driver
 > JARs must be downloaded separately and copied to the Identity Server
 > `repository/components/lib` directory before the server starts. The
 > `dropins` directory is for existing OSGi bundles. Use the driver version
@@ -94,8 +94,6 @@ The driver versions listed in the WSO2 reference are:
 | DBMS | JDBC driver JAR |
 |---|---|
 | MySQL 8.0 | `mysql-connector-j-8.x.jar` (use the version supported by your WSO2 Identity Server release) |
-| Oracle 19c | `ojdbc11.jar` |
-| Microsoft SQL Server 2022 | `mssql-jdbc-12.10.0.jre11.jar` |
 | PostgreSQL 17.2 | `postgresql-42.2.17.jar` |
 
 ## 3. Configure `deployment.toml`
@@ -211,92 +209,6 @@ CA before using it in a deployed environment.
 
 </details>
 
-<details>
-<summary>Oracle</summary>
-
-```toml
-    [database.identity_db]
-    type = "oracle"
-    url = "jdbc:oracle:thin:@localhost:1521/WSO2IDENTITY_DB"
-    username = "<database-user>"
-    password = "<database-password>"
-
-    [database.shared_db]
-    type = "oracle"
-    url = "jdbc:oracle:thin:@localhost:1521/WSO2SHARED_DB"
-    username = "<database-user>"
-    password = "<database-password>"
-
-    [datasource.AgentIdentity]
-    id = "AgentIdentity"
-    url = "jdbc:oracle:thin:@localhost:1521/WSO2AGENTIDENTITY_DB"
-    username = "<database-user>"
-    password = "<database-password>"
-    driver = "oracle.jdbc.OracleDriver"
-
-    [datasource.WSO2DPDP_DB]
-    id = "WSO2DPDP_DB"
-    url = "jdbc:oracle:thin:@localhost:1521/WSO2DPDP_DB"
-    username = "<database-user>"
-    password = "<database-password>"
-    driver = "oracle.jdbc.OracleDriver"
-    jmx_enable = false
-    pool_options.maxActive = "150"
-    pool_options.maxWait = "60000"
-    pool_options.minIdle = "5"
-    pool_options.testOnBorrow = true
-    pool_options.validationQuery = "SELECT 1 FROM DUAL"
-    pool_options.validationInterval = "30000"
-    pool_options.defaultAutoCommit = true
-```
-
-</details>
-
-<details>
-<summary>Microsoft SQL Server</summary>
-
-Use a database hostname that matches its TLS certificate and configure the
-JVM truststore to trust the issuing CA. Keep encryption and certificate
-validation enabled for each datasource.
-
-```toml
-    [database.identity_db]
-    type = "mssql"
-    url = "jdbc:sqlserver://<database-host>:1433;databaseName=WSO2IDENTITY_DB;encrypt=true;trustServerCertificate=false"
-    username = "<database-user>"
-    password = "<database-password>"
-
-    [database.shared_db]
-    type = "mssql"
-    url = "jdbc:sqlserver://<database-host>:1433;databaseName=WSO2SHARED_DB;encrypt=true;trustServerCertificate=false"
-    username = "<database-user>"
-    password = "<database-password>"
-
-    [datasource.AgentIdentity]
-    id = "AgentIdentity"
-    url = "jdbc:sqlserver://<database-host>:1433;databaseName=WSO2AGENTIDENTITY_DB;encrypt=true;trustServerCertificate=false"
-    username = "<database-user>"
-    password = "<database-password>"
-    driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-
-    [datasource.WSO2DPDP_DB]
-    id = "WSO2DPDP_DB"
-    url = "jdbc:sqlserver://<database-host>:1433;databaseName=WSO2DPDP_DB;encrypt=true;trustServerCertificate=false"
-    username = "<database-user>"
-    password = "<database-password>"
-    driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-    jmx_enable = false
-    pool_options.maxActive = "150"
-    pool_options.maxWait = "60000"
-    pool_options.minIdle = "5"
-    pool_options.testOnBorrow = true
-    pool_options.validationQuery = "SELECT 1"
-    pool_options.validationInterval = "30000"
-    pool_options.defaultAutoCommit = true
-```
-
-</details>
-
 Keep the `id` values as `AgentIdentity` and `WSO2DPDP_DB`. Preserve the
 remaining Identity Server and accelerator settings in the file.
 
@@ -317,17 +229,14 @@ The accelerator feature scripts are under:
 <ACCELERATOR_HOME>/carbon-home/dbscripts/dpdp-accelerator/
 ```
 
-Each feature directory contains the DBMS-specific script where that DBMS is
-provided:
+Each feature directory contains an `h2.sql`, a `mysql.sql` and a `postgresql.sql`:
 
 - `consent-history/`
 - `complaint/`
 - `event-notification/`
 
 Choose the script matching the selected DBMS. Do not run a script for a
-different database engine. If the package does not contain a matching DPDP
-script for a DBMS, confirm the supported schema package or migration path with
-the release documentation before starting the server.
+different database engine.
 
 ## 5. Start Identity Server
 

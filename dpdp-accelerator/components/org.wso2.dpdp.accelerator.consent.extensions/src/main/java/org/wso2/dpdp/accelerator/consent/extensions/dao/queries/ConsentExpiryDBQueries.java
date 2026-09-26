@@ -21,8 +21,8 @@ package org.wso2.dpdp.accelerator.consent.extensions.dao.queries;
 import org.wso2.dpdp.accelerator.consent.extensions.dao.constants.ConsentExpiryDAOConstants;
 
 /**
- * Baseline SQL for {@code DPDP_CONSENT_EXPIRY_TRACKER}. H2 and MySQL use this provider; dialect
- * subclasses override pagination where required.
+ * Baseline SQL for {@code DPDP_CONSENT_EXPIRY_TRACKER}. H2, MySQL and PostgreSQL all use this
+ * provider.
  */
 public class ConsentExpiryDBQueries {
 
@@ -47,17 +47,12 @@ public class ConsentExpiryDBQueries {
 
     public String getFindDueExpiriesQuery() {
 
-        return getFindDueExpiriesQuery(" LIMIT ?");
-    }
-
-    protected String getFindDueExpiriesQuery(String paginationClause) {
-
         return "SELECT " + ConsentExpiryDAOConstants.COLUMN_CONSENT_ID + ", "
                 + ConsentExpiryDAOConstants.COLUMN_ORG_ID + ", " + ConsentExpiryDAOConstants.COLUMN_EXPIRY_TIME
                 + " FROM " + ConsentExpiryDAOConstants.EXPIRY_TRACKER_TABLE + " WHERE "
                 + ConsentExpiryDAOConstants.COLUMN_EXPIRY_TIME + " <= ? ORDER BY "
                 + ConsentExpiryDAOConstants.COLUMN_EXPIRY_TIME + " ASC, "
-                + ConsentExpiryDAOConstants.COLUMN_CONSENT_ID + " ASC" + paginationClause;
+                + ConsentExpiryDAOConstants.COLUMN_CONSENT_ID + " ASC LIMIT ?";
     }
 
     public String getClaimObservedExpiryQuery() {
@@ -80,17 +75,12 @@ public class ConsentExpiryDBQueries {
 
     public String getFindDueExpiriesAfterQuery() {
 
-        return getFindDueExpiriesAfterQuery(" LIMIT ?");
-    }
-
-    protected String getFindDueExpiriesAfterQuery(String paginationClause) {
-
         String expiry = ConsentExpiryDAOConstants.COLUMN_EXPIRY_TIME;
         String consent = ConsentExpiryDAOConstants.COLUMN_CONSENT_ID;
         return "SELECT " + consent + ", " + ConsentExpiryDAOConstants.COLUMN_ORG_ID + ", " + expiry
                 + " FROM " + ConsentExpiryDAOConstants.EXPIRY_TRACKER_TABLE + " WHERE " + expiry
                 + " <= ? AND (" + expiry + " > ? OR (" + expiry + " = ? AND " + consent + " > ?))"
-                + " ORDER BY " + expiry + " ASC, " + consent + " ASC" + paginationClause;
+                + " ORDER BY " + expiry + " ASC, " + consent + " ASC LIMIT ?";
     }
     public String getReconcileExpiryQuery() {
 

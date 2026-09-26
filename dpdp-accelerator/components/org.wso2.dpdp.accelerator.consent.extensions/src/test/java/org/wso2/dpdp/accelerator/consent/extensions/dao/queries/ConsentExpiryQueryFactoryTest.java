@@ -21,26 +21,19 @@ package org.wso2.dpdp.accelerator.consent.extensions.dao.queries;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertSame;
 import static org.testng.Assert.assertTrue;
 
 public class ConsentExpiryQueryFactoryTest {
 
     @Test
-    public void oracleAndSqlServerUseOffsetFetchForBothDueExpiryQueries() {
+    public void mysqlAndPostgresqlUseTheBaselineWithLimitForBothDueExpiryQueries() {
 
-        assertOffsetFetchQueries(new ConsentExpiryOracleDBQueries());
-        assertOffsetFetchQueries(new ConsentExpirySqlServerDBQueries());
-    }
-
-    @Test
-    public void factorySelectsOracleAndSqlServerProviders() {
-
-        assertTrue(ConsentExpiryQueryFactory.getQueryProvider("Oracle") instanceof ConsentExpiryOracleDBQueries);
-        assertTrue(ConsentExpiryQueryFactory.getQueryProvider("Microsoft SQL Server")
-                instanceof ConsentExpirySqlServerDBQueries);
-        assertTrue(ConsentExpiryQueryFactory.getQueryProvider("mssql") instanceof ConsentExpirySqlServerDBQueries);
+        for (String product : new String[]{"MySQL", "PostgreSQL"}) {
+            ConsentExpiryDBQueries queries = ConsentExpiryQueryFactory.getQueryProvider(product);
+            assertEquals(queries.getClass(), ConsentExpiryDBQueries.class, product);
+            assertLimitQueries(queries);
+        }
     }
 
     @Test
@@ -52,7 +45,8 @@ public class ConsentExpiryQueryFactoryTest {
     @Test
     public void fallsBackToAnsiBaselineForUnrecognizedDialects() {
 
-        assertEquals(ConsentExpiryQueryFactory.getQueryProvider("Derby").getClass(), ConsentExpiryDBQueries.class);
+        assertEquals(ConsentExpiryQueryFactory.getQueryProvider("UnknownDatabase").getClass(),
+                ConsentExpiryDBQueries.class);
     }
 
     @Test
@@ -63,16 +57,14 @@ public class ConsentExpiryQueryFactoryTest {
         assertTrue(ConsentExpiryQueryFactory.getQueryProvider() instanceof ConsentExpiryH2DBQueries);
     }
 
-    private void assertOffsetFetchQueries(ConsentExpiryDBQueries queries) {
+    private void assertLimitQueries(ConsentExpiryDBQueries queries) {
 
-        assertOffsetFetch(queries.getFindDueExpiriesQuery());
-        assertOffsetFetch(queries.getFindDueExpiriesAfterQuery());
+        assertLimit(queries.getFindDueExpiriesQuery());
+        assertLimit(queries.getFindDueExpiriesAfterQuery());
     }
 
-    private void assertOffsetFetch(String query) {
+    private void assertLimit(String query) {
 
-        assertTrue(query.contains("ORDER BY EXPIRY_TIME ASC, CONSENT_ID ASC"));
-        assertTrue(query.endsWith("OFFSET 0 ROWS FETCH NEXT ? ROWS ONLY"));
-        assertFalse(query.contains("LIMIT ?"));
+        assertTrue(query.endsWith("ORDER BY EXPIRY_TIME ASC, CONSENT_ID ASC LIMIT ?"), query);
     }
 }

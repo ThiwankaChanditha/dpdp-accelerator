@@ -39,10 +39,7 @@ import org.wso2.dpdp.accelerator.event.notifications.dao.model.WebhookDelivery;
 import org.wso2.dpdp.accelerator.event.notifications.dao.queries.EventNotificationMysqlDBQueries;
 import org.wso2.dpdp.accelerator.event.notifications.dao.queries.EventNotificationPostgresDBQueries;
 import org.wso2.dpdp.accelerator.event.notifications.dao.queries.EventNotificationQueryFactory;
-import org.wso2.dpdp.accelerator.event.notifications.dao.queries.EventNotificationSqliteDBQueries;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -62,25 +59,12 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.expectThrows;
 
 /**
- * Runs the publication/deletion locking protocol against each supported database
- * engine. Container tests are skipped only when Docker is unavailable; SQLite is
- * always exercised in-process.
+ * Runs the publication/deletion locking protocol against each supported server-based
+ * database engine. The container tests are skipped only when Docker is unavailable.
  */
 public class DatabaseDialectConcurrencyIntegrationTest {
 
     private static final int BLOCK_ASSERTION_MILLIS = 250;
-
-    @Test(timeOut = 30000)
-    public void sqliteSerializesPublicationAndDeletion() throws Exception {
-        Path database = Files.createTempFile("dpdp-enf-sqlite-", ".db");
-        String jdbcUrl = "jdbc:sqlite:" + database.toAbsolutePath();
-        try {
-            runConcurrencyScenarios(() -> openConnection(jdbcUrl, null, null, "sqlite"), "TEXT",
-                    EventNotificationSqliteDBQueries.class);
-        } finally {
-            Files.deleteIfExists(database);
-        }
-    }
 
     @Test(timeOut = 120000)
     public void mysqlSerializesPublicationAndDeletion() throws Exception {
@@ -245,14 +229,9 @@ public class DatabaseDialectConcurrencyIntegrationTest {
 
     private Connection openConnection(String jdbcUrl, String username, String password, String dialect)
             throws Exception {
-        Connection connection = username == null
-                ? DriverManager.getConnection(jdbcUrl)
-                : DriverManager.getConnection(jdbcUrl, username, password);
+        Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
         try (Statement statement = connection.createStatement()) {
-            if ("sqlite".equals(dialect)) {
-                statement.execute("PRAGMA foreign_keys = ON");
-                statement.execute("PRAGMA busy_timeout = 5000");
-            } else if ("mysql".equals(dialect)) {
+            if ("mysql".equals(dialect)) {
                 statement.execute("SET innodb_lock_wait_timeout = 5");
             } else if ("postgres".equals(dialect)) {
                 statement.execute("SET lock_timeout = '5s'");
