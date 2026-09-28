@@ -35,9 +35,15 @@ import java.util.Base64;
 
 /**
  * Utility for keystore-backed reversible encryption and decryption of sensitive
- * values.
- * Wraps Carbon's {@link CryptoUtil} and provides fail-fast cryptographic
- * operations.
+ * values using WSO2 IS / Carbon {@link CryptoUtil}.
+ *
+ * <p>Whether encryption is enabled is controlled <strong>exclusively</strong> by
+ * the DPDP accelerator configuration key
+ * {@code EventNotifications.EncryptSharedSecret} (TOML:
+ * {@code [dpdp_accelerator.event_notifications] encrypt_shared_secret = true}).
+ * IS OAuth settings such as {@code oauth.hash_client_secret} or
+ * {@code oauth.encrypt_client_secret} have <strong>no influence</strong> on
+ * whether shared secrets are encrypted.
  */
 public final class CryptoUtils {
 
@@ -56,6 +62,10 @@ public final class CryptoUtils {
     private CryptoUtils() {
 
     }
+
+    // -----------------------------------------------------------------------
+    // Test / override setters
+    // -----------------------------------------------------------------------
 
     /**
      * Sets whether test-mode encryption/decryption is enabled.
@@ -81,24 +91,6 @@ public final class CryptoUtils {
     }
 
     /**
-     * Checks whether shared secret encryption at rest is enabled.
-     *
-     * @return true if encryption is enabled, false otherwise
-     */
-    public static boolean isEncryptionEnabled() {
-
-        if (encryptionEnabledOverride != null) {
-            return encryptionEnabledOverride;
-        }
-        try {
-            return DPDPConfigParser.getInstance().isEventNotificationEncryptSharedSecret();
-        } catch (Exception e) {
-            LOG.error("Failed to read encryption configuration; defaulting to disabled.", e);
-            return false;
-        }
-    }
-
-    /**
      * Sets a mock or custom {@link CryptoUtil} instance, primarily for unit
      * testing.
      *
@@ -109,15 +101,47 @@ public final class CryptoUtils {
         cryptoUtilInstance = cryptoUtil;
     }
 
-    private static boolean isCarbonCryptoAvailable() {
+    // -----------------------------------------------------------------------
+    // Public API
+    // -----------------------------------------------------------------------
 
-        return System.getProperty("carbon.home") != null;
+    /**
+     * Returns {@code true} when shared-secret encryption at rest is enabled.
+     *
+     * <p>The flag is read exclusively from the DPDP accelerator configuration key
+     * {@code EventNotifications.EncryptSharedSecret}. IS OAuth settings have no
+     * effect on this flag.
+     *
+     * <p>An {@link IllegalStateException} from the configuration parser (e.g. an
+     * unrecognised value such as {@code "enabled"} instead of {@code "true"}) is
+     * intentionally allowed to propagate so that a misconfigured value cannot
+     * silently disable encryption. A missing key returns the safe default
+     * ({@code false}) via {@code getValidatedBoolean}.
+     *
+     * @return true if encryption is enabled, false otherwise
+     * @throws IllegalStateException if the configuration value is present but invalid
+     */
+    public static boolean isEncryptionEnabled() {
+
+        if (encryptionEnabledOverride != null) {
+            return encryptionEnabledOverride;
+        }
+        try {
+            return DPDPConfigParser.getInstance().isEventNotificationEncryptSharedSecret();
+        } catch (IllegalStateException e) {
+            throw e;
+        } catch (Exception e) {
+            LOG.debug("Unable to read encryption configuration from parser; defaulting to disabled.", e);
+            return false;
+        }
     }
 
     /**
      * Encrypts the provided plaintext string using Carbon's keystore-backed
-     * reversible encryption
-     * and returns the Base64-encoded ciphertext.
+     * reversible encryption and returns the Base64-encoded ciphertext.
+     *
+     * <p>If encryption is not enabled the plaintext is returned unchanged.
+     * {@code null} and empty inputs are returned unchanged unconditionally.
      *
      * @param plainText the plaintext to encrypt
      * @return Base64-encoded ciphertext, or the input if null or empty
@@ -199,6 +223,15 @@ public final class CryptoUtils {
 
         LOG.error("CryptoService is not available and ciphertext does not match test cipher prefix.");
         throw new DPDPSystemException("CryptoService is not registered and ciphertext cannot be decrypted.");
+    }
+
+    // -----------------------------------------------------------------------
+    // Internal helpers
+    // -----------------------------------------------------------------------
+
+    private static boolean isCarbonCryptoAvailable() {
+
+        return System.getProperty("carbon.home") != null;
     }
 
     private static boolean isEncryptedValue(String value) {

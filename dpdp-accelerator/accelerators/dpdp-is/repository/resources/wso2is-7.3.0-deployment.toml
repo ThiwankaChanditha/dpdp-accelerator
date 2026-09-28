@@ -432,13 +432,11 @@ email_notifications_enabled = false
 # Automatically reconciles the DPDP system topics (consent.update, consent.revoke, etc.) for
 # every tenant on create/update. Set false to manage system topics manually instead.
 system_topics_auto_create_enabled = true
+
 # Controls whether webhook/subscription shared secrets are encrypted at rest using WSO2 Carbon's
-# primary keystore (AES-GCM). Defaults to false (plaintext storage).
-# When [oauth] hash_client_secret = true or [oauth] encrypt_client_secret = true is configured in
-# deployment.toml, this setting automatically inherits true unless explicitly overridden here.
-# Note: unlike OAuth consumer secrets which can be one-way hashed, webhook HMAC signature generation
-# requires reversible decryption or plaintext. DPDP shared secrets are strictly encrypted, never hashed.
-# encrypt_shared_secret = false
+# primary keystore. Defaults to false (plaintext storage). Set to true to enable encryption.
+# Note: DPDP shared secrets are strictly encrypted, never hashed.
+encrypt_shared_secret = false
 
 [dpdp_accelerator.event_notifications.payload_signing]
 enabled = true

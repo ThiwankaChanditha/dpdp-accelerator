@@ -25,6 +25,7 @@ import org.wso2.carbon.core.util.CryptoException;
 import org.wso2.carbon.core.util.CryptoUtil;
 import org.wso2.dpdp.accelerator.common.exception.DPDPSystemException;
 
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -206,5 +207,62 @@ public class CryptoUtilsTest {
                 () -> CryptoUtils.decrypt("dpdp_test_enc:c29tZS1jaXBoZXI="));
         assertEquals(exception.getMessage(),
                 "Test cipher prefix found but test mode is not enabled; refusing to decrypt.");
+    }
+
+    /**
+     * Verifies that an invalid {@code EncryptSharedSecret} configuration value
+     * (e.g. a typo such as {@code "enabled"}) propagates as an
+     * {@link IllegalStateException} rather than being swallowed and silently
+     * disabling encryption (fail-closed security requirement).
+     */
+    @Test
+    public void testIsEncryptionEnabledPropagatesInvalidConfigValue() throws Exception {
+
+        // Remove the override so isEncryptionEnabled() actually reads the parser.
+        CryptoUtils.setEncryptionEnabled(null);
+
+        Field parserField = org.wso2.dpdp.accelerator.common.config.DPDPConfigParser.class
+                .getDeclaredField("parser");
+        parserField.setAccessible(true);
+        org.wso2.dpdp.accelerator.common.config.DPDPConfigParser parserInstance =
+                (org.wso2.dpdp.accelerator.common.config.DPDPConfigParser) parserField.get(null);
+
+        if (parserInstance == null) {
+            // Parser singleton not yet initialised in this test JVM context — skip via early return.
+            return;
+        }
+
+        Field configField = org.wso2.dpdp.accelerator.common.config.DPDPConfigParser.class
+                .getDeclaredField("configuration");
+        configField.setAccessible(true);
+        @SuppressWarnings("unchecked")
+        java.util.Map<String, Object> configuration =
+                (java.util.Map<String, Object>) configField.get(parserInstance);
+
+        Object originalValue = configuration.get(
+                org.wso2.dpdp.accelerator.common.constant.DPDPCommonConstants
+                        .EVENT_NOTIFICATIONS_ENCRYPT_SHARED_SECRET);
+        try {
+            configuration.put(
+                    org.wso2.dpdp.accelerator.common.constant.DPDPCommonConstants
+                            .EVENT_NOTIFICATIONS_ENCRYPT_SHARED_SECRET,
+                    "enabled");           // invalid — not "true" or "false"
+
+            // Must throw; must NOT silently return false.
+            expectThrows(IllegalStateException.class, CryptoUtils::isEncryptionEnabled);
+        } finally {
+            // Restore the original state regardless of test outcome.
+            if (originalValue == null) {
+                configuration.remove(
+                        org.wso2.dpdp.accelerator.common.constant.DPDPCommonConstants
+                                .EVENT_NOTIFICATIONS_ENCRYPT_SHARED_SECRET);
+            } else {
+                configuration.put(
+                        org.wso2.dpdp.accelerator.common.constant.DPDPCommonConstants
+                                .EVENT_NOTIFICATIONS_ENCRYPT_SHARED_SECRET,
+                        originalValue);
+            }
+            CryptoUtils.setEncryptionEnabled(true);   // restore the override used by other tests
+        }
     }
 }

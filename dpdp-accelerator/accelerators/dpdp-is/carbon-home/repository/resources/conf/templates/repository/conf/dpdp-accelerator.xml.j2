@@ -82,9 +82,6 @@
     <EventNotifications>
         {% if dpdp_accelerator.event_notifications.encrypt_shared_secret is defined %}
         <EncryptSharedSecret>{{dpdp_accelerator.event_notifications.encrypt_shared_secret}}</EncryptSharedSecret>
-        {% elif (oauth.hash_client_secret is defined and oauth.hash_client_secret | string | lower == 'true')
-              or (oauth.encrypt_client_secret is defined and oauth.encrypt_client_secret | string | lower == 'true') %}
-        <EncryptSharedSecret>true</EncryptSharedSecret>
         {% else %}
         <EncryptSharedSecret>false</EncryptSharedSecret>
         {% endif %}
