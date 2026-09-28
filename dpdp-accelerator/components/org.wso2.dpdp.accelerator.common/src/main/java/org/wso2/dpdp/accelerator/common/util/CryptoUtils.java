@@ -51,9 +51,22 @@ public final class CryptoUtils {
 
     private static CryptoUtil cryptoUtilInstance;
     private static Boolean encryptionEnabledOverride;
+    private static boolean testModeEnabled = false;
 
     private CryptoUtils() {
 
+    }
+
+    /**
+     * Sets whether test-mode encryption/decryption is enabled.
+     * When enabled, uses a local hardcoded key instead of Carbon CryptoUtil.
+     * This must ONLY be used for unit and integration testing.
+     *
+     * @param testMode true to enable test mode, false otherwise
+     */
+    public static void setTestModeEnabled(boolean testMode) {
+
+        testModeEnabled = testMode;
     }
 
     /**
@@ -79,7 +92,8 @@ public final class CryptoUtils {
         }
         try {
             return DPDPConfigParser.getInstance().isEventNotificationEncryptSharedSecret();
-        } catch (Throwable e) {
+        } catch (Exception e) {
+            LOG.error("Failed to read encryption configuration; defaulting to disabled.", e);
             return false;
         }
     }
@@ -134,7 +148,10 @@ public final class CryptoUtils {
             }
         }
 
-        return encryptTest(plainText);
+        if (testModeEnabled) {
+            return encryptTest(plainText);
+        }
+        throw new DPDPSystemException("CryptoUtil is not available; cannot encrypt sensitive value.");
     }
 
     /**
@@ -153,6 +170,10 @@ public final class CryptoUtils {
         }
 
         if (cipherText.startsWith(TEST_CIPHER_PREFIX)) {
+            if (!testModeEnabled) {
+                throw new DPDPSystemException(
+                        "Test cipher prefix found but test mode is not enabled; refusing to decrypt.");
+            }
             return decryptTest(cipherText);
         }
 

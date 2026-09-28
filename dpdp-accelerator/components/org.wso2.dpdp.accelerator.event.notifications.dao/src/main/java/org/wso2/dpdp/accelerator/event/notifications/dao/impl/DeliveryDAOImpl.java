@@ -18,6 +18,8 @@
 
 package org.wso2.dpdp.accelerator.event.notifications.dao.impl;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.wso2.dpdp.accelerator.common.config.DPDPConfigurationService;
 import org.wso2.dpdp.accelerator.common.exception.DPDPSystemException;
 import org.wso2.dpdp.accelerator.common.util.CryptoUtils;
@@ -52,6 +54,8 @@ import java.util.Optional;
 import java.util.Set;
 
 public class DeliveryDAOImpl implements DeliveryDAO {
+
+    private static final Log LOG = LogFactory.getLog(DeliveryDAOImpl.class);
 
     private DPDPConfigurationService configurationService;
 
@@ -193,7 +197,12 @@ public class DeliveryDAOImpl implements DeliveryDAO {
             ps.setInt(1, limit);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    list.add(mapDispatchContext(rs));
+                    String deliveryId = rs.getString(EventNotificationDBColumns.DELIVERY_ID);
+                    try {
+                        list.add(mapDispatchContext(rs));
+                    } catch (EventNotificationDaoException e) {
+                        LOG.error("Skipping delivery [" + deliveryId + "] due to decryption failure: " + e.getMessage(), e);
+                    }
                 }
             }
             return list;
@@ -213,7 +222,12 @@ public class DeliveryDAOImpl implements DeliveryDAO {
             ps.setInt(2, limit);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    list.add(mapDispatchContext(rs));
+                    String deliveryId = rs.getString(EventNotificationDBColumns.DELIVERY_ID);
+                    try {
+                        list.add(mapDispatchContext(rs));
+                    } catch (EventNotificationDaoException e) {
+                        LOG.error("Skipping delivery [" + deliveryId + "] due to decryption failure: " + e.getMessage(), e);
+                    }
                 }
             }
             return list;

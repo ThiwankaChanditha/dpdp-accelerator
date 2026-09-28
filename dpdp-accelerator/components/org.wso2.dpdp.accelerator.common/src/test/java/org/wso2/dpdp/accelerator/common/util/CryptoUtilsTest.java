@@ -54,6 +54,7 @@ public class CryptoUtilsTest {
 
         CryptoUtils.setCryptoUtil(null);
         CryptoUtils.setEncryptionEnabled(null);
+        CryptoUtils.setTestModeEnabled(false);
     }
 
     @Test
@@ -78,6 +79,7 @@ public class CryptoUtilsTest {
     public void testEncryptAndDecryptSuccessInTestMode() {
 
         CryptoUtils.setCryptoUtil(null);
+        CryptoUtils.setTestModeEnabled(true);
 
         String plainText = "super-secret-webhook-key";
         String encrypted = CryptoUtils.encrypt(plainText);
@@ -93,6 +95,7 @@ public class CryptoUtilsTest {
     public void testDecryptCorruptedCiphertextInTestModeThrows() {
 
         CryptoUtils.setCryptoUtil(null);
+        CryptoUtils.setTestModeEnabled(true);
 
         expectThrows(DPDPSystemException.class,
                 () -> CryptoUtils.decrypt("dpdp_test_enc:invalid_corrupt_data"));
@@ -173,6 +176,7 @@ public class CryptoUtilsTest {
     public void testDecryptEncryptedValueWhenEncryptionDisabledStillDecrypts() {
 
         CryptoUtils.setCryptoUtil(null);
+        CryptoUtils.setTestModeEnabled(true);
         CryptoUtils.setEncryptionEnabled(true);
         String plainText = "test-webhook-secret";
         String encrypted = CryptoUtils.encrypt(plainText);
@@ -180,5 +184,27 @@ public class CryptoUtilsTest {
         CryptoUtils.setEncryptionEnabled(false);
         String decrypted = CryptoUtils.decrypt(encrypted);
         assertEquals(decrypted, plainText);
+    }
+
+    @Test
+    public void testEncryptThrowsWhenCarbonUnavailableAndNotInTestMode() {
+
+        CryptoUtils.setCryptoUtil(null);
+        CryptoUtils.setTestModeEnabled(false);
+        CryptoUtils.setEncryptionEnabled(true);
+
+        DPDPSystemException exception = expectThrows(DPDPSystemException.class,
+                () -> CryptoUtils.encrypt("sample-secret"));
+        assertEquals(exception.getMessage(), "CryptoUtil is not available; cannot encrypt sensitive value.");
+    }
+
+    @Test
+    public void testDecryptThrowsForTestPrefixOutsideTestMode() {
+
+        CryptoUtils.setTestModeEnabled(false);
+        DPDPSystemException exception = expectThrows(DPDPSystemException.class,
+                () -> CryptoUtils.decrypt("dpdp_test_enc:c29tZS1jaXBoZXI="));
+        assertEquals(exception.getMessage(),
+                "Test cipher prefix found but test mode is not enabled; refusing to decrypt.");
     }
 }

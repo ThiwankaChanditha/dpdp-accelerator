@@ -58,6 +58,7 @@ public class TransactionIntegrationTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
+        CryptoUtils.setTestModeEnabled(true);
         databaseName = "enf_" + System.nanoTime();
         connection = DriverManager.getConnection("jdbc:h2:mem:" + databaseName + ";DB_CLOSE_DELAY=-1");
         RunScript.execute(connection, new StringReader(
@@ -93,6 +94,7 @@ public class TransactionIntegrationTest {
     @AfterMethod
     public void tearDown() throws Exception {
         CryptoUtils.setEncryptionEnabled(null);
+        CryptoUtils.setTestModeEnabled(false);
         if (connection != null && !connection.isClosed()) {
             connection.close();
         }
