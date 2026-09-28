@@ -19,6 +19,8 @@
 package org.wso2.dpdp.accelerator.event.notifications.dao.impl;
 
 import org.wso2.dpdp.accelerator.common.config.DPDPConfigurationService;
+import org.wso2.dpdp.accelerator.common.exception.DPDPSystemException;
+import org.wso2.dpdp.accelerator.common.util.CryptoUtils;
 import org.wso2.dpdp.accelerator.event.notifications.common.constants.EventNotificationCommonConstants;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.PollStatus;
 import org.wso2.dpdp.accelerator.event.notifications.common.exception.dao.EventNotificationDaoException;
@@ -234,12 +236,18 @@ public class DeliveryDAOImpl implements DeliveryDAO {
                 rs.getTimestamp(EventNotificationDBColumns.UPDATED_AT),
                 rs.getTimestamp(EventNotificationDBColumns.DELIVERED_AT),
                 rs.getBoolean(EventNotificationDBColumns.MANUAL_RETRY_USED));
+        String plainSecret;
+        try {
+            plainSecret = CryptoUtils.decrypt(rs.getString(EventNotificationDBColumns.SHARED_SECRET));
+        } catch (DPDPSystemException e) {
+            throw new EventNotificationDaoException("Error occurred while decrypting webhook shared secret", e);
+        }
         return new WebhookDeliveryDispatchContext(
                 delivery,
                 rs.getString(EventNotificationDBColumns.ORG_ID),
                 rs.getString(EventNotificationDBColumns.GROUP_ID),
                 rs.getString(EventNotificationDBColumns.CALLBACK_URL),
-                rs.getString(EventNotificationDBColumns.SHARED_SECRET),
+                plainSecret,
                 rs.getString(EventNotificationDBColumns.PAYLOAD),
                 rs.getTimestamp(EventNotificationDBColumns.UPDATED_AT),
                 rs.getString(EventNotificationDBColumns.TOPIC_NAME));
