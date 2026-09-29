@@ -132,6 +132,18 @@ describe('administrative consent filters', () => {
     })
   })
 
+  it('shows the Relation hint above the field so it never covers its label or value', async () => {
+    renderFilters()
+
+    const relationSelect = screen.getByRole('combobox', { name: 'Relation' })
+    fireEvent.mouseOver(relationSelect.closest('[aria-label]') as HTMLElement)
+
+    const tooltip = await screen.findByRole('tooltip')
+    expect(tooltip).toHaveTextContent('Set a User to filter by relation')
+    expect(tooltip.querySelector('.MuiTooltip-tooltipPlacementTop')).not.toBeNull()
+    expect(tooltip.querySelector('.MuiTooltip-arrow')).not.toBeNull()
+  })
+
   it('offers service, purpose, a consent-property filter and a created-date range in advanced filters', () => {
     const onFilterChange = vi.fn()
     renderFilters(EMPTY_ADMIN_CONSENT_FILTERS, onFilterChange)

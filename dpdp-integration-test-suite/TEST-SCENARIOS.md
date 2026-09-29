@@ -10,9 +10,9 @@ in CI was actually checking.
 
 | | |
 |---|---|
-| **Tests** | 200 across 53 spec files in 10 areas |
+| **Tests** | 201 across 53 spec files in 10 areas |
 | **Removed, not skipped** | `09.08`'s fan-out persistence rollback case, `09.10`'s stuck-in-flight reclaim case - see "What this suite cannot verify" |
-| **Skipped when unconfigured** | `04.09.03` (expiry cron); `09.10.01`, `09.10.02` (shortened backoff) |
+| **Skipped when unconfigured** | `04.09.03` (expiry cron); `09.10.01`, `09.10.02`, `09.10.03` (shortened backoff) |
 | **Rules and conventions** | [`AGENTS.md`](AGENTS.md) |
 | **Setup and how to run** | [`README.md`](README.md) |
 
@@ -44,9 +44,9 @@ consequences shape every scenario below — see [`AGENTS.md`](AGENTS.md) for the
    assertions above already guarantee.
 
 **Personas:** `user` (plain `internal_login`; `CONSENTS_*_SELF` and `COMPLAINTS_*_SELF` only),
-`consent-admin` (`dpdp-consent-admin`; every `internal_consent_mgt_*`, `:any` complaint and
-`notifications:*` scope), `user-2` (optional), plus per-worker throwaway tenants and throwaway
-users.
+`consent-admin` (`dpdp-consent-admin`; every `internal_consent_mgt_*` and `notifications:*` scope,
+no complaint scope), `dpo` (`dpdp-consent-dpo`; the `:any` complaint scopes only), `user-2`
+(optional), plus per-worker throwaway tenants and throwaway users.
 
 ---
 
@@ -457,7 +457,7 @@ Two surfaces: the Data Principal's `/complaints` and the officer's `/complaint-m
 
 Mixed UI and API. Two server behaviours drive most of the test design: `groupId` is silently forced to the org id on every subscription, so tests read the *returned* `groupId` back and use two topics (or disjoint purpose filters) when they need two distinct subscriptions; and `GET /events` hardcodes the caller's orgId as `GROUP_ID`, so an event published under any other group id can never be found through it at all.
 
-**51 tests, 11 spec files.**
+**52 tests, 11 spec files.**
 
 ### `09.01-admin-managing-topics.spec.ts`
 
@@ -560,7 +560,7 @@ Query and delivery-scoping rules on the read endpoints.
 
 ### `09.10-webhook-delivery-api.spec.ts` · API-only
 
-Every test needs a network-reachable receiver (`webhook.receiverHost`). `09.10.01`/`09.10.02` also
+Every test needs a network-reachable receiver (`webhook.receiverHost`). `09.10.01`/`09.10.02`/`09.10.03` also
 need `webhook.baseBackoffSecondsOverride`/`maxRetriesOverride`. See "Known gaps" for the
 stuck-in-flight reclamation case removed from this file.
 
@@ -568,6 +568,7 @@ stuck-in-flight reclamation case removed from this file.
 | --- | --- | --- |
 | `09.10.01` | A non-2xx response records failure and retries with the same delivery id | **Skipped unless `webhook.baseBackoffSecondsOverride`/`maxRetriesOverride` are set** - real elapsed time scales with those values. |
 | `09.10.02` | Persistent receiver failure transitions the delivery to failed | Same opt-in as `09.10.01` - exhausts every retry, so scales with `maxRetriesOverride` too. |
+| `09.10.03` | Manual retry on a failed delivery dispatches a new attempt and re-exposes retry when it fails | Same opt-in as `09.10.01` - triggers manual retry on a failed delivery, executes retry attempt, and verifies retry remains available upon repeated failure. |
 
 ### `09.11-tenant-isolation-api.spec.ts` · API-only
 
@@ -631,49 +632,31 @@ Coverage that is absent, and why. Kept here so a gap is never mistaken for a pas
 ## The complaints API suite was removed upstream
 
 Commit `e278405` ("Sync tests with the source", 2026-08-31, PR #65) deleted
-`tests/06-complaints-api/` in full — 6 spec files, 53 tests, ~1,200 lines, plus its README — and
-removed one UI end-to-end test. That commit is an ancestor of `upstream/main`, so this is the
-upstream state, not a local deletion. Nothing replaced it: the only complaint tests left in the
-repo are the Java DAO-layer unit tests under
-`components/org.wso2.dpdp.accelerator.complaint.mgt.dao/src/test/`, which cover persistence, not
-the REST API. `clients/ComplaintApiClient.ts` survives but is now used only for seeding.
+`tests/06-complaints-api/` in full - 6 spec files, 53 tests - and one UI end-to-end test. Almost
+all of it is still covered, one layer down or through the UI:
 
-Whether the removal was deliberate is a question for the commit's author.
-
-**About a third of those 53 scenarios survive in substance** through the UI tests in
-`08-complaints/`, under different names. Priority derivation (`08.06.02` proves DATA_BREACH renders
-as Critical), the internal-note boundary (`08.07.04` checks the citizen's own timeline API, not
-just the UI), status transitions (`08.04.05`, `08.07.02`), status and priority filtering
-(`08.06.01`, `08.06.02`), required-field validation (`08.01.02`, `08.01.03`) and the unknown-id
-path (`08.02.05`) are all still exercised. Don't rebuild those.
+- **Java unit tests** in the complaint `service` and `endpoint` modules cover the rules those API
+  tests checked: create and comment validation (including the 5000-character limit), status
+  transitions and the note required to resolve, attachment limits, content types, sizes and the
+  `isPublic` download boundary, ownership (a second user's read, comment, transition, upload and
+  download), officer-assisted intake, unknown filter values returning 422, and pagination.
+- **`08-complaints/`** covers the same flows through the portal: creation and required fields,
+  status and priority filtering (`08.06.01`, `08.06.02` - DATA_BREACH maps to Critical), the
+  internal-note boundary (`08.07.04`, checked against the citizen's own timeline API), transitions
+  (`08.04.05`, `08.07.02`), reopening a resolved complaint (`08.04.08`, `08.09.01`) and the
+  unknown-id path (`08.02.05`).
 
 ### What is genuinely uncovered
 
-Verified by search, not inferred: the suite contains **zero** assertions on `CO-4xxx` error codes,
-`isPublic`, attachment downloads, `statutoryDueDate`, or a second user's access to another's
-complaint.
-
 | Gap | Why it matters |
 |---|---|
-| **Attachment authorization** | An officer upload defaulting to public, marking one internal, and a citizen being unable to download an officer's internal attachment while still getting public ones. A data-protection boundary, not a nicety. |
-| **Complaint ownership isolation** | That a second user cannot read, comment on, transition, or download another person's complaint. Consents have this (`04.01.03`); complaints no longer do. |
-| **Officer-assisted intake** | `POST /complaints` on a named Data Principal's behalf, and that principal then seeing it. No UI exists and `ComplaintApiClient` has no method for it, so it is currently untestable as written. |
-| **7 of 10 complaint categories** | Only `DATA_BREACH`, `OTHER` and `PURPOSE_VIOLATION` are ever used. Untested: `CONSENT_LIFECYCLE_ISSUE`, `CONSENT_WITHDRAWN_DATA_STILL_USED`, `DATA_ACCESS_DENIED`, `DATA_CORRECTION_NOT_COMPLETED`, `DATA_ERASURE_NOT_COMPLETED`, `EXCESSIVE_DATA_COLLECTION`, `UNAUTHORIZED_DATA_SHARING` — each with its own priority mapping. |
-| **Validation boundaries** | The 5000-character description limit on both sides of it, empty and oversized comments, unrecognized enum values returning 422 rather than a silently empty page, more than 5 files per request, unsupported content types, oversize files. |
-| **`statutoryDueDate`** | `08.05.01` only asserts an "SLA" *column header* exists. That the date is actually offset ahead of `submittedAt` is unverified. |
-| **API-level auth codes** | Missing and malformed bearer tokens returning 401, and a Data Principal's token being refused by the officer surface with 403. `08.08.02` covers only the UI redirect. |
-| **Pagination** | `limit`/`offset` paging deterministically through a known set. |
+| **API-level auth** | A missing or malformed bearer token returning 401, and a Data Principal's token refused by the officer API with 403. The Identity Server enforces these through `deployment.toml`'s `[[resource.access_control]]` rules, not Java code, so only a test against a running server can check them. `08.08.02` covers only the UI redirect. |
+| **Concurrent replies** | A citizen and an officer replying at nearly the same time both landing in the timeline. Needs a real database. |
 
-### Two findings lost with the tests
-
-Worth recording because they were product observations, not test scaffolding:
-
-- A Data Principal **can** resolve their own complaint by posting a comment with a `toStatus`, but
-  **never** through the status-only endpoint. The deleted test labelled the second half
-  "[likely bug]". That inconsistency is now documented nowhere else.
-- The backend reopens a RESOLVED complaint into `AWAITING_INTERNAL_REVIEW` when the citizen
-  replies, and the frontend now uses that path too. `08.09.01` and `08.04.08` both assert it
-  through the UI, so the capability is covered even though the deleted API test is gone.
+One product observation the deleted tests recorded: a Data Principal **can** resolve their own
+complaint by posting a comment with a `toStatus`, but **never** through the status-only endpoint,
+because that path always passes an empty note and `RESOLVED` requires one. Whether that asymmetry
+is intended is a product question.
 
 ## No webhook happy-path coverage
 
@@ -692,8 +675,7 @@ suite cannot verify".
 |---|---|
 | `NoAccessPage` ("No portal access") | No persona in this suite is scope-less, so the page is unreachable |
 | The complaint list's true empty state | The shared `user` persona always has history |
-| Read-only vs. write scope separation | No role grants a strict subset — `dpdp-consent-admin` holds every scope, `dpdp-consent-user` none (`09.05.03` documents this explicitly) |
-| Per-dialect payload-search SQL | The suite runs against one DB dialect; the DAO's other query builders are covered by Java unit tests |
+| Event Notification read-only vs. write scope separation | No role holds only some `notifications:*` scopes - `dpdp-consent-admin` holds all of them, `dpdp-consent-user` and `dpdp-consent-dpo` none (`09.05.03` documents this explicitly) |
 
 ## What this suite cannot verify
 
@@ -705,9 +687,9 @@ is skipped whenever any test it depends on fails) and a dedicated throwaway tena
 setup for no counting logic the user dashboard's `10.01`-`10.03` don't already prove). The admin
 view's query shape is pinned by `DashboardPage.test.tsx`.
 
-Both removed cases are genuinely unreachable from a black-box HTTP test, and both are already
-covered one layer down by Java unit tests with a mocked DAO - so removing the dead
-`test.skip()`'d E2E placeholder loses no real verification.
+**Two E2E cases removed rather than skipped** (listed in the header table). Both are unreachable
+from a black-box HTTP test, and both are covered one layer down by Java unit tests with a mocked
+DAO - so removing the dead `test.skip()`'d placeholders loses no real verification.
 
 **`09.08`'s fan-out persistence rollback case.** Forcing a `DELIVERY` insert to fail
 mid-transaction, purely to prove the whole publish rolls back atomically, has no trigger reachable

@@ -148,10 +148,9 @@ public class DtoContractTest {
         history.setCompletionEvidence("https://receiver.example/evidence");
         history.setHistory(Arrays.asList(new SubscriptionDeliveryAttemptDTO(1, "FAILED", 123L, 503, "unavailable"),
                 new SubscriptionDeliveryAttemptDTO(2, "DELIVERED", 234L, 200, null)));
-        history.setManualRetryUsed(true);
-        equivalent(history, EventNotificationDtoMapper.toApi(history));
-        history.setManualRetryUsed(false);
         history.setManualRetryAvailable(true);
+        equivalent(history, EventNotificationDtoMapper.toApi(history));
+        history.setManualRetryAvailable(false);
         equivalent(history, EventNotificationDtoMapper.toApi(history));
         equivalent(new SubscriptionEventHistoryDTO(), EventNotificationDtoMapper.toApi(new SubscriptionEventHistoryDTO()));
         equivalent(new EventPollingResponseDTO(false, Collections.emptyMap()),

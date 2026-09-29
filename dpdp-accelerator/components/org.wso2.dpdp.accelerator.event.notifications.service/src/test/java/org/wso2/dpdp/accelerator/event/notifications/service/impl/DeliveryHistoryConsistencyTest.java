@@ -31,6 +31,7 @@ import org.wso2.dpdp.accelerator.event.notifications.dao.TopicDAO;
 import org.wso2.dpdp.accelerator.event.notifications.dao.model.PollDelivery;
 import org.wso2.dpdp.accelerator.event.notifications.dao.model.Subscription;
 import org.wso2.dpdp.accelerator.event.notifications.dao.model.SubscriptionDeliverySummary;
+import org.wso2.dpdp.accelerator.event.notifications.dao.model.WebhookDelivery;
 import org.wso2.dpdp.accelerator.event.notifications.dao.model.WebhookDeliveryAudit;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionDeliveryAttemptDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionEventHistoryDTO;
@@ -48,6 +49,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 public class DeliveryHistoryConsistencyTest {
 
@@ -55,6 +57,7 @@ public class DeliveryHistoryConsistencyTest {
     private static final String SUBSCRIPTION_ID = "sub-1";
     private static final String DELIVERY_ID = "delivery-1";
 
+    private SubscriptionDAO subscriptionDAO;
     private DeliveryDAO deliveryDAO;
     private DeliveryAckDAO deliveryAckDAO;
     private EventPublishServiceImpl eventService;
@@ -71,12 +74,12 @@ public class DeliveryHistoryConsistencyTest {
 
         EventDAO eventDAO = mock(EventDAO.class);
         TopicDAO topicDAO = mock(TopicDAO.class);
-        SubscriptionDAO subscriptionDAO = mock(SubscriptionDAO.class);
+        subscriptionDAO = mock(SubscriptionDAO.class);
         deliveryDAO = mock(DeliveryDAO.class);
         deliveryAckDAO = mock(DeliveryAckDAO.class);
 
         eventService = new EventPublishServiceImpl(eventDAO, topicDAO, deliveryDAO,
-                deliveryAckDAO);
+                deliveryAckDAO, subscriptionDAO);
         subscriptionService = new SubscriptionServiceImpl(subscriptionDAO, topicDAO, deliveryDAO, deliveryAckDAO,
                 mock(DPDPConfigurationService.class));
         Subscription sub = new Subscription();
@@ -124,6 +127,33 @@ public class DeliveryHistoryConsistencyTest {
 
         assertEquivalent(eventService.getDeliveryHistory(ORG_ID, DELIVERY_ID),
                 subscriptionService.getSubscriptionEventHistory(ORG_ID, SUBSCRIPTION_ID, DELIVERY_ID));
+    }
+
+    @Test
+    public void webhookHistoryDisablesManualRetryConsistentlyWhenSubscriptionInactive() {
+        Subscription inactiveSub = new Subscription();
+        inactiveSub.setSubscriptionId(SUBSCRIPTION_ID);
+        inactiveSub.setOrgId(ORG_ID);
+        inactiveSub.setStatus("stale");
+        when(subscriptionDAO.getSubscriptionById(any(Connection.class), eq(SUBSCRIPTION_ID), eq(ORG_ID)))
+                .thenReturn(Optional.of(inactiveSub));
+
+        SubscriptionDeliverySummary summary = summary("failed", "webhook");
+        prepareSummary(summary);
+        when(deliveryDAO.getWebhookDeliveryById(any(Connection.class), eq(DELIVERY_ID), eq(ORG_ID))).thenReturn(Optional.of(
+                new WebhookDelivery(DELIVERY_ID, SUBSCRIPTION_ID, "event-1", "failed", 10,
+                        null, null, null, null)));
+        when(deliveryAckDAO.getDeliveryAckByDeliveryId(any(Connection.class), eq(DELIVERY_ID), eq(ORG_ID)))
+                .thenReturn(Optional.empty());
+        when(deliveryDAO.getWebhookDeliveryAudits(any(Connection.class), eq(DELIVERY_ID), eq(ORG_ID)))
+                .thenReturn(Collections.emptyList());
+
+        SubscriptionEventHistoryDTO eventHistory = eventService.getDeliveryHistory(ORG_ID, DELIVERY_ID);
+        SubscriptionEventHistoryDTO subHistory = subscriptionService.getSubscriptionEventHistory(ORG_ID, SUBSCRIPTION_ID, DELIVERY_ID);
+
+        assertEquivalent(eventHistory, subHistory);
+        assertFalse(eventHistory.isManualRetryAvailable());
+        assertFalse(subHistory.isManualRetryAvailable());
     }
 
     @Test

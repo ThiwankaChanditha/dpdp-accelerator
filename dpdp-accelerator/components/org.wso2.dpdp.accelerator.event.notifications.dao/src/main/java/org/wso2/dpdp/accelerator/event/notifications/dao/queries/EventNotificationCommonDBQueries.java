@@ -244,7 +244,7 @@ public class EventNotificationCommonDBQueries {
 
     public String getGetWebhookDeliveryByIdAndOrgQuery() {
         return "SELECT DELIVERY_ID, ORG_ID, SUBSCRIPTION_ID, EVENT_ID, STATUS, ATTEMPT_COUNT, NEXT_RETRY_AT, " +
-                "CREATED_AT, UPDATED_AT, DELIVERED_AT, MANUAL_RETRY_USED " +
+                "CREATED_AT, UPDATED_AT, DELIVERED_AT " +
                 "FROM WEBHOOK_DELIVERY " +
                 "WHERE DELIVERY_ID = ? AND ORG_ID = ?";
     }
@@ -325,7 +325,6 @@ public class EventNotificationCommonDBQueries {
     // already filters out via isDeliverable(...).
     private static final String DISPATCH_SELECT = "SELECT d.DELIVERY_ID, d.ORG_ID, d.SUBSCRIPTION_ID, d.EVENT_ID, d.STATUS, " +
             "d.ATTEMPT_COUNT, d.NEXT_RETRY_AT, d.CREATED_AT, d.UPDATED_AT, d.DELIVERED_AT, " +
-            "d.MANUAL_RETRY_USED, " +
             "s.GROUP_ID, s.CALLBACK_URL, s.SHARED_SECRET, e.PAYLOAD, " +
             "t.NAME AS TOPIC_NAME ";
 
@@ -364,9 +363,9 @@ public class EventNotificationCommonDBQueries {
 
     public String getPrepareManualRetryQuery() {
         return "UPDATE WEBHOOK_DELIVERY SET STATUS = " + SQL_DELIVERY_PENDING +
-                ", NEXT_RETRY_AT = CURRENT_TIMESTAMP, MANUAL_RETRY_USED = ?, UPDATED_AT = CURRENT_TIMESTAMP " +
+                ", NEXT_RETRY_AT = CURRENT_TIMESTAMP, UPDATED_AT = CURRENT_TIMESTAMP " +
                 "WHERE DELIVERY_ID = ? AND SUBSCRIPTION_ID = ? AND STATUS = " + SQL_DELIVERY_FAILED +
-                " AND MANUAL_RETRY_USED = ? AND ATTEMPT_COUNT > ? " +
+                " AND ATTEMPT_COUNT > ? " +
                 "AND EXISTS (SELECT 1 FROM SUBSCRIPTION s WHERE s.SUBSCRIPTION_ID = WEBHOOK_DELIVERY.SUBSCRIPTION_ID " +
                 "AND s.ORG_ID = ? AND s.ORG_ID = WEBHOOK_DELIVERY.ORG_ID AND s.STATUS = " + SQL_SUBSCRIPTION_ACTIVE + ")";
     }

@@ -194,6 +194,8 @@ export default function AdminConsentFilters({
           title={
             !draft.userId && !filters.consentId ? t('adminConsents.filters.relationHelperText') : ''
           }
+          placement="top"
+          arrow
         >
           <Box component="span" sx={{ width: { xs: '100%', sm: 170 }, flexShrink: 0 }}>
             <FormControl size="small" fullWidth disabled={Boolean(filters.consentId)}>

@@ -234,9 +234,82 @@ test.describe('Webhook delivery', () => {
         .getSubscriptionEventHistory(subscriptionId, delivery.deliveryId)
         .then((r) => r.json())
       expect(history.nextRetryAt).toBeFalsy()
+      expect(history.manualRetryAvailable).toBe(true)
       const statuses = (history.history as { httpStatus?: number }[]).map((attempt) => attempt.httpStatus)
       expect(statuses.every((status) => status === 503)).toBe(true)
       expect(statuses.length).toBeGreaterThan(1)
+    } finally {
+      await receiver.stop()
+    }
+  })
+
+  test('09.10.03 - Manual retry on a failed delivery dispatches a new attempt and re-exposes retry when it fails', async ({
+    consentAdminEventApi,
+  }) => {
+    const backoff = webhookBackoffOverride()
+    test.skip(
+      !backoff,
+      'webhook.baseBackoffSecondsOverride/maxRetriesOverride is not configured - see AGENTS.md, ' +
+        '"Webhook-dependent tests"',
+    )
+    const { baseBackoffSeconds, maxRetries } = backoff ?? { baseBackoffSeconds: 0, maxRetries: 0 }
+    const exhaustionDelayMs = cumulativeBackoffSeconds(baseBackoffSeconds, maxRetries) * 1000
+    const pollTimeoutMs = exhaustionDelayMs * 5 + 30_000
+    test.setTimeout(pollTimeoutMs * 2 + 60_000)
+
+    const { receiver, topicName, subscriptionId, groupId } = await registerVerifiedWebhookSubscription(
+      consentAdminEventApi,
+      '08-02-03-topic',
+    )
+    try {
+      receiver.respondWith((request) => (request.method === 'POST' ? { status: 503 } : { status: 204 }))
+      const { event } = await publishMarkedEventViaApi(consentAdminEventApi, groupId, topicName)
+
+      const delivery = await findDeliveryForEvent(consentAdminEventApi, subscriptionId, event.eventId)
+
+      await expect
+        .poll(
+          async () =>
+            (await consentAdminEventApi.getSubscriptionEventHistory(subscriptionId, delivery.deliveryId).then((r) => r.json()))
+              .currentStatus,
+          { timeout: pollTimeoutMs, intervals: [2_000] },
+        )
+        .toBe('failed')
+
+      const initialHistory = await consentAdminEventApi
+        .getSubscriptionEventHistory(subscriptionId, delivery.deliveryId)
+        .then((r) => r.json())
+      expect(initialHistory.manualRetryAvailable).toBe(true)
+      const initialAttempts = (initialHistory.history as unknown[]).length
+
+      // Trigger manual retry
+      const retryResponse = await consentAdminEventApi.retrySubscriptionDelivery(subscriptionId, delivery.deliveryId)
+      expect(retryResponse.status()).toBe(202)
+
+      // The receiver fails again (503), delivery transitions back to 'failed' with an additional attempt
+      await expect
+        .poll(
+          async () => {
+            const h = await consentAdminEventApi
+              .getSubscriptionEventHistory(subscriptionId, delivery.deliveryId)
+              .then((r) => r.json())
+            return {
+              status: h.currentStatus,
+              attempts: (h.history as unknown[])?.length,
+            }
+          },
+          { timeout: pollTimeoutMs, intervals: [2_000] },
+        )
+        .toEqual({
+          status: 'failed',
+          attempts: initialAttempts + 1,
+        })
+
+      // History confirms manual retry is available again
+      const failedAgainHistory = await consentAdminEventApi
+        .getSubscriptionEventHistory(subscriptionId, delivery.deliveryId)
+        .then((r) => r.json())
+      expect(failedAgainHistory.manualRetryAvailable).toBe(true)
     } finally {
       await receiver.stop()
     }

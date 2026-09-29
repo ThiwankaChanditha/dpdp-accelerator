@@ -172,6 +172,7 @@ export interface SubscriptionEventHistoryRecord {
   nextRetryAt?: number
   completionStatus?: string
   completionEvidence?: string
+  manualRetryAvailable?: boolean
   history?: SubscriptionDeliveryAttemptRecord[]
 }
 
@@ -273,6 +274,13 @@ export class EventNotificationApiClient {
   async getSubscriptionEventHistory(subscriptionId: string, deliveryId: string): Promise<APIResponse> {
     return this.request.get(
       this.url(`/subscriptions/${encodeURIComponent(subscriptionId)}/events/${encodeURIComponent(deliveryId)}`),
+      { headers: this.headers() },
+    )
+  }
+
+  async retrySubscriptionDelivery(subscriptionId: string, deliveryId: string): Promise<APIResponse> {
+    return this.request.post(
+      this.url(`/subscriptions/${encodeURIComponent(subscriptionId)}/events/${encodeURIComponent(deliveryId)}/retry`),
       { headers: this.headers() },
     )
   }

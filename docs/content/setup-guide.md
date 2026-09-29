@@ -346,7 +346,7 @@ correctly without it:
 | --- | --- |
 | `[[event_handler]]` (`dpdpUserLifecycleEventHandler`) | Subscribes the accelerator to the Identity Server's user-deletion and claim-update events, which feed Event Notifications |
 | `[datasource.WSO2DPDP_DB]` | The accelerator's own database. Configured in step 4.2 |
-| `[consent_mgt]` | `enable_v2_api = true` registers the consent management v2 APIs and their scopes that the portal uses. `revoke_active_consents_on_create = false` keeps a user's earlier consents when a new one is created |
+| `[consent_mgt]` | `enable_v2_api = true` registers the consent management v2 APIs and their scopes that the portal uses. `revoke_active_consents_on_create = false` keeps a user's earlier consents when a new one is created. It needs U2 update level 17 or later: older levels ignore it without a warning and revoke the earlier consents, and the accelerator's history and notifications don't record those revokes |
 | `[[resource.access_control]]`, 30 entries | Protect the accelerator's APIs with OAuth scopes, open the portal's own paths, and restrict self-service account deletion (`DELETE /scim2/Me`) to `account:self:delete` |
 | `[tenant_context.rewrite]` | Makes the portal and the accelerator APIs reachable at tenant-qualified URLs (`/t/<tenant>/…`) |
 | `[console.flows.scopes]` | Lets the Console's flows view read consent purposes |

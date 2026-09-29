@@ -86,7 +86,7 @@ public class TransactionIntegrationTest {
                         + "CREATED_AT TIMESTAMP NOT NULL);"
                         + "CREATE TABLE WEBHOOK_DELIVERY (DELIVERY_ID VARCHAR(64) PRIMARY KEY, ORG_ID VARCHAR(128), "
                         + "SUBSCRIPTION_ID VARCHAR(64), EVENT_ID VARCHAR(64), STATUS VARCHAR(32), "
-                        + "ATTEMPT_COUNT INT, MANUAL_RETRY_USED BOOLEAN DEFAULT FALSE, NEXT_RETRY_AT TIMESTAMP, "
+                        + "ATTEMPT_COUNT INT, NEXT_RETRY_AT TIMESTAMP, "
                         + "CREATED_AT TIMESTAMP, UPDATED_AT TIMESTAMP, "
                         + "DELIVERED_AT TIMESTAMP);"));
     }
@@ -274,7 +274,7 @@ public class TransactionIntegrationTest {
     }
 
     @Test
-    public void manualRetryCanBePreparedOnlyOnceAfterAutomaticRetriesAreExhausted() throws Exception {
+    public void manualRetryCanBePreparedRepeatedlyWheneverFailed() throws Exception {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         new TopicDAOImpl().addTopic(connection,
                 new Topic("topic-1", "org-1", "accounts", "", TopicStatus.ACTIVE.getValue()));
@@ -301,13 +301,25 @@ public class TransactionIntegrationTest {
 
         assertTrue(dao.getWebhookDeliveryDispatchContext(connection, "org-1", "sub-1", "delivery-1").isPresent());
         assertTrue(dao.prepareManualRetry(connection, "org-1", "sub-1", "delivery-1", 5));
+        // While in pending, a concurrent or second retry attempt is rejected
         assertFalse(dao.prepareManualRetry(connection, "org-1", "sub-1", "delivery-1", 5));
 
         WebhookDelivery prepared = dao.getWebhookDeliveryById(connection, "delivery-1", "org-1").get();
         assertEquals(prepared.getStatus(), DeliveryStatus.PENDING.getValue());
         assertEquals(prepared.getOrgId(), "org-1");
         assertEquals(prepared.getAttemptCount(), 6);
-        assertTrue(prepared.isManualRetryUsed());
+
+        // Simulate claiming and executing the retry, which fails again (status in_flight -> failed, attemptCount=7)
+        assertTrue(dao.claimWebhookDelivery(connection, "delivery-1"));
+        WebhookDelivery failedAgain = new WebhookDelivery("delivery-1", "org-1", "sub-1", "event-1",
+                DeliveryStatus.FAILED.getValue(), 7, null, now, new Timestamp(System.currentTimeMillis()), null);
+        assertTrue(dao.updateWebhookDeliveryStatus(connection, failedAgain));
+
+        // A second manual retry can now be prepared successfully
+        assertTrue(dao.prepareManualRetry(connection, "org-1", "sub-1", "delivery-1", 5));
+        WebhookDelivery preparedAgain = dao.getWebhookDeliveryById(connection, "delivery-1", "org-1").get();
+        assertEquals(preparedAgain.getStatus(), DeliveryStatus.PENDING.getValue());
+        assertEquals(preparedAgain.getAttemptCount(), 7);
     }
 
     @Test

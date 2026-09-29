@@ -595,7 +595,7 @@ paths:
   /subscriptions/{subscriptionId}/events/{deliveryId}/retry:
     post:
       tags: [Subscriptions]
-      summary: Retry an exhausted webhook delivery once
+      summary: Retry an exhausted webhook delivery
       operationId: retrySubscriptionDelivery
       security:
         - OAuth2: ["notifications:subscriptions:write"]
@@ -618,7 +618,7 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
         "409":
-          description: Delivery is not eligible or its manual retry was already used
+          description: Delivery is not eligible for manual retry (must be in failed status with automatic retries exhausted)
           content:
             application/json:
               schema:
@@ -1233,7 +1233,6 @@ components:
                 occurredAt: 1787651970000
                 completionStatus: completed
                 completionEvidence: https://processor.example/evidence/receipt.pdf
-                manualRetryUsed: false
                 manualRetryAvailable: false
                 history:
                   - attempt: 1
@@ -1249,7 +1248,6 @@ components:
                 currentStatus: acknowledged
                 occurredAt: 1787651970000
                 completionStatus: acknowledged
-                manualRetryUsed: false
                 manualRetryAvailable: false
                 history:
                   - attempt: 1
@@ -1537,7 +1535,7 @@ components:
           nullable: true
     DeliveryHistory:
       type: object
-      required: [deliveryId, eventId, deliveryMode, currentStatus, occurredAt, manualRetryUsed,
+      required: [deliveryId, eventId, deliveryMode, currentStatus, occurredAt,
         manualRetryAvailable, history]
       properties:
         deliveryId:
@@ -1568,9 +1566,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/DeliveryAttempt"
-        manualRetryUsed:
-          type: boolean
-          default: false
         manualRetryAvailable:
           type: boolean
           default: false

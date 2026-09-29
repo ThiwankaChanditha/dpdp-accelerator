@@ -139,7 +139,10 @@ connection_verification_timeout_seconds = 1
 # revoke_active_consents_on_create: whether creating a consent revokes the active or pending
 # consents the same user already holds for the same application and purpose (the product
 # default is true). Set to false to keep earlier consents in place; revoke a consent explicitly
-# when it should end.
+# when it should end. Requires IS 7.3.0 at U2 update level 17 or later
+# (org.wso2.carbon.consent.mgt.core 2.9.0.5): older levels silently ignore the key and
+# always revoke, without firing the consent listener hooks, so the accelerator's status
+# audit, history and notifications miss those revokes.
 [consent_mgt]
 enable_v2_api = true
 revoke_active_consents_on_create = false

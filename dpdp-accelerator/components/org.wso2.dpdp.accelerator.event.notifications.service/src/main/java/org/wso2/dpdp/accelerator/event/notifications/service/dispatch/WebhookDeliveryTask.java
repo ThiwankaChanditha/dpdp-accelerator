@@ -258,8 +258,7 @@ public class WebhookDeliveryTask implements Runnable {
                 null,
                 delivery.getCreatedAt(),
                 now,
-                now,
-                delivery.isManualRetryUsed());
+                now);
         try {
             boolean recorded = DatabaseUtils.<Boolean>executeInTransaction(conn ->
                     deliveryDAO.recordSuccessfulAttempt(conn, audit, updated));
@@ -294,8 +293,7 @@ public class WebhookDeliveryTask implements Runnable {
                     null,
                     delivery.getCreatedAt(),
                     now,
-                    null,
-                    delivery.isManualRetryUsed());
+                    null);
             try {
                 DatabaseUtils.<Void>executeInTransaction(conn -> {
                     deliveryDAO.recordPermanentFailure(conn, audit, failed);

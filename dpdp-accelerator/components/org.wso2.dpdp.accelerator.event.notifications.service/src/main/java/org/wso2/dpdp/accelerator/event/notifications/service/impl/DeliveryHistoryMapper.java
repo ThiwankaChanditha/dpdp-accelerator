@@ -21,6 +21,7 @@ package org.wso2.dpdp.accelerator.event.notifications.service.impl;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.DeliveryMode;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.DeliveryStatus;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.PollStatus;
+import org.wso2.dpdp.accelerator.event.notifications.common.enums.SubscriptionStatus;
 import org.wso2.dpdp.accelerator.event.notifications.dao.DeliveryAckDAO;
 import org.wso2.dpdp.accelerator.event.notifications.dao.DeliveryDAO;
 import org.wso2.dpdp.accelerator.event.notifications.dao.model.PollDelivery;
@@ -47,7 +48,7 @@ final class DeliveryHistoryMapper {
     /** Maps delivery state to the shared history response; the caller owns {@code conn}. */
     static SubscriptionEventHistoryDTO map(Connection conn, String orgId, String deliveryId,
             SubscriptionDeliverySummary summary, DeliveryDAO deliveryDAO, DeliveryAckDAO deliveryAckDAO,
-            int maxRetries) {
+            int maxRetries, String subscriptionStatus) {
         String mode = summary.getDeliveryMode() != null ? summary.getDeliveryMode()
                 : DeliveryMode.WEBHOOK.getValue();
 
@@ -62,7 +63,8 @@ final class DeliveryHistoryMapper {
                 : (summary.getCreatedAt() != null ? summary.getCreatedAt().getTime() : System.currentTimeMillis()));
 
         if (DeliveryMode.WEBHOOK.getValue().equals(mode)) {
-            mapWebhookHistory(conn, orgId, deliveryId, summary, deliveryDAO, deliveryAckDAO, dto, maxRetries);
+            mapWebhookHistory(conn, orgId, deliveryId, summary, deliveryDAO, deliveryAckDAO, dto, maxRetries,
+                    subscriptionStatus);
         } else {
             mapPollHistory(conn, orgId, deliveryId, summary, deliveryDAO, dto);
         }
@@ -71,16 +73,17 @@ final class DeliveryHistoryMapper {
 
     private static void mapWebhookHistory(Connection conn, String orgId, String deliveryId, SubscriptionDeliverySummary summary,
             DeliveryDAO deliveryDAO, DeliveryAckDAO deliveryAckDAO, SubscriptionEventHistoryDTO dto,
-            int maxRetries) {
+            int maxRetries, String subscriptionStatus) {
         Optional<WebhookDelivery> webhookDelivery = deliveryDAO.getWebhookDeliveryById(conn, deliveryId, orgId);
         if (webhookDelivery.isPresent()) {
             WebhookDelivery delivery = webhookDelivery.get();
             if (delivery.getNextRetryAt() != null) {
                 dto.setNextRetryAt(delivery.getNextRetryAt().getTime());
             }
-            dto.setManualRetryUsed(delivery.isManualRetryUsed());
-            dto.setManualRetryAvailable(DeliveryStatus.FAILED.getValue().equalsIgnoreCase(delivery.getStatus())
-                    && delivery.getAttemptCount() > maxRetries && !delivery.isManualRetryUsed());
+            boolean isSubscriptionActive = SubscriptionStatus.ACTIVE.getValue().equalsIgnoreCase(subscriptionStatus);
+            dto.setManualRetryAvailable(isSubscriptionActive
+                    && DeliveryStatus.FAILED.getValue().equalsIgnoreCase(delivery.getStatus())
+                    && delivery.getAttemptCount() > maxRetries);
         }
 
         Optional<WebhookDeliveryAck> deliveryAck = deliveryAckDAO.getDeliveryAckByDeliveryId(conn, deliveryId, orgId);

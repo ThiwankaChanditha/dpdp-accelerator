@@ -908,7 +908,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
             return DeliveryHistoryMapper.map(conn, orgId.trim(), deliveryId.trim(),
                     summaryOpt.get(), deliveryDAO, deliveryAckDAO,
-                    getConfiguration().getEventNotificationMaxRetries());
+                    getConfiguration().getEventNotificationMaxRetries(),
+                    subOpt.get().getStatus());
         });
     }
 

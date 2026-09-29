@@ -286,7 +286,7 @@ public class WebhookDeliveryWorkerTest {
     }
 
     @Test
-    public void testManualRetryRejectsAlreadyUsedDelivery() {
+    public void testManualRetryRejectsIneligibleDelivery() {
         WebhookDeliveryDispatchContext dispatchContext = context("manual-used", 6);
         when(configurationService.getEventNotificationMaxRetries()).thenReturn(5);
         when(deliveryDAO.getWebhookDeliveryDispatchContext(any(Connection.class), eq("org-1"), eq("sub-1"),

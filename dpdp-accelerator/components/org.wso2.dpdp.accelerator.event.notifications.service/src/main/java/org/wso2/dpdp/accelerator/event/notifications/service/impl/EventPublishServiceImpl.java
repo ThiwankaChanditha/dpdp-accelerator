@@ -695,9 +695,17 @@ public class EventPublishServiceImpl implements EventPublishService {
                         EventNotificationServiceConstants.DELIVERY_NOT_FOUND_ERROR_MSG, 404);
             }
 
+            SubscriptionDeliverySummary summary = summaryOpt.get();
+            String subscriptionStatus = null;
+            if (subscriptionDAO != null && summary.getSubscriptionId() != null) {
+                subscriptionStatus = subscriptionDAO.getSubscriptionById(conn, summary.getSubscriptionId(), orgId.trim())
+                        .map(Subscription::getStatus)
+                        .orElse(null);
+            }
+
             return DeliveryHistoryMapper.map(conn, orgId.trim(), deliveryId.trim(),
-                    summaryOpt.get(), deliveryDAO, deliveryAckDAO,
-                    getEventNotificationMaxRetries());
+                    summary, deliveryDAO, deliveryAckDAO,
+                    getEventNotificationMaxRetries(), subscriptionStatus);
         });
     }
 
