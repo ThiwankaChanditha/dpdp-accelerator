@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1160" height="560" viewBox="0 0 1160 560" role="img" aria-labelledby="title desc">
   <title id="title">DPDP Accelerator Multi-Instance Background Job Architecture</title>
-  <desc id="desc">Two WSO2 Identity Server instances running independent background jobs with atomic DB-level claims on a shared database, scaling cluster throughput without leader election or Quartz.</desc>
+  <desc id="desc">Two WSO2 Identity Server instances running independent background jobs with atomic DB-level claims on a shared database, scaling cluster throughput without leader election or dedicated cluster coordinators.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#5B6B76"/>

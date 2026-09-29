@@ -537,7 +537,7 @@ When Identity Server is deployed across multiple nodes in an active-active clust
 ### Independent node execution (No leader election)
 
 - **Independent local timers:** Each node runs its own background scheduler on its own timer. There is no leader election, cluster coordinator, or concept of a single "active" node. Every node actively processes work in parallel.
-- **Zero clustering setup:** Unlike legacy Quartz-based jobs that required configuring shared database tables (`QRTZ_*`), cluster heartbeat flags, or coordination plugins, the accelerator requires no manual clustering configuration. All nodes simply connect to the same shared database (`WSO2DPDP_DB`).
+- **Zero clustering setup:** The accelerator requires no complex clustering configuration, cluster heartbeat flags, or coordination plugins. All nodes simply connect to the same shared database (`WSO2DPDP_DB`).
 
 ### Concurrency and safe claiming
 
