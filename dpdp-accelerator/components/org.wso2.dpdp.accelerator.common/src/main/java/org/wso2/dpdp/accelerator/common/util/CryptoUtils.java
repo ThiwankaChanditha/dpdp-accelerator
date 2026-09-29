@@ -20,6 +20,7 @@ package org.wso2.dpdp.accelerator.common.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.crypto.api.CipherMetaDataHolder;
 import org.wso2.carbon.core.util.CryptoException;
 import org.wso2.carbon.core.util.CryptoUtil;
 import org.wso2.dpdp.accelerator.common.config.DPDPConfigParser;
@@ -242,7 +243,54 @@ public final class CryptoUtils {
         if (value.startsWith(TEST_CIPHER_PREFIX)) {
             return true;
         }
-        return value.startsWith("eyJ");
+        if (!value.startsWith("eyJ")) {
+            return false;
+        }
+        return isCarbonEncryptedEnvelope(value);
+    }
+
+    private static boolean isCarbonEncryptedEnvelope(String value) {
+
+        // A JWT token or dot-separated compact token is plaintext, not a Carbon ciphertext envelope.
+        if (value.indexOf('.') > 0) {
+            return false;
+        }
+        try {
+            byte[] decoded;
+            try {
+                decoded = Base64.getDecoder().decode(value);
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+            String json = new String(decoded, StandardCharsets.UTF_8).trim();
+            if (!json.startsWith("{") || !json.endsWith("}")) {
+                return false;
+            }
+            // A JWT header or token contains "alg":; Carbon ciphertext envelopes never contain "alg":.
+            if (json.contains("\"alg\"")) {
+                return false;
+            }
+            CryptoUtil cryptoUtil = cryptoUtilInstance != null
+                    ? cryptoUtilInstance
+                    : (isCarbonCryptoAvailable() ? CryptoUtil.getDefaultCryptoUtil() : null);
+            if (cryptoUtil != null) {
+                try {
+                    CipherMetaDataHolder holder = cryptoUtil.cipherTextToCipherMetaDataHolder(decoded);
+                    if (holder != null && holder.getCipherText() != null && holder.getTransformation() != null) {
+                        return true;
+                    }
+                } catch (Exception e) {
+                    LOG.debug("Unable to deserialize cipher metadata holder from candidate envelope.", e);
+                }
+            }
+            boolean hasCipher = json.contains("\"c\"") || json.contains("\"cipher\"")
+                    || json.contains("\"cipherText\"");
+            boolean hasTransformation = json.contains("\"t\"") || json.contains("\"transformation\"");
+            return hasCipher && (hasTransformation || json.contains("\"cipher\""));
+        } catch (Exception e) {
+            LOG.debug("Value starting with eyJ is not a valid Carbon encrypted envelope; treating as plaintext.", e);
+            return false;
+        }
     }
 
     private static String encryptTest(String plainText) {

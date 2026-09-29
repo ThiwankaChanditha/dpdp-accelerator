@@ -27,6 +27,7 @@ import org.wso2.dpdp.accelerator.common.exception.DPDPSystemException;
 
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -39,6 +40,9 @@ import static org.testng.Assert.assertNull;
 import static org.testng.Assert.expectThrows;
 
 public class CryptoUtilsTest {
+
+    private static final String SAMPLE_CARBON_ENVELOPE = Base64.getEncoder().encodeToString(
+            "{\"c\":\"sample-cipher-text\",\"t\":\"AES/GCM/NoPadding\"}".getBytes(StandardCharsets.UTF_8));
 
     private CryptoUtil cryptoUtil;
 
@@ -130,7 +134,7 @@ public class CryptoUtilsTest {
     @Test
     public void testDecryptCryptoExceptionThrowsDPDPSystemException() throws Exception {
 
-        String cipherText = "eyJpbnZhbGlkLWNpcGhlci10ZXh0In0=";
+        String cipherText = SAMPLE_CARBON_ENVELOPE;
         when(cryptoUtil.base64DecodeAndDecrypt(eq(cipherText)))
                 .thenThrow(new CryptoException("Decryption failed"));
 
@@ -142,7 +146,7 @@ public class CryptoUtilsTest {
     @Test
     public void testDecryptIllegalArgumentExceptionThrowsDPDPSystemException() throws Exception {
 
-        String cipherText = "eyJub3QtYmFzZS02NCF9";
+        String cipherText = SAMPLE_CARBON_ENVELOPE;
         when(cryptoUtil.base64DecodeAndDecrypt(eq(cipherText)))
                 .thenThrow(new IllegalArgumentException("Illegal base64 character"));
 
@@ -155,7 +159,37 @@ public class CryptoUtilsTest {
     public void testDecryptNonTestCipherWithoutCryptoServiceThrowsDPDPSystemException() {
 
         CryptoUtils.setCryptoUtil(null);
-        expectThrows(DPDPSystemException.class, () -> CryptoUtils.decrypt("eyJzb21lLWNhcmJvbi1jaXBoZXIifQ=="));
+        expectThrows(DPDPSystemException.class, () -> CryptoUtils.decrypt(SAMPLE_CARBON_ENVELOPE));
+    }
+
+    @Test
+    public void testDecryptPreservesPlaintextJwtStartingWithEyJ() {
+
+        String jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+        assertEquals(CryptoUtils.decrypt(jwt), jwt);
+    }
+
+    @Test
+    public void testDecryptPreservesPlaintextJwtHeaderOnly() {
+
+        String jwtHeader = Base64.getEncoder().encodeToString(
+                "{\"alg\":\"HS256\",\"typ\":\"JWT\"}".getBytes(StandardCharsets.UTF_8));
+        assertEquals(CryptoUtils.decrypt(jwtHeader), jwtHeader);
+    }
+
+    @Test
+    public void testDecryptPreservesNonBase64StartingWithEyJ() {
+
+        String nonBase64 = "eyJ!!not-valid-base64!!";
+        assertEquals(CryptoUtils.decrypt(nonBase64), nonBase64);
+    }
+
+    @Test
+    public void testDecryptPreservesArbitraryJsonBase64StartingWithEyJ() {
+
+        String arbitraryJson = Base64.getEncoder().encodeToString(
+                "{\"username\":\"admin\",\"role\":\"subscriber\"}".getBytes(StandardCharsets.UTF_8));
+        assertEquals(CryptoUtils.decrypt(arbitraryJson), arbitraryJson);
     }
 
     @Test
