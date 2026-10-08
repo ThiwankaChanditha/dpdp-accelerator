@@ -39,14 +39,7 @@ import {
   Tooltip,
   Typography,
 } from '@wso2/oxygen-ui'
-import {
-  ArrowLeft,
-  Clock3,
-  Eye,
-  Layers,
-  Tag,
-  Users,
-} from '@wso2/oxygen-ui-icons-react'
+import { ArrowLeft, Clock3, Eye, Layers, Tag, Users } from '@wso2/oxygen-ui-icons-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
