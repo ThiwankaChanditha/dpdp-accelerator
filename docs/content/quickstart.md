@@ -22,7 +22,7 @@ follow [Install and Set Up](install-and-setup/prerequisites.md) instead.
 
 ## Prerequisites
 
-1. **Java Development Kit:** JDK 21 or later.
+1. **Java Development Kit:** JDK 21.
 2. **Environment variables:** set `JAVA_HOME` to the JDK 21 folder and add its
    `bin` folder to your `PATH`.
 
@@ -56,7 +56,7 @@ java -version
 </TabItem>
 </Tabs>
 
-`java -version` should report version 21 or later.
+`java -version` should report version 21.
 
 ## Install the base product
 
