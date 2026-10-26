@@ -22,9 +22,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.wso2.dpdp.accelerator.event.notifications.common.exception.service.EventNotificationServiceException;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.constants.EventNotificationEndpointConstants;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.EventHandler;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1.dto.EventCreateRequest;
+import org.wso2.dpdp.accelerator.event.notifications.service.constants.EventNotificationServiceConstants;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventPollingResponseDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionDeliveryDTO;
@@ -96,6 +98,32 @@ public class EventEndpointTest {
             org.testng.Assert.fail("Expected RuntimeException");
         } catch (RuntimeException e) {
             assertEquals(e.getMessage(), "boom");
+        }
+    }
+
+    @Test
+    public void publishEvent_nullGroupId_throws400() {
+        EventCreateRequest request = new EventCreateRequest().topic("topic-a");
+        try {
+            eventEndpoint.publishEvent(null, request);
+            org.testng.Assert.fail("Expected EventNotificationServiceException");
+        } catch (EventNotificationServiceException e) {
+            assertEquals(e.getStatusCode(), 400);
+            assertEquals(e.getCode(), EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST);
+            assertEquals(e.getDescription(), EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG);
+        }
+    }
+
+    @Test
+    public void publishEvent_blankGroupId_throws400() {
+        EventCreateRequest request = new EventCreateRequest().topic("topic-a");
+        try {
+            eventEndpoint.publishEvent("   ", request);
+            org.testng.Assert.fail("Expected EventNotificationServiceException");
+        } catch (EventNotificationServiceException e) {
+            assertEquals(e.getStatusCode(), 400);
+            assertEquals(e.getCode(), EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST);
+            assertEquals(e.getDescription(), EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG);
         }
     }
 

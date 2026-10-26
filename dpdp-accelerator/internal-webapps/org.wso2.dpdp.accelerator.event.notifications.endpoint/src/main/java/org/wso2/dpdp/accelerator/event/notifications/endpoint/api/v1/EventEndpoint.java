@@ -19,10 +19,12 @@
 package org.wso2.dpdp.accelerator.event.notifications.endpoint.api.v1;
 
 import org.wso2.dpdp.accelerator.common.util.DPDPTenantContext;
+import org.wso2.dpdp.accelerator.event.notifications.common.exception.service.EventNotificationServiceException;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.constants.EventNotificationEndpointConstants;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.EventHandler;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.util.v1.EventNotificationDtoMapper;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1.dto.EventCreateRequest;
+import org.wso2.dpdp.accelerator.event.notifications.service.constants.EventNotificationServiceConstants;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventPollingResponseDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionDeliveryDTO;
@@ -72,6 +74,13 @@ public class EventEndpoint {
     public Response publishEvent(
             @HeaderParam(EventNotificationEndpointConstants.GROUP_ID_HEADER) String groupId,
             EventCreateRequest request) {
+        if (groupId == null || groupId.trim().isEmpty()) {
+            throw new EventNotificationServiceException(
+                    EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST,
+                    EventNotificationServiceConstants.ERROR_TITLE_MALFORMED_REQUEST,
+                    EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG,
+                    Response.Status.BAD_REQUEST.getStatusCode());
+        }
         EventDTO dto = eventHandler.publishEvent(organizationIdResolver.get(), groupId, EventNotificationDtoMapper.toService(request));
         return Response.status(Response.Status.CREATED).entity(EventNotificationDtoMapper.toApi(dto)).build();
     }
