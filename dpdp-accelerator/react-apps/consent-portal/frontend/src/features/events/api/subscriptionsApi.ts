@@ -31,7 +31,7 @@ const jsonHeaders = { 'Content-Type': 'application/json' }
 export async function fetchSubscriptions(
   params: SubscriptionListQueryParams,
 ): Promise<SubscriptionListResponse> {
-  return apiRequest<SubscriptionListResponse>('/api/dpdp/event-notifications/v1/subscriptions', {
+  return apiRequest<SubscriptionListResponse>('/api/dpdp/event-notifications/v1.1/subscriptions', {
     method: 'GET',
     query: {
       limit: params.limit,
@@ -46,7 +46,7 @@ export async function fetchSubscriptions(
 
 export async function fetchSubscriptionById(subscriptionId: string): Promise<SubscriptionRecord> {
   return apiRequest<SubscriptionRecord>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}`,
+    `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}`,
     {
       method: 'GET',
     },
@@ -54,16 +54,27 @@ export async function fetchSubscriptionById(subscriptionId: string): Promise<Sub
 }
 
 export async function createSubscription(payload: SubscriptionInput): Promise<SubscriptionRecord> {
-  return apiRequest<SubscriptionRecord>('/api/dpdp/event-notifications/v1/subscriptions', {
+  const body: Record<string, unknown> = {
+    name: payload.name,
+    topics:
+      payload.topics && payload.topics.length > 0
+        ? payload.topics
+        : payload.topic
+          ? [payload.topic]
+          : [],
+    filter: payload.filter,
+    delivery: payload.delivery,
+  }
+  return apiRequest<SubscriptionRecord>('/api/dpdp/event-notifications/v1.1/subscriptions', {
     method: 'POST',
     headers: jsonHeaders,
-    body: JSON.stringify(payload),
+    body: JSON.stringify(body),
   })
 }
 
 export async function deleteSubscription(subscriptionId: string): Promise<SubscriptionRecord> {
   return apiRequest<SubscriptionRecord>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}`,
+    `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}`,
     {
       method: 'DELETE',
     },
@@ -72,7 +83,7 @@ export async function deleteSubscription(subscriptionId: string): Promise<Subscr
 
 export async function verifySubscription(subscriptionId: string): Promise<SubscriptionRecord> {
   return apiRequest<SubscriptionRecord>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}/verify`,
+    `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}/verify`,
     {
       method: 'POST',
     },
@@ -84,7 +95,7 @@ export async function fetchSubscriptionEvents(
   params: { limit: number; offset: number },
 ): Promise<{ items: SubscriptionDeliveryRecord[]; total: number }> {
   return apiRequest<{ items: SubscriptionDeliveryRecord[]; total: number }>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}/events`,
+    `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}/deliveries`,
     {
       method: 'GET',
       query: {
@@ -96,11 +107,11 @@ export async function fetchSubscriptionEvents(
 }
 
 export async function fetchSubscriptionEventHistory(
-  subscriptionId: string,
+  _subscriptionId: string,
   deliveryId: string,
 ): Promise<SubscriptionEventHistoryRecord> {
   return apiRequest<SubscriptionEventHistoryRecord>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}/events/${encodeURIComponent(deliveryId)}`,
+    `/api/dpdp/event-notifications/v1.1/deliveries/${encodeURIComponent(deliveryId)}/history`,
     {
       method: 'GET',
     },
@@ -108,11 +119,11 @@ export async function fetchSubscriptionEventHistory(
 }
 
 export async function retrySubscriptionDelivery(
-  subscriptionId: string,
+  _subscriptionId: string,
   deliveryId: string,
 ): Promise<SubscriptionEventHistoryRecord> {
   return apiRequest<SubscriptionEventHistoryRecord>(
-    `/api/dpdp/event-notifications/v1/subscriptions/${encodeURIComponent(subscriptionId)}/events/${encodeURIComponent(deliveryId)}/retry`,
+    `/api/dpdp/event-notifications/v1.1/deliveries/${encodeURIComponent(deliveryId)}/retry`,
     {
       method: 'POST',
     },
