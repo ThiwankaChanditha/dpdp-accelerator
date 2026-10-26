@@ -951,6 +951,32 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return getSubscriptionEventHistory(orgId, subscriptionId, deliveryId);
     }
 
+    @Override
+    public SubscriptionEventHistoryDTO retryDelivery(String orgId, String deliveryId) {
+        if (orgId == null || orgId.trim().isEmpty()) {
+            throw new EventNotificationServiceException(EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST,
+                    EventNotificationServiceConstants.ERROR_TITLE_MALFORMED_REQUEST,
+                    EventNotificationServiceConstants.ORG_ID_MISSING_ERROR_MSG, 400);
+        }
+        if (deliveryId == null || deliveryId.trim().isEmpty()) {
+            throw new EventNotificationServiceException(EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST,
+                    EventNotificationServiceConstants.ERROR_TITLE_MALFORMED_REQUEST,
+                    EventNotificationServiceConstants.DELIVERY_ID_MISSING_ERROR_MSG, 400);
+        }
+        String subscriptionId = DatabaseUtils.executeInTransaction(conn -> {
+            Optional<org.wso2.dpdp.accelerator.event.notifications.dao.model.WebhookDelivery> delivery =
+                    deliveryDAO.getWebhookDeliveryById(conn, deliveryId.trim(), orgId.trim());
+            if (!delivery.isPresent()) {
+                throw new EventNotificationServiceException(
+                        EventNotificationServiceConstants.ERROR_CODE_DELIVERY_NOT_FOUND,
+                        EventNotificationServiceConstants.ERROR_TITLE_DELIVERY_NOT_FOUND,
+                        EventNotificationServiceConstants.DELIVERY_NOT_FOUND_ERROR_MSG, 404);
+            }
+            return delivery.get().getSubscriptionId();
+        });
+        return retryDelivery(orgId, subscriptionId, deliveryId);
+    }
+
     private List<String> resolveTopicNames(Connection conn, Subscription sub) {
         if (!sub.getTopicNames().isEmpty()) {
             return sub.getTopicNames();

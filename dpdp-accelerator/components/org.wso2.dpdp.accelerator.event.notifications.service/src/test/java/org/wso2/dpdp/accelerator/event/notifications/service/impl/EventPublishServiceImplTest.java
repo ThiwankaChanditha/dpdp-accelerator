@@ -561,33 +561,32 @@ public class EventPublishServiceImplTest {
     }
 
     @Test
-    public void publishEvent_nullGroupId_throws400() {
-        try {
-            publishService.publishEvent("org1", null, "topic-a", null, null);
-            fail("Expected EventNotificationServiceException");
-        } catch (EventNotificationServiceException e) {
-            assertEquals(e.getStatusCode(), 400);
-            assertEquals(e.getCode(), EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST);
-            assertEquals(e.getDescription(),
-                    EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG);
-        }
-        verify(topicDAO, never()).getActiveTopicByOrgAndNameForUpdate(any(Connection.class), anyString(), anyString());
-        verify(eventDAO, never()).addEvent(any(Connection.class), any());
+    public void publishEvent_nullGroupId_fallsBackToOrgId() {
+        when(topicDAO.getActiveTopicByOrgAndNameForUpdate(any(Connection.class), eq("org1"), eq("topic-a")))
+                .thenReturn(Optional.of(new Topic("topic-id-1", "org1", "topic-a", null, "active")));
+        when(eventDAO.addEvent(any(Connection.class), any())).thenReturn(true);
+        when(subscriptionDAO.getActiveSubscriptionsForFanOut(any(Connection.class), eq("org1"), eq("topic-id-1")))
+                .thenReturn(Collections.emptyList());
+
+        EventDTO result = publishService.publishEvent("org1", null, "topic-a", null, Collections.emptyMap());
+        assertNotNull(result);
+        assertEquals(result.getGroupId(), "org1");
+        ArgumentCaptor<Event> captor = ArgumentCaptor.forClass(Event.class);
+        verify(eventDAO).addEvent(any(Connection.class), captor.capture());
+        assertEquals(captor.getValue().getGroupId(), "org1");
     }
 
     @Test
-    public void publishEvent_blankGroupId_throws400() {
-        try {
-            publishService.publishEvent("org1", "   ", "topic-a", null, null);
-            fail("Expected EventNotificationServiceException");
-        } catch (EventNotificationServiceException e) {
-            assertEquals(e.getStatusCode(), 400);
-            assertEquals(e.getCode(), EventNotificationServiceConstants.ERROR_CODE_INVALID_REQUEST);
-            assertEquals(e.getDescription(),
-                    EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG);
-        }
-        verify(topicDAO, never()).getActiveTopicByOrgAndNameForUpdate(any(Connection.class), anyString(), anyString());
-        verify(eventDAO, never()).addEvent(any(Connection.class), any());
+    public void publishEvent_blankGroupId_fallsBackToOrgId() {
+        when(topicDAO.getActiveTopicByOrgAndNameForUpdate(any(Connection.class), eq("org1"), eq("topic-a")))
+                .thenReturn(Optional.of(new Topic("topic-id-1", "org1", "topic-a", null, "active")));
+        when(eventDAO.addEvent(any(Connection.class), any())).thenReturn(true);
+        when(subscriptionDAO.getActiveSubscriptionsForFanOut(any(Connection.class), eq("org1"), eq("topic-id-1")))
+                .thenReturn(Collections.emptyList());
+
+        EventDTO result = publishService.publishEvent("org1", "   ", "topic-a", null, Collections.emptyMap());
+        assertNotNull(result);
+        assertEquals(result.getGroupId(), "org1");
     }
 
     @Test
@@ -604,16 +603,14 @@ public class EventPublishServiceImplTest {
     }
 
     @Test
-    public void publishEvent_groupIdGuardFiresBeforeTopicName() {
-        // orgId is present, groupId is blank, topicName is also blank.
-        // The groupId guard must fire before the topicName guard.
+    public void publishEvent_blankGroupId_missingTopicName_throws400() {
         try {
             publishService.publishEvent("org1", null, null, null, null);
             fail("Expected EventNotificationServiceException");
         } catch (EventNotificationServiceException e) {
             assertEquals(e.getStatusCode(), 400);
             assertEquals(e.getDescription(),
-                    EventNotificationServiceConstants.GROUP_ID_MISSING_ERROR_MSG);
+                    EventNotificationServiceConstants.ORG_ID_OR_TOPIC_NAME_MISSING_ERROR_MSG);
         }
     }
 
