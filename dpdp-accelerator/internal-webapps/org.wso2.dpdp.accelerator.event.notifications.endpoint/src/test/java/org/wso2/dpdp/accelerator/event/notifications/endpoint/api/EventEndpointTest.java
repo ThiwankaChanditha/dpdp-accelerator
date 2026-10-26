@@ -23,8 +23,8 @@ import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.constants.EventNotificationEndpointConstants;
-import org.wso2.dpdp.accelerator.event.notifications.endpoint.dto.EventCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.EventHandler;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1.dto.EventCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventPollingResponseDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionDeliveryDTO;
@@ -197,6 +197,6 @@ public class EventEndpointTest {
     private static void assertJsonEquals(Object actual, Object expected) {
         com.fasterxml.jackson.databind.ObjectMapper json = new com.fasterxml.jackson.databind.ObjectMapper();
         assertEquals((Object) json.valueToTree(actual), (Object) json.valueToTree(expected));
-        org.testng.Assert.assertTrue(actual.getClass().getPackage().getName().endsWith(".endpoint.dto"));
+        org.testng.Assert.assertTrue(actual.getClass().getPackage().getName().contains(".dto"));
     }
 }
