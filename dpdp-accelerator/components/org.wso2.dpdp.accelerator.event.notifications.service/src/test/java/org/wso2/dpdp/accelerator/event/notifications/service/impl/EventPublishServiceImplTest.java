@@ -320,6 +320,47 @@ public class EventPublishServiceImplTest {
         publishService.completeDelivery("org1", "group-a", "delivery-1", body, signature);
 
         verify(deliveryAckDAO).addDeliveryAck(any(Connection.class), any());
+        verify(deliveryDAO).markWebhookDeliveryCompleted(any(Connection.class), eq("delivery-1"), eq("org1"));
+    }
+
+    @Test
+    public void completeDelivery_whenCompletionStatusIsAck_doesNotMarkWebhookDeliveryCompleted() {
+        WebhookDelivery delivery = new WebhookDelivery("delivery-1", "subscription-1", "event-1", "delivered",
+                1, null, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), null);
+        Subscription subscription = mock(Subscription.class);
+        when(subscription.getGroupId()).thenReturn("Group-A");
+        when(subscription.getSharedSecret()).thenReturn("shared-secret");
+        when(deliveryDAO.getWebhookDeliveryById(any(Connection.class), eq("delivery-1"), eq("org1"))).thenReturn(Optional.of(delivery));
+        when(subscriptionDAO.getSubscriptionById(any(Connection.class), eq("subscription-1"), eq("org1"))).thenReturn(Optional.of(subscription));
+        String body = "{\"completionStatus\":\"ack\",\"completionEvidence\":\"https://processor/evidence\"}";
+        String signature = "sha256=" + HmacSigner.signCompletion("shared-secret", "delivery-1", body);
+
+        publishService.completeDelivery("org1", "group-a", "delivery-1", body, signature);
+
+        verify(deliveryAckDAO).addDeliveryAck(any(Connection.class), any());
+        verify(deliveryDAO, never()).markWebhookDeliveryCompleted(any(Connection.class), anyString(), anyString());
+    }
+
+    @Test
+    public void completeDeliveryRejectsAlreadyCompletedDelivery() {
+        WebhookDelivery delivery = new WebhookDelivery("delivery-1", "subscription-1", "event-1", "completed",
+                1, null, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), null);
+        Subscription subscription = mock(Subscription.class);
+        when(subscription.getGroupId()).thenReturn("group-1");
+        when(subscription.getSharedSecret()).thenReturn("shared-secret");
+        when(deliveryDAO.getWebhookDeliveryById(any(Connection.class), eq("delivery-1"), eq("org1"))).thenReturn(Optional.of(delivery));
+        when(subscriptionDAO.getSubscriptionById(any(Connection.class), eq("subscription-1"), eq("org1"))).thenReturn(Optional.of(subscription));
+        String body = "{\"completionStatus\":\"completed\",\"completionEvidence\":\"https://processor/evidence\"}";
+        String signature = "sha256=" + HmacSigner.signCompletion("shared-secret", "delivery-1", body);
+
+        try {
+            publishService.completeDelivery("org1", "group-1", "delivery-1", body, signature);
+            fail("Expected EventNotificationServiceException");
+        } catch (EventNotificationServiceException e) {
+            assertEquals(e.getStatusCode(), 409);
+            assertEquals(e.getDescription(),
+                    EventNotificationServiceConstants.DELIVERY_COMPLETION_ALREADY_EXISTS_ERROR_MSG);
+        }
     }
 
     @Test(expectedExceptions = EventNotificationServiceException.class)

@@ -259,6 +259,13 @@ public class EventPublishServiceImpl implements EventPublishService {
                             requestBody, eventSignature)) {
                 throw invalidCompletionSignature();
             }
+            if (DeliveryStatus.COMPLETED.getValue().equalsIgnoreCase(delivery.get().getStatus())
+                    || deliveryAckDAO.getDeliveryAckByDeliveryId(conn, safeDeliveryId, safeOrgId).isPresent()) {
+                throw new EventNotificationServiceException(
+                        EventNotificationServiceConstants.ERROR_CODE_RESOURCE_EXISTS,
+                        EventNotificationServiceConstants.ERROR_TITLE_RESOURCE_EXISTS,
+                        EventNotificationServiceConstants.DELIVERY_COMPLETION_ALREADY_EXISTS_ERROR_MSG, 409);
+            }
             if (!DeliveryStatus.DELIVERED.getValue().equalsIgnoreCase(delivery.get().getStatus())) {
                 throw new EventNotificationServiceException(EventNotificationServiceConstants.ERROR_CODE_INVALID_STATE,
                         EventNotificationServiceConstants.ERROR_TITLE_INVALID_STATE,
@@ -281,17 +288,22 @@ public class EventPublishServiceImpl implements EventPublishService {
                     ? new Timestamp(System.currentTimeMillis())
                     : new Timestamp(completion.getCompletedAt());
 
+            String completionStatus = completion.getCompletionStatus().trim().toLowerCase(java.util.Locale.ROOT);
             try {
                 deliveryAckDAO.addDeliveryAck(conn,
                         new org.wso2.dpdp.accelerator.event.notifications.dao.model.WebhookDeliveryAck(
                                 UUID.randomUUID().toString(), safeDeliveryId, safeOrgId, completedAt,
-                                completion.getCompletionStatus().trim().toLowerCase(java.util.Locale.ROOT),
+                                completionStatus,
                                 completion.getCompletionEvidence().trim()));
             } catch (EventNotificationDuplicateResourceException e) {
                 throw new EventNotificationServiceException(
                         EventNotificationServiceConstants.ERROR_CODE_RESOURCE_EXISTS,
                         EventNotificationServiceConstants.ERROR_TITLE_RESOURCE_EXISTS,
                         EventNotificationServiceConstants.DELIVERY_COMPLETION_ALREADY_EXISTS_ERROR_MSG, 409);
+            }
+
+            if (DeliveryStatus.COMPLETED.getValue().equalsIgnoreCase(completionStatus)) {
+                deliveryDAO.markWebhookDeliveryCompleted(conn, safeDeliveryId, safeOrgId);
             }
             return null;
         });

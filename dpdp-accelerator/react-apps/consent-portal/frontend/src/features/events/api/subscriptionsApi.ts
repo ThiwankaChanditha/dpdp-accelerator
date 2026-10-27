@@ -17,6 +17,7 @@
  */
 
 import type {
+  SubscriptionDeliveryAttemptRecord,
   SubscriptionDeliveryRecord,
   SubscriptionEventHistoryRecord,
   SubscriptionInput,
@@ -110,12 +111,26 @@ export async function fetchSubscriptionEventHistory(
   _subscriptionId: string,
   deliveryId: string,
 ): Promise<SubscriptionEventHistoryRecord> {
-  return apiRequest<SubscriptionEventHistoryRecord>(
-    `/api/dpdp/event-notifications/v1.1/deliveries/${encodeURIComponent(deliveryId)}/history`,
-    {
+  const [delivery, history] = await Promise.all([
+    apiRequest<Omit<SubscriptionEventHistoryRecord, 'history'>>(
+      `/api/dpdp/event-notifications/v1.1/deliveries/${encodeURIComponent(deliveryId)}`,
+      {
+        method: 'GET',
+      },
+    ),
+    apiRequest<{
+      deliveryId: string
+      eventId?: string
+      history?: SubscriptionDeliveryAttemptRecord[]
+    }>(`/api/dpdp/event-notifications/v1.1/deliveries/${encodeURIComponent(deliveryId)}/history`, {
       method: 'GET',
-    },
-  )
+    }),
+  ])
+
+  return {
+    ...delivery,
+    history: history.history ?? [],
+  }
 }
 
 export async function retrySubscriptionDelivery(

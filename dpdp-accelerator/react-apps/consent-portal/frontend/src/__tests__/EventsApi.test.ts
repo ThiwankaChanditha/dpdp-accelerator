@@ -86,10 +86,14 @@ describe('eventsApi', () => {
 
     const result = await fetchEventDeliveryHistory('dlv-123')
 
-    const req = sentRequest()
-    const url = new URL(req.url)
-    expect(url.pathname).toBe('/api/dpdp/event-notifications/v1.1/deliveries/dlv-123/history')
-    expect(req.method).toBe('GET')
+    const req1 = sentRequest(0)
+    const req2 = sentRequest(1)
+    const url1 = new URL(req1.url)
+    const url2 = new URL(req2.url)
+    expect(url1.pathname).toBe('/api/dpdp/event-notifications/v1.1/deliveries/dlv-123')
+    expect(req1.method).toBe('GET')
+    expect(url2.pathname).toBe('/api/dpdp/event-notifications/v1.1/deliveries/dlv-123/history')
+    expect(req2.method).toBe('GET')
     expect(result.deliveryId).toBe('dlv-123')
   })
 
