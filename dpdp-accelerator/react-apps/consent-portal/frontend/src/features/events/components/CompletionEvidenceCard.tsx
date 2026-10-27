@@ -63,6 +63,10 @@ export default function CompletionEvidenceCard({
     ? t(`events.status.${completionStatus.toLowerCase()}`, completionStatus)
     : ''
 
+  const toggleAriaLabel = expanded
+    ? t('subscriptions.deliveryHistory.collapseEvidence', 'Collapse completion evidence')
+    : t('subscriptions.deliveryHistory.expandEvidence', 'Expand completion evidence')
+
   return (
     <Box
       sx={{
@@ -74,7 +78,17 @@ export default function CompletionEvidenceCard({
       }}
     >
       <Box
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        aria-label={toggleAriaLabel}
         onClick={() => setExpanded((prev) => !prev)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            setExpanded((prev) => !prev)
+          }
+        }}
         sx={{
           p: 1.5,
           display: 'flex',
@@ -85,21 +99,22 @@ export default function CompletionEvidenceCard({
           '&:hover': {
             bgcolor: 'action.hover',
           },
+          '&:focus-visible': {
+            outline: (theme) => `2px solid ${theme.palette.primary.main}`,
+            outlineOffset: -2,
+          },
         }}
       >
         <Typography variant="subtitle2" fontWeight={600}>
           {t('subscriptions.deliveryHistory.completion')}
         </Typography>
-        <IconButton
-          size="small"
-          aria-label={expanded ? 'Collapse completion evidence' : 'Expand completion evidence'}
-          onClick={(e) => {
-            e.stopPropagation()
-            setExpanded((prev) => !prev)
-          }}
-        >
-          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </IconButton>
+        <Box sx={{ display: 'inline-flex', alignItems: 'center', color: 'text.secondary' }}>
+          {expanded ? (
+            <ChevronUp size={16} aria-hidden="true" />
+          ) : (
+            <ChevronDown size={16} aria-hidden="true" />
+          )}
+        </Box>
       </Box>
 
       <Collapse in={expanded}>

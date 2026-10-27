@@ -73,6 +73,6 @@ public class TopicAndSubscriptionEndpointTest {
     private static void assertJsonEquals(Object actual, Object expected) {
         com.fasterxml.jackson.databind.ObjectMapper json = new com.fasterxml.jackson.databind.ObjectMapper();
         assertEquals((Object) json.valueToTree(actual), (Object) json.valueToTree(expected));
-        org.testng.Assert.assertTrue(actual.getClass().getPackage().getName().contains(".dto"));
+        org.testng.Assert.assertTrue(actual.getClass().getPackage().getName().endsWith(".endpoint.v1.dto"));
     }
 }

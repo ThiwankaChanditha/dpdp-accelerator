@@ -26,6 +26,7 @@ import org.wso2.dpdp.accelerator.common.config.DPDPConfigurationService;
 import org.wso2.dpdp.accelerator.common.constant.DPDPCommonConstants;
 import org.wso2.dpdp.accelerator.common.util.DatabaseUtils;
 import org.wso2.dpdp.accelerator.common.util.LogSanitizer;
+import org.wso2.dpdp.accelerator.event.notifications.common.constants.EventNotificationCommonConstants;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.DeliveryMode;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.DeliveryStatus;
 import org.wso2.dpdp.accelerator.event.notifications.common.enums.PollStatus;
@@ -303,7 +304,10 @@ public class EventPublishServiceImpl implements EventPublishService {
             }
 
             if (DeliveryStatus.COMPLETED.getValue().equalsIgnoreCase(completionStatus)) {
-                deliveryDAO.markWebhookDeliveryCompleted(conn, safeDeliveryId, safeOrgId);
+                if (!deliveryDAO.markWebhookDeliveryCompleted(conn, safeDeliveryId, safeOrgId)) {
+                    throw new EventNotificationDaoException(
+                            String.format(EventNotificationCommonConstants.ERROR_UPDATING_WEBHOOK_DELIVERY_STATUS, safeDeliveryId));
+                }
             }
             return null;
         });

@@ -29,6 +29,10 @@ vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key: string, defaultValue?: string) => {
       if (key === 'subscriptions.deliveryHistory.completion') return 'Completion Evidence'
+      if (key === 'subscriptions.deliveryHistory.collapseEvidence')
+        return 'Collapse completion evidence'
+      if (key === 'subscriptions.deliveryHistory.expandEvidence')
+        return 'Expand completion evidence'
       if (key === 'subscriptions.deliveryHistory.attemptStatus') return 'Status'
       if (key === 'events.status.completed') return 'Completed'
       if (key === 'events.status.failed') return 'Failed'
@@ -90,6 +94,32 @@ describe('CompletionEvidenceCard', () => {
     // Expand again
     fireEvent.click(screen.getByLabelText('Expand completion evidence'))
     expect(screen.getByLabelText('Collapse completion evidence')).toBeInTheDocument()
+  })
+
+  it('toggles collapse on Enter or Space key press', () => {
+    render(
+      <CompletionEvidenceCard
+        completionStatus="completed"
+        completionEvidence="https://cloudengage.example/evidence/receipt.pdf"
+      />,
+    )
+
+    const toggleButton = screen.getByRole('button', { name: 'Collapse completion evidence' })
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
+
+    // Collapse via Enter key
+    fireEvent.keyDown(toggleButton, { key: 'Enter' })
+    expect(screen.getByRole('button', { name: 'Expand completion evidence' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+
+    // Expand via Space key
+    fireEvent.keyDown(toggleButton, { key: ' ' })
+    expect(screen.getByRole('button', { name: 'Collapse completion evidence' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
   })
 
   it('copies evidence to clipboard when copy button is clicked', () => {
