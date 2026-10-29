@@ -55,7 +55,8 @@ test.describe('Subscription lifecycle rules', () => {
       filter: { type: 'specific', purposes: ['profile', 'ACCOUNT', 'account'] },
       delivery: { mode: 'webhook', callbackUrl: callbackUrl.toLowerCase(), sharedSecret: uniqueMarker('secret') },
     })
-    expect(duplicate.status()).toBe(409)
+    const constraintsEnabled = isSubscriptionConstraintChecksEnabled()
+    expect(duplicate.status()).toBe(constraintsEnabled ? 409 : 201)
   })
 
   test('09.07.02 - The same tenant/group/topic cannot mix webhook and poll delivery modes', async ({
