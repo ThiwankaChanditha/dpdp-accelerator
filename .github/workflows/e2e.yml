@@ -187,7 +187,6 @@ jobs:
           distribution: temurin
           cache: maven
       - name: Set up Maven ${{ env.MAVEN_VERSION }}
-        if: env.PACK_ONLY != 'true'
         run: |
           curl -fsSL "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" \
             | tar -xz -C "${RUNNER_TEMP}"
