@@ -74,7 +74,9 @@ export async function createSubscription(payload: SubscriptionInput): Promise<Su
   })
 }
 
-export async function deleteSubscription(subscriptionId: string): Promise<SubscriptionStatusUpdate> {
+export async function deleteSubscription(
+  subscriptionId: string,
+): Promise<SubscriptionStatusUpdate> {
   return apiRequest<SubscriptionStatusUpdate>(
     `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}`,
     {
@@ -83,7 +85,9 @@ export async function deleteSubscription(subscriptionId: string): Promise<Subscr
   )
 }
 
-export async function verifySubscription(subscriptionId: string): Promise<SubscriptionStatusUpdate> {
+export async function verifySubscription(
+  subscriptionId: string,
+): Promise<SubscriptionStatusUpdate> {
   return apiRequest<SubscriptionStatusUpdate>(
     `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}/verify`,
     {

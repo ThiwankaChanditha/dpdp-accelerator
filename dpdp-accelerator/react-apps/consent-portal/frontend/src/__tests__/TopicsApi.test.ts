@@ -17,11 +17,7 @@
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import {
-  createTopic,
-  deleteTopic,
-  fetchTopics,
-} from '../features/events/api/topicsApi'
+import { createTopic, deleteTopic, fetchTopics } from '../features/events/api/topicsApi'
 
 const transport = vi.hoisted(() => ({
   httpRequest: vi.fn(),
