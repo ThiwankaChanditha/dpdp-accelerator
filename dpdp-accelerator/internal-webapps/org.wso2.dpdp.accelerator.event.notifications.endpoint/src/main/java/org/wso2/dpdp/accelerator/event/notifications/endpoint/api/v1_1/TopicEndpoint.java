@@ -85,6 +85,6 @@ public class TopicEndpoint {
     public Response deleteTopic(
             @PathParam("topicId") String topicId) {
         TopicDTO dto = topicHandler.deleteTopic(organizationIdSupplier.get(), topicId);
-        return Response.ok(EventNotificationDtoMapper.toApi(dto)).build();
+        return Response.ok(EventNotificationDtoMapper.toStatusApi(dto)).build();
     }
 }

@@ -108,25 +108,27 @@ describe('subscriptionsApi', () => {
   })
 
   it('deletes a subscription by ID', async () => {
-    respondWith({ subscriptionId: 'sub-1', status: 'DELETED' })
+    respondWith({ subscriptionId: 'sub-1', status: 'deleted', updatedAt: 1787652970000 })
 
-    await deleteSubscription('sub-1')
+    const result = await deleteSubscription('sub-1')
 
     const req = sentRequest()
     const url = new URL(req.url)
     expect(url.pathname).toBe('/api/dpdp/event-notifications/v1.1/subscriptions/sub-1')
     expect(req.method).toBe('DELETE')
+    expect(result).toEqual({ subscriptionId: 'sub-1', status: 'deleted', updatedAt: 1787652970000 })
   })
 
   it('triggers verification on a subscription', async () => {
-    respondWith({ subscriptionId: 'sub-1', status: 'ACTIVE' })
+    respondWith({ subscriptionId: 'sub-1', status: 'active', updatedAt: 1787652970000 })
 
-    await verifySubscription('sub-1')
+    const result = await verifySubscription('sub-1')
 
     const req = sentRequest()
     const url = new URL(req.url)
     expect(url.pathname).toBe('/api/dpdp/event-notifications/v1.1/subscriptions/sub-1/verify')
     expect(req.method).toBe('POST')
+    expect(result).toEqual({ subscriptionId: 'sub-1', status: 'active', updatedAt: 1787652970000 })
   })
 
   it('fetches subscription delivery events with pagination', async () => {

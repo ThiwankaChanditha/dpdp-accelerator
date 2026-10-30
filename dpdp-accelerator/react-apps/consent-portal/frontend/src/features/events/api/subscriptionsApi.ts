@@ -24,6 +24,7 @@ import type {
   SubscriptionListQueryParams,
   SubscriptionListResponse,
   SubscriptionRecord,
+  SubscriptionStatusUpdate,
 } from '../../../types/subscription'
 import { apiRequest } from '../../../utils/apiClient'
 
@@ -73,8 +74,8 @@ export async function createSubscription(payload: SubscriptionInput): Promise<Su
   })
 }
 
-export async function deleteSubscription(subscriptionId: string): Promise<SubscriptionRecord> {
-  return apiRequest<SubscriptionRecord>(
+export async function deleteSubscription(subscriptionId: string): Promise<SubscriptionStatusUpdate> {
+  return apiRequest<SubscriptionStatusUpdate>(
     `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}`,
     {
       method: 'DELETE',
@@ -82,8 +83,8 @@ export async function deleteSubscription(subscriptionId: string): Promise<Subscr
   )
 }
 
-export async function verifySubscription(subscriptionId: string): Promise<SubscriptionRecord> {
-  return apiRequest<SubscriptionRecord>(
+export async function verifySubscription(subscriptionId: string): Promise<SubscriptionStatusUpdate> {
+  return apiRequest<SubscriptionStatusUpdate>(
     `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}/verify`,
     {
       method: 'POST',

@@ -18,10 +18,14 @@
 
 package org.wso2.dpdp.accelerator.event.notifications.endpoint.api.v1_1;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.wso2.dpdp.accelerator.event.notifications.common.enums.SubscriptionStatus;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.EventHandler;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.SubscriptionHandler;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.TopicHandler;
@@ -32,6 +36,8 @@ import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCrea
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCreateResponse;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicCreateRequest;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatus;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatusUpdate;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventPollingResponseDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.SubscriptionDTO;
@@ -99,6 +105,57 @@ public class V11EndpointTest {
 
         Response deleteResp = topicEndpoint.deleteTopic("t1");
         assertEquals(deleteResp.getStatus(), 200);
+    }
+
+    @Test
+    public void topicDeleteReturnsOnlyIdAndStatus() {
+        TopicDTO dto = new TopicDTO("t1", "topic-name", "desc", "deregistered", "user");
+        when(topicHandler.deleteTopic("org-1", "t1")).thenReturn(dto);
+
+        Response response = topicEndpoint.deleteTopic("t1");
+
+        assertEquals(response.getStatus(), 200);
+        TopicStatusUpdate body = (TopicStatusUpdate) response.getEntity();
+        assertEquals(body.getTopicId(), "t1");
+        assertEquals(body.getStatus(), TopicStatus.DEREGISTERED);
+        assertEquals(toJson(body), "{\"topicId\":\"t1\",\"status\":\"deregistered\"}");
+    }
+
+    @Test
+    public void subscriptionDeleteAndVerifyReturnOnlyIdStatusAndUpdatedAt() {
+        SubscriptionDTO deleted = statusSubscription(SubscriptionStatus.DELETED);
+        SubscriptionDTO verified = statusSubscription(SubscriptionStatus.ACTIVE);
+        when(subscriptionHandler.deleteSubscription("org-1", "sub-1")).thenReturn(deleted);
+        when(subscriptionHandler.retryVerification("org-1", "sub-1")).thenReturn(verified);
+
+        Response deleteResp = subscriptionEndpoint.deleteSubscription("sub-1");
+        Response verifyResp = subscriptionEndpoint.retryVerification("sub-1");
+
+        assertEquals(deleteResp.getStatus(), 200);
+        assertEquals(toJson(deleteResp.getEntity()),
+                "{\"subscriptionId\":\"sub-1\",\"status\":\"deleted\",\"updatedAt\":1787652970000}");
+        assertEquals(verifyResp.getStatus(), 200);
+        assertEquals(toJson(verifyResp.getEntity()),
+                "{\"subscriptionId\":\"sub-1\",\"status\":\"active\",\"updatedAt\":1787652970000}");
+    }
+
+    private static SubscriptionDTO statusSubscription(SubscriptionStatus status) {
+        SubscriptionDTO dto = new SubscriptionDTO();
+        dto.setSubscriptionId("sub-1");
+        dto.setName("sub-name");
+        dto.setTopics(Collections.singletonList("topic-name"));
+        dto.setStatus(status);
+        dto.setUpdatedAt(1787652970000L);
+        return dto;
+    }
+
+    private static String toJson(Object entity) {
+        try {
+            return new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL)
+                    .writeValueAsString(entity);
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     @Test

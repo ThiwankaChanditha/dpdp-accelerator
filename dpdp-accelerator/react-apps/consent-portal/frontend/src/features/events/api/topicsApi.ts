@@ -21,6 +21,7 @@ import type {
   TopicListQueryParams,
   TopicListResponse,
   TopicRecord,
+  TopicStatusUpdate,
 } from '../../../types/topic'
 import { apiRequest } from '../../../utils/apiClient'
 
@@ -47,8 +48,8 @@ export async function createTopic(payload: TopicInput): Promise<TopicRecord> {
   })
 }
 
-export async function deleteTopic(topicId: string): Promise<TopicRecord> {
-  return apiRequest<TopicRecord>(
+export async function deleteTopic(topicId: string): Promise<TopicStatusUpdate> {
+  return apiRequest<TopicStatusUpdate>(
     `/api/dpdp/event-notifications/v1.1/topics/${encodeURIComponent(topicId)}`,
     {
       method: 'DELETE',

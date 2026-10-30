@@ -146,13 +146,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Topic"
+                $ref: "#/components/schemas/TopicStatusUpdate"
               example:
                 topicId: 2ea5f59a-70db-4098-b0f8-3f3cfede76c7
-                name: processor-notice
-                description: Processor notice
                 status: deregistered
-                initiatedBy: user
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -422,18 +419,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: "#/components/schemas/SubscriptionStatusUpdate"
               example:
                 subscriptionId: 70f63b63-7ec4-4e42-a956-fca89bfeb351
-                name: Consent Poller
-                topics: [consent-status-changed]
-                filter:
-                  type: all
-                  purposes: []
-                delivery:
-                  mode: poll
                 status: deleted
-                createdAt: 1787651970000
                 updatedAt: 1787652970000
         "400":
           $ref: "#/components/responses/BadRequest"
@@ -470,19 +459,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: "#/components/schemas/SubscriptionStatusUpdate"
               example:
                 subscriptionId: 70f63b63-7ec4-4e42-a956-fca89bfeb351
-                name: Consent Webhook
-                topics: [consent-status-changed]
-                filter:
-                  type: all
-                  purposes: []
-                delivery:
-                  mode: webhook
-                  callbackUrl: https://processor.example/webhooks/consent
                 status: active
-                createdAt: 1787651970000
                 updatedAt: 1787652970000
         "400":
           $ref: "#/components/responses/BadRequest"
@@ -1289,6 +1269,15 @@ components:
         initiatedBy:
           type: string
           enum: [system, user]
+    TopicStatusUpdate:
+      type: object
+      description: Result of a topic status change such as deregistration.
+      required: [topicId, status]
+      properties:
+        topicId:
+          type: string
+        status:
+          $ref: "#/components/schemas/TopicStatus"
     PurposeFilterMode:
       type: string
       description: Exact lowercase value required; case variants, surrounding whitespace, and aliases are not accepted.
@@ -1388,6 +1377,18 @@ components:
           type: integer
           format: int64
           nullable: true
+    SubscriptionStatusUpdate:
+      type: object
+      description: Result of a subscription status change such as verification or deletion.
+      required: [subscriptionId, status, updatedAt]
+      properties:
+        subscriptionId:
+          type: string
+        status:
+          $ref: "#/components/schemas/SubscriptionStatus"
+        updatedAt:
+          type: integer
+          format: int64
     EventCreateRequest:
       type: object
       required: [topic, payload]

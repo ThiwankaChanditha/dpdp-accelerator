@@ -37,10 +37,12 @@ import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Subscript
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionStatus;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionStatusUpdate;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Topic;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatus;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatusUpdate;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.DeliveryConfigDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventCreateDTO;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
@@ -113,6 +115,28 @@ public final class EventNotificationDtoMapper {
         target.setStatus(source.getStatus() == null ? null : TopicStatus.fromValue(source.getStatus()));
         target.setInitiatedBy(source.getInitiatedBy() == null ? null :
                 Topic.InitiatedByEnum.fromValue(source.getInitiatedBy()));
+        return target;
+    }
+
+    public static TopicStatusUpdate toStatusApi(TopicDTO source) {
+        if (source == null) {
+            return null;
+        }
+        TopicStatusUpdate target = new TopicStatusUpdate();
+        target.setTopicId(source.getTopicId());
+        target.setStatus(source.getStatus() == null ? null : TopicStatus.fromValue(source.getStatus()));
+        return target;
+    }
+
+    public static SubscriptionStatusUpdate toStatusApi(SubscriptionDTO source) {
+        if (source == null) {
+            return null;
+        }
+        SubscriptionStatusUpdate target = new SubscriptionStatusUpdate();
+        target.setSubscriptionId(source.getSubscriptionId());
+        target.setStatus(source.getStatus() == null ? null :
+                SubscriptionStatus.fromValue(source.getStatus().getValue()));
+        target.setUpdatedAt(source.getUpdatedAt());
         return target;
     }
 

@@ -96,7 +96,7 @@ public class SubscriptionEndpoint {
     public Response deleteSubscription(
             @PathParam("subscriptionId") String subscriptionId) {
         SubscriptionDTO dto = subscriptionHandler.deleteSubscription(organizationIdSupplier.get(), subscriptionId);
-        return Response.ok(EventNotificationDtoMapper.toApi(dto)).build();
+        return Response.ok(EventNotificationDtoMapper.toStatusApi(dto)).build();
     }
 
     @POST
@@ -104,7 +104,7 @@ public class SubscriptionEndpoint {
     public Response retryVerification(
             @PathParam("subscriptionId") String subscriptionId) {
         SubscriptionDTO dto = subscriptionHandler.retryVerification(organizationIdSupplier.get(), subscriptionId);
-        return Response.ok(EventNotificationDtoMapper.toApi(dto)).build();
+        return Response.ok(EventNotificationDtoMapper.toStatusApi(dto)).build();
     }
 
     @GET
