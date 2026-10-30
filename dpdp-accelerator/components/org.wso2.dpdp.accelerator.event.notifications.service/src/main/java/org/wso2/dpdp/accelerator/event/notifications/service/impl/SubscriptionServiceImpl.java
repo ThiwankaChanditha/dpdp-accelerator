@@ -819,9 +819,17 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                     EventNotificationServiceConstants.ERROR_TITLE_CONCURRENT_MUTATION,
                     EventNotificationServiceConstants.SUBSCRIPTION_CONCURRENT_MODIFICATION_ERROR_MSG, 409);
         }
-        subHolder[0].setStatus(SubscriptionStatus.ACTIVE.getValue());
-
-        return DatabaseUtils.executeInTransaction(conn -> mapToDTO(conn, subHolder[0]));
+        return DatabaseUtils.executeInTransaction(conn -> {
+            Optional<Subscription> updated = subscriptionDAO.getSubscriptionById(
+                    conn, subscriptionId.trim(), orgId.trim());
+            if (!updated.isPresent()) {
+                throw new EventNotificationServiceException(
+                        EventNotificationServiceConstants.ERROR_CODE_RESOURCE_NOT_FOUND,
+                        EventNotificationServiceConstants.ERROR_TITLE_RESOURCE_NOT_FOUND,
+                        EventNotificationServiceConstants.SUBSCRIPTION_NOT_FOUND_ERROR_MSG, 404);
+            }
+            return mapToDTO(conn, updated.get());
+        });
     }
 
     @Override
