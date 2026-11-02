@@ -7,6 +7,7 @@
             <package name="org.wso2.dpdp.accelerator.event.notifications.endpoint.api.v1_1"/>
             <package name="org.wso2.dpdp.accelerator.event.notifications.endpoint.handler"/>
             <package name="org.wso2.dpdp.accelerator.event.notifications.endpoint.exception"/>
+            <package name="org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.v1_1"/>
         </packages>
     </test>
 </suite>

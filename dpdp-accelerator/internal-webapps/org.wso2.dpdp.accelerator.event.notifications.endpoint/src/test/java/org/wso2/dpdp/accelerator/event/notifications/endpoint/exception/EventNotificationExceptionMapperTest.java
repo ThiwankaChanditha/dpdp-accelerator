@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.wso2.dpdp.accelerator.event.notifications.common.exception.service.EventNotificationServiceException;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.Map;
 
@@ -32,9 +33,12 @@ import javax.validation.ConstraintViolationException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 
 public class EventNotificationExceptionMapperTest {
@@ -61,6 +65,7 @@ public class EventNotificationExceptionMapperTest {
         assertEquals(entity.get("code"), "EN-4040");
         assertEquals(entity.get("message"), "Resource not found");
         assertEquals(entity.get("description"), "Topic ID not found.");
+        assertNull(entity.get("traceId"));
     }
 
     @Test
@@ -76,6 +81,25 @@ public class EventNotificationExceptionMapperTest {
         assertEquals(entity.getCode(), "EN-4090");
         assertEquals(entity.getMessage(), "Topic already exists");
         assertEquals(entity.getDescription(), "Topic name conflict.");
+    }
+
+    @Test
+    public void testToResponseV11UriProducesTraceId() {
+        UriInfo uriInfo = Mockito.mock(UriInfo.class);
+        Mockito.when(uriInfo.getRequestUri()).thenReturn(URI.create("https://localhost:9443/api/dpdp/event-notifications/v1.1/topics"));
+        mapper.setUriInfo(uriInfo);
+
+        EventNotificationServiceException ex = new EventNotificationServiceException("EN-4001", "Bad Request", "Invalid payload.", 400);
+        Response response = mapper.toResponse(ex);
+
+        assertNotNull(response);
+        assertEquals(response.getStatus(), 400);
+        assertTrue(response.getEntity() instanceof org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error);
+        org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error entity =
+                (org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error) response.getEntity();
+        assertEquals(entity.getCode(), "EN-4001");
+        assertNotNull(entity.getTraceId());
+        assertFalse(entity.getTraceId().trim().isEmpty());
     }
 
     @Test

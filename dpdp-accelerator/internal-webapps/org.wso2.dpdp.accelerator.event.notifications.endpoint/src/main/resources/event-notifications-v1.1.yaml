@@ -1174,6 +1174,7 @@ components:
             code: EN-5000
             message: Internal error
             description: An unexpected error occurred while processing the request.
+            traceId: 9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d
     Delivery:
       description: Delivery details
       content:
@@ -1241,6 +1242,9 @@ components:
           type: string
         description:
           type: string
+        traceId:
+          type: string
+          description: A random UUID logged alongside the error for troubleshooting and correlation.
     TopicStatus:
       type: string
       enum: [active, deregistered]

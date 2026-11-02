@@ -45,7 +45,7 @@
             <bean class="org.wso2.dpdp.accelerator.event.notifications.endpoint.api.v1_1.DeliveryEndpoint"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
-            <bean class="org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.EventNotificationExceptionMapper"/>
+            <bean class="org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.v1_1.EventNotificationExceptionMapper"/>
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
         </jaxrs:providers>
     </jaxrs:server>

@@ -30,11 +30,14 @@ import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1.dto.Error;
 import java.util.Collections;
 import java.util.IdentityHashMap;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
@@ -43,94 +46,125 @@ public class EventNotificationExceptionMapper implements ExceptionMapper<Throwab
 
     private static final Log LOG = LogFactory.getLog(EventNotificationExceptionMapper.class);
 
+    @Context
+    private UriInfo uriInfo;
+
+    public void setUriInfo(UriInfo uriInfo) {
+        this.uriInfo = uriInfo;
+    }
+
     @Override
     public Response toResponse(Throwable exception) {
 
+        String traceId = UUID.randomUUID().toString();
+
         if (exception instanceof EventNotificationServiceException) {
-            return handleEventNotificationException((EventNotificationServiceException) exception);
+            return handleEventNotificationException((EventNotificationServiceException) exception, traceId);
         }
 
         Throwable rootCause = unwrap(exception);
 
         if (rootCause instanceof EventNotificationServiceException) {
-            return handleEventNotificationException((EventNotificationServiceException) rootCause);
+            return handleEventNotificationException((EventNotificationServiceException) rootCause, traceId);
         }
 
         if (rootCause instanceof WebApplicationException) {
-            return handleWebApplicationException((WebApplicationException) rootCause);
+            return handleWebApplicationException((WebApplicationException) rootCause, traceId);
         }
 
         if (rootCause instanceof ConstraintViolationException) {
-            return handleConstraintViolation((ConstraintViolationException) rootCause);
+            return handleConstraintViolation((ConstraintViolationException) rootCause, traceId);
         }
 
         if (rootCause instanceof JsonProcessingException) {
-            return handleJsonProcessingException((JsonProcessingException) rootCause);
+            return handleJsonProcessingException((JsonProcessingException) rootCause, traceId);
         }
 
         if (rootCause instanceof IllegalArgumentException) {
-            LOG.debug("Invalid request argument: " + LogSanitizer.sanitize(rootCause.getMessage()));
+            LOG.debug("Invalid request argument [traceId=" + traceId + "]: "
+                    + LogSanitizer.sanitize(rootCause.getMessage()));
             return buildResponse(Response.Status.BAD_REQUEST.getStatusCode(),
                     EventNotificationEndpointErrorCodes.INVALID_REQUEST_PARAMETER,
-                    "Invalid request parameter", rootCause.getMessage());
+                    "Invalid request parameter", rootCause.getMessage(), traceId);
         }
 
-        LOG.error("Unhandled exception in Event Notification endpoint", exception);
+        LOG.error("Unhandled exception in Event Notification endpoint [traceId=" + traceId + "]", exception);
         return buildResponse(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(),
                 EventNotificationEndpointErrorCodes.INTERNAL_SERVER_ERROR,
-                "Internal server error", "An unexpected error occurred.");
+                "Internal server error", "An unexpected error occurred.", traceId);
     }
 
-    private Response handleEventNotificationException(EventNotificationServiceException ex) {
+    private Response handleEventNotificationException(EventNotificationServiceException ex, String traceId) {
         if (ex.getStatusCode() >= 500) {
-            LOG.error("Service error [" + LogSanitizer.sanitize(ex.getCode()) + "]: "
+            LOG.error("Service error [" + LogSanitizer.sanitize(ex.getCode()) + "] [traceId=" + traceId + "]: "
                     + LogSanitizer.sanitize(ex.getMessage()), ex);
         } else {
-            LOG.debug("Service error [" + LogSanitizer.sanitize(ex.getCode()) + "]: "
+            LOG.debug("Service error [" + LogSanitizer.sanitize(ex.getCode()) + "] [traceId=" + traceId + "]: "
                     + LogSanitizer.sanitize(ex.getMessage()));
         }
-        return buildResponse(ex.getStatusCode(), ex.getCode(), ex.getMessage(), ex.getDescription());
+        return buildResponse(ex.getStatusCode(), ex.getCode(), ex.getMessage(), ex.getDescription(), traceId);
     }
 
-    private Response handleWebApplicationException(WebApplicationException wae) {
+    private Response handleWebApplicationException(WebApplicationException wae, String traceId) {
         int status = wae.getResponse().getStatus();
-        LOG.debug("JAX-RS exception [" + status + "]: " + LogSanitizer.sanitize(wae.getMessage()));
+        LOG.debug("JAX-RS exception [" + status + "] [traceId=" + traceId + "]: "
+                + LogSanitizer.sanitize(wae.getMessage()));
         return buildResponse(status, EventNotificationEndpointErrorCodes.forHttpStatus(status),
-                wae.getMessage() != null ? wae.getMessage() : Response.Status.fromStatusCode(status).getReasonPhrase(), null);
+                wae.getMessage() != null ? wae.getMessage() : Response.Status.fromStatusCode(status).getReasonPhrase(),
+                null, traceId);
     }
 
-    private Response handleConstraintViolation(ConstraintViolationException cve) {
+    private Response handleConstraintViolation(ConstraintViolationException cve, String traceId) {
         String detail = cve.getConstraintViolations().stream()
                 .map(v -> v.getPropertyPath() + " " + v.getMessage())
                 .reduce((a, b) -> a + "; " + b)
                 .orElse(cve.getMessage());
 
-        LOG.debug("Validation failure: " + LogSanitizer.sanitize(detail));
+        LOG.debug("Validation failure [traceId=" + traceId + "]: " + LogSanitizer.sanitize(detail));
         return buildResponse(Response.Status.BAD_REQUEST.getStatusCode(),
                 EventNotificationEndpointErrorCodes.VALIDATION_FAILURE,
-                "Request failed validation", detail);
+                "Request failed validation", detail, traceId);
     }
 
-    private Response handleJsonProcessingException(JsonProcessingException jpe) {
+    private Response handleJsonProcessingException(JsonProcessingException jpe, String traceId) {
         String detail = jpe.getOriginalMessage();
         if (jpe instanceof UnrecognizedPropertyException) {
             UnrecognizedPropertyException upe = (UnrecognizedPropertyException) jpe;
             detail = "Unrecognized field '" + upe.getPropertyName() + "' in request payload.";
         }
 
-        LOG.debug("Malformed request payload: " + LogSanitizer.sanitize(detail));
+        LOG.debug("Malformed request payload [traceId=" + traceId + "]: " + LogSanitizer.sanitize(detail));
         return buildResponse(Response.Status.BAD_REQUEST.getStatusCode(),
                 EventNotificationEndpointErrorCodes.MALFORMED_REQUEST,
-                "Malformed request payload", detail);
+                "Malformed request payload", detail, traceId);
     }
 
-    private Response buildResponse(int status, String code, String message, String description) {
+    protected Response buildResponse(int status, String code, String message, String description, String traceId) {
+        if (isV11Request()) {
+            org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error body =
+                    new org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error()
+                            .code(code).message(message).description(description).traceId(traceId);
+
+            return Response.status(status > 0 ? status : 500)
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(body)
+                    .build();
+        }
+
         Error body = new Error().code(code).message(message).description(description);
 
         return Response.status(status > 0 ? status : 500)
                 .type(MediaType.APPLICATION_JSON)
                 .entity(body)
                 .build();
+    }
+
+    private boolean isV11Request() {
+        if (uriInfo != null && uriInfo.getRequestUri() != null) {
+            String path = uriInfo.getRequestUri().getPath();
+            return path != null && (path.contains("/v1.1/") || path.endsWith("/v1.1"));
+        }
+        return false;
     }
 
     private Throwable unwrap(Throwable exception) {

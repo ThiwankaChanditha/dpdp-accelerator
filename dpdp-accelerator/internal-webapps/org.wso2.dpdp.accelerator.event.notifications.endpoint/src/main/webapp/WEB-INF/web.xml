@@ -50,7 +50,7 @@
     <init-param>
       <param-name>jaxrs.providers</param-name>
       <param-value>
-        org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.EventNotificationExceptionMapper,
+        org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.v1_1.EventNotificationExceptionMapper,
         com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider
       </param-value>
     </init-param>

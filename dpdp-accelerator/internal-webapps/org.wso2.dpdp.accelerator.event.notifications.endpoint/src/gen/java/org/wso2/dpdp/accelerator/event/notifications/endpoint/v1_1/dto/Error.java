@@ -20,6 +20,13 @@ public class Error  {
   @ApiModelProperty(value = "")
 
   private String description;
+
+ /**
+  * A random UUID logged alongside the error for troubleshooting and correlation.
+  */
+  @ApiModelProperty(value = "A random UUID logged alongside the error for troubleshooting and correlation.")
+
+  private String traceId;
  /**
    * Get code
    * @return code
@@ -74,6 +81,24 @@ public class Error  {
     return this;
   }
 
+ /**
+   * A random UUID logged alongside the error for troubleshooting and correlation.
+   * @return traceId
+  **/
+  @JsonProperty("traceId")
+  public String getTraceId() {
+    return traceId;
+  }
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+  public Error traceId(String traceId) {
+    this.traceId = traceId;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -85,12 +110,13 @@ public class Error  {
     Error error = (Error) o;
     return Objects.equals(this.code, error.code) &&
         Objects.equals(this.message, error.message) &&
-        Objects.equals(this.description, error.description);
+        Objects.equals(this.description, error.description) &&
+        Objects.equals(this.traceId, error.traceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, description);
+    return Objects.hash(code, message, description, traceId);
   }
 
   @Override
@@ -101,6 +127,7 @@ public class Error  {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,0 +1,101 @@
+/**
+ * Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
+ * <p>
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+package org.wso2.dpdp.accelerator.event.notifications.endpoint.exception.v1_1;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import org.wso2.dpdp.accelerator.event.notifications.common.exception.service.EventNotificationServiceException;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Error;
+
+import java.util.Map;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+
+public class V11EventNotificationExceptionMapperTest {
+
+    private EventNotificationExceptionMapper mapper;
+
+    @BeforeMethod
+    public void setUp() {
+        mapper = new EventNotificationExceptionMapper();
+    }
+
+    @Test
+    public void testToResponseNotFoundExceptionContainsTraceId() {
+        EventNotificationServiceException ex = new EventNotificationServiceException(
+                "EN-4040", "Resource not found", "Topic ID not found.", 404);
+        Response response = mapper.toResponse(ex);
+
+        assertNotNull(response);
+        assertEquals(response.getStatus(), 404);
+        assertEquals(response.getMediaType(), MediaType.APPLICATION_JSON_TYPE);
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> entity = new com.fasterxml.jackson.databind.ObjectMapper()
+                .convertValue(response.getEntity(), Map.class);
+        assertNotNull(entity);
+        assertEquals(entity.get("code"), "EN-4040");
+        assertEquals(entity.get("message"), "Resource not found");
+        assertEquals(entity.get("description"), "Topic ID not found.");
+        assertNotNull(entity.get("traceId"));
+        assertFalse(((String) entity.get("traceId")).trim().isEmpty());
+    }
+
+    @Test
+    public void testToResponseReturnsV11ErrorDtoWithTraceId() {
+        EventNotificationServiceException ex = new EventNotificationServiceException(
+                "EN-4090", "Topic already exists", "Topic name conflict.", 409);
+        Response response = mapper.toResponse(ex);
+
+        assertNotNull(response);
+        assertEquals(response.getStatus(), 409);
+        assertTrue(response.getEntity() instanceof Error);
+        Error entity = (Error) response.getEntity();
+        assertEquals(entity.getCode(), "EN-4090");
+        assertEquals(entity.getMessage(), "Topic already exists");
+        assertEquals(entity.getDescription(), "Topic name conflict.");
+        assertNotNull(entity.getTraceId());
+        assertFalse(entity.getTraceId().trim().isEmpty());
+    }
+
+    @Test
+    public void testTraceIdIsUniquePerResponse() {
+        EventNotificationServiceException ex1 = new EventNotificationServiceException(
+                "EN-4001", "Error 1", "desc 1", 400);
+        EventNotificationServiceException ex2 = new EventNotificationServiceException(
+                "EN-4002", "Error 2", "desc 2", 400);
+        Response resp1 = mapper.toResponse(ex1);
+        Response resp2 = mapper.toResponse(ex2);
+
+        Error err1 = (Error) resp1.getEntity();
+        Error err2 = (Error) resp2.getEntity();
+
+        assertNotNull(err1.getTraceId());
+        assertNotNull(err2.getTraceId());
+        assertNotEquals(err1.getTraceId(), err2.getTraceId());
+    }
+}
+
