@@ -59,7 +59,7 @@ export function useEventsQuery(
     queryFn: async (): Promise<EventListResult> => {
       const response = await fetchEvents(params)
       const items = response.items ?? []
-      const total = response.total ?? items.length
+      const total = response.pagination?.totalCount ?? response.total ?? items.length
 
       return {
         rows: items,
@@ -108,7 +108,7 @@ export function useEventDeliveriesQuery(
       }
       const response = await fetchEventDeliveries(eventId, rowsPerPage, page * rowsPerPage)
       const items = response.items ?? []
-      const total = response.total ?? items.length
+      const total = response.pagination?.totalCount ?? response.total ?? items.length
       return {
         rows: items,
         total,

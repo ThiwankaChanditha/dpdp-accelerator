@@ -64,7 +64,7 @@ export function useTopicsQuery(
     queryFn: async (): Promise<TopicListResult> => {
       const response = await fetchTopics(params)
       const items = response.items ?? []
-      const total = response.total ?? items.length
+      const total = response.pagination?.totalCount ?? response.total ?? items.length
 
       return {
         rows: items,

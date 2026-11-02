@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Delivery;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Pagination;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
@@ -18,7 +19,7 @@ public class DeliveryPage  {
 
   @ApiModelProperty(required = true, value = "")
 
-  private Integer total;
+  private Pagination pagination;
  /**
    * Get items
    * @return items
@@ -43,20 +44,20 @@ public class DeliveryPage  {
   }
 
  /**
-   * Get total
-   * @return total
+   * Get pagination
+   * @return pagination
   **/
-  @JsonProperty("total")
-  public Integer getTotal() {
-    return total;
+  @JsonProperty("pagination")
+  public Pagination getPagination() {
+    return pagination;
   }
 
-  public void setTotal(Integer total) {
-    this.total = total;
+  public void setPagination(Pagination pagination) {
+    this.pagination = pagination;
   }
 
-  public DeliveryPage total(Integer total) {
-    this.total = total;
+  public DeliveryPage pagination(Pagination pagination) {
+    this.pagination = pagination;
     return this;
   }
 
@@ -70,12 +71,12 @@ public class DeliveryPage  {
     }
     DeliveryPage deliveryPage = (DeliveryPage) o;
     return Objects.equals(this.items, deliveryPage.items) &&
-        Objects.equals(this.total, deliveryPage.total);
+        Objects.equals(this.pagination, deliveryPage.pagination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, total);
+    return Objects.hash(items, pagination);
   }
 
   @Override
@@ -84,7 +85,7 @@ public class DeliveryPage  {
     sb.append("class DeliveryPage {\n");
     
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -97,4 +98,3 @@ public class DeliveryPage  {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }
-

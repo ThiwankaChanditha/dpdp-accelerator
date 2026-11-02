@@ -31,6 +31,7 @@ import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCrea
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCreateResponse;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Filter;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Pagination;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.PollResponse;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.PurposeFilterMode;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Subscription;
@@ -301,37 +302,53 @@ public final class EventNotificationDtoMapper {
     }
 
     public static TopicPage topics(PaginatedResult<TopicDTO> source) {
+        return topics(source, 20, 0);
+    }
+
+    public static TopicPage topics(PaginatedResult<TopicDTO> source, int limit, int offset) {
         return page(source, EventNotificationDtoMapper::toApi, (items, total) -> {
             TopicPage page = new TopicPage();
             page.setItems(items);
-            page.setTotal(total);
+            page.setPagination(new Pagination().limit(limit).offset(offset).totalCount(total));
             return page;
         });
     }
 
     public static SubscriptionPage subscriptions(PaginatedResult<SubscriptionDTO> source) {
+        return subscriptions(source, 20, 0);
+    }
+
+    public static SubscriptionPage subscriptions(PaginatedResult<SubscriptionDTO> source, int limit, int offset) {
         return page(source, EventNotificationDtoMapper::toSummaryApi, (items, total) -> {
             SubscriptionPage page = new SubscriptionPage();
             page.setItems(items);
-            page.setTotal(total);
+            page.setPagination(new Pagination().limit(limit).offset(offset).totalCount(total));
             return page;
         });
     }
 
     public static EventPage events(PaginatedResult<EventDTO> source) {
+        return events(source, 20, 0);
+    }
+
+    public static EventPage events(PaginatedResult<EventDTO> source, int limit, int offset) {
         return page(source, EventNotificationDtoMapper::toApi, (items, total) -> {
             EventPage page = new EventPage();
             page.setItems(items);
-            page.setTotal(total);
+            page.setPagination(new Pagination().limit(limit).offset(offset).totalCount(total));
             return page;
         });
     }
 
     public static DeliveryPage deliveries(PaginatedResult<SubscriptionDeliveryDTO> source) {
+        return deliveries(source, 20, 0);
+    }
+
+    public static DeliveryPage deliveries(PaginatedResult<SubscriptionDeliveryDTO> source, int limit, int offset) {
         return page(source, EventNotificationDtoMapper::toApi, (items, total) -> {
             DeliveryPage page = new DeliveryPage();
             page.setItems(items);
-            page.setTotal(total);
+            page.setPagination(new Pagination().limit(limit).offset(offset).totalCount(total));
             return page;
         });
     }

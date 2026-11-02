@@ -176,9 +176,16 @@ export interface SubscriptionEventHistoryRecord {
   history?: SubscriptionDeliveryAttemptRecord[]
 }
 
+export interface PaginationMetadata {
+  limit: number
+  offset: number
+  totalCount: number
+}
+
 export interface PaginatedResult<T> {
   items: T[]
-  total: number
+  total?: number
+  pagination?: PaginationMetadata
 }
 
 /**

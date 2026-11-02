@@ -38,7 +38,7 @@ export async function fetchAllActiveTopics(): Promise<TopicListResponse> {
     offset: 0,
   })
 
-  const total = firstPage.total
+  const total = firstPage.pagination?.totalCount ?? firstPage.total ?? firstPage.items.length
   const allItems = [...firstPage.items]
 
   if (total > PAGE_SIZE) {

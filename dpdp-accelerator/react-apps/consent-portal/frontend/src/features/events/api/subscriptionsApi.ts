@@ -16,6 +16,7 @@
  * under the License.
  */
 
+import type { Pagination } from '../../../types/pagination'
 import type {
   SubscriptionDeliveryAttemptRecord,
   SubscriptionDeliveryRecord,
@@ -99,8 +100,8 @@ export async function verifySubscription(
 export async function fetchSubscriptionEvents(
   subscriptionId: string,
   params: { limit: number; offset: number },
-): Promise<{ items: SubscriptionDeliveryRecord[]; total: number }> {
-  return apiRequest<{ items: SubscriptionDeliveryRecord[]; total: number }>(
+): Promise<{ items: SubscriptionDeliveryRecord[]; total?: number; pagination?: Pagination }> {
+  return apiRequest<{ items: SubscriptionDeliveryRecord[]; total?: number; pagination?: Pagination }>(
     `/api/dpdp/event-notifications/v1.1/subscriptions/${encodeURIComponent(subscriptionId)}/deliveries`,
     {
       method: 'GET',

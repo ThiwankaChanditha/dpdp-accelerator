@@ -16,6 +16,8 @@
  * under the License.
  */
 
+import type { Pagination } from './pagination'
+
 export const SUBSCRIPTION_STATUSES = ['ACTIVE', 'PENDING', 'STALE', 'DELETED'] as const
 
 export type SubscriptionStatus = (typeof SUBSCRIPTION_STATUSES)[number]
@@ -94,7 +96,8 @@ export interface SubscriptionListQueryParams {
 
 export interface SubscriptionListResponse {
   items: SubscriptionRecord[]
-  total: number
+  total?: number
+  pagination?: Pagination
 }
 
 export interface SubscriptionFilters {

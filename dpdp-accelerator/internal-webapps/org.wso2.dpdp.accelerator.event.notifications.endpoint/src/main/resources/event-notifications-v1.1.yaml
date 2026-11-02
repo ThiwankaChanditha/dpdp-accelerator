@@ -118,11 +118,17 @@ paths:
                         description: Consent lifecycle changes
                         status: active
                         initiatedBy: system
-                    total: 1
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 1
                 empty:
                   value:
                     items: []
-                    total: 0
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 0
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -353,11 +359,17 @@ paths:
                         status: active
                         createdAt: 1787651970000
                         updatedAt: 1787651970000
-                    total: 1
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 1
                 empty:
                   value:
                     items: []
-                    total: 0
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 0
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -522,11 +534,17 @@ paths:
                         currentStatus: delivered
                         deliveryMode: webhook
                         occurredAt: 1787651970000
-                    total: 1
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 1
                 empty:
                   value:
                     items: []
-                    total: 0
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 0
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -651,11 +669,17 @@ paths:
                         occurredAt: 1787651970000
                         createdAt: 1787651970000
                         deliveriesCount: 2
-                    total: 1
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 1
                 empty:
                   value:
                     items: []
-                    total: 0
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 0
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -728,11 +752,17 @@ paths:
                         currentStatus: pending
                         deliveryMode: poll
                         occurredAt: 1787651970000
-                    total: 1
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 1
                 empty:
                   value:
                     items: []
-                    total: 0
+                    pagination:
+                      limit: 20
+                      offset: 0
+                      totalCount: 0
         "400":
           $ref: "#/components/responses/BadRequest"
         "401":
@@ -1675,43 +1705,56 @@ components:
           type: string
         payload:
           $ref: "#/components/schemas/SignedEventEnvelope"
+    Pagination:
+      type: object
+      required: [limit, offset, totalCount]
+      properties:
+        limit:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int32
     TopicPage:
       type: object
-      required: [items, total]
+      required: [items, pagination]
       properties:
         items:
           type: array
           items:
             $ref: "#/components/schemas/Topic"
-        total:
-          type: integer
+        pagination:
+          $ref: "#/components/schemas/Pagination"
     SubscriptionPage:
       type: object
-      required: [items, total]
+      required: [items, pagination]
       properties:
         items:
           type: array
           items:
             $ref: "#/components/schemas/Subscription"
-        total:
-          type: integer
+        pagination:
+          $ref: "#/components/schemas/Pagination"
     EventPage:
       type: object
-      required: [items, total]
+      required: [items, pagination]
       properties:
         items:
           type: array
           items:
             $ref: "#/components/schemas/Event"
-        total:
-          type: integer
+        pagination:
+          $ref: "#/components/schemas/Pagination"
     DeliveryPage:
       type: object
-      required: [items, total]
+      required: [items, pagination]
       properties:
         items:
           type: array
           items:
             $ref: "#/components/schemas/Delivery"
-        total:
-          type: integer
+        pagination:
+          $ref: "#/components/schemas/Pagination"

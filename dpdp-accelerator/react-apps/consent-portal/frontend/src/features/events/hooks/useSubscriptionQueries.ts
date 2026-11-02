@@ -88,7 +88,7 @@ export function useSubscriptionsQuery(
         )
       }
 
-      const total = response.total ?? items.length
+      const total = response.pagination?.totalCount ?? response.total ?? items.length
 
       return {
         rows: items,
@@ -180,7 +180,7 @@ export function useSubscriptionEventsQuery(
         offset,
       })
       const items = response.items ?? []
-      const total = response.total ?? items.length
+      const total = response.pagination?.totalCount ?? response.total ?? items.length
 
       return {
         rows: items,

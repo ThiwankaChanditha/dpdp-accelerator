@@ -80,7 +80,7 @@ public class SubscriptionEndpoint {
             @QueryParam("sort") String sort) {
         PaginatedResult<SubscriptionDTO> result = subscriptionHandler.listSubscriptions(
                 organizationIdSupplier.get(), status, purposes, search, limit, offset, sort);
-        return Response.ok(EventNotificationDtoMapper.subscriptions(result)).build();
+        return Response.ok(EventNotificationDtoMapper.subscriptions(result, limit, offset)).build();
     }
 
     @GET
@@ -115,6 +115,6 @@ public class SubscriptionEndpoint {
             @QueryParam("offset") @DefaultValue(EventNotificationEndpointConstants.DEFAULT_OFFSET_STR) int offset) {
         PaginatedResult<SubscriptionDeliveryDTO> result = subscriptionHandler.listSubscriptionEvents(
                 organizationIdSupplier.get(), subscriptionId, limit, offset);
-        return Response.ok(EventNotificationDtoMapper.deliveries(result)).build();
+        return Response.ok(EventNotificationDtoMapper.deliveries(result, limit, offset)).build();
     }
 }

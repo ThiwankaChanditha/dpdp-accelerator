@@ -31,11 +31,15 @@ import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.Subscripti
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.handler.TopicHandler;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.Delivery;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.DeliveryHistory;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.DeliveryPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.DeliveryRetryResponse;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCreateRequest;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventCreateResponse;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.EventPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionCreateRequest;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.SubscriptionPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicCreateRequest;
+import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicPage;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatus;
 import org.wso2.dpdp.accelerator.event.notifications.endpoint.v1_1.dto.TopicStatusUpdate;
 import org.wso2.dpdp.accelerator.event.notifications.service.dto.EventDTO;
@@ -102,6 +106,12 @@ public class V11EndpointTest {
 
         Response listResp = topicEndpoint.listTopics("active", "search", 20, 0, "name");
         assertEquals(listResp.getStatus(), 200);
+        assertTrue(listResp.getEntity() instanceof TopicPage);
+        TopicPage topicPage = (TopicPage) listResp.getEntity();
+        assertNotNull(topicPage.getPagination());
+        assertEquals(topicPage.getPagination().getLimit(), Integer.valueOf(20));
+        assertEquals(topicPage.getPagination().getOffset(), Integer.valueOf(0));
+        assertEquals(topicPage.getPagination().getTotalCount(), Integer.valueOf(1));
 
         Response deleteResp = topicEndpoint.deleteTopic("t1");
         assertEquals(deleteResp.getStatus(), 200);
@@ -180,6 +190,12 @@ public class V11EndpointTest {
 
         Response listResp = subscriptionEndpoint.listSubscriptions("active", "marketing", "search", 20, 0, "name");
         assertEquals(listResp.getStatus(), 200);
+        assertTrue(listResp.getEntity() instanceof SubscriptionPage);
+        SubscriptionPage subPage = (SubscriptionPage) listResp.getEntity();
+        assertNotNull(subPage.getPagination());
+        assertEquals(subPage.getPagination().getLimit(), Integer.valueOf(20));
+        assertEquals(subPage.getPagination().getOffset(), Integer.valueOf(0));
+        assertEquals(subPage.getPagination().getTotalCount(), Integer.valueOf(1));
 
         Response getResp = subscriptionEndpoint.getSubscription("sub-1");
         assertEquals(getResp.getStatus(), 200);
@@ -192,6 +208,12 @@ public class V11EndpointTest {
 
         Response dlvResp = subscriptionEndpoint.listSubscriptionDeliveries("sub-1", 20, 0);
         assertEquals(dlvResp.getStatus(), 200);
+        assertTrue(dlvResp.getEntity() instanceof DeliveryPage);
+        DeliveryPage subDlvPage = (DeliveryPage) dlvResp.getEntity();
+        assertNotNull(subDlvPage.getPagination());
+        assertEquals(subDlvPage.getPagination().getLimit(), Integer.valueOf(20));
+        assertEquals(subDlvPage.getPagination().getOffset(), Integer.valueOf(0));
+        assertEquals(subDlvPage.getPagination().getTotalCount(), Integer.valueOf(1));
     }
 
     @Test
@@ -221,12 +243,24 @@ public class V11EndpointTest {
 
         Response listResp = eventEndpoint.listEvents(null, null, null, null, null, 20, 0);
         assertEquals(listResp.getStatus(), 200);
+        assertTrue(listResp.getEntity() instanceof EventPage);
+        EventPage eventPage = (EventPage) listResp.getEntity();
+        assertNotNull(eventPage.getPagination());
+        assertEquals(eventPage.getPagination().getLimit(), Integer.valueOf(20));
+        assertEquals(eventPage.getPagination().getOffset(), Integer.valueOf(0));
+        assertEquals(eventPage.getPagination().getTotalCount(), Integer.valueOf(1));
 
         Response getResp = eventEndpoint.getEvent("e1");
         assertEquals(getResp.getStatus(), 200);
 
         Response dlvResp = eventEndpoint.getEventDeliveries("e1", 20, 0);
         assertEquals(dlvResp.getStatus(), 200);
+        assertTrue(dlvResp.getEntity() instanceof DeliveryPage);
+        DeliveryPage eventDlvPage = (DeliveryPage) dlvResp.getEntity();
+        assertNotNull(eventDlvPage.getPagination());
+        assertEquals(eventDlvPage.getPagination().getLimit(), Integer.valueOf(20));
+        assertEquals(eventDlvPage.getPagination().getOffset(), Integer.valueOf(0));
+        assertEquals(eventDlvPage.getPagination().getTotalCount(), Integer.valueOf(1));
     }
 
     @Test

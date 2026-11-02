@@ -16,6 +16,8 @@
  * under the License.
  */
 
+import type { Pagination } from './pagination'
+
 export interface EventRecord {
   deliveryId?: string
   eventId: string
@@ -48,7 +50,8 @@ export interface EventListQueryParams {
 
 export interface EventListResponse {
   items: EventRecord[]
-  total: number
+  total?: number
+  pagination?: Pagination
 }
 
 export interface EventInput {

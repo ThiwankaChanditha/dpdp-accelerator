@@ -77,7 +77,7 @@ public class TopicEndpoint {
             @QueryParam("sort") String sort) {
         PaginatedResult<TopicDTO> result = topicHandler.listTopics(organizationIdSupplier.get(), status,
                 search, limit, offset, sort);
-        return Response.ok(EventNotificationDtoMapper.topics(result)).build();
+        return Response.ok(EventNotificationDtoMapper.topics(result, limit, offset)).build();
     }
 
     @DELETE

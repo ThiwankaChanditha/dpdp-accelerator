@@ -16,6 +16,8 @@
  * under the License.
  */
 
+import type { Pagination } from './pagination'
+
 export const TOPIC_STATUSES = ['ACTIVE', 'DEREGISTERED'] as const
 
 export type TopicStatus = (typeof TOPIC_STATUSES)[number]
@@ -49,7 +51,8 @@ export interface TopicListQueryParams {
 
 export interface TopicListResponse {
   items: TopicRecord[]
-  total: number
+  total?: number
+  pagination?: Pagination
 }
 
 export interface TopicInput {

@@ -101,7 +101,7 @@ public class EventEndpoint {
                 ? eventHandler.searchEvents(orgId, topic, status, orgId, purposes, search, limit, offset)
                 : eventHandler.searchEvents(orgId, topic, status, orgId, subscriptionId,
                         purposes, search, limit, offset);
-        return Response.ok(EventNotificationDtoMapper.events(result)).build();
+        return Response.ok(EventNotificationDtoMapper.events(result, limit, offset)).build();
     }
 
     @GET
@@ -120,6 +120,6 @@ public class EventEndpoint {
             @QueryParam("offset") @DefaultValue(EventNotificationEndpointConstants.DEFAULT_OFFSET_STR) int offset) {
         PaginatedResult<SubscriptionDeliveryDTO> result = eventHandler.getEventDeliveries(
                 organizationIdResolver.get(), eventId, limit, offset);
-        return Response.ok(EventNotificationDtoMapper.deliveries(result)).build();
+        return Response.ok(EventNotificationDtoMapper.deliveries(result, limit, offset)).build();
     }
 }
